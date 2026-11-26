@@ -1,0 +1,1797 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CCAR-P Study Guide — 中英并列版</title>
+<style>
+:root{--ink:#1a2332;--mut:#5b6b82;--line:#d8dee8;--accent:#b7791f;--qbg:#fdf6e3;--band:#16283f;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",Segoe UI,Roboto,sans-serif;color:var(--ink);font-size:15px;line-height:1.65;background:#fff}
+header.top{position:sticky;top:0;background:var(--band);color:#fff;padding:10px 20px;z-index:10;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:baseline}
+header.top b{font-size:17px}
+header.top nav a{color:#ffd98a;text-decoration:none;margin-right:12px;font-size:14px}
+header.top .sub{color:#b9c7da;font-size:13px}
+.colhead{display:grid;grid-template-columns:1fr 1fr;background:#eef2f7;border-bottom:2px solid var(--band);font-weight:700}
+.colhead div{padding:8px 20px}
+.colhead .zh{border-left:1px solid var(--line)}
+.row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+.cell{padding:14px 20px;min-width:0;overflow-wrap:break-word}
+.cell.zh{border-left:1px solid var(--line);background:#fcfcf9}
+.band{display:grid;grid-template-columns:1fr 1fr;background:var(--band);color:#fff;margin-top:6px}
+.band div{padding:12px 20px;font-size:18px;font-weight:700}
+.band .band-zh{border-left:1px solid rgba(255,255,255,.25)}
+h1{font-size:20px;margin:.4em 0}
+h2{font-size:17px;margin:.6em 0 .3em;color:var(--band)}
+h3{font-size:15px;margin:.8em 0 .2em}
+ul{margin:.3em 0 .6em;padding-left:1.3em}
+li{margin:.25em 0}
+blockquote{margin:.6em 0;padding:10px 14px;background:var(--qbg);border-left:4px solid var(--accent);border-radius:0 6px 6px 0}
+blockquote p{margin:.2em 0}
+table{border-collapse:collapse;margin:.6em 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:5px 10px;text-align:left}
+a{color:#1d4ed8}
+hr{border:none;border-top:1px solid var(--line)}
+@media (max-width:760px){.row,.band,.colhead{grid-template-columns:1fr}.cell.zh{border-left:none;border-top:1px dashed var(--line)}}
+</style></head><body>
+<header class="top"><b>CCAR-P Study Guide · 中英并列版</b><span class="sub">Official Blueprint v1.0（旧版，至 2026-12-06）· 左 EN / 右 中文 · 整页一起滚动</span><nav><a href="#d1">D1</a><a href="#d2">D2</a><a href="#d3">D3</a><a href="#d4">D4</a><a href="#d5">D5</a><a href="#d6">D6</a><a href="#d7">D7</a><a href="#samples">样题</a></nav></header>
+<div class="colhead"><div>English</div><div class="zh">中文</div></div>
+<div class="row front"><div class="cell en"><h1>Claude Certified Architect — Professional Certification</h1>
+<h2>Study Guide (Based on the Official Exam Guide)</h2>
+<blockquote>
+<p>Built on the official <strong>Claude Certified Architect – Professional Exam Guide, Version 1.0 (effective July 2026), exam code CCAR-P</strong> — the blueprint in force through <strong>6 December 2026</strong>. Structure follows the format of paullarionov/claude-certified-architect's study guides; all content is drawn from the official Exam Guide and official Anthropic documentation (platform.claude.com/docs, code.claude.com/docs, anthropic.com/engineering and research posts). Domain and objective headings reproduce the official blueprint wording. Key knowledge / Key skills points are faithful paraphrases of the official sources cited at the end of each section — follow the links for the full original text.</p>
+</blockquote>
+<hr />
+<h2>Introduction</h2>
+<p>The Claude Certified Architect – Professional certification validates that an individual can design, build, and deliver production-grade AI solutions using Anthropic's Claude platform. It is intended for practitioners working in an architect role who select appropriate models, architectures, and API patterns; apply prompt and context engineering; integrate Claude into enterprise systems; and incorporate evaluation, security, compliance, and governance considerations into their designs.</p>
+<p>This guide is the study companion to the official Exam Guide, which is the authoritative reference for the credential: its purpose, intended audience, exam format and content blueprint, scoring, and policies.</p>
+<hr />
+<h2>Target Candidate</h2>
+<p>The certification is intended for mid- to senior-level technical professionals who design, build, and deliver production-grade AI solutions using large language models, particularly Claude — primarily solution architects, AI/ML engineers, technical leads, and senior software engineers who operate at the intersection of business requirements and technical implementation.</p>
+<p>The exam targets the <strong>minimally qualified candidate (MQC)</strong>: an experienced practitioner who combines an engineering mindset with practical, real-world experience deploying AI solutions. Recommended experience (recommended, not required — there are no mandatory prerequisites):</p>
+<ul>
+<li>A foundation in software engineering best practices (modular design, separation of concerns, scalability)</li>
+<li>3+ years of experience in systems architecture or platform engineering</li>
+<li>6+ months of hands-on experience with Claude or comparable LLM-based systems in production</li>
+<li>Experience delivering end-to-end systems from discovery through deployment and operationalization</li>
+</ul>
+<hr />
+<h2>Exam Format</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exam code</td>
+<td>CCAR-P</td>
+</tr>
+<tr>
+<td>Number of items</td>
+<td>63</td>
+</tr>
+<tr>
+<td>Item format</td>
+<td>Multiple-choice and multiple-response; each item states how many responses to select</td>
+</tr>
+<tr>
+<td>Time limit</td>
+<td>120 minutes</td>
+</tr>
+<tr>
+<td>Delivery</td>
+<td>Proctored: online proctored and/or test center (Pearson VUE)</td>
+</tr>
+<tr>
+<td>Passing score</td>
+<td>Scaled score of <strong>720</strong> on a scale of 100–1,000</td>
+</tr>
+<tr>
+<td>Exam fee</td>
+<td>$175 USD</td>
+</tr>
+<tr>
+<td>Validity period</td>
+<td>12 months from the date the credential is awarded</td>
+</tr>
+<tr>
+<td>Result reporting</td>
+<td>Pass/fail with scaled score (100–1,000), plus percent-correct by domain</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Exam Content: 7 Domains</h2>
+<table>
+<thead>
+<tr>
+<th>Domain</th>
+<th>Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Solution Design &amp; Architecture</td>
+<td><strong>17%</strong></td>
+</tr>
+<tr>
+<td>2. Claude Models, Prompting &amp; Context Engineering</td>
+<td><strong>13%</strong></td>
+</tr>
+<tr>
+<td>3. Integration</td>
+<td><strong>19%</strong></td>
+</tr>
+<tr>
+<td>4. Evaluation, Testing &amp; Optimization</td>
+<td><strong>16%</strong></td>
+</tr>
+<tr>
+<td>5. Governance, Safety &amp; Risk Management</td>
+<td><strong>14%</strong></td>
+</tr>
+<tr>
+<td>6. Stakeholder Communication &amp; Lifecycle Management</td>
+<td><strong>14%</strong></td>
+</tr>
+<tr>
+<td>7. Developer Productivity &amp; Operational Enablement</td>
+<td><strong>7%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The percentages indicate the approximate proportion of scored items drawn from each domain. Exam items are written against the objectives listed under each domain in Part II.</p>
+<hr />
+<h2>How to Use This Guide (per the official Exam Guide, Section 7)</h2>
+<ul>
+<li>Study the exam blueprint and self-assess against each objective</li>
+<li>Review official Anthropic documentation for the Claude API, models, prompt engineering, MCP, and Skills</li>
+<li>Build and operate at least one end-to-end Claude solution, including RAG, evaluation, and observability</li>
+<li>Practice architectural decision-making: model selection, integration protocols, and security trade-offs</li>
+<li>Complete the sample questions (end of this guide) to familiarize yourself with item style</li>
+</ul>
+<hr />
+<h1>Part II: Exam Domains — Domains 1–2</h1>
+<blockquote>
+<p>Study guide for <strong>Claude Certified Architect – Professional (CCAR-P)</strong>, Exam Guide <strong>v1.0 (effective July 2026)</strong> — the old blueprint in force through 6 December 2026.
+Every objective heading below is the official objective wording (shortened only where noted). Key knowledge and Key skills are paraphrased from official Anthropic documentation and engineering posts only; model names, prices, and limits change, so re-check the Models overview before relying on any specific figure.</p>
+</blockquote>
+<hr /></div><div class="cell zh"><h1>Claude 认证架构师 — 专业级认证（Claude Certified Architect — Professional Certification）</h1>
+<h2>学习指南（基于官方考试指南）</h2>
+<blockquote>
+<p>基于官方 <strong>Claude 认证架构师 – 专业级考试指南（Claude Certified Architect – Professional Exam Guide）第 1.0 版（2026 年 7 月生效），考试代码 CCAR-P</strong> —— 该蓝图有效至 <strong>2026 年 12 月 6 日</strong>。结构参照 paullarionov/claude-certified-architect 学习指南的格式；全部内容取自官方考试指南与 Anthropic 官方文档（platform.claude.com/docs、code.claude.com/docs、anthropic.com/engineering 及研究文章）。领域与目标标题复现官方蓝图原文。关键知识 / 关键技能要点是对各节末尾所引官方来源的忠实转述 —— 完整原文请跟随链接阅读。</p>
+</blockquote>
+<hr />
+<h2>引言（Introduction）</h2>
+<p>Claude 认证架构师 – 专业级（Claude Certified Architect – Professional）认证证明持证者能够使用 Anthropic 的 Claude 平台设计、构建并交付生产级的 AI 解决方案。它面向担任架构师角色的从业者：他们选择合适的模型、架构与 API 模式；运用提示与上下文工程（prompt and context engineering）；将 Claude 集成进企业系统；并把评估、安全、合规与治理方面的考量纳入其设计。</p>
+<p>本指南是官方考试指南的学习伴侣。官方考试指南是该证书的权威参考：它说明证书的目的、目标受众、考试形式与内容蓝图、评分方式及相关政策。</p>
+<hr />
+<h2>目标考生（Target Candidate）</h2>
+<p>本认证面向中高级技术专业人员，他们使用大语言模型（尤其是 Claude）设计、构建并交付生产级 AI 解决方案 —— 主要是解决方案架构师、AI/ML 工程师、技术负责人和高级软件工程师，他们工作在业务需求与技术实现的交界处。</p>
+<p>本考试以<strong>最低合格考生（minimally qualified candidate，MQC）</strong>为标尺：一位经验丰富的从业者，兼具工程思维与部署 AI 解决方案的真实实践经验。推荐经验如下（仅为推荐、并非强制 —— 没有强制性先决条件）：</p>
+<ul>
+<li>具备软件工程最佳实践基础（模块化设计、关注点分离、可扩展性）</li>
+<li>3 年以上系统架构或平台工程经验</li>
+<li>6 个月以上在生产环境中使用 Claude 或同类基于 LLM 的系统的实操经验</li>
+<li>具备从发现阶段到部署与运营、交付端到端系统的经验</li>
+</ul>
+<hr />
+<h2>考试形式（Exam Format）</h2>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考试代码</td>
+<td>CCAR-P</td>
+</tr>
+<tr>
+<td>题目数量</td>
+<td>63</td>
+</tr>
+<tr>
+<td>题目形式</td>
+<td>单选题与多选题；每题会注明应选几项</td>
+</tr>
+<tr>
+<td>时间限制</td>
+<td>120 分钟</td>
+</tr>
+<tr>
+<td>交付方式</td>
+<td>监考：在线监考和/或考点（Pearson VUE）</td>
+</tr>
+<tr>
+<td>及格分数</td>
+<td>量化分数 <strong>720</strong> 分，满分区间 100–1,000</td>
+</tr>
+<tr>
+<td>考试费用</td>
+<td>175 美元</td>
+</tr>
+<tr>
+<td>有效期</td>
+<td>自证书颁发之日起 12 个月</td>
+</tr>
+<tr>
+<td>成绩报告</td>
+<td>通过/未通过及量化分数（100–1,000），外加各领域正确率百分比</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>考试内容：7 个领域（Exam Content: 7 Domains）</h2>
+<table>
+<thead>
+<tr>
+<th>领域</th>
+<th>权重</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 解决方案设计与架构（Solution Design &amp; Architecture）</td>
+<td><strong>17%</strong></td>
+</tr>
+<tr>
+<td>2. Claude 模型、提示与上下文工程（Claude Models, Prompting &amp; Context Engineering）</td>
+<td><strong>13%</strong></td>
+</tr>
+<tr>
+<td>3. 集成（Integration）</td>
+<td><strong>19%</strong></td>
+</tr>
+<tr>
+<td>4. 评估、测试与优化（Evaluation, Testing &amp; Optimization）</td>
+<td><strong>16%</strong></td>
+</tr>
+<tr>
+<td>5. 治理、安全与风险管理（Governance, Safety &amp; Risk Management）</td>
+<td><strong>14%</strong></td>
+</tr>
+<tr>
+<td>6. 利益相关方沟通与生命周期管理（Stakeholder Communication &amp; Lifecycle Management）</td>
+<td><strong>14%</strong></td>
+</tr>
+<tr>
+<td>7. 开发者生产力与运营赋能（Developer Productivity &amp; Operational Enablement）</td>
+<td><strong>7%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>百分比表示从每个领域抽取的计分题的大致比例。考题是针对第二部分中每个领域下列出的目标命制的。</p>
+<hr />
+<h2>如何使用本指南（How to Use This Guide）（依据官方考试指南第 7 节）</h2>
+<ul>
+<li>研读考试蓝图，并对照每个目标做自我评估</li>
+<li>查阅 Anthropic 官方文档：Claude API、模型、提示工程（prompt engineering）、MCP 与 Skills</li>
+<li>至少构建并运营一个端到端的 Claude 解决方案，包括 RAG、评估与可观测性</li>
+<li>练习架构决策：模型选择、集成协议与安全权衡</li>
+<li>完成样题（本指南末尾），熟悉题目风格</li>
+</ul>
+<hr /></div></div>
+<div class="band" id="d1"><div class="band-en">Domain 1: Solution Design &amp; Architecture (17%)</div><div class="band-zh">领域 1：解决方案设计与架构（Domain 1: Solution Design &amp; Architecture）（17%）</div></div>
+<div class="row obj"><div class="cell en"><h2>1.1 Translate business problems into Claude-based AI solutions</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "When building applications with LLMs, we recommend finding the simplest solution possible, and only increasing complexity when needed."
+— Building effective agents, Anthropic (https://www.anthropic.com/research/building-effective-agents)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Start from the simplest solution that can work: Anthropic's core guidance is to find the simplest solution possible and only increase complexity when it demonstrably improves outcomes — for many applications, a single optimized LLM call with retrieval and in-context examples is enough, and no agentic system is needed at all.</li>
+<li>Agentic systems trade latency and cost for better task performance; that trade-off has to make sense for the business problem before any agent pattern is justified.</li>
+<li>Good candidate problems share traits Anthropic observed in successful deployments (customer support, coding): the task requires both conversation and action, has clear success criteria, enables feedback loops, and integrates meaningful human oversight.</li>
+<li>Frame the problem in terms of inputs, actions Claude must take through tools, and how success will be measured (e.g., user-defined resolutions in support) before choosing technology.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Restate a vague business request as a concrete task with success criteria, required external data/actions, and a human-oversight point.</li>
+<li>Decide whether the problem needs an LLM call, a workflow, or an agent — and defend the "no agent" answer when a single call suffices.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/research/building-effective-agents">Building effective agents</a></p></div><div class="cell zh"><h2>1.1 将业务问题转化为基于 Claude 的 AI 解决方案</h2>
+<p><em>EN: Translate business problems into Claude-based AI solutions</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "When building applications with LLMs, we recommend finding the simplest solution possible, and only increasing complexity when needed."
+— Building effective agents, Anthropic (https://www.anthropic.com/research/building-effective-agents)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>从能跑通的最简单方案开始：Anthropic 的核心指引是找到尽可能简单的方案，只在能明显改善结果时才增加复杂度 —— 对许多应用来说，一次经过优化的 LLM 调用加上检索与上下文示例就足够了，根本不需要智能体（agentic）系统。</li>
+<li>智能体系统以延迟和成本换取更好的任务表现；在任何智能体模式被证明合理之前，这个权衡必须对业务问题说得通。</li>
+<li>好的候选问题具有 Anthropic 在成功部署（客户支持、编程）中观察到的共同特征：任务既需要对话又需要行动，有明确的成功标准，能形成反馈回路，并整合了有意义的人类监督。</li>
+<li>在选技术之前，先用输入、Claude 必须通过工具采取的行动、以及成功如何度量（例如支持场景中由用户定义的解决率）来框定问题。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>把一个含糊的业务需求重述为一个具体任务，带上成功标准、所需的外部数据/行动，以及一个人类监督点。</li>
+<li>判断该问题需要的是一次 LLM 调用、一个工作流（workflow），还是一个智能体（agent）—— 并在一次调用足够时为「不用智能体」的答案辩护。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/research/building-effective-agents">构建有效的智能体（Building effective agents）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>1.2 Design end-to-end architectures (input → processing → output → feedback loops)</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "The basic building block of agentic systems is an LLM enhanced with augmentations such as retrieval, tools, and memory."
+— Building effective agents, Anthropic (https://www.anthropic.com/research/building-effective-agents)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The basic building block is the <strong>augmented LLM</strong>: an LLM enhanced with retrieval, tools, and memory, which can generate its own search queries, select tools, and decide what information to retain. End-to-end designs compose this block.</li>
+<li>A complete design covers the full loop: input handling, the processing pattern (one or more LLM calls, tool calls, retrieval), output formatting/validation, and a feedback path — tool results and code execution give the agent "ground truth" at each step to assess progress.</li>
+<li>Feedback loops appear at several levels: programmatic gates between chained steps, evaluator feedback in evaluator-optimizer loops, test results for coding agents, and human feedback at checkpoints or blockers.</li>
+<li>Agents need explicit stopping conditions (completion, or limits such as a maximum number of iterations) to maintain control; transparency — explicitly showing the agent's planning steps — is one of Anthropic's three core implementation principles, alongside simplicity and a carefully crafted agent-computer interface (ACI).</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Sketch an architecture as input → processing → output → feedback, naming where retrieval, tools, memory, and human checkpoints sit.</li>
+<li>Place programmatic checks (gates) between steps so a failing intermediate result stops or reroutes the flow instead of propagating.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/research/building-effective-agents">Building effective agents</a></p></div><div class="cell zh"><h2>1.2 设计端到端架构（输入 → 处理 → 输出 → 反馈回路）</h2>
+<p><em>EN: Design end-to-end architectures (input → processing → output → feedback loops)</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "The basic building block of agentic systems is an LLM enhanced with augmentations such as retrieval, tools, and memory."
+— Building effective agents, Anthropic (https://www.anthropic.com/research/building-effective-agents)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>基本构件是<strong>增强型 LLM（augmented LLM）</strong>：一个被检索、工具与记忆增强的 LLM，它能生成自己的搜索查询、选择工具，并决定保留哪些信息。端到端设计就是由这个构件组合而成的。</li>
+<li>一个完整的设计覆盖整个回路：输入处理、处理模式（一次或多次 LLM 调用、工具调用、检索）、输出格式化/校验，以及一条反馈路径 —— 工具结果与代码执行在每一步为智能体提供「事实依据（ground truth）」来评估进展。</li>
+<li>反馈回路出现在多个层面：链式步骤之间的程序化关卡（gates）、评估者-优化者回路（evaluator-optimizer loops）中的评估者反馈、编程智能体的测试结果，以及检查点或阻塞点处的人类反馈。</li>
+<li>智能体需要明确的停止条件（完成，或诸如最大迭代次数之类的限制）以保持可控；透明性 —— 明确展示智能体的规划步骤 —— 是 Anthropic 三大核心实现原则之一，另外两个是简单性与精心设计的智能体-计算机接口（agent-computer interface，ACI）。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>把架构画成输入 → 处理 → 输出 → 反馈，并标明检索、工具、记忆与人类检查点的位置。</li>
+<li>在步骤之间放置程序化检查（关卡），使失败的中间结果能停止或改道流程，而不是继续向后传播。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/research/building-effective-agents">构建有效的智能体（Building effective agents）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>1.3 Select appropriate architectural patterns (workflow, agentic, augmented LLM)</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Workflows are systems where LLMs and tools are orchestrated through predefined code paths. … Agents, on the other hand, are systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks."
+— Building effective agents, Anthropic (https://www.anthropic.com/research/building-effective-agents)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Anthropic's central distinction: <strong>workflows</strong> are systems where LLMs and tools are orchestrated through predefined code paths; <strong>agents</strong> are systems where LLMs dynamically direct their own processes and tool usage. Both are "agentic systems."</li>
+<li>The five workflow patterns: <strong>prompt chaining</strong> (fixed sequence, each call processes the previous output; use when a task decomposes cleanly into fixed subtasks — trades latency for accuracy), <strong>routing</strong> (classify input, direct it to a specialized follow-up; also used to send easy questions to smaller models and hard ones to more capable models), <strong>parallelization</strong> (sectioning — independent subtasks in parallel; voting — the same task run multiple times for confidence), <strong>orchestrator-workers</strong> (a central LLM dynamically breaks down the task, delegates to workers, and synthesizes results; use when subtasks can't be predicted in advance), and <strong>evaluator-optimizer</strong> (one call generates, another evaluates and feeds back in a loop; use when clear evaluation criteria exist and iterative refinement measurably helps).</li>
+<li>Choose a true agent only for open-ended problems where the number of steps can't be predicted and no fixed path can be hardcoded — accepting higher cost and the risk of compounding errors, mitigated by sandbox testing and guardrails.</li>
+<li>Patterns are not prescriptive: they can be shaped and combined, and complexity should be added only when measurement shows it improves outcomes.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Given a scenario stem, name the pattern and the deciding feature (fixed steps → chaining; distinct input categories → routing; unpredictable subtasks → orchestrator-workers or an agent; clear quality criteria + iteration → evaluator-optimizer).</li>
+<li>Reject over-engineering distractors: a multi-agent design offered for a fixed, predictable process is the classic wrong answer.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/research/building-effective-agents">Building effective agents</a></p></div><div class="cell zh"><h2>1.3 选择合适的架构模式（工作流、智能体、增强型 LLM）</h2>
+<p><em>EN: Select appropriate architectural patterns (workflow, agentic, augmented LLM)</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Workflows are systems where LLMs and tools are orchestrated through predefined code paths. … Agents, on the other hand, are systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks."
+— Building effective agents, Anthropic (https://www.anthropic.com/research/building-effective-agents)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>Anthropic 的核心区分：<strong>工作流（workflows）</strong>是 LLM 与工具通过预定义代码路径编排的系统；<strong>智能体（agents）</strong>是 LLM 动态主导自身流程与工具使用的系统。两者都属于「智能体系统（agentic systems）」。</li>
+<li>五种工作流模式：<strong>提示链（prompt chaining）</strong>（固定序列，每次调用处理上一次的输出；适用于任务能干净地分解为固定子任务的场合 —— 以延迟换准确性）、<strong>路由（routing）</strong>（对输入分类，导向专门的后续处理；也用于把简单问题发给更小的模型、难题发给能力更强的模型）、<strong>并行化（parallelization）</strong>（分段 sectioning —— 独立子任务并行执行；投票 voting —— 同一任务多次运行以获得置信度）、<strong>编排者-工作者（orchestrator-workers）</strong>（一个中央 LLM 动态拆解任务、委派给工作者并综合结果；适用于子任务无法预先预测的场合）、<strong>评估者-优化者（evaluator-optimizer）</strong>（一次调用生成，另一次调用评估并反馈，循环进行；适用于有明确评估标准且迭代改进确有帮助的场合）。</li>
+<li>只对开放式问题选择真正的智能体：步骤数无法预测、固定路径无法硬编码 —— 同时接受更高的成本与错误累积的风险，用沙箱测试与护栏（guardrails）来缓解。</li>
+<li>这些模式不是硬性规定：它们可以塑形与组合，复杂度只应在测量表明能改善结果时才增加。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>给定一个场景题干，说出模式名称与决定性特征（步骤固定 → 链式；输入类别分明 → 路由；子任务不可预测 → 编排者-工作者或智能体；质量标准明确 + 迭代 → 评估者-优化者）。</li>
+<li>拒绝过度工程的干扰项：为固定、可预测的流程提供多智能体设计，是经典的错误答案。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/research/building-effective-agents">构建有效的智能体（Building effective agents）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>1.4 Design multi-agent systems and orchestration strategies</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Our Research system uses a multi-agent architecture with an orchestrator-worker pattern, where a lead agent coordinates the process while delegating to specialized subagents that operate in parallel."
+— How we built our multi-agent research system, Anthropic (https://www.anthropic.com/research/multi-agent-research-system)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Anthropic's production Research system uses the <strong>orchestrator-worker pattern</strong>: a lead agent analyzes the query, develops a strategy, and spawns specialized subagents that explore different aspects in parallel; the lead then synthesizes their results.</li>
+<li>Subagents facilitate compression: each works in its own context window and condenses the most important tokens for the lead agent, instead of one agent accumulating everything it reads. Each subagent also provides separation of concerns — distinct tools, prompts, and exploration trajectories.</li>
+<li>In the Agent SDK, subagents are separate agent instances the main agent spawns for focused subtasks: intermediate tool calls and results stay inside the subagent, and only its final message returns to the parent. A subagent's context starts fresh — it does not receive the parent's conversation history, so everything it needs must be in the delegation prompt.</li>
+<li>Orchestration is a prompting problem as much as an architecture one: the lead agent must be taught how to delegate — decomposing the query into subtasks and describing each one in detail (objective, output format, tool/source guidance, clear task boundaries). Early failures Anthropic observed included spawning far too many subagents for simple queries and agents distracting each other with excessive updates.</li>
+<li>Multi-agent is not free: coordination complexity grows rapidly and token consumption is far higher than a single agent, so it fits problems that are genuinely parallel and open-ended — not tasks with shared state or heavy interdependencies.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Design a delegation brief for a subagent: objective, output format, tools/sources to use, and explicit boundaries.</li>
+<li>Choose per-subagent configuration deliberately — specialized system prompt, restricted tool set, and a model override (e.g., a cheaper/faster model for exploration, a stronger model for synthesis).</li>
+<li>Argue against multi-agent when subtasks are sequential, tightly coupled, or predictable — and propose a workflow instead.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/research/multi-agent-research-system">How we built our multi-agent research system</a> · <a href="https://code.claude.com/docs/en/agent-sdk/subagents">Subagents in the SDK</a> · <a href="https://www.anthropic.com/research/building-effective-agents">Building effective agents</a></p></div><div class="cell zh"><h2>1.4 设计多智能体系统与编排策略</h2>
+<p><em>EN: Design multi-agent systems and orchestration strategies</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Our Research system uses a multi-agent architecture with an orchestrator-worker pattern, where a lead agent coordinates the process while delegating to specialized subagents that operate in parallel."
+— How we built our multi-agent research system, Anthropic (https://www.anthropic.com/research/multi-agent-research-system)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>Anthropic 的生产级 Research 系统使用<strong>编排者-工作者模式</strong>：一个主智能体（lead agent）分析查询、制定策略，并派生出专门的子智能体（subagents）并行探索不同方面；主智能体随后综合它们的结果。</li>
+<li>子智能体有助于压缩：每个子智能体在自己的上下文窗口中工作，把最重要的 token 提炼后交给主智能体，而不是让一个智能体累积它读过的一切。每个子智能体还提供关注点分离 —— 不同的工具、提示与探索轨迹。</li>
+<li>在 Agent SDK 中，子智能体是主智能体为聚焦的子任务派生的独立智能体实例：中间的工具调用与结果留在子智能体内部，只有它的最终消息返回给父级。子智能体的上下文是全新开始的 —— 它收不到父级的对话历史，因此它需要的一切都必须写在委派提示里。</li>
+<li>编排既是架构问题，也是提示问题：必须教会主智能体如何委派 —— 把查询分解为子任务，并详细描述每一个（目标、输出格式、工具/来源指引、清晰的任务边界）。Anthropic 早期观察到的失败包括：为简单查询派生过多子智能体，以及智能体之间用过多的更新互相干扰。</li>
+<li>多智能体不是免费的：协调复杂度增长很快，token 消耗远高于单个智能体，因此它适合真正可并行、开放式的问题 —— 不适合有共享状态或强相互依赖的任务。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>为子智能体设计一份委派简报：目标、输出格式、要使用的工具/来源，以及明确的边界。</li>
+<li>有意识地为每个子智能体选择配置 —— 专门的系统提示、受限的工具集，以及模型覆盖（例如用更便宜/更快的模型做探索、用更强的模型做综合）。</li>
+<li>在子任务是顺序的、紧密耦合的或可预测的时候，反对使用多智能体 —— 并改为提出工作流方案。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/research/multi-agent-research-system">我们如何构建多智能体研究系统（How we built our multi-agent research system）</a> · <a href="https://code.claude.com/docs/en/agent-sdk/subagents">SDK 中的子智能体（Subagents in the SDK）</a> · <a href="https://www.anthropic.com/research/building-effective-agents">构建有效的智能体（Building effective agents）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>1.5 Apply decomposition techniques for complex problem solving</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Prompt chaining decomposes a task into a sequence of steps, where each LLM call processes the output of the previous one."
+— Building effective agents, Anthropic (https://www.anthropic.com/research/building-effective-agents)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Decomposition is pattern-specific: prompt chaining decomposes a task into a fixed sequence of easier steps (each LLM call gets an easier task, which is why chaining trades latency for accuracy); parallelization decomposes into independent subtasks (sectioning); orchestrator-workers and multi-agent systems decompose dynamically, with the lead/orchestrator deciding the subtasks from the specific input.</li>
+<li>In multi-agent designs, the lead agent's first job is decomposition: it analyzes the query, develops a strategy, and only then spawns workers — and it saves its plan to memory so the plan survives if the context window fills and is truncated.</li>
+<li>Good decomposition gives each unit one focused concern: a separate LLM call per consideration generally performs better than one call juggling all considerations at once, and subagents return distilled results rather than raw exploration.</li>
+<li>Decomposition has a failure mode in both directions: too coarse (one agent drowning in a huge, mixed task) and too fine (dozens of subagents for a simple query, coordination overhead, agents duplicating or distracting each other).</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Decompose a complex task two ways — as a fixed chain and as dynamically delegated subtasks — and pick based on whether the subtasks are predictable.</li>
+<li>Write subtask definitions that are self-contained: a worker with a fresh context must be able to act without seeing the parent conversation.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/research/building-effective-agents">Building effective agents</a> · <a href="https://www.anthropic.com/research/multi-agent-research-system">How we built our multi-agent research system</a></p></div><div class="cell zh"><h2>1.5 运用分解技术解决复杂问题</h2>
+<p><em>EN: Apply decomposition techniques for complex problem solving</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Prompt chaining decomposes a task into a sequence of steps, where each LLM call processes the output of the previous one."
+— Building effective agents, Anthropic (https://www.anthropic.com/research/building-effective-agents)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>分解是随模式而定的：提示链把任务分解为一串固定的、更简单的步骤（每次 LLM 调用面对的任务更简单，这正是链式以延迟换准确性的原因）；并行化分解为独立的子任务（分段）；编排者-工作者与多智能体系统则动态分解，由主智能体/编排者根据具体输入决定子任务。</li>
+<li>在多智能体设计中，主智能体的第一项工作就是分解：它分析查询、制定策略，然后才派生工作者 —— 并且它会把计划保存到记忆中，这样即使上下文窗口被填满并截断，计划也能存续。</li>
+<li>好的分解让每个单元只承担一个聚焦的关注点：每个考量用一次单独的 LLM 调用，通常比一次调用同时兼顾所有考量表现更好；子智能体返回的是提炼后的结果，而不是原始的探索过程。</li>
+<li>分解在两个方向上都有失败模式：太粗（一个智能体淹没在庞大、混杂的任务里）和太细（为一个简单查询派出几十个子智能体，带来协调开销，智能体之间重复劳动或互相干扰）。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>用两种方式分解一个复杂任务 —— 一种是固定链，一种是动态委派的子任务 —— 并根据子任务是否可预测来选择。</li>
+<li>写出自包含的子任务定义：一个上下文全新的工作者必须无需看到父级对话就能行动。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/research/building-effective-agents">构建有效的智能体（Building effective agents）</a> · <a href="https://www.anthropic.com/research/multi-agent-research-system">我们如何构建多智能体研究系统（How we built our multi-agent research system）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>1.6 Align solutions to business value pillars (efficiency, transformation, productivity, cost, performance SLAs)</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Agentic systems often trade latency and cost for better task performance, and you should consider when this tradeoff makes sense."
+— Building effective agents, Anthropic (https://www.anthropic.com/research/building-effective-agents)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Every pattern choice is a value trade-off stated in the official guidance: agentic systems trade latency and cost for task performance; prompt chaining trades latency for accuracy; a more capable model can lower cost-per-task by finishing in fewer turns and less thinking time, even at a higher price per token.</li>
+<li>Value must be measurable to be claimed: successful deployments Anthropic cites have clear success criteria (e.g., support resolutions) — to the point that some vendors price per successful resolution. "Measure performance and iterate" is the stated key to success when combining patterns.</li>
+<li>Routing is a value lever, not just an architecture lever: sending easy/common requests to a fast, low-cost model and hard/unusual ones to a more capable model optimizes the cost/performance mix for the whole workload.</li>
+<li>Multi-agent designs must clear a higher value bar: Anthropic's Research system substantially outperformed a single agent on its internal research eval, but at much higher token cost — the pattern is justified for high-value, parallelizable tasks, not as a default.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>For a proposed design, state the trade explicitly: what is gained (accuracy, capability, throughput), what is paid (latency, tokens, coordination), and which business metric proves it was worth it.</li>
+<li>Spot the SLA-breaking distractor: the most autonomous or most capable option offered where a latency or cost constraint in the stem rules it out.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/research/building-effective-agents">Building effective agents</a> · <a href="https://claude.com/resources/articles/claude-models-explained-choosing-the-best-model-for-your-use-case">Claude models explained: choosing the best model for your use case</a> · <a href="https://www.anthropic.com/research/multi-agent-research-system">How we built our multi-agent research system</a></p>
+<hr /></div><div class="cell zh"><h2>1.6 使解决方案与业务价值支柱对齐（效率、转型、生产力、成本、性能 SLA）</h2>
+<p><em>EN: Align solutions to business value pillars (efficiency, transformation, productivity, cost, performance SLAs)</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Agentic systems often trade latency and cost for better task performance, and you should consider when this tradeoff makes sense."
+— Building effective agents, Anthropic (https://www.anthropic.com/research/building-effective-agents)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>每一个模式选择都是官方指引中明述的价值权衡：智能体系统以延迟和成本换任务表现；提示链以延迟换准确性；能力更强的模型即使每 token 价格更高，也可能因为用更少的轮次和更少的思考时间完成任务，从而降低每任务成本。</li>
+<li>价值必须可度量才能被宣称：Anthropic 引用的成功部署都有明确的成功标准（例如支持解决率）—— 以至于有些厂商按每次成功解决收费。「度量表现并迭代」是组合使用这些模式时被点明的成功关键。</li>
+<li>路由不只是架构杠杆，也是价值杠杆：把简单/常见的请求发给快速、低成本的模型，把困难/罕见的请求发给能力更强的模型，能为整个工作负载优化成本/性能配比。</li>
+<li>多智能体设计必须跨过更高的价值门槛：Anthropic 的 Research 系统在其内部研究评估上大幅胜过单个智能体，但 token 成本高得多 —— 这种模式适用于高价值、可并行的任务，而不是默认选择。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>对一个拟议设计，明确说出这笔交易：得到了什么（准确性、能力、吞吐量），付出了什么（延迟、token、协调），以及哪个业务指标能证明它值得。</li>
+<li>识别破坏 SLA 的干扰项：题干中的延迟或成本约束已经排除了那个最自主或能力最强的选项。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/research/building-effective-agents">构建有效的智能体（Building effective agents）</a> · <a href="https://claude.com/resources/articles/claude-models-explained-choosing-the-best-model-for-your-use-case">Claude 模型解析：为你的用例选择最佳模型（Claude models explained: choosing the best model for your use case）</a> · <a href="https://www.anthropic.com/research/multi-agent-research-system">我们如何构建多智能体研究系统（How we built our multi-agent research system）</a></p>
+<hr /></div></div>
+<div class="band" id="d2"><div class="band-en">Domain 2: Claude Models, Prompting &amp; Context Engineering (13%)</div><div class="band-zh">领域 2：Claude 模型、提示与上下文工程（Domain 2: Claude Models, Prompting &amp; Context Engineering）（13%）</div></div>
+<div class="row obj"><div class="cell en"><h2>2.1 Select appropriate Claude models based on trade-offs</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "If you're unsure which model to use, start with Claude Opus 5.5 for most workloads. Use Claude Fable 5.2 for demanding reasoning and long-horizon agentic work, or when your evals on Claude Opus 5.5 at higher effort still fall short."
+— Models overview, Anthropic (https://platform.claude.com/docs/en/models/overview)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The model family is a trade-off ladder between intelligence, speed, and cost: the Opus class delivers the highest intelligence for complex reasoning and long, multi-step work at higher cost and latency; Sonnet is the balanced tier — strong intelligence with faster, cheaper operation for most practical applications; Haiku is the fastest, lowest-cost class, built for high-volume, latency-sensitive work such as classification, extraction, and routing. (Check the Models overview for the current lineup, context windows, and pricing — they change between exam versions.)</li>
+<li>Official selection guidance is counter-intuitive: start with the most intelligent generally available model and use the effort level to dial in performance and cost, because a more capable model often takes fewer turns to get a task right, making cost-per-task lower despite a higher price per token. Starting too small also makes it hard to distinguish model failures from setup failures.</li>
+<li>Models can be mixed inside one system: a stronger model as orchestrator/lead with cheaper models as subagents or for routed easy traffic is an officially documented pattern (routing workflow; subagent <code>model</code> overrides in the Agent SDK).</li>
+<li>Selection inputs beyond raw capability: context window size, maximum output, and thinking configuration (adaptive thinking / effort) all differ by model and belong in the trade-off.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Map a workload to a tier from the stem's signals: "real-time, high-volume, simple" → Haiku class; "complex reasoning, long autonomous work" → Opus class; "general production default" → Sonnet class — then justify with the cost-per-task argument.</li>
+<li>Propose a mixed-model design (route or delegate by difficulty) instead of a single-model answer when the workload has mixed difficulty.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/models/overview">Models overview</a> · <a href="https://claude.com/resources/articles/claude-models-explained-choosing-the-best-model-for-your-use-case">Claude models explained: choosing the best model for your use case</a></p></div><div class="cell zh"><h2>2.1 根据权衡选择合适的 Claude 模型</h2>
+<p><em>EN: Select appropriate Claude models based on trade-offs</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "If you're unsure which model to use, start with Claude Opus 5.5 for most workloads. Use Claude Fable 5.2 for demanding reasoning and long-horizon agentic work, or when your evals on Claude Opus 5.5 at higher effort still fall short."
+— Models overview, Anthropic (https://platform.claude.com/docs/en/models/overview)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>模型家族是一条在智能、速度与成本之间权衡的阶梯：Opus 级别以更高的成本和延迟提供最高智能，适合复杂推理与漫长的多步工作；Sonnet 是均衡层 —— 智能强劲，运行更快、更便宜，适合大多数实际应用；Haiku 是最快、成本最低的级别，为高吞吐、对延迟敏感的工作（如分类、抽取与路由）而建。（请查阅模型总览获取当前阵容、上下文窗口与定价 —— 它们在考试版本之间会变化。）</li>
+<li>官方的选择指引是反直觉的：从可用的最智能的通用模型开始，用努力程度（effort level）来调节性能与成本，因为能力更强的模型往往用更少的轮次就把任务做对，尽管每 token 价格更高，每任务成本反而更低。一开始选太小的模型，还会让人难以区分是模型失败还是设置失败。</li>
+<li>模型可以在一个系统内混用：用更强的模型做编排者/主智能体，用更便宜的模型做子智能体或承接路由来的简单流量，这是官方记录在案的模式（路由工作流；Agent SDK 中子智能体的 <code>model</code> 覆盖）。</li>
+<li>超出原始能力的选择输入：上下文窗口大小、最大输出，以及思考配置（自适应思考 adaptive thinking / effort）都因模型而异，都属于权衡的一部分。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>从题干信号把工作负载映射到层级：「实时、高吞吐、简单」→ Haiku 级别；「复杂推理、漫长的自主工作」→ Opus 级别；「通用生产默认」→ Sonnet 级别 —— 然后用每任务成本的论证来支撑。</li>
+<li>当工作负载难度混合时，提出混合模型设计（按难度路由或委派），而不是单一模型的答案。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/models/overview">模型总览（Models overview）</a> · <a href="https://claude.com/resources/articles/claude-models-explained-choosing-the-best-model-for-your-use-case">Claude 模型解析：为你的用例选择最佳模型（Claude models explained: choosing the best model for your use case）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>2.2 Design system prompts, templates, and guardrails</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "The optimal altitude strikes a balance: specific enough to guide behavior effectively, yet flexible enough to provide the model with strong heuristics to guide behavior."
+— Effective context engineering for AI agents, Anthropic (https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The system prompt sets Claude's role, behavior, and constraints for the whole interaction; setting a role in the system prompt focuses behavior and tone, and even a single sentence makes a difference.</li>
+<li>Write instructions as if for "a brilliant but new employee" who lacks context on your norms: be clear, direct, and specific about the desired output, format, and constraints; give sequential steps as numbered lists or bullets when order or completeness matters; and add the context/motivation behind an instruction, because Claude can generalize from the explanation.</li>
+<li>Structure complex prompts with XML tags — separate <code>&lt;instructions&gt;</code>, <code>&lt;context&gt;</code>, <code>&lt;input&gt;</code>, and <code>&lt;example&gt;</code> sections with consistent, descriptive tag names (nesting where content is hierarchical) so Claude parses each part unambiguously.</li>
+<li>Guardrails are partly a prompt-design task and partly an architecture task: a separate model call screening inputs/outputs (parallelization as guardrails) tends to perform better than one call handling both the guardrail and the core response; and prompt-level instructions are guidance, not enforcement — hard constraints belong in code around the model (validation, tool restrictions, gates), a distinction the exam tests repeatedly.</li>
+<li>System prompts should be written "at the right altitude" (from the context-engineering guidance): specific enough to guide behavior effectively, flexible enough to leave the model strong heuristics — neither brittle hardcoded logic nor vague guidance that assumes shared context. Organize them into distinct sections (background, instructions, tool guidance, output format).</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Draft a system-prompt skeleton: role → task and constraints → tool/behavior rules → output format, each in its own labeled section.</li>
+<li>For a stated safety or compliance requirement, decide what goes in the prompt (behavioral guidance) versus what must be enforced outside it (screening call, tool allow-list, programmatic check).</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a> · <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Effective context engineering for AI agents</a> · <a href="https://www.anthropic.com/research/building-effective-agents">Building effective agents</a></p></div><div class="cell zh"><h2>2.2 设计系统提示、模板与护栏</h2>
+<p><em>EN: Design system prompts, templates, and guardrails</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "The optimal altitude strikes a balance: specific enough to guide behavior effectively, yet flexible enough to provide the model with strong heuristics to guide behavior."
+— Effective context engineering for AI agents, Anthropic (https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>系统提示（system prompt）为整个交互设定 Claude 的角色、行为与约束；在系统提示中设定角色能聚焦行为与语气，哪怕只有一句话也有差别。</li>
+<li>写指令时要像对「一位才华横溢但刚入职的员工」那样写，他不了解你的规范：对期望的输出、格式与约束要清晰、直接、具体；当顺序或完整性重要时，用编号列表或项目符号给出连续步骤；并给出指令背后的背景/动机，因为 Claude 能从解释中泛化。</li>
+<li>用 XML 标签组织复杂提示 —— 用一致、描述性的标签名分隔 <code>&lt;instructions&gt;</code>、<code>&lt;context&gt;</code>、<code>&lt;input&gt;</code> 与 <code>&lt;example&gt;</code> 等部分（内容有层级时可嵌套），使 Claude 能无歧义地解析每个部分。</li>
+<li>护栏一部分是提示设计的任务，一部分是架构任务：用一次单独的模型调用来筛查输入/输出（把并行化用作护栏），通常比一次调用同时处理护栏与核心回答表现更好；而提示层面的指令是指导、不是强制 —— 硬约束属于模型周围的代码（校验、工具限制、关卡），考试会反复考这个区分。</li>
+<li>系统提示应写在「恰当的高度（right altitude）」（来自上下文工程指引）：具体到能有效引导行为，又灵活到给模型留下强有力的启发式规则 —— 既不是脆弱的硬编码逻辑，也不是假定共享背景的含糊指导。把它们组织成不同的部分（背景、指令、工具指引、输出格式）。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>起草一个系统提示骨架：角色 → 任务与约束 → 工具/行为规则 → 输出格式，每部分各自独立成节并标注。</li>
+<li>对一项给定的安全或合规要求，判断哪些放进提示里（行为指导），哪些必须在提示之外强制执行（筛查调用、工具允许列表、程序化检查）。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">提示最佳实践（Prompting best practices）</a> · <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">为 AI 智能体做有效的上下文工程（Effective context engineering for AI agents）</a> · <a href="https://www.anthropic.com/research/building-effective-agents">构建有效的智能体（Building effective agents）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>2.3 Apply prompt engineering techniques (zero-shot, few-shot, chain-of-thought)</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Examples are one of the most reliable ways to steer Claude's output format, tone, and structure. A few well-crafted examples (known as few-shot or multishot prompting) improve accuracy and consistency."
+— Prompting best practices, Anthropic (https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li><strong>Zero-shot</strong> is the baseline: a clear, direct instruction with no examples. Improve it first with specificity, context/motivation, and structure before adding techniques.</li>
+<li><strong>Few-shot (multishot) prompting</strong>: examples are one of the most reliable ways to steer output format, tone, and structure and to improve accuracy and consistency. Make examples relevant (mirror the real use case), diverse (cover edge cases, varied enough that Claude doesn't pick up unintended patterns), and structured (each in <code>&lt;example&gt;</code> tags, the set in <code>&lt;examples&gt;</code>).</li>
+<li><strong>Chain-of-thought / thinking</strong>: for complex multistep reasoning and reflection after tool use, guide Claude to think before answering. Current models offer adaptive thinking, where Claude dynamically decides when and how much to think, calibrated by the <code>effort</code> parameter and query complexity; higher effort elicits more thinking, and on easy queries the model may respond directly. Older models use manual extended thinking with a token budget.</li>
+<li>Thinking is a cost/latency lever, not a free upgrade: over-thinking inflates thinking tokens and slows responses, so constrain it with instructions or a lower effort setting when the task doesn't need depth; if a hard ceiling on thinking cost is required, control it through effort / <code>max_tokens</code> per the model's configuration.</li>
+<li>Tell Claude what to do instead of what not to do when steering output format, and match the prompt's own style to the output style you want.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Choose the lightest technique that fits the failure: inconsistent format → few-shot examples; wrong reasoning on multistep problems → guided thinking; vague output → clearer zero-shot instruction with context.</li>
+<li>Write a few-shot set that is relevant, diverse, and XML-structured — and recognize a bad set (near-duplicate examples that teach an unintended pattern) in a scenario stem.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a></p></div><div class="cell zh"><h2>2.3 运用提示工程技术（零样本、少样本、思维链）</h2>
+<p><em>EN: Apply prompt engineering techniques (zero-shot, few-shot, chain-of-thought)</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Examples are one of the most reliable ways to steer Claude's output format, tone, and structure. A few well-crafted examples (known as few-shot or multishot prompting) improve accuracy and consistency."
+— Prompting best practices, Anthropic (https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li><strong>零样本（Zero-shot）</strong>是基线：一条清晰、直接、没有任何示例的指令。先用具体性、背景/动机与结构来改进它，然后再添加其他技术。</li>
+<li><strong>少样本（Few-shot / multishot）提示</strong>：示例是引导输出格式、语气与结构、提高准确性与一致性的最可靠方法之一。让示例具有相关性（镜像真实用例）、多样性（覆盖边缘情况，变化足够多，使 Claude 不会学到非预期的模式）与结构性（每个示例放在 <code>&lt;example&gt;</code> 标签中，整组放在 <code>&lt;examples&gt;</code> 中）。</li>
+<li><strong>思维链 / 思考（Chain-of-thought / thinking）</strong>：对复杂的多步推理以及工具使用后的反思，引导 Claude 先思考再回答。当前模型提供自适应思考（adaptive thinking），Claude 会动态决定何时思考、思考多少，由 <code>effort</code> 参数与查询复杂度校准；effort 越高引发的思考越多，在简单查询上模型可能直接回答。较旧的模型使用带 token 预算的手动扩展思考（extended thinking）。</li>
+<li>思考是成本/延迟杠杆，不是免费升级：过度思考会膨胀思考 token 并拖慢响应，因此当任务不需要深度时，用指令或更低的 effort 设置来约束它；如果对思考成本有硬上限要求，按模型配置通过 effort / <code>max_tokens</code> 来控制。</li>
+<li>在引导输出格式时，告诉 Claude 该做什么，而不是不该做什么，并让提示自身的风格与你想要的输出风格一致。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>选择与故障匹配的最轻技术：格式不一致 → 少样本示例；多步问题推理错误 → 引导思考；输出含糊 → 带背景的更清晰的零样本指令。</li>
+<li>写出一组相关、多样、XML 结构化的少样本示例 —— 并能在场景题干中识别出一组坏示例（近乎重复、教会了非预期模式的示例）。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">提示最佳实践（Prompting best practices）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>2.4 Optimize context windows and manage token usage</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Context engineering refers to the set of strategies for curating and maintaining the optimal set of tokens (information) during LLM inference, including all the other information that may land there outside of the prompts."
+— Effective context engineering for AI agents, Anthropic (https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Context engineering is "the natural progression of prompt engineering": curating and maintaining the optimal set of tokens during inference — system instructions, tools, MCP data, external data, and message history — not just the wording of one prompt.</li>
+<li>The context window is a finite <strong>attention budget</strong>: as the number of tokens grows, the model's ability to accurately recall information from context decreases — a gradual degradation the docs call <strong>context rot</strong>, not a hard cliff. Everything counts toward the window: system prompt, all messages including tool results, images and documents, tool definitions, and the output (including thinking tokens) the model generates.</li>
+<li>The guiding principle: find the smallest possible set of high-signal tokens that maximizes the likelihood of the desired outcome. More context is not automatically better.</li>
+<li>Practical management strategies from the official guidance: just-in-time retrieval (keep lightweight identifiers — file paths, stored queries, links — and load data dynamically at runtime instead of pre-processing everything into context up front); compaction/summarization for long-running conversations (server-side compaction is the primary strategy the context-windows docs point to); subagents as context isolation, so exploration happens in a separate window and only a distilled result returns; and long-context prompt structure — long documents placed above the query, documents wrapped in XML tags with metadata, and asking Claude to quote relevant passages before answering (most relevant at 20k+ tokens).</li>
+<li>Measure before optimizing: responses report consumption in the <code>usage</code> field, and the token counting API can estimate a request before sending it.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Diagnose a "model got worse over a long session" scenario as context rot / bloated context, and prescribe curation (trim, summarize, just-in-time loading, subagent offload) rather than a model swap.</li>
+<li>Budget a request: account for system prompt, tool definitions, history, retrieved data, and reserved output/thinking tokens against the model's window.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Effective context engineering for AI agents</a> · <a href="https://platform.claude.com/docs/en/build-with-claude/context-windows">Context windows</a> · <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a></p></div><div class="cell zh"><h2>2.4 优化上下文窗口并管理 token 用量</h2>
+<p><em>EN: Optimize context windows and manage token usage</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Context engineering refers to the set of strategies for curating and maintaining the optimal set of tokens (information) during LLM inference, including all the other information that may land there outside of the prompts."
+— Effective context engineering for AI agents, Anthropic (https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>上下文工程是「提示工程的自然演进」：在推理期间策划并维护一组最优的 token —— 系统指令、工具、MCP 数据、外部数据与消息历史 —— 而不只是一个提示的措辞。</li>
+<li>上下文窗口是一种有限的<strong>注意力预算（attention budget）</strong>：随着 token 数量增长，模型从上下文中准确回忆信息的能力会下降 —— 文档称之为<strong>上下文腐化（context rot）</strong>，是一种渐进的退化，不是硬性的悬崖。所有东西都计入窗口：系统提示、包括工具结果在内的全部消息、图像与文档、工具定义，以及模型生成的输出（包括思考 token）。</li>
+<li>指导原则：找到能最大化期望结果可能性的、最小的高信号 token 集合。上下文更多并不自动更好。</li>
+<li>来自官方指引的实用管理策略：即时检索（just-in-time retrieval）（保留轻量标识符 —— 文件路径、已存查询、链接 —— 在运行时动态加载数据，而不是预先把一切都处理进上下文）；为长时运行的对话做压缩/摘要（服务端压缩 compaction 是上下文窗口文档指出的主要策略）；把子智能体用作上下文隔离，使探索在单独的窗口中发生、只返回提炼后的结果；以及长上下文提示结构 —— 把长文档放在查询上方、文档用带元数据的 XML 标签包裹，并要求 Claude 在回答前引用相关段落（在 20k+ token 时最相关）。</li>
+<li>先度量再优化：响应在 <code>usage</code> 字段中报告消耗，token 计数 API 可以在发送前估算一个请求。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>把「模型在长会话中变差了」的场景诊断为上下文腐化 / 上下文膨胀，并开出处方：策划（裁剪、摘要、即时加载、卸载给子智能体），而不是换模型。</li>
+<li>为一个请求做预算：对照模型的窗口，核算系统提示、工具定义、历史、检索数据，以及预留的输出/思考 token。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">为 AI 智能体做有效的上下文工程（Effective context engineering for AI agents）</a> · <a href="https://platform.claude.com/docs/en/build-with-claude/context-windows">上下文窗口（Context windows）</a> · <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">提示最佳实践（Prompting best practices）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>2.5 Implement prompt reuse strategies (caching, modular prompts, Skills)</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Prompt caching optimizes your API usage by letting the API resume from specific prefixes in your prompts. … Prompt caching covers the full prefix: tools, system, and messages (in that order), up to and including the block designated with <code>cache_control</code>."
+— Prompt caching, Anthropic (https://platform.claude.com/docs/en/build-with-claude/prompt-caching)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li><strong>Prompt caching</strong> lets the API resume from a specific prompt prefix instead of reprocessing it. It covers the full prefix in order — <code>tools</code>, then <code>system</code>, then <code>messages</code> — up to and including the block marked with <code>cache_control</code>. Two modes: automatic caching (one top-level <code>cache_control</code> field; best for growing multi-turn conversations) and explicit cache breakpoints on individual content blocks for fine-grained control.</li>
+<li>Cache mechanics that exam stems probe: the default lifetime is 5 minutes, refreshed at no additional cost each time the cached content is used (a 1-hour duration is available at additional cost); the cached prefix must match exactly — any change to content inside the prefix invalidates reuse, so stable content goes first and dynamic content (user input, timestamps) goes after the breakpoint; and prompts below a minimum size cannot be cached.</li>
+<li>Design prompts modularly so reuse is possible: a stable, shared prefix (system prompt, tool definitions, few-shot examples, reference documents) separated from the per-request variable tail. This static/dynamic split is the same idea as the system-prompt altitude/section guidance in 2.2.</li>
+<li><strong>Agent Skills</strong> are the other reuse mechanism: reusable, filesystem-based resources — a directory with a <code>SKILL.md</code> (YAML frontmatter plus instructions), optionally bundled with code and reference files — that package workflows, context, and best practices so a general-purpose agent acts as a specialist. Skills reuse through <strong>progressive disclosure</strong>: only the name and description metadata (~100 tokens per Skill) are always loaded; the <code>SKILL.md</code> instructions load when a request matches the description; bundled resources and code load only as needed — so many Skills can be installed without a standing context penalty.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Place a cache breakpoint correctly in a described request: after the last stable block, before the first per-request content — and predict the miss when a stem inserts a timestamp or user-specific text inside the prefix.</li>
+<li>Choose the reuse mechanism by what is being reused: identical prompt prefix across calls → caching; a repeatable procedure/domain know-how across tasks → a Skill; a one-off instruction → neither.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">Prompt caching</a> · <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview">Agent Skills overview</a> · <a href="https://platform.claude.com/docs/en/build-with-claude/context-windows">Context windows</a></p>
+<hr />
+<p><em>End of Domains 1–2 draft. Domains 3–7 follow the same format.</em></p></div><div class="cell zh"><h2>2.5 实施提示复用策略（缓存、模块化提示、Skills）</h2>
+<p><em>EN: Implement prompt reuse strategies (caching, modular prompts, Skills)</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Prompt caching optimizes your API usage by letting the API resume from specific prefixes in your prompts. … Prompt caching covers the full prefix: tools, system, and messages (in that order), up to and including the block designated with <code>cache_control</code>."
+— Prompt caching, Anthropic (https://platform.claude.com/docs/en/build-with-claude/prompt-caching)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li><strong>提示缓存（Prompt caching）</strong>让 API 能从一个特定的提示前缀（prefix）恢复，而不是重新处理它。它按顺序覆盖完整前缀 —— 先 <code>tools</code>，再 <code>system</code>，再 <code>messages</code> —— 直到并包括标有 <code>cache_control</code> 的那个块。两种模式：自动缓存（一个顶层 <code>cache_control</code> 字段；最适合不断增长的多轮对话）与在单个内容块上设置显式缓存断点，以获得细粒度控制。</li>
+<li>考试题干会探查的缓存机制：默认生命周期是 5 分钟，每次使用缓存内容时免费刷新（1 小时时长可选，需额外付费）；缓存前缀必须完全一致 —— 前缀内任何内容变化都会使复用失效，因此稳定内容放前面，动态内容（用户输入、时间戳）放在断点之后；低于最小尺寸的提示不能被缓存。</li>
+<li>模块化地设计提示，使复用成为可能：一个稳定的、共享的前缀（系统提示、工具定义、少样本示例、参考文档）与每个请求可变的尾部分开。这种静态/动态划分与 2.2 中系统提示的高度/分节指引是同一个思想。</li>
+<li><strong>Agent Skills</strong> 是另一种复用机制：可复用的、基于文件系统的资源 —— 一个包含 <code>SKILL.md</code>（YAML frontmatter 加指令）的目录，可选地捆绑代码与参考文件 —— 它把工作流、上下文与最佳实践打包，使一个通用智能体能像专家一样行事。Skills 通过<strong>渐进式披露（progressive disclosure）</strong>实现复用：始终加载的只有名称与描述元数据（每个 Skill 约 100 token）；当请求与描述匹配时才加载 <code>SKILL.md</code> 指令；捆绑的资源与代码只在需要时加载 —— 因此可以安装许多 Skills 而没有常驻的上下文代价。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>在一个描述的请求中正确放置缓存断点：在最后一个稳定块之后、第一个每请求内容之前 —— 并能预测当题干在前缀内插入时间戳或用户专属文本时的缓存未命中。</li>
+<li>按被复用的东西选择复用机制：跨调用相同的提示前缀 → 缓存；跨任务可重复的流程/领域诀窍 → Skill；一次性的指令 → 两者都不用。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">提示缓存（Prompt caching）</a> · <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview">Agent Skills 总览（Agent Skills overview）</a> · <a href="https://platform.claude.com/docs/en/build-with-claude/context-windows">上下文窗口（Context windows）</a></p>
+<hr />
+<p><em>领域 1–2 草稿结束。领域 3–7 遵循相同格式。</em></p></div></div>
+<div class="band" id="d3"><div class="band-en">Domain 3: Integration (19%)</div><div class="band-zh">领域 3：集成（Domain 3: Integration）（19%）</div></div>
+<div class="row obj"><div class="cell en"><h2>3.1 Evaluate tool/agent configuration for capability bloat</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Tools are a new kind of software which reflects a contract between deterministic systems and non-deterministic agents. More tools don’t always lead to better outcomes."
+— Writing effective tools for AI agents, Anthropic (https://www.anthropic.com/research/writing-tools-for-agents)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>A tool is a contract between a deterministic system and a non-deterministic agent; tools must be designed for agents, not copied from developer-facing APIs.</li>
+<li>More tools is not better: every tool definition consumes context, and overlapping or rarely used tools make tool selection harder and less reliable. Anthropic's first principle is choosing the right tools to implement — and not to implement.</li>
+<li>Namespacing groups related tools under clear prefixes and defines boundaries in functionality, so the agent (and the operator) can see which capability area a tool belongs to.</li>
+<li>Tool responses should return meaningful, high-signal context and be optimized for token efficiency; raw, oversized dumps waste context and degrade downstream reasoning.</li>
+<li>The MCP connector supports scoping exposure per server: enable all tools, allowlist specific tools, or denylist unwanted tools, with per-tool configuration — the platform-level lever for cutting bloat without changing the server.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Audit a tool set for overlap, dead tools, and tools the task never needs; remove or allowlist rather than adding instructions to "ignore" them.</li>
+<li>Consolidate several narrow calls into one tool that matches how the agent actually works, and namespace what remains.</li>
+<li>Measure the effect: run tool-use evaluations before and after pruning, instead of judging by intuition.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/research/writing-tools-for-agents">Writing effective tools for AI agents</a> · <a href="https://platform.claude.com/docs/en/agents-and-tools/mcp-connector">MCP connector</a> · <a href="https://github.com/anthropics/anthropic-cookbook">Anthropic Cookbook (tool evaluation)</a></p></div><div class="cell zh"><h2>3.1 评估工具/智能体配置中的能力膨胀</h2>
+<p><em>EN: Evaluate tool/agent configuration for capability bloat</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Tools are a new kind of software which reflects a contract between deterministic systems and non-deterministic agents. More tools don’t always lead to better outcomes."
+— Writing effective tools for AI agents, Anthropic (https://www.anthropic.com/research/writing-tools-for-agents)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>工具是确定性系统与非确定性智能体之间的一份契约；工具必须为智能体而设计，而不是照搬面向开发者的 API。</li>
+<li>工具不是越多越好：每个工具定义都消耗上下文，重叠或很少使用的工具会让工具选择更难、更不可靠。Anthropic 的第一原则是选择要实现（以及不实现）的正确工具。</li>
+<li>命名空间（Namespacing）把相关工具归到清晰的前缀之下，并界定功能边界，使智能体（和运营者）能看出某个工具属于哪个能力领域。</li>
+<li>工具响应应返回有意义、高信号的上下文，并为 token 效率而优化；原始的、过大的转储会浪费上下文并损害下游推理。</li>
+<li>MCP 连接器支持按服务器限定暴露范围：启用全部工具、允许列表（allowlist）指定工具，或拒绝列表（denylist）排除不想要的工具，并带每工具配置 —— 这是平台层面削减膨胀、又无需改动服务器的杠杆。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>审计一个工具集：重叠、死工具、任务从不需要的工具；移除或用允许列表，而不是添加「忽略它们」的指令。</li>
+<li>把几个狭窄的调用合并成一个与智能体实际工作方式匹配的工具，并为剩余的工具做命名空间划分。</li>
+<li>度量效果：在裁剪前后运行工具使用评估，而不是凭直觉判断。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/research/writing-tools-for-agents">为 AI 智能体编写有效的工具（Writing effective tools for AI agents）</a> · <a href="https://platform.claude.com/docs/en/agents-and-tools/mcp-connector">MCP 连接器（MCP connector）</a> · <a href="https://github.com/anthropics/anthropic-cookbook">Anthropic Cookbook（工具评估）(Anthropic Cookbook (tool evaluation))</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>3.2 Analyze authentication and authorization requirements to identify security gaps</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "The Model Context Protocol provides authorization capabilities at the transport level, enabling MCP clients to make requests to restricted MCP servers on behalf of resource owners. Authorization is OPTIONAL for MCP implementations."
+— Authorization - Model Context Protocol, Anthropic (https://modelcontextprotocol.io/specification/2025-03-26/basic/authorization)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>In the MCP specification, authorization is transport-level and optional: HTTP-based transports should follow the OAuth-based authorization specification; stdio transports should not, and instead retrieve credentials from the environment.</li>
+<li>MCP authorization is built on OAuth 2.1, OAuth 2.0 Authorization Server Metadata (RFC 8414), and Dynamic Client Registration (RFC 7591). PKCE is required for all clients.</li>
+<li>Grant type follows who is acting: authorization code when the client acts on behalf of a human end user; client credentials when the client is another application and no user is impersonated.</li>
+<li>Token handling rules are concrete gap checks: tokens only in the <code>Authorization</code> header (never in the URI query string), on every HTTP request; servers must validate tokens and return 401 for invalid or expired ones, 403 for insufficient scopes.</li>
+<li>Standing requirements: HTTPS everywhere, validated redirect URIs (localhost or HTTPS only), secure token storage, and enforced token expiration and rotation.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Map each integration to its actor (end user vs. service) and flag mismatches — e.g., a shared static API key where per-user OAuth is required, or a user token being used for a machine-to-machine call.</li>
+<li>Check a server configuration against the spec checklist: metadata discovery, PKCE, audience/scope validation, token lifetime, and whether least-privilege scopes match what each tool actually does.</li>
+<li>Distinguish authentication (who is calling) from authorization (what this token may do) when locating a gap; most exam traps hide an authorization gap behind working authentication.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://modelcontextprotocol.io/specification/2025-03-26/basic/authorization">MCP Authorization specification</a> · <a href="https://modelcontextprotocol.io/specification/draft/basic/authorization/security-considerations">MCP Authorization Security Considerations</a> · <a href="https://platform.claude.com/docs/en/agents-and-tools/mcp-connector">MCP connector (OAuth authentication)</a></p></div><div class="cell zh"><h2>3.2 分析认证与授权要求，识别安全缺口</h2>
+<p><em>EN: Analyze authentication and authorization requirements to identify security gaps</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "The Model Context Protocol provides authorization capabilities at the transport level, enabling MCP clients to make requests to restricted MCP servers on behalf of resource owners. Authorization is OPTIONAL for MCP implementations."
+— Authorization - Model Context Protocol, Anthropic (https://modelcontextprotocol.io/specification/2025-03-26/basic/authorization)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>在 MCP 规范中，授权是传输层面的，且是可选的：基于 HTTP 的传输应遵循基于 OAuth 的授权规范；stdio 传输则不应，而应从环境中获取凭据。</li>
+<li>MCP 授权建立在 OAuth 2.1、OAuth 2.0 授权服务器元数据（RFC 8414）与动态客户端注册（RFC 7591）之上。所有客户端都必须使用 PKCE。</li>
+<li>授权类型（grant type）取决于谁在行动：当客户端代表人类最终用户行动时用授权码（authorization code）；当客户端是另一个应用、没有冒充用户时用客户端凭据（client credentials）。</li>
+<li>token 处理规则是具体的缺口检查点：token 只能放在 <code>Authorization</code> 头中（绝不能放在 URI 查询字符串中），且在每个 HTTP 请求上都要带；服务器必须验证 token，对无效或过期的返回 401，对权限范围（scopes）不足的返回 403。</li>
+<li>常驻要求：处处使用 HTTPS、验证过的重定向 URI（仅 localhost 或 HTTPS）、安全的 token 存储，以及强制执行的 token 过期与轮换。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>把每个集成映射到其行动者（最终用户 vs. 服务），并标出不匹配 —— 例如在需要按用户的 OAuth 的地方使用共享的静态 API 密钥，或把用户 token 用于机器对机器的调用。</li>
+<li>对照规范清单检查服务器配置：元数据发现、PKCE、受众/权限范围验证、token 生命周期，以及最小权限的 scopes 是否与每个工具实际所做的事相符。</li>
+<li>在定位缺口时区分认证（authentication，谁在调用）与授权（authorization，这个 token 能做什么）；大多数考试陷阱把授权缺口藏在能正常工作的认证背后。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://modelcontextprotocol.io/specification/2025-03-26/basic/authorization">MCP 授权规范（MCP Authorization specification）</a> · <a href="https://modelcontextprotocol.io/specification/draft/basic/authorization/security-considerations">MCP 授权安全考量（MCP Authorization Security Considerations）</a> · <a href="https://platform.claude.com/docs/en/agents-and-tools/mcp-connector">MCP 连接器（OAuth 认证）(MCP connector (OAuth authentication))</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>3.3 Evaluate accuracy-latency trade-offs and justify configuration decisions</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Cost and intelligence are usually pictured as a frontier where one buys the other. The first group of levers on this page moves a workload toward that frontier by cutting cost without touching quality; only the second group moves along it."
+— Optimizing for cost and intelligence, Anthropic (https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Cost, latency, and intelligence form one frontier: some levers cut cost without touching quality ("free wins" such as prompt caching and batch processing), while others deliberately trade intelligence for cost or speed (model choice, effort, output caps).</li>
+<li>Latency has two different sources: per-request processing (reduced by caching repeated prefixes, which also cuts cost) and scheduling delay (the Message Batches API trades immediacy for a 50% price reduction — most batches finish in under an hour, with results available by 24 hours at the latest).</li>
+<li>Streaming, model tier, and context size are configuration decisions with measurable accuracy and latency consequences; none of them is "always max out."</li>
+<li>A justification is only defensible if it is measured on your own workload: Anthropic's published figures are directional, and the docs prescribe measuring the lever on your traffic before adopting it.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Classify a workload first — interactive (a person is waiting) vs. asynchronous — then pick the mechanism: synchronous + caching for interactive, batches for delay-tolerant volume.</li>
+<li>State a trade-off decision in exam form: the constraint (latency budget / accuracy floor), the lever chosen, and the metric that proves it holds.</li>
+<li>Reject false fixes: a bigger context window does not fix slow retrieval, and a stronger model does not fix a latency problem caused by resending an uncached prefix.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence">Optimizing for cost and intelligence</a> · <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">Prompt caching</a> · <a href="https://docs.claude.com/en/docs/build-with-claude/batch-processing">Batch processing</a></p></div><div class="cell zh"><h2>3.3 评估准确性-延迟权衡，并为配置决策辩护</h2>
+<p><em>EN: Evaluate accuracy-latency trade-offs and justify configuration decisions</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Cost and intelligence are usually pictured as a frontier where one buys the other. The first group of levers on this page moves a workload toward that frontier by cutting cost without touching quality; only the second group moves along it."
+— Optimizing for cost and intelligence, Anthropic (https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>成本、延迟与智能构成一条前沿：有些杠杆能在不触碰质量的情况下削减成本（「免费的胜利」，如提示缓存（prompt caching）与批处理），另一些则有意以智能换成本或速度（模型选择、effort、输出上限）。</li>
+<li>延迟有两个不同的来源：每请求处理（通过缓存重复前缀来减少，同时也削减成本）与调度延迟（Message Batches API 以即时性换取 50% 的价格削减 —— 大多数批次在一小时内完成，结果最迟在 24 小时内可用）。</li>
+<li>流式输出（streaming）、模型层级与上下文大小都是配置决策，带有可度量的准确性与延迟后果；它们中没有一个是「永远拉满」的。</li>
+<li>一项辩护只有在你自己的工作负载上度量过才站得住：Anthropic 公布的数字是方向性的，文档要求在采用某个杠杆前先在你自己的流量上度量它。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>先给工作负载分类 —— 交互式（有人在等）vs. 异步 —— 然后选机制：交互式用同步 + 缓存，容忍延迟的批量工作用批次。</li>
+<li>以考试形式陈述一个权衡决策：约束（延迟预算 / 准确性下限）、所选杠杆，以及证明它成立的指标。</li>
+<li>拒绝虚假的修复：更大的上下文窗口修不了慢检索，更强的模型修不了由重复发送未缓存前缀造成的延迟问题。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence">为成本与智能优化（Optimizing for cost and intelligence）</a> · <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">提示缓存（Prompt caching）</a> · <a href="https://docs.claude.com/en/docs/build-with-claude/batch-processing">批处理（Batch processing）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>3.4 Analyze observability challenges and select monitoring strategies at scale</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "A transcript (also called a trace or trajectory) is the complete record of a trial, including outputs, tool calls, reasoning, intermediate results, and any other interactions."
+— Demystifying evals for AI agents, Anthropic (https://www.anthropic.com/research/demystifying-evals-for-ai-agents)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Agents are hard to observe because behavior emerges over many turns: tool calls, state changes, and intermediate results — errors can propagate and compound before the final answer looks wrong.</li>
+<li>The unit of observability is the transcript (trace/trajectory): the complete record of a trial, including outputs, tool calls, reasoning, and intermediate results; for the Anthropic API this is the full messages array. The outcome — the final state in the environment — must be checked separately from what the agent claims.</li>
+<li>Every API response carries a <code>usage</code> block (uncached input, cache creation, cache read, and output tokens), which is the per-request raw material for cost and token monitoring; cache fields are how you verify caching is actually working.</li>
+<li>Prompt caching has its own silent failure mode worth monitoring: a breakpoint placed on content that changes every request produces cache writes on every request and never a read — visible only in the cache token counts.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Instrument at three levels: per-request usage/latency, per-trial transcripts for sampled or failed runs, and outcome checks against the real system of record.</li>
+<li>Define alerts on the signals that precede user complaints: error and refusal rates, cache-read ratio, tokens per task, and tool-call failure rates — segmented by model and tool, not just global averages.</li>
+<li>Keep transcripts reviewable: when a failure is found in production, the trace should be convertible into an eval task (this is the bridge to Domain 4).</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/research/demystifying-evals-for-ai-agents">Demystifying evals for AI agents</a> · <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">Prompt caching (usage fields and breakpoint pitfalls)</a></p></div><div class="cell zh"><h2>3.4 分析可观测性挑战，并选择规模化监控策略</h2>
+<p><em>EN: Analyze observability challenges and select monitoring strategies at scale</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "A transcript (also called a trace or trajectory) is the complete record of a trial, including outputs, tool calls, reasoning, intermediate results, and any other interactions."
+— Demystifying evals for AI agents, Anthropic (https://www.anthropic.com/research/demystifying-evals-for-ai-agents)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>智能体难以观测，因为行为是在许多轮次中涌现的：工具调用、状态变化与中间结果 —— 错误可能在最终答案看起来出错之前就已经传播并累积。</li>
+<li>可观测性的单元是记录稿（transcript，又称 trace/trajectory）：一次试验的完整记录，包括输出、工具调用、推理与中间结果；对 Anthropic API 来说就是完整的 messages 数组。结果（outcome）—— 环境中的最终状态 —— 必须与智能体自己的宣称分开核查。</li>
+<li>每个 API 响应都带有一个 <code>usage</code> 块（未缓存输入、缓存创建、缓存读取与输出 token），这是每请求成本与 token 监控的原材料；缓存字段就是你验证缓存是否真在工作的方式。</li>
+<li>提示缓存有它自己值得监控的静默失败模式：断点放在每次请求都变化的内容上，会导致每次请求都写缓存、从不读缓存 —— 这只有在缓存 token 计数中才看得见。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>在三个层面做埋点：每请求的用量/延迟、针对抽样或失败运行的每试验记录稿，以及对照真实记录系统（system of record）的结果核查。</li>
+<li>在用户投诉之前的信号上定义告警：错误率与拒绝率、缓存读取比率、每任务 token 数、工具调用失败率 —— 按模型与工具分段，而不只是全局平均。</li>
+<li>让记录稿可复查：当在生产中发现一个失败时，这条轨迹应能被转换成一个评估任务（这是通往领域 4 的桥）。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/research/demystifying-evals-for-ai-agents">为 AI 智能体揭开评估的神秘面纱（Demystifying evals for AI agents）</a> · <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">提示缓存（usage 字段与断点陷阱）(Prompt caching (usage fields and breakpoint pitfalls))</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>3.5 Design a RAG pipeline with appropriate chunking and indexing strategies</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Contextual Retrieval solves this problem by prepending chunk-specific explanatory context to each chunk before embedding (“Contextual Embeddings”) and creating the BM25 index (“Contextual BM25”). This method can reduce the number of failed retrievals by 49% and, when combined with reranking, by 67%."
+— Contextual Retrieval, Anthropic (https://www.anthropic.com/research/contextual-retrieval)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The standard RAG pipeline: split the corpus into chunks (usually no more than a few hundred tokens), embed the chunks into vectors, store them in a vector database, and at query time retrieve the most relevant chunks and append them to the prompt.</li>
+<li>Traditional RAG's core weakness is that chunking strips context: a chunk that says "revenue grew 3%" is unfindable if the company and quarter lived elsewhere in the document.</li>
+<li>Contextual Retrieval fixes this by prepending chunk-specific explanatory context before embedding and before BM25 indexing, producing Contextual Embeddings and Contextual BM25; Anthropic measured 49% fewer failed retrievals, and 67% fewer when combined with reranking.</li>
+<li>Prompt caching makes contextualization cheap to generate at scale, and also powers the alternative: for a knowledge base under ~200,000 tokens, skip RAG entirely and put the whole corpus in a cached prompt.</li>
+<li>Indexing is hybrid by default in the official recipe: build both the semantic (embedding) index and the lexical (BM25/TF-IDF) index over the same contextualized chunks.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Size the solution before building it: small, stable corpus → cached long prompt; large or fast-changing corpus → indexed RAG.</li>
+<li>Choose chunk boundaries that keep a unit of meaning intact, then add generated context to each chunk before indexing — and evaluate retrieval (failed-retrieval rate / recall) separately from answer quality.</li>
+<li>Add reranking when the accuracy requirement justifies the extra latency and cost, and justify it with the measured retrieval improvement.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/research/contextual-retrieval">Contextual Retrieval</a> · <a href="https://github.com/anthropics/anthropic-cookbook">Anthropic Cookbook (Contextual Retrieval implementation)</a></p></div><div class="cell zh"><h2>3.5 设计带恰当分块与索引策略的 RAG 管线</h2>
+<p><em>EN: Design a RAG pipeline with appropriate chunking and indexing strategies</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Contextual Retrieval solves this problem by prepending chunk-specific explanatory context to each chunk before embedding (“Contextual Embeddings”) and creating the BM25 index (“Contextual BM25”). This method can reduce the number of failed retrievals by 49% and, when combined with reranking, by 67%."
+— Contextual Retrieval, Anthropic (https://www.anthropic.com/research/contextual-retrieval)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>标准的 RAG 管线：把语料切成块（chunks，通常不超过几百个 token），把块嵌入（embed）成向量，存入向量数据库，查询时检索最相关的块并追加到提示中。</li>
+<li>传统 RAG 的核心弱点是分块会剥离上下文：一个写着「收入增长 3%」的块，如果公司与季度在文档的其他地方，就找不到。</li>
+<li>上下文化检索（Contextual Retrieval）通过在嵌入之前、以及在 BM25 索引之前，为每个块前置块专属的解释性上下文来修复这一点，产出上下文化嵌入（Contextual Embeddings）与上下文化 BM25（Contextual BM25）；Anthropic 测得检索失败减少 49%，与重排序（reranking）结合时减少 67%。</li>
+<li>提示缓存使大规模生成上下文化内容变得便宜，它还支撑了另一种方案：对一个小于约 200,000 token 的知识库，完全跳过 RAG，把整个语料放进一个缓存的提示里。</li>
+<li>官方配方的索引默认是混合的：在同一批上下文化块上同时构建语义（嵌入）索引与词法（BM25/TF-IDF）索引。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>在动手构建之前先定方案规模：小而稳定的语料 → 缓存的长提示；大或变化快的语料 → 索引化 RAG。</li>
+<li>选择能保持意义单元完整的分块边界，然后在索引前为每个块添加生成的上下文 —— 并把检索（检索失败率 / 召回率）与答案质量分开评估。</li>
+<li>当准确性要求能证明额外的延迟与成本合理时添加重排序，并用测得的检索改进来为它辩护。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/research/contextual-retrieval">上下文化检索（Contextual Retrieval）</a> · <a href="https://github.com/anthropics/anthropic-cookbook">Anthropic Cookbook（上下文化检索实现）(Anthropic Cookbook (Contextual Retrieval implementation))</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>3.6 Apply retrieval strategies matched to data shape and query pattern</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "While embedding models excel at capturing semantic relationships, they can miss crucial exact matches. BM25 is a ranking function that uses lexical matching to find precise word or phrase matches. It's particularly effective for queries that include unique identifiers or technical terms."
+— Contextual Retrieval, Anthropic (https://www.anthropic.com/research/contextual-retrieval)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Embeddings and BM25 fail in opposite directions: semantic search misses exact terms (identifiers, codes, rare names); lexical search misses paraphrase and meaning. Combining both with rank fusion covers both failure modes.</li>
+<li>Query pattern decides the mix: exact-match lookups (error codes, SKUs, clause numbers) lean lexical; natural-language questions lean semantic; most production systems need the hybrid.</li>
+<li>Data shape decides the unit: prose documents → contextualized text chunks; codebases → symbol/function-level chunks with file context; frequently updated data → the index freshness and re-indexing path matters as much as the ranking.</li>
+<li>Retrieval is not always the answer: direct long-context inclusion (with caching) beats retrieval when the corpus fits, and agentic search over a filesystem can beat a vector index for structured, navigable data.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Diagnose a retrieval failure before fixing it: was the right chunk never indexed, indexed but not ranked in top-K, or retrieved but ignored? Each has a different fix.</li>
+<li>Match strategy to a described workload in one step: state data shape + query pattern → chosen strategy (lexical / semantic / hybrid / no-RAG) with the reason.</li>
+<li>Tune top-K and reranking against a retrieval metric, not by feel — more chunks is not free: it costs tokens and can bury the answer.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/research/contextual-retrieval">Contextual Retrieval</a> · <a href="https://www.anthropic.com/research/effective-context-engineering-for-ai-agents">Effective context engineering for AI agents</a></p></div><div class="cell zh"><h2>3.6 运用与数据形态和查询模式匹配的检索策略</h2>
+<p><em>EN: Apply retrieval strategies matched to data shape and query pattern</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "While embedding models excel at capturing semantic relationships, they can miss crucial exact matches. BM25 is a ranking function that uses lexical matching to find precise word or phrase matches. It's particularly effective for queries that include unique identifiers or technical terms."
+— Contextual Retrieval, Anthropic (https://www.anthropic.com/research/contextual-retrieval)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>嵌入与 BM25 在相反的方向上失败：语义搜索会漏掉精确术语（标识符、代码、罕见名称）；词法搜索会漏掉转述与含义。把两者与排名融合（rank fusion）结合能覆盖两种失败模式。</li>
+<li>查询模式决定配比：精确匹配查找（错误代码、SKU、条款编号）偏词法；自然语言问题偏语义；大多数生产系统需要混合式。</li>
+<li>数据形态决定单元：散文文档 → 上下文化文本块；代码库 → 带文件上下文的符号/函数级块；频繁更新的数据 → 索引新鲜度与重建索引路径与排名同样重要。</li>
+<li>检索并不总是答案：当语料放得下时，直接的长上下文纳入（带缓存）胜过检索；对结构化、可导航的数据，在文件系统上做智能体搜索能胜过向量索引。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>在修复之前先诊断检索失败：正确的块是从未被索引、被索引了但没排进 top-K，还是被检索了却被忽略？每种都有不同的修法。</li>
+<li>一步把策略与所描述的工作负载匹配：陈述数据形态 + 查询模式 → 所选策略（词法 / 语义 / 混合 / 不用 RAG）及理由。</li>
+<li>对照一个检索指标来调 top-K 与重排序，而不是凭感觉 —— 块更多不是免费的：它消耗 token，还可能把答案埋掉。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/research/contextual-retrieval">上下文化检索（Contextual Retrieval）</a> · <a href="https://www.anthropic.com/research/effective-context-engineering-for-ai-agents">为 AI 智能体做有效的上下文工程（Effective context engineering for AI agents）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>3.7 Evaluate connection protocols and select the appropriate integration mechanism (MCP, API/CLI, agent-to-agent)</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Claude’s Model Context Protocol (MCP) connector feature allows you to connect to remote MCP servers directly from the Messages API without a separate MCP client."
+— MCP connector, Anthropic (https://platform.claude.com/docs/en/agents-and-tools/mcp-connector)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>MCP is the standard protocol for connecting agents to external systems and tools; the Messages API's MCP connector lets Claude call remote MCP servers directly, without a separate MCP client, over publicly exposed HTTP (Streamable HTTP and SSE transports; local stdio servers cannot be connected directly through the connector).</li>
+<li>The connector configuration is two-part: an <code>mcp_servers</code> array (URL and authentication, OAuth Bearer supported) and an MCP toolset in <code>tools</code> (which tools are enabled and how each is configured); multiple servers can be connected in one request.</li>
+<li>Direct API/CLI integration fits a single, fixed integration you fully control; MCP fits reusable, discoverable tool access shared across clients and teams; agent-to-agent fits delegating a sub-problem to another autonomous system rather than calling a deterministic function.</li>
+<li>Code execution with MCP is the efficiency variant: present MCP servers as code APIs on a filesystem so the agent loads only the tool definitions it needs and filters data in the execution environment before it reaches the model (Anthropic's example cut tool-definition tokens from 150,000 to 2,000).</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Choose by reuse and ownership: one-off internal endpoint → API; capability that several agents/clients should share → MCP server; open-ended work owned by another team/system → agent-to-agent.</li>
+<li>Recognize the connector's hard constraints in a design review: remote server must be publicly reachable over HTTPS, and only tool calls are supported through the connector.</li>
+<li>When tool count or result size is the bottleneck, propose the code-execution pattern instead of adding more direct tool calls.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/agents-and-tools/mcp-connector">MCP connector</a> · <a href="https://www.anthropic.com/research/code-execution-with-mcp">Code execution with MCP</a> · <a href="https://code.claude.com/docs/en/mcp-servers">Connect Claude Code to tools via MCP</a></p></div><div class="cell zh"><h2>3.7 评估连接协议，并选择合适的集成机制（MCP、API/CLI、智能体对智能体）</h2>
+<p><em>EN: Evaluate connection protocols and select the appropriate integration mechanism (MCP, API/CLI, agent-to-agent)</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Claude’s Model Context Protocol (MCP) connector feature allows you to connect to remote MCP servers directly from the Messages API without a separate MCP client."
+— MCP connector, Anthropic (https://platform.claude.com/docs/en/agents-and-tools/mcp-connector)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>MCP 是把智能体连接到外部系统与工具的标准协议；Messages API 的 MCP 连接器让 Claude 直接调用远程 MCP 服务器，无需单独的 MCP 客户端，通过公开暴露的 HTTP 进行（Streamable HTTP 与 SSE 传输；本地 stdio 服务器不能通过连接器直接连接）。</li>
+<li>连接器配置分两部分：一个 <code>mcp_servers</code> 数组（URL 与认证，支持 OAuth Bearer）与 <code>tools</code> 中的一个 MCP 工具集（启用哪些工具、每个如何配置）；一次请求中可以连接多个服务器。</li>
+<li>直接的 API/CLI 集成适合你完全掌控的、单一固定的集成；MCP 适合跨客户端与团队共享的、可复用、可发现的工具访问；智能体对智能体（agent-to-agent）适合把一个子问题委派给另一个自主系统，而不是调用一个确定性函数。</li>
+<li>带 MCP 的代码执行（Code execution with MCP）是效率变体：把 MCP 服务器呈现为文件系统上的代码 API，使智能体只加载它需要的工具定义，并在数据到达模型之前在执行环境中过滤数据（Anthropic 的例子把工具定义 token 从 150,000 降到 2,000）。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>按复用与归属来选择：一次性的内部端点 → API；多个智能体/客户端应共享的能力 → MCP 服务器；由另一个团队/系统拥有的开放式工作 → 智能体对智能体。</li>
+<li>在设计评审中识别连接器的硬约束：远程服务器必须能通过 HTTPS 公开访问，且通过连接器只支持工具调用。</li>
+<li>当工具数量或结果大小是瓶颈时，提出代码执行模式，而不是添加更多直接工具调用。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/agents-and-tools/mcp-connector">MCP 连接器（MCP connector）</a> · <a href="https://www.anthropic.com/research/code-execution-with-mcp">带 MCP 的代码执行（Code execution with MCP）</a> · <a href="https://code.claude.com/docs/en/mcp-servers">通过 MCP 把 Claude Code 连接到工具（Connect Claude Code to tools via MCP）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>3.8 Evaluate progressive discovery vs. monolithic context strategy</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Context … must be treated as a finite resource with diminishing marginal returns. … good context engineering means finding the smallest possible set of high-signal tokens that maximize the likelihood of some desired outcome."
+— Effective context engineering for AI agents, Anthropic (https://www.anthropic.com/research/effective-context-engineering-for-ai-agents)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Context is a finite resource with an "attention budget": good context engineering means finding the smallest set of high-signal tokens that maximizes the chance of the desired outcome — loading everything up front (monolithic) spends that budget on mostly irrelevant material.</li>
+<li>Progressive disclosure loads information in layers as it becomes relevant: e.g., tool definitions presented as files on a filesystem that the agent explores on demand, or a <code>search_tools</code> tool with a detail-level parameter (name only → description → full schema).</li>
+<li>Skills use the same three-level pattern: metadata always loaded, the SKILL.md body loaded when relevant, and linked reference files loaded only as needed.</li>
+<li>Monolithic loading is not always wrong: a small, stable, always-relevant corpus (or tool set) is simpler and more predictable fully loaded — especially when prompt caching makes the repeated prefix cheap.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Estimate the load: count the tool definitions / documents; if they dwarf the task itself, choose progressive discovery and say what the discovery mechanism is (filesystem, search tool, skill levels).</li>
+<li>Keep the always-loaded layer minimal but sufficient for routing: names and one-line descriptions must let the model decide what to fetch next.</li>
+<li>Defend the monolithic choice when it is right: few tools, every request needs all of them, and caching neutralizes the cost.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/research/effective-context-engineering-for-ai-agents">Effective context engineering for AI agents</a> · <a href="https://www.anthropic.com/research/code-execution-with-mcp">Code execution with MCP (progressive disclosure)</a></p></div><div class="cell zh"><h2>3.8 评估渐进式发现与单体上下文策略</h2>
+<p><em>EN: Evaluate progressive discovery vs. monolithic context strategy</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Context … must be treated as a finite resource with diminishing marginal returns. … good context engineering means finding the smallest possible set of high-signal tokens that maximize the likelihood of some desired outcome."
+— Effective context engineering for AI agents, Anthropic (https://www.anthropic.com/research/effective-context-engineering-for-ai-agents)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>上下文是一种带「注意力预算」的有限资源：好的上下文工程意味着找到能最大化期望结果机会的、最小的高信号 token 集合 —— 预先把一切都加载进来（单体式）会把预算花在大多无关的材料上。</li>
+<li>渐进式披露（Progressive disclosure）在信息变得相关时分层加载它：例如，把工具定义呈现为文件系统上的文件、由智能体按需探索，或一个带详细程度参数的 <code>search_tools</code> 工具（仅名称 → 描述 → 完整 schema）。</li>
+<li>Skills 使用同样的三层模式：元数据始终加载，SKILL.md 正文在相关时加载，链接的参考文件只在需要时加载。</li>
+<li>单体式加载并不总是错的：一个小而稳定、始终相关的语料（或工具集）完全加载时更简单、更可预测 —— 尤其是当提示缓存让重复前缀变得便宜时。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>估算负载：数一数工具定义 / 文档；如果它们使任务本身相形见绌，选择渐进式发现，并说出发现机制是什么（文件系统、搜索工具、Skill 层级）。</li>
+<li>让始终加载的层保持最小、但足以做路由：名称与一行描述必须能让模型决定下一步取什么。</li>
+<li>在单体式选择正确时为它辩护：工具很少、每个请求都需要全部工具，且缓存抵消了成本。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/research/effective-context-engineering-for-ai-agents">为 AI 智能体做有效的上下文工程（Effective context engineering for AI agents）</a> · <a href="https://www.anthropic.com/research/code-execution-with-mcp">带 MCP 的代码执行（渐进式披露）(Code execution with MCP (progressive disclosure))</a></p></div></div>
+<div class="band" id="d4"><div class="band-en">Domain 4: Evaluation, Testing &amp; Optimization (16%)</div><div class="band-zh">领域 4：评估、测试与优化（Domain 4: Evaluation, Testing &amp; Optimization）（16%）</div></div>
+<div class="row obj"><div class="cell en"><h2>4.1 Define evaluation metrics (accuracy, latency, cost, safety, security)</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Building a successful LLM-based application starts with clearly defining your success criteria and then designing evaluations to measure performance against them. Most use cases need multidimensional evaluation along several success criteria."
+— Define success criteria and build evaluations, Anthropic (https://platform.claude.com/docs/en/test-and-evaluate/eval-tool)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Good success criteria are specific, measurable, achievable, and relevant — "good performance" is not a criterion; a quantified target is (the docs' own example: a hazy topic like safety becomes "less than 0.1% of outputs out of 10,000 trials flagged for toxicity").</li>
+<li>Most use cases need multidimensional evaluation: accuracy alone hides latency, cost per task, and safety regressions. Evals also yield operational baselines for free — latency, token usage, cost per task, and error rates tracked on a static bank of tasks.</li>
+<li>Separate capability metrics from regression metrics: capability evals ask what the agent can do (start with a low pass rate); regression evals ask whether it still does what it used to (should stay near 100%).</li>
+<li>A metric needs a grader: code-based grading is fastest, most reliable, and most scalable; human grading is most flexible but slow and expensive; LLM-based grading is fast and flexible but must be validated for reliability before scaling.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Turn a vague requirement ("accurate and safe") into a metric set with thresholds: task success rate, p95 latency, cost per resolved task, and a safety flag rate — each with its grader type.</li>
+<li>Pick the cheapest reliable grader per metric: exact/string match or state checks where the answer is verifiable; rubric-based LLM grading, calibrated against humans, where judgment is required.</li>
+<li>Report metrics per domain/scenario, not one blended score, so a safety or cost regression cannot hide behind an accuracy gain.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/test-and-evaluate/eval-tool">Define success criteria and build evaluations</a> · <a href="https://www.anthropic.com/research/demystifying-evals-for-ai-agents">Demystifying evals for AI agents</a></p></div><div class="cell zh"><h2>4.1 定义评估指标（准确性、延迟、成本、安全与安保）</h2>
+<p><em>EN: Define evaluation metrics (accuracy, latency, cost, safety, security)</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Building a successful LLM-based application starts with clearly defining your success criteria and then designing evaluations to measure performance against them. Most use cases need multidimensional evaluation along several success criteria."
+— Define success criteria and build evaluations, Anthropic (https://platform.claude.com/docs/en/test-and-evaluate/eval-tool)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>好的成功标准是具体的、可度量的、可达成的且相关的 —— 「表现好」不是标准；一个量化的目标才是（文档自己的例子：安全这样模糊的话题变成「10,000 次试验中被标记为有毒的输出少于 0.1%」）。</li>
+<li>大多数用例需要多维评估：仅看准确性会掩盖延迟、每任务成本与安全回归。评估还会免费产出运营基线 —— 在一组静态任务库上跟踪的延迟、token 用量、每任务成本与错误率。</li>
+<li>把能力指标与回归指标分开：能力评估（capability evals）问智能体能做什么（从低通过率开始）；回归评估（regression evals）问它是否还能做它以前能做的（应保持接近 100%）。</li>
+<li>一个指标需要一个评分器（grader）：基于代码的评分最快、最可靠、最可扩展；人工评分最灵活但慢且贵；基于 LLM 的评分快且灵活，但在扩展前必须验证其可靠性。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>把一个含糊的要求（「准确且安全」）转化为带阈值的指标集：任务成功率、p95 延迟、每解决任务成本、安全标记率 —— 每个都带其评分器类型。</li>
+<li>为每个指标挑选最便宜可靠的评分器：答案可验证时用精确/字符串匹配或状态检查；需要判断时用基于评分量规（rubric）的 LLM 评分，并以人类为校准。</li>
+<li>按领域/场景报告指标，而不是一个混合的总分，这样安全或成本回归就不能藏在准确性提升背后。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/test-and-evaluate/eval-tool">定义成功标准并构建评估（Define success criteria and build evaluations）</a> · <a href="https://www.anthropic.com/research/demystifying-evals-for-ai-agents">为 AI 智能体揭开评估的神秘面纱（Demystifying evals for AI agents）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>4.2 Design evaluation datasets and test frameworks using mixed methodologies</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "A task (a.k.a problem or test case) is a single test with defined inputs and success criteria. Each attempt at a task is a trial. A grader is logic that scores some aspect of the agent’s performance."
+— Demystifying evals for AI agents, Anthropic (https://www.anthropic.com/research/demystifying-evals-for-ai-agents)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The vocabulary is precise: a task is a single test with defined inputs and success criteria; each attempt is a trial (run several, because outputs vary); a grader scores an aspect of performance and can hold multiple assertions; a suite is a collection of tasks sharing a goal; the evaluation harness runs tasks, records transcripts, grades, and aggregates.</li>
+<li>Design principles from the docs: be task-specific (mirror the real-world task distribution, including edge cases), automate grading when possible, and prioritize volume over quality — more tasks with slightly lower-signal automated grading beat a few hand-graded ones.</li>
+<li>Mixed methodology means combining grader types in one framework: code-based graders for verifiable outcomes, model-based graders with rubrics for quality dimensions, and human grading for calibration — and grading the outcome (final environment state), not only the transcript, since an agent can claim success it did not achieve.</li>
+<li>The Console Eval tool is the lightweight official harness: build test cases, run prompt versions against them, and compare results side by side.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Build a dataset from real material: production failures, support tickets, and edge cases first; synthetic cases to fill coverage gaps — never a dataset of only easy, happy-path tasks.</li>
+<li>Structure every task with inputs, success criteria, and at least one grader before running anything; add multiple trials for tasks with variable outputs.</li>
+<li>Keep capability and regression suites separate so hill-climbing on new skills cannot silently break old ones.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/research/demystifying-evals-for-ai-agents">Demystifying evals for AI agents</a> · <a href="https://platform.claude.com/docs/en/test-and-evaluate/eval-tool">Define success criteria and build evaluations (Eval tool)</a></p></div><div class="cell zh"><h2>4.2 用混合方法设计评估数据集与测试框架</h2>
+<p><em>EN: Design evaluation datasets and test frameworks using mixed methodologies</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "A task (a.k.a problem or test case) is a single test with defined inputs and success criteria. Each attempt at a task is a trial. A grader is logic that scores some aspect of the agent’s performance."
+— Demystifying evals for AI agents, Anthropic (https://www.anthropic.com/research/demystifying-evals-for-ai-agents)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>术语是精确的：一个任务（task）是带有已定义输入与成功标准的单个测试；每次尝试是一次试验（trial）（要跑多次，因为输出会变化）；一个评分器（grader）为某个表现方面打分，可以包含多个断言；一个套件（suite）是共享一个目标的任务集合；评估运行器（evaluation harness）运行任务、记录记录稿、评分并汇总。</li>
+<li>来自文档的设计原则：任务专属（镜像真实世界的任务分布，包括边缘情况）、尽可能自动化评分，并优先数量而非质量 —— 更多带稍低信号自动化评分的任务，胜过少数几个手工评分的任务。</li>
+<li>混合方法意味着在一个框架中结合多种评分器类型：基于代码的评分器用于可验证的结果，带评分量规的基于模型的评分器用于质量维度，人工评分用于校准 —— 并且要评结果（最终环境状态），而不只是记录稿，因为智能体可能宣称它并未真正取得的成功。</li>
+<li>Console 的 Eval 工具是轻量的官方运行器：构建测试用例，让不同提示版本在它们上面运行，并排比较结果。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>从真实材料构建数据集：先用生产失败、支持工单与边缘情况；合成用例用来填补覆盖缺口 —— 绝不要只有简单、顺利路径任务的数据集。</li>
+<li>在运行任何东西之前，为每个任务组织好输入、成功标准与至少一个评分器；对输出可变的任务添加多次试验。</li>
+<li>让能力套件与回归套件分开，这样在新技能上爬坡就不会悄悄破坏旧技能。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/research/demystifying-evals-for-ai-agents">为 AI 智能体揭开评估的神秘面纱（Demystifying evals for AI agents）</a> · <a href="https://platform.claude.com/docs/en/test-and-evaluate/eval-tool">定义成功标准并构建评估（Eval 工具）(Define success criteria and build evaluations (Eval tool))</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>4.3 Conduct A/B testing and iterative improvements</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Combined with production monitoring, A/B tests, user research, and more, evals provide signals to continue improving Claude Code as it scales."
+— Demystifying evals for AI agents, Anthropic (https://www.anthropic.com/research/demystifying-evals-for-ai-agents)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Iteration without evals degenerates into reactive loops: fix one production failure, create another, with no way to distinguish a real regression from noise. Evals are what make an A/B comparison a measurement instead of an opinion.</li>
+<li>The comparison unit is a version pair — prompt, model, or harness change — run against the same task bank, with the same graders; the Console Eval tool supports exactly this side-by-side prompt-version comparison.</li>
+<li>Production signals complement offline evals: Anthropic describes Claude Code's improvement loop as evals combined with production monitoring, A/B tests, and user research — offline suites gate the change, online tests confirm it on real traffic.</li>
+<li>Graduated tasks change role over time: a capability eval whose pass rate climbs high becomes part of the regression suite, so today's improvement becomes tomorrow's floor.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Change one variable per iteration (prompt OR model OR tool set), re-run the full suite, and compare per-domain scores — not just the headline number.</li>
+<li>Set the promotion rule in advance: e.g., ship only if capability improves without any regression-suite drop or cost/latency breach.</li>
+<li>Feed every production failure found after a change back into the dataset as a new task before the next iteration.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/research/demystifying-evals-for-ai-agents">Demystifying evals for AI agents</a> · <a href="https://platform.claude.com/docs/en/test-and-evaluate/eval-tool">Define success criteria and build evaluations</a></p></div><div class="cell zh"><h2>4.3 进行 A/B 测试与迭代改进</h2>
+<p><em>EN: Conduct A/B testing and iterative improvements</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Combined with production monitoring, A/B tests, user research, and more, evals provide signals to continue improving Claude Code as it scales."
+— Demystifying evals for AI agents, Anthropic (https://www.anthropic.com/research/demystifying-evals-for-ai-agents)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>没有评估的迭代会退化为反应式循环：修一个生产失败、造出另一个，且无法区分真正的回归与噪声。评估是让 A/B 比较成为度量而不是意见的东西。</li>
+<li>比较单元是一个版本对 —— 提示、模型或运行器的改动 —— 在同一个任务库、同一批评分器上运行；Console 的 Eval 工具恰好支持这种并排的提示版本比较。</li>
+<li>生产信号与离线评估互补：Anthropic 把 Claude Code 的改进回路描述为评估与生产监控、A/B 测试及用户研究相结合 —— 离线套件为改动把关，在线测试在真实流量上确认它。</li>
+<li>已毕业的任务会随时间改变角色：一个通过率爬升到很高的能力评估会成为回归套件的一部分，于是今天的改进变成明天的底线。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>每次迭代只改一个变量（提示 或 模型 或 工具集），重新运行完整套件，并比较各领域的分数 —— 而不只是头条数字。</li>
+<li>提前定好晋级规则：例如，只有当能力提升且回归套件无任何下降、成本/延迟不超标时才发布。</li>
+<li>在下一次迭代之前，把改动之后发现的每个生产失败作为新任务反馈进数据集。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/research/demystifying-evals-for-ai-agents">为 AI 智能体揭开评估的神秘面纱（Demystifying evals for AI agents）</a> · <a href="https://platform.claude.com/docs/en/test-and-evaluate/eval-tool">定义成功标准并构建评估（Define success criteria and build evaluations）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>4.4 Diagnose system issues (prompt failure, hallucinations, model mismatch)</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Groundedness checks verify that claims are supported by retrieved sources, coverage checks define key facts a good answer must include, and source quality checks confirm the consulted sources are authoritative, rather than simply the first retrieved."
+— Demystifying evals for AI agents, Anthropic (https://www.anthropic.com/research/demystifying-evals-for-ai-agents)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Diagnose at the correct layer: the same symptom (a wrong answer) can come from retrieval returning irrelevant or stale chunks, from the prompt, from the tool layer, or from the model — each layer has a different fix, and changing the model is the last resort, not the first.</li>
+<li>The transcript is the diagnostic instrument: it shows tool calls, intermediate results, and reasoning, letting you locate where the trajectory diverged; the outcome check tells you whether the failure is real or only cosmetic.</li>
+<li>A classic pattern from the official guide's own sample items: confident-but-incorrect answers appearing right after a document refresh, with model and latency unchanged, point first at the retrieval/indexing step, not at the model.</li>
+<li>Model mismatch is a real but specific diagnosis: the task's demands (reasoning depth, context length, speed) exceed or undershoot the chosen tier — detectable when a stronger model passes the same eval tasks the current one fails, with prompt and retrieval held constant.</li>
+<li>Frontier models can also "fail" an eval by finding a legitimate loophole the task author missed — read failing transcripts before concluding the system is at fault; sometimes the eval is wrong.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Run the isolation sequence: check the retrieved context → check the tool calls and results in the transcript → check the prompt → only then test a different model on the same tasks.</li>
+<li>Classify each production failure into a bucket (retrieval / prompt / tool / model / eval defect) and count the buckets; fix the biggest bucket first.</li>
+<li>For hallucinations specifically, verify groundedness: are the claims supported by the retrieved sources, and was the right source retrieved at all?</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/research/demystifying-evals-for-ai-agents">Demystifying evals for AI agents</a> · <a href="https://www.anthropic.com/research/contextual-retrieval">Contextual Retrieval (retrieval failure modes)</a></p></div><div class="cell zh"><h2>4.4 诊断系统问题（提示失败、幻觉、模型不匹配）</h2>
+<p><em>EN: Diagnose system issues (prompt failure, hallucinations, model mismatch)</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Groundedness checks verify that claims are supported by retrieved sources, coverage checks define key facts a good answer must include, and source quality checks confirm the consulted sources are authoritative, rather than simply the first retrieved."
+— Demystifying evals for AI agents, Anthropic (https://www.anthropic.com/research/demystifying-evals-for-ai-agents)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>在正确的层上诊断：同一个症状（一个错误答案）可能来自检索返回了无关或过时的块、来自提示、来自工具层，或来自模型 —— 每层都有不同的修法，换模型是最后手段，不是第一选择。</li>
+<li>记录稿是诊断仪器：它显示工具调用、中间结果与推理，让你定位轨迹在哪里偏离；结果核查告诉你这个失败是真实的还是只是表面上的。</li>
+<li>一个来自官方指南自身样题的经典模式：在文档刷新之后突然出现自信但错误的答案，而模型与延迟未变，这首先指向检索/索引步骤，而不是模型。</li>
+<li>模型不匹配是一个真实但具体的诊断：任务的要求（推理深度、上下文长度、速度）超出或低于所选层级 —— 当更强的模型在提示与检索保持不变的情况下、通过了当前模型失败的同一批评估任务时，就能检测出来。</li>
+<li>前沿模型也可能通过找到任务作者漏掉的合理漏洞来「失败」一个评估 —— 在断定系统有错之前先读失败的记录稿；有时是评估错了。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>运行隔离序列：检查检索到的上下文 → 检查记录稿中的工具调用与结果 → 检查提示 → 最后才在同一批任务上测试不同的模型。</li>
+<li>把每个生产失败归入一个桶（检索 / 提示 / 工具 / 模型 / 评估缺陷），数一数各桶；先修最大的桶。</li>
+<li>专门针对幻觉，验证扎根性（groundedness）：这些主张是否被检索到的来源支持，以及正确的来源是否被检索到了。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/research/demystifying-evals-for-ai-agents">为 AI 智能体揭开评估的神秘面纱（Demystifying evals for AI agents）</a> · <a href="https://www.anthropic.com/research/contextual-retrieval">上下文化检索（检索失败模式）(Contextual Retrieval (retrieval failure modes))</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>4.5 Optimize token usage, latency, and cost-performance trade-offs</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Free wins cut spend without touching quality: prompt caching, token hygiene, … and batch processing at 50% off for work that can wait up to 24 hours. Tradeoffs exchange cost for intelligence: model choice, effort, output caps and session budgets, an elapsed-time clock, and multimodel architectures."
+— Optimizing for cost and intelligence, Anthropic (https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Start with the free wins: prompt caching, token hygiene, a prompt audit against the model you are running, and batch processing at 50% off for work that can wait up to 24 hours — these cut spend without touching quality; only then trade along the frontier with model choice, effort, and output caps.</li>
+<li>Prompt caching is a prefix mechanism: cache reads cost a fraction of base input price (10% standard), writes cost 25% more than base for the 5-minute TTL; the prefix is ordered tools → system → messages, and any change inside the prefix invalidates everything after it — so static content goes first, volatile content last.</li>
+<li>Token waste in agents compounds: a long-running task resends its growing history every turn, so task cost grows roughly with the square of the turn count unless caching and context discipline intervene.</li>
+<li>Context editing / trimming is a token-hygiene lever with limits: the cost-and-intelligence docs note it can cost more than it saves on short runs — measure it like everything else.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Profile before optimizing: use the per-response usage fields (uncached vs. cache-read vs. output tokens) to find whether spend is input repetition, oversized tool results, or verbose output — each has a different fix.</li>
+<li>Apply the matching lever: repeated static prefix → caching; delay-tolerant volume → Message Batches; oversized tool results → filter/transform before they reach the model; wrong-sized model → re-tier and re-run evals to prove quality held.</li>
+<li>Close the loop with the eval suite: an optimization is only accepted if the accuracy and safety metrics from 4.1 stay within their thresholds.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence">Optimizing for cost and intelligence</a> · <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">Prompt caching</a> · <a href="https://docs.claude.com/en/docs/build-with-claude/batch-processing">Batch processing</a></p></div><div class="cell zh"><h2>4.5 优化 token 用量、延迟与成本-性能权衡</h2>
+<p><em>EN: Optimize token usage, latency, and cost-performance trade-offs</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Free wins cut spend without touching quality: prompt caching, token hygiene, … and batch processing at 50% off for work that can wait up to 24 hours. Tradeoffs exchange cost for intelligence: model choice, effort, output caps and session budgets, an elapsed-time clock, and multimodel architectures."
+— Optimizing for cost and intelligence, Anthropic (https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>从免费的胜利开始：提示缓存（prompt caching）、token 卫生、针对你正在运行的模型做一次提示审计，以及对可以等待最长 24 小时的工作打五折的批处理 —— 这些能在不触碰质量的情况下削减支出；然后才用模型选择、effort 与输出上限沿前沿做权衡。</li>
+<li>提示缓存是一种前缀机制：缓存读取的成本是基础输入价格的一小部分（标准为 10%），写入比 5 分钟 TTL 的基础价格贵 25%；前缀的顺序是 tools → system → messages，前缀内的任何变化都会使它之后的一切失效 —— 因此静态内容放最前，易变内容放最后。</li>
+<li>智能体中的 token 浪费会累积：一个长时运行的任务每轮都重发它不断增长的历史，因此任务成本大致随轮次的平方增长，除非缓存与上下文纪律介入。</li>
+<li>上下文编辑 / 裁剪是一个有局限的 token 卫生杠杆：成本与智能文档指出，它在短运行上可能得不偿失 —— 像其他一切一样度量它。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>先剖析再优化：用每响应的 usage 字段（未缓存 vs. 缓存读取 vs. 输出 token）找出支出是输入重复、过大的工具结果，还是冗长的输出 —— 每种都有不同的修法。</li>
+<li>应用匹配的杠杆：重复的静态前缀 → 缓存；容忍延迟的批量工作 → Message Batches；过大的工具结果 → 在到达模型之前过滤/转换；尺寸不对的模型 → 重新分层并重跑评估以证明质量保持住了。</li>
+<li>用评估套件闭环：只有当 4.1 的准确性与安全指标保持在阈值之内时，一项优化才被接受。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence">为成本与智能优化（Optimizing for cost and intelligence）</a> · <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">提示缓存（Prompt caching）</a> · <a href="https://docs.claude.com/en/docs/build-with-claude/batch-processing">批处理（Batch processing）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>4.6 Monitor system performance using logging and observability tools</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Once evals exist, you get baselines and regression tests for free: latency, token usage, cost per task, and error rates can be tracked on a static bank of tasks."
+— Demystifying evals for AI agents, Anthropic (https://www.anthropic.com/research/demystifying-evals-for-ai-agents)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Monitoring and evals are one loop, not two systems: evals make behavioral changes visible before users are affected, and production monitoring catches what the suites missed — Anthropic pairs them explicitly in how Claude Code is improved (evals + production monitoring + A/B tests + user research).</li>
+<li>Log at trial granularity: the full transcript (inputs, tool calls, intermediate results, final output) plus the outcome, so any production incident can be replayed and converted into a regression task.</li>
+<li>Track the operational baselines evals give you — latency, token usage, cost per task, error rates — as continuous production metrics, segmented by model, tool, and scenario; a static task bank makes drift measurable over time.</li>
+<li>Watch the silent degradations: cache-read ratio collapsing (a prompt change broke the prefix), tool error rates creeping up, and cost per successful task rising while headline accuracy stays flat.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Define the dashboard from the metric set in 4.1 — same definitions in development and production, so an eval score and a production number are comparable.</li>
+<li>Sample and review transcripts routinely, not only after incidents; calibrate LLM graders against these human reviews so automated scores stay trustworthy.</li>
+<li>Wire the feedback path: production failure → logged transcript → new eval task → fix → regression suite. If any step is manual and slow, that is the first thing to automate.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/research/demystifying-evals-for-ai-agents">Demystifying evals for AI agents</a> · <a href="https://platform.claude.com/docs/en/test-and-evaluate/eval-tool">Define success criteria and build evaluations</a></p></div><div class="cell zh"><h2>4.6 用日志与可观测性工具监控系统性能</h2>
+<p><em>EN: Monitor system performance using logging and observability tools</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Once evals exist, you get baselines and regression tests for free: latency, token usage, cost per task, and error rates can be tracked on a static bank of tasks."
+— Demystifying evals for AI agents, Anthropic (https://www.anthropic.com/research/demystifying-evals-for-ai-agents)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>监控与评估是一个回路，不是两个系统：评估让行为变化在用户受影响之前可见，生产监控捕捉套件漏掉的东西 —— Anthropic 在 Claude Code 如何改进中明确把两者配对（评估 + 生产监控 + A/B 测试 + 用户研究）。</li>
+<li>以试验粒度记录日志：完整的记录稿（输入、工具调用、中间结果、最终输出）加上结果，这样任何生产事故都能被重放并转换成一个回归任务。</li>
+<li>把评估给你的运营基线 —— 延迟、token 用量、每任务成本、错误率 —— 作为持续的生产指标跟踪，按模型、工具与场景分段；一个静态任务库让漂移随时间可度量。</li>
+<li>警惕静默退化：缓存读取比率崩塌（一次提示改动破坏了前缀）、工具错误率悄悄爬升、以及在头条准确性保持平稳的同时每成功任务成本上升。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>用 4.1 的指标集定义仪表盘 —— 开发与生产用同一套定义，这样一个评估分数与一个生产数字可比。</li>
+<li>例行抽样并审查记录稿，而不只是在事故之后；用这些人工审查来校准 LLM 评分器，使自动化分数保持可信。</li>
+<li>接通反馈路径：生产失败 → 记录的记录稿 → 新的评估任务 → 修复 → 回归套件。如果其中任何一步是手动且缓慢的，那就是第一个要自动化的东西。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/research/demystifying-evals-for-ai-agents">为 AI 智能体揭开评估的神秘面纱（Demystifying evals for AI agents）</a> · <a href="https://platform.claude.com/docs/en/test-and-evaluate/eval-tool">定义成功标准并构建评估（Define success criteria and build evaluations）</a></p></div></div>
+<div class="band" id="d5"><div class="band-en">Domain 5: Governance, Safety &amp; Risk Management (14%)</div><div class="band-zh">领域 5：治理、安全与风险管理（Domain 5: Governance, Safety &amp; Risk Management）（14%）</div></div>
+<div class="row obj"><div class="cell en"><h2>5.1 Implement guardrails and safety controls</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Apply the principle of least privilege so that a successful injection can do minimal damage: don’t give Claude access to secrets it doesn’t need, run tools in sandboxed environments, and scope permissions as narrowly as possible."
+— Mitigate jailbreaks and prompt injections, Anthropic (https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Guardrails are layered, not a single prompt instruction. Anthropic's jailbreak guidance separates two threat models: jailbreaks and direct prompt injection, where the user is the adversary, and indirect prompt injection, where trusted users are exposed through third-party content such as webpages, emails, documents, or tool results.</li>
+<li>Input-side controls include harmlessness screens (a lightweight model such as Claude Haiku pre-screening input, with structured outputs constraining the verdict to a simple classification), input validation against known injection patterns, and system prompts that state ethical and legal boundaries and how to refuse.</li>
+<li>For untrusted content: deliver third-party content only in <code>tool_result</code> blocks, never in system prompts; label its nature and source; state in the system prompt that tool/document content is untrusted data and must never override instructions; JSON-encode untrusted strings where possible.</li>
+<li>Least privilege bounds the blast radius of a successful injection: do not give Claude secrets it does not need, run tools in sandboxed environments, and scope permissions as narrowly as possible. Screen tool outputs with the same classifier pattern before Claude acts on them.</li>
+<li>Controls are proportional and maintained: throttle or ban repeat offenders, red-team your own agent with deliberately injected documents and tool outputs before deployment, and continuously monitor outputs to refine prompts, validation, and filtering.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Design a defense-in-depth stack (screen → validation → system-prompt policy → least-privilege tools → output monitoring) matched to whether the adversary is the user or the content.</li>
+<li>Decide which actions need deterministic enforcement outside the prompt (permission rules, tool removal, sandboxing) versus prompt-level guidance.</li>
+<li>Build a pre-deployment red-team test set of injection attempts and verify each layer catches what the previous layer misses.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks">Mitigate jailbreaks and prompt injections</a> · <a href="https://platform.claude.com/docs/en/managed-agents/permission-policies">Permission policies (Managed Agents)</a></p></div><div class="cell zh"><h2>5.1 实施护栏与安全控制</h2>
+<p><em>EN: Implement guardrails and safety controls</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Apply the principle of least privilege so that a successful injection can do minimal damage: don’t give Claude access to secrets it doesn’t need, run tools in sandboxed environments, and scope permissions as narrowly as possible."
+— Mitigate jailbreaks and prompt injections, Anthropic (https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>护栏是分层的，不是一条提示指令。Anthropic 的越狱（jailbreak）指引区分两种威胁模型：越狱与直接提示注入（direct prompt injection），其中用户是攻击者；以及间接提示注入（indirect prompt injection），其中可信用户通过网页、邮件、文档或工具结果等第三方内容被暴露。</li>
+<li>输入侧控制包括无害性筛查（用 Claude Haiku 这样的轻量模型预筛输入，用结构化输出把判定约束为一个简单的分类）、针对已知注入模式的输入校验，以及陈述伦理与法律边界及如何拒绝的系统提示。</li>
+<li>对不可信内容：第三方内容只放在 <code>tool_result</code> 块中交付，绝不放进系统提示；标注其性质与来源；在系统提示中声明工具/文档内容是不可信数据、绝不能覆盖指令；尽可能把不可信字符串做 JSON 编码。</li>
+<li>最小权限界定了注入成功的爆炸半径：不要给 Claude 它不需要的秘密，在沙箱环境中运行工具，并把权限限定得尽可能窄。用同样的分类器模式筛查工具输出，然后 Claude 才对其采取行动。</li>
+<li>控制是成比例且需维护的：对重复违规者限流或封禁，在部署前用故意注入的文档与工具输出对你自己的智能体做红队测试（red-team），并持续监控输出以完善提示、校验与过滤。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>设计一个纵深防御栈（筛查 → 校验 → 系统提示政策 → 最小权限工具 → 输出监控），与攻击者是用户还是内容相匹配。</li>
+<li>判断哪些行动需要在提示之外做确定性强制（权限规则、工具移除、沙箱），哪些用提示层面的指导即可。</li>
+<li>构建一个部署前的红队测试集，包含注入尝试，并验证每一层都能捕捉上一层漏掉的东西。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks">缓解越狱与提示注入（Mitigate jailbreaks and prompt injections）</a> · <a href="https://platform.claude.com/docs/en/managed-agents/permission-policies">权限政策（托管智能体）(Permission policies (Managed Agents))</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>5.2 Identify risks, limitations, and failure modes of LLM systems</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Even the most advanced language models, such as Claude, can sometimes generate text that is factually incorrect or inconsistent with the given context. This phenomenon, known as “hallucination,” can undermine the reliability of your AI-driven solutions."
+— Reduce hallucinations, Anthropic (https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Hallucination is a named, expected failure mode: even advanced models can generate text that is factually incorrect or inconsistent with the given context. Anthropic's mitigations are partial by design — allowing Claude to say "I don't know," grounding in direct quotes, and verifying claims with citations reduce, but do not eliminate, the risk.</li>
+<li>Capability risk is governed at Anthropic through the Responsible Scaling Policy (RSP) and its AI Safety Levels (ASL): models are evaluated before release in catastrophic-risk areas such as CBRN, cybersecurity, and autonomous capabilities, and the required safeguards scale with the assessed level.</li>
+<li>System cards are the public record of that evaluation: pre-deployment safety tests, Usage Policy violation tests, agentic safety evaluations (computer use, coding), alignment assessments, and the ASL standard under which a model was deployed.</li>
+<li>Agentic failure modes extend beyond wrong text: a compromised or misled agent can take real actions, so risk analysis must cover tool misuse, indirect injection through retrieved content, and error propagation across steps — not only output quality.</li>
+<li>Known limitations to design around include finite context and degraded recall over long inputs, sensitivity to ambiguous instructions, and the gap between a model's confident tone and its actual reliability.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Write a failure-mode inventory for a given system (hallucination, injection, tool misuse, over-permissioned actions, stale or wrong retrieval) and map each mode to a detection method and a mitigation.</li>
+<li>Read a system card and extract what was actually tested, under which ASL standard the model shipped, and what that implies for your own deployment risk.</li>
+<li>Distinguish risks the model provider has evaluated from risks that remain the deploying architect's responsibility.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations">Reduce hallucinations</a> · <a href="https://www.anthropic.com/news/anthropics-responsible-scaling-policy">Responsible Scaling Policy</a> · <a href="https://www.anthropic.com/claude-4-model-card">Claude 4 System Card</a></p></div><div class="cell zh"><h2>5.2 识别 LLM 系统的风险、局限与失败模式</h2>
+<p><em>EN: Identify risks, limitations, and failure modes of LLM systems</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Even the most advanced language models, such as Claude, can sometimes generate text that is factually incorrect or inconsistent with the given context. This phenomenon, known as “hallucination,” can undermine the reliability of your AI-driven solutions."
+— Reduce hallucinations, Anthropic (https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>幻觉（Hallucination）是一个被点名的、预期中的失败模式：即使是先进模型也可能生成事实上不正确、或与给定上下文不一致的文本。Anthropic 的缓解措施按设计就是部分的 —— 允许 Claude 说「我不知道」、扎根于直接引文、用引注核查主张，这些能减少但不能消除风险。</li>
+<li>能力风险在 Anthropic 内部由负责任扩展政策（Responsible Scaling Policy，RSP）及其 AI 安全等级（AI Safety Levels，ASL）治理：模型在发布前会在 CBRN、网络安全与自主能力等灾难性风险领域接受评估，所需保障措施随评估等级而扩展。</li>
+<li>系统卡（System cards）是该评估的公开记录：部署前安全测试、使用政策（Usage Policy）违规测试、智能体安全评估（计算机使用、编程）、对齐评估，以及模型部署所依据的 ASL 标准。</li>
+<li>智能体失败模式超出错误文本的范围：一个被攻陷或被误导的智能体能采取真实行动，因此风险分析必须覆盖工具滥用、通过检索内容进行的间接注入，以及跨步骤的错误传播 —— 而不只是输出质量。</li>
+<li>需要围绕其设计的已知局限包括：有限的上下文与长输入下退化的回忆、对含糊指令的敏感，以及模型的自信语气与其实际可靠性之间的差距。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>为一个给定系统写一份失败模式清单（幻觉、注入、工具滥用、权限过大的行动、过时或错误的检索），并把每种模式映射到一种检测方法与一种缓解措施。</li>
+<li>阅读一份系统卡，提取出实际测试了什么、模型依据哪个 ASL 标准发布，以及这对你自己的部署风险意味着什么。</li>
+<li>区分模型提供商已经评估过的风险，与仍然属于部署架构师责任的风险。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations">减少幻觉（Reduce hallucinations）</a> · <a href="https://www.anthropic.com/news/anthropics-responsible-scaling-policy">负责任扩展政策（Responsible Scaling Policy）</a> · <a href="https://www.anthropic.com/claude-4-model-card">Claude 4 系统卡（Claude 4 System Card）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>5.3 Apply human-in-the-loop validation strategies</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "MCP toolsets default to <code>always_ask</code>. This ensures that new tools added to an MCP server do not run in your application without approval."
+— Permission policies, Anthropic (https://platform.claude.com/docs/en/managed-agents/permission-policies)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Human-in-the-loop (HITL) is implemented as a permission decision, not a hope: in the Agent SDK / Claude Code permission flow, calls that no hook, deny/ask/allow rule, or permission mode has already resolved reach the <code>canUseTool</code> callback, which pauses execution until a human (or your application logic) returns allow or deny.</li>
+<li>Permission policies for server-executed tools express the same idea declaratively: <code>always_allow</code> runs automatically, <code>always_ask</code> pauses for approval, and <code>auto</code> has the server evaluate each call and run it, deny it, or pause for approval. MCP toolsets default to <code>always_ask</code>, so newly added tools do not run unapproved.</li>
+<li>Approval belongs on irreversible or high-impact actions (deleting files, issuing refunds, sending external messages), while low-risk read-only actions are normally pre-approved by allow rules to avoid approval fatigue.</li>
+<li>A pending approval can outlive the process: the docs recommend deferring via a <code>PreToolUse</code> hook and resuming from the persisted session rather than blocking a callback indefinitely, and using a <code>PermissionRequest</code> hook to notify approvers externally (Slack, email, push).</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Place approval gates by risk tier: auto-allow reads, ask for writes and external actions, deny outright what the role never needs — remembering that removing a tool beats guarding it.</li>
+<li>Design the approval experience: show the approver the exact tool and input, record the decision, and handle timeouts and deferred resumption.</li>
+<li>Recognize when HITL is the wrong control (high-volume, low-risk, latency-critical paths) and substitute sampling, post-hoc audit, or automated checks.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/managed-agents/permission-policies">Permission policies (Managed Agents)</a> · <a href="https://code.claude.com/docs/en/permissions">Configure permissions — Claude Code</a> · <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks">Mitigate jailbreaks and prompt injections</a></p></div><div class="cell zh"><h2>5.3 运用人在回路验证策略</h2>
+<p><em>EN: Apply human-in-the-loop validation strategies</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "MCP toolsets default to <code>always_ask</code>. This ensures that new tools added to an MCP server do not run in your application without approval."
+— Permission policies, Anthropic (https://platform.claude.com/docs/en/managed-agents/permission-policies)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>人在回路（Human-in-the-loop，HITL）是作为一个权限决定来实施的，而不是一种期望：在 Agent SDK / Claude Code 的权限流程中，那些没有被 hook、deny/ask/allow 规则或权限模式已经裁决的调用，会到达 <code>canUseTool</code> 回调，它暂停执行，直到人类（或你的应用逻辑）返回允许或拒绝。</li>
+<li>针对服务器执行工具的权限政策以声明式表达同一个思想：<code>always_allow</code> 自动运行，<code>always_ask</code> 暂停等待批准，<code>auto</code> 由服务器评估每次调用并运行它、拒绝它或暂停等待批准。MCP 工具集默认是 <code>always_ask</code>，因此新添加的工具不会未经批准就运行。</li>
+<li>批准属于不可逆或高影响的行动（删除文件、发放退款、发送外部消息），而低风险的只读行动通常由 allow 规则预先批准，以避免批准疲劳。</li>
+<li>一个待处理的批准可以比进程活得更久：文档建议通过 <code>PreToolUse</code> hook 延迟处理、并从持久化的会话恢复，而不是无限期阻塞一个回调；并使用 <code>PermissionRequest</code> hook 在外部通知批准人（Slack、邮件、推送）。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>按风险层级放置批准关卡：读取自动允许，写入与外部行动要询问，该角色从不需要的直接拒绝 —— 并记住，移除一个工具胜过守卫它。</li>
+<li>设计批准体验：向批准人展示确切的工具与输入，记录决定，并处理超时与延迟恢复。</li>
+<li>识别 HITL 是错误控制的场合（高吞吐、低风险、对延迟关键的路径），并代之以抽样、事后审计或自动化检查。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/managed-agents/permission-policies">权限政策（托管智能体）(Permission policies (Managed Agents))</a> · <a href="https://code.claude.com/docs/en/permissions">配置权限 — Claude Code（Configure permissions — Claude Code）</a> · <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks">缓解越狱与提示注入（Mitigate jailbreaks and prompt injections）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>5.4 Ensure compliance with regulations (e.g., GDPR, HIPAA, FedRAMP)</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Under a Legacy ZDR arrangement, Anthropic does not store customer prompts or responses at rest after the API response is returned."
+— API and data retention, Anthropic (https://platform.claude.com/docs/en/manage-claude/api-and-data-retention)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Data handling is the concrete compliance surface. Anthropic offers two arrangements for the Claude API: zero data retention (ZDR), under which customer prompts and responses are not stored at rest after the response is returned, and HIPAA readiness for organizations handling protected health information, which requires a signed Business Associate Agreement (BAA).</li>
+<li>Outside those arrangements: retained data is never used for model training without express permission, only what is technically necessary is retained, conversation content is not retained by default (with stated exceptions, e.g. certain models requiring 30-day retention), and retained data is purged on the shortest practical TTL.</li>
+<li>Eligibility is per feature and per organization: ZDR is enabled per organization through the account team and does not automatically extend to other organizations; not every API feature is eligible under ZDR or HIPAA arrangements, and in a HIPAA-configured organization non-eligible features are excluded.</li>
+<li>Consumer products and commercial terms are different worlds: compliance claims that hold for the API under Commercial Terms do not transfer to Free/Pro/Max consumer plans, and Claude delivered through cloud partners sits under those platforms' terms.</li>
+<li>The architect's job is mapping: identify which regulation applies (GDPR for EU personal data, HIPAA for PHI, FedRAMP for US federal use), which data classes the system touches, and which arrangement, region, and feature set keeps that data inside the compliant boundary.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Audit a proposed architecture against a regulation: data classes, retention, training use, subprocessors/cloud route, and whether a BAA or ZDR arrangement must be in place before any regulated data flows.</li>
+<li>Restrict a deployment to eligible features only, and design fallbacks (refuse, redact, route elsewhere) for requests that would leave the compliant boundary.</li>
+<li>State compliance limits honestly to stakeholders: a vendor BAA or ZDR arrangement supports, but does not by itself make, the customer's application compliant.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/manage-claude/api-and-data-retention">API and data retention</a> · <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks">Mitigate jailbreaks and prompt injections</a></p></div><div class="cell zh"><h2>5.4 确保遵守法规（例如 GDPR、HIPAA、FedRAMP）</h2>
+<p><em>EN: Ensure compliance with regulations (e.g., GDPR, HIPAA, FedRAMP)</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Under a Legacy ZDR arrangement, Anthropic does not store customer prompts or responses at rest after the API response is returned."
+— API and data retention, Anthropic (https://platform.claude.com/docs/en/manage-claude/api-and-data-retention)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>数据处理是具体的合规表面。Anthropic 为 Claude API 提供两种安排：零数据保留（zero data retention，ZDR），在该安排下客户的提示与响应在响应返回后不落地存储；以及为处理受保护健康信息（PHI）的组织提供的 HIPAA 就绪安排，它要求签署一份业务伙伴协议（Business Associate Agreement，BAA）。</li>
+<li>在这些安排之外：保留的数据未经明确许可绝不用于模型训练；只保留技术上必需的部分；对话内容默认不保留（有明述的例外，例如某些模型要求 30 天保留）；保留的数据按最短可行的 TTL 清除。</li>
+<li>资格是按功能、按组织的：ZDR 通过客户团队按组织启用，不会自动扩展到其他组织；并非每个 API 功能在 ZDR 或 HIPAA 安排下都有资格，在配置了 HIPAA 的组织中，无资格的功能会被排除。</li>
+<li>消费产品与商业条款是两个不同的世界：在商业条款（Commercial Terms）下对 API 成立的合规主张，不会转移到 Free/Pro/Max 消费计划上；通过云合作伙伴交付的 Claude 位于那些平台的条款之下。</li>
+<li>架构师的工作是映射：识别哪部法规适用（GDPR 管欧盟个人数据，HIPAA 管 PHI，FedRAMP 管美国联邦用途）、系统触及哪些数据类别，以及哪种安排、区域与功能集能让该数据留在合规边界之内。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>对照一部法规审计一个拟议架构：数据类别、保留、训练使用、子处理者/云路线，以及在任何受监管数据流动之前是否必须先有 BAA 或 ZDR 安排。</li>
+<li>把部署限制在有资格的功能内，并为会离开合规边界的请求设计回退方案（拒绝、脱敏、路由到别处）。</li>
+<li>对利益相关方诚实陈述合规的限度：厂商的 BAA 或 ZDR 安排是支持，但其本身并不能使客户的应用合规。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/manage-claude/api-and-data-retention">API 与数据保留（API and data retention）</a> · <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks">缓解越狱与提示注入（Mitigate jailbreaks and prompt injections）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>5.5 Address ethical AI considerations (bias, fairness, transparency)</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "In order to be both safe and beneficial, we believe all current Claude models should be: … <strong>Broadly ethical</strong>: Having good personal values, being honest, and avoiding actions that are inappropriately dangerous or harmful."
+— Claude's Constitution, Anthropic (https://www.anthropic.com/constitution)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Anthropic publishes Claude's governing principles: Claude's Constitution (January 2026, released in full under CC0) is a detailed, public description of Anthropic's intentions for Claude's values and behavior — transparency about intended behavior is itself part of the governance model.</li>
+<li>Constitutional AI is the training approach behind it: the model is trained to critique and revise its own responses against an explicit set of principles, rather than relying only on human preference labels.</li>
+<li>Bias is a documented evaluation area, not an afterthought: system cards report pre-deployment testing that includes behavior around Usage Policy violations and alignment assessments covering misalignment risks, which is where biased or unfair behavior would surface.</li>
+<li>For the deploying architect, transparency has product-level forms: citations that make claims auditable, disclosure that a user is interacting with an AI system, and explanations of automated decisions that affect people.</li>
+<li>Fairness work is use-case specific: the same model can be acceptable for drafting and unacceptable for screening people, so the ethical review must examine who is affected, what decision the output influences, and whether a human can contest it.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Evaluate a use case for disparate impact: identify affected groups, define what a biased output would look like, and test for it before launch and after model or prompt changes.</li>
+<li>Choose transparency mechanisms proportionate to the stakes: citations and source display for factual claims, clear AI disclosure, and human review for decisions about people.</li>
+<li>Escalate or refuse use cases where the ethical risk cannot be mitigated — and document that decision for stakeholders.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/constitution">Claude's Constitution</a> · <a href="https://www.anthropic.com/claude-4-model-card">Claude 4 System Card</a> · <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations">Reduce hallucinations</a></p></div><div class="cell zh"><h2>5.5 处理伦理 AI 考量（偏见、公平、透明）</h2>
+<p><em>EN: Address ethical AI considerations (bias, fairness, transparency)</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "In order to be both safe and beneficial, we believe all current Claude models should be: … <strong>Broadly ethical</strong>: Having good personal values, being honest, and avoiding actions that are inappropriately dangerous or harmful."
+— Claude's Constitution, Anthropic (https://www.anthropic.com/constitution)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>Anthropic 公布了 Claude 的治理原则：《Claude 宪法》（Claude's Constitution，2026 年 1 月，以 CC0 完整发布）是对 Anthropic 对 Claude 价值观与行为之意图的详细、公开的描述 —— 对预期行为的透明本身就是治理模型的一部分。</li>
+<li>宪法式 AI（Constitutional AI）是其背后的训练方法：模型被训练为依据一套明确的原则来批评并修订自己的响应，而不是只依赖人类偏好标签。</li>
+<li>偏见是一个有记录的评估领域，不是一个事后想法：系统卡报告的部署前测试包括围绕使用政策（Usage Policy）违规的行为，以及涵盖失准风险的对齐评估，偏见或不公平行为正会在那里浮现。</li>
+<li>对部署架构师来说，透明有产品层面的形态：让主张可审计的引注、向用户披露其正在与 AI 系统交互，以及对影响人的自动化决定的解释。</li>
+<li>公平工作是因用例而异的：同一个模型用于起草可以接受、用于筛选人则不可接受，因此伦理审查必须考察谁受影响、输出影响哪个决定，以及人类能否对它提出异议。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>评估一个用例的差异化影响（disparate impact）：识别受影响群体，定义有偏见的输出会是什么样子，并在上线前以及模型或提示变更后对其进行测试。</li>
+<li>选择与风险成比例的透明机制：为事实主张提供引注与来源展示、清晰的 AI 披露，以及对涉及人的决定进行人工审查。</li>
+<li>对伦理风险无法缓解的用例进行升级或拒绝 —— 并把该决定记录下来给利益相关方。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/constitution">Claude 的宪法（Claude's Constitution）</a> · <a href="https://www.anthropic.com/claude-4-model-card">Claude 4 系统卡（Claude 4 System Card）</a> · <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations">减少幻觉（Reduce hallucinations）</a></p></div></div>
+<div class="band" id="d6"><div class="band-en">Domain 6: Stakeholder Communication &amp; Lifecycle Management (14%)</div><div class="band-zh">领域 6：利益相关方沟通与生命周期管理（Domain 6: Stakeholder Communication &amp; Lifecycle Management）（14%）</div></div>
+<div class="row obj"><div class="cell en"><h2>6.1 Conduct structured discovery and requirement gathering</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "These professionals translate business problems into scalable AI-driven solutions, including model selection, prompt engineering, orchestration of tools and agents, context management, and ensuring system safety, compliance, and governance."
+— Claude Certified Architect – Professional Exam Guide v1.0, Section 3, Anthropic (https://everpath-course-content.s3-accelerate.amazonaws.com/instructor/6nizmqk8tpzpfjvt6qmmav7rh/public/1783542810/Claude%20Certified%20Architect%20%E2%80%93%20Professional%20Exam%20Guide.pdf)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The Exam Guide defines the architect's audience as mid- to senior-level professionals who "translate business problems into scalable AI-driven solutions" and who are involved in stakeholder engagement, advising clients or internal teams, and leading architectural decisions — including security, legal, and executive discussions.</li>
+<li>Discovery therefore has to surface more than features: the business problem, the decision the system will influence, data sources and their owners, regulatory constraints, and what success is measured by.</li>
+<li>The MQC profile sets the bar for requirements quality: experience delivering end-to-end systems from discovery through deployment and operationalization, and fluency in trade-offs among cost, latency, performance, safety, and maintainability.</li>
+<li>Hard platform constraints belong in discovery, not in production surprises: the API's rate limits and spend limits are set by usage tier at the organization level, and limits are maximums, not guaranteed minimums.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Run discovery that separates the stated request ("build a chatbot") from the underlying business outcome, users, and decision rights.</li>
+<li>Capture non-functional requirements explicitly — accuracy bar, latency, budget ceiling, data classes, compliance regime — and get stakeholders to rank the trade-offs among them.</li>
+<li>Identify the stakeholders who can block launch (security, legal, data owners) and bring their requirements into the design phase.</li>
+</ul>
+<p><strong>Official sources:</strong> Official CCAR-P Exam Guide v1.0, Sections 3–4 and 6 · <a href="https://platform.claude.com/docs/en/api/rate-limits">Rate limits</a></p></div><div class="cell zh"><h2>6.1 进行结构化的发现与需求收集</h2>
+<p><em>EN: Conduct structured discovery and requirement gathering</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "These professionals translate business problems into scalable AI-driven solutions, including model selection, prompt engineering, orchestration of tools and agents, context management, and ensuring system safety, compliance, and governance."
+— Claude Certified Architect – Professional Exam Guide v1.0, Section 3, Anthropic (https://everpath-course-content.s3-accelerate.amazonaws.com/instructor/6nizmqk8tpzpfjvt6qmmav7rh/public/1783542810/Claude%20Certified%20Architect%20%E2%80%93%20Professional%20Exam%20Guide.pdf)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>考试指南把架构师的受众定义为中高级专业人员，他们「把业务问题转化为可扩展的 AI 驱动解决方案」，并参与利益相关方沟通、为客户或内部团队提供咨询、主导架构决策 —— 包括安全、法律与高管层面的讨论。</li>
+<li>因此，发现阶段必须浮现出功能之外的东西：业务问题、系统将影响的决定、数据来源及其所有者、监管约束，以及成功用什么来度量。</li>
+<li>MQC 画像为需求质量设定了标尺：从发现到部署与运营交付端到端系统的经验，以及对成本、延迟、性能、安全与可维护性之间权衡的熟练掌握。</li>
+<li>硬性的平台约束属于发现阶段，而不是生产中的意外：API 的速率限制（rate limits）与支出限制（spend limits）按使用层级在组织层面设定，且这些限制是最大值、不是保证的最小值。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>运行能把明述的需求（「做一个聊天机器人」）与背后的业务结果、用户与决策权分开的发现流程。</li>
+<li>明确捕获非功能需求 —— 准确性标尺、延迟、预算上限、数据类别、合规 regime —— 并让利益相关方对它们之间的权衡排序。</li>
+<li>识别能阻挡上线的利益相关方（安全、法律、数据所有者），并把他们的需求带入设计阶段。</li>
+</ul>
+<p><strong>官方来源：</strong> 官方 CCAR-P 考试指南 v1.0，第 3–4 与 6 节 · <a href="https://platform.claude.com/docs/en/api/rate-limits">速率限制（Rate limits）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>6.2 Communicate architectural decisions and trade-offs</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Collaborate with cross-functional stakeholders and communicate architectural decisions effectively"
+— Claude Certified Architect – Professional Exam Guide v1.0, Section 2, Anthropic (https://everpath-course-content.s3-accelerate.amazonaws.com/instructor/6nizmqk8tpzpfjvt6qmmav7rh/public/1783542810/Claude%20Certified%20Architect%20%E2%80%93%20Professional%20Exam%20Guide.pdf)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The Guide's candidate profile is explicit that the architect communicates architectural decisions effectively to cross-functional stakeholders; the technical content of those decisions is the other six domains (pattern selection, model choice, integration mechanism, evaluation results).</li>
+<li>Every major decision is a trade-off with a stakeholder-visible consequence: workflow vs. agent (predictability vs. flexibility), model tier (quality vs. cost and latency), caching and context strategy (cost vs. freshness), and guardrail strictness (safety vs. false refusals and friction).</li>
+<li>Platform facts anchor honest communication: rate limits replenish via a token bucket and are ceilings rather than guarantees, spend caps pause API usage when reached, and evaluation results — not demos — are the evidence for quality claims.</li>
+<li>Communication is audience-specific: executives need outcome, cost, and risk; security and legal need data handling and controls; engineers need interfaces, limits, and failure behavior.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Present a decision as options with quantified consequences (cost, latency, accuracy, risk) and a recommendation, rather than as a single take-it-or-leave-it design.</li>
+<li>Translate a technical limitation (a rate-limit tier, a retention arrangement, a model's known failure mode) into the business consequence a stakeholder actually cares about.</li>
+<li>Record decisions and their rationale so a later stakeholder can see why an alternative was rejected.</li>
+</ul>
+<p><strong>Official sources:</strong> Official CCAR-P Exam Guide v1.0, Sections 2, 4 and 6 · <a href="https://platform.claude.com/docs/en/api/rate-limits">Rate limits</a> · <a href="https://platform.claude.com/docs/en/manage-claude/api-and-data-retention">API and data retention</a></p></div><div class="cell zh"><h2>6.2 传达架构决策与权衡</h2>
+<p><em>EN: Communicate architectural decisions and trade-offs</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Collaborate with cross-functional stakeholders and communicate architectural decisions effectively"
+— Claude Certified Architect – Professional Exam Guide v1.0, Section 2, Anthropic (https://everpath-course-content.s3-accelerate.amazonaws.com/instructor/6nizmqk8tpzpfjvt6qmmav7rh/public/1783542810/Claude%20Certified%20Architect%20%E2%80%93%20Professional%20Exam%20Guide.pdf)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>指南的考生画像明确指出，架构师要有效地向跨职能利益相关方传达架构决策；这些决策的技术内容就是其他六个领域（模式选择、模型选择、集成机制、评估结果）。</li>
+<li>每个重大决策都是一个带有利益相关方可见后果的权衡：工作流 vs. 智能体（可预测性 vs. 灵活性）、模型层级（质量 vs. 成本与延迟）、缓存与上下文策略（成本 vs. 新鲜度），以及护栏严格程度（安全 vs. 误拒与摩擦）。</li>
+<li>平台事实锚定诚实的沟通：速率限制通过令牌桶（token bucket）补充、且是上限而非保证，支出上限在达到时暂停 API 使用，评估结果 —— 而不是演示 —— 是质量主张的证据。</li>
+<li>沟通是因受众而异的：高管需要结果、成本与风险；安全与法律需要数据处理与控制；工程师需要接口、限额与失败行为。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>把一个决策呈现为带量化后果（成本、延迟、准确性、风险）的选项加一个推荐，而不是一个不容商量的设计。</li>
+<li>把一个技术限制（一个速率限制层级、一个保留安排、一个模型的已知失败模式）翻译成利益相关方真正关心的业务后果。</li>
+<li>记录决策及其理由，使后来的利益相关方能看到某个替代方案为何被拒绝。</li>
+</ul>
+<p><strong>官方来源：</strong> 官方 CCAR-P 考试指南 v1.0，第 2、4 与 6 节 · <a href="https://platform.claude.com/docs/en/api/rate-limits">速率限制（Rate limits）</a> · <a href="https://platform.claude.com/docs/en/manage-claude/api-and-data-retention">API 与数据保留（API and data retention）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>6.3 Manage stakeholder feedback loops and expectation alignment (including SLAs)</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "All limits described here represent maximum allowed usage, not guaranteed minimums."
+— Rate limits, Anthropic (https://platform.claude.com/docs/en/api/rate-limits)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The Guide lists managing stakeholder feedback loops and expectation alignment, including SLAs, as an objective; the recurring exam pattern is that an SLA must be measurable and grounded in observed performance, never promised from a demo or a hope.</li>
+<li>The platform quantities an SLA can honestly rest on are documented: usage tiers with RPM, input-token and output-token limits per minute, monthly spend caps by tier, and the fact that hitting a spend cap pauses usage until the next month unless a higher limit is arranged.</li>
+<li>Expectation alignment includes model behavior: stakeholders must hear, early, that outputs can be incorrect or inconsistent, that guardrails will refuse some legitimate-looking requests, and that human review is part of the design for high-stakes outputs.</li>
+<li>Feedback loops need an operational channel: production monitoring and usage analytics are what turn stakeholder complaints ("it feels slower / worse") into measurable signals that can be checked against the agreed metrics.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Convert a stakeholder demand ("99% accurate, never misses") into a measurable metric, a measured baseline from an evaluation set, and a human-review backstop for the residual risk.</li>
+<li>Set expectations about capacity in writing: current tier limits, what happens at the cap, and the lead time and process for requesting higher limits.</li>
+<li>Run a regular review cadence where monitoring data, user feedback, and SLA performance are examined together and changes are agreed, not improvised.</li>
+</ul>
+<p><strong>Official sources:</strong> Official CCAR-P Exam Guide v1.0, Section 6 (Domain 6 objectives) · <a href="https://platform.claude.com/docs/en/api/rate-limits">Rate limits</a> · <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations">Reduce hallucinations</a></p></div><div class="cell zh"><h2>6.3 管理利益相关方反馈回路与期望对齐（包括 SLA）</h2>
+<p><em>EN: Manage stakeholder feedback loops and expectation alignment (including SLAs)</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "All limits described here represent maximum allowed usage, not guaranteed minimums."
+— Rate limits, Anthropic (https://platform.claude.com/docs/en/api/rate-limits)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>指南把管理利益相关方反馈回路与期望对齐（包括 SLA）列为一个目标；反复出现的考试模式是：SLA 必须可度量、且以观察到的表现为依据，绝不能从一次演示或一个希望中承诺出来。</li>
+<li>SLA 能诚实依赖的平台量是有文档记录的：使用层级及其 RPM、每分钟输入 token 与输出 token 限制、按层级的每月支出上限，以及达到支出上限会暂停使用、直至下个月（除非安排了更高的限制）这一事实。</li>
+<li>期望对齐包括模型行为：利益相关方必须早早听到，输出可能不正确或不一致，护栏会拒绝一些看起来合理的请求，且对高风险输出而言人工审查是设计的一部分。</li>
+<li>反馈回路需要一个运营通道：生产监控与使用分析正是把利益相关方的抱怨（「感觉变慢了 / 变差了」）转化为可对照约定指标核查的可度量信号的东西。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>把利益相关方的要求（「99% 准确，永不遗漏」）转化为一个可度量的指标、一个从评估集测得的基线，以及为残余风险准备的人工审查兜底。</li>
+<li>以书面形式设定关于容量的期望：当前层级限制、达到上限时会发生什么，以及申请更高限制的提前期与流程。</li>
+<li>运行一个定期的评审节奏，在其中一起检视监控数据、用户反馈与 SLA 表现，并达成一致的改动，而不是即兴发挥。</li>
+</ul>
+<p><strong>官方来源：</strong> 官方 CCAR-P 考试指南 v1.0，第 6 节（领域 6 目标） · <a href="https://platform.claude.com/docs/en/api/rate-limits">速率限制（Rate limits）</a> · <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations">减少幻觉（Reduce hallucinations）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>6.4 Document architectures and provide implementation guidance</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Settings merge across managed, user, project, and local scopes. Managed settings apply first when present. Among the rest, the closer scope overrides the broader one in the order local, then project, then user."
+— Debug your configuration, Anthropic (https://code.claude.com/docs/en/debug-your-config)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The Guide expects the architect to document architectures and provide implementation guidance; in Anthropic's own documentation culture, guidance is written against named, versioned surfaces — settings files, permission rules, hooks, and docs pages — not tribal knowledge.</li>
+<li>Claude Code illustrates the standard: configuration is inspectable. <code>/status</code> shows which settings sources are active, <code>/context</code> shows what actually loaded, and the debug guide exists because "the file didn't load, loaded from a different location, or was overridden" is the normal failure mode of undocumented configuration.</li>
+<li>Implementation guidance must include the operational facts a builder needs: which settings scope wins (managed settings apply first; among the rest, local overrides project, which overrides user), where credentials come from, and which features are ineligible under the organization's data arrangement.</li>
+<li>Documentation is also a compliance artifact: data flows, retention arrangements, guardrail layers, and approval points are what security and legal reviewers sign off on.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Write an architecture document a new engineer can build from: components, data flow, model and pattern choices with rationale, limits, and failure behavior.</li>
+<li>Document configuration as code: settings, permission rules, and hooks checked into version control, with the precedence order stated so behavior is reproducible.</li>
+<li>Keep guidance current by tying it to the inspectable system (commands that show what loaded and which rules are in effect) rather than to screenshots or memory.</li>
+</ul>
+<p><strong>Official sources:</strong> Official CCAR-P Exam Guide v1.0, Section 6 (Domain 6 objectives) · <a href="https://code.claude.com/docs/en/debug-your-config">Debug your configuration — Claude Code</a> · <a href="https://code.claude.com/docs/en/permissions">Configure permissions — Claude Code</a></p></div><div class="cell zh"><h2>6.4 记录架构并提供实施指引</h2>
+<p><em>EN: Document architectures and provide implementation guidance</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Settings merge across managed, user, project, and local scopes. Managed settings apply first when present. Among the rest, the closer scope overrides the broader one in the order local, then project, then user."
+— Debug your configuration, Anthropic (https://code.claude.com/docs/en/debug-your-config)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>指南期望架构师记录架构并提供实施指引；在 Anthropic 自己的文档文化中，指引是针对具名的、带版本的表面来写的 —— 设置文件、权限规则、hooks 与文档页面 —— 而不是部落知识（tribal knowledge）。</li>
+<li>Claude Code 说明了这个标准：配置是可检查的。<code>/status</code> 显示哪些设置来源在生效，<code>/context</code> 显示实际加载了什么，调试指南之所以存在，是因为「文件没有加载、从不同位置加载，或被覆盖」是未记录配置的常态失败模式。</li>
+<li>实施指引必须包括构建者需要的运营事实：哪个设置作用域胜出（托管设置最先应用；其余之中，本地覆盖项目，项目覆盖用户）、凭据来自哪里，以及哪些功能在组织的数据安排下没有资格。</li>
+<li>文档也是一件合规工件：数据流、保留安排、护栏层与批准点，正是安全与法律审查者签字认可的东西。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>写一份新工程师能照着构建的架构文档：组件、数据流、带理由的模型与模式选择、限额与失败行为。</li>
+<li>把配置记录为代码：设置、权限规则与 hooks 签入版本控制，并写明优先级顺序，使行为可复现。</li>
+<li>通过把指引绑定到可检查的系统（显示加载了什么、哪些规则在生效的命令）来保持指引的时效性，而不是绑定到截图或记忆。</li>
+</ul>
+<p><strong>官方来源：</strong> 官方 CCAR-P 考试指南 v1.0，第 6 节（领域 6 目标） · <a href="https://code.claude.com/docs/en/debug-your-config">调试你的配置 — Claude Code（Debug your configuration — Claude Code）</a> · <a href="https://code.claude.com/docs/en/permissions">配置权限 — Claude Code（Configure permissions — Claude Code）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>6.5 Support lifecycle phases (discovery, design, handoff, monitoring, iteration)</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Earning the credential signals to employers, clients, and teams that the holder can own or significantly contribute to the full lifecycle of a Claude-powered system."
+— Claude Certified Architect – Professional Exam Guide v1.0, Section 2, Anthropic (https://everpath-course-content.s3-accelerate.amazonaws.com/instructor/6nizmqk8tpzpfjvt6qmmav7rh/public/1783542810/Claude%20Certified%20Architect%20%E2%80%93%20Professional%20Exam%20Guide.pdf)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The lifecycle in the objective — discovery, design, handoff, monitoring, iteration — mirrors the Guide's description of the role: owning or significantly contributing to the full lifecycle of a Claude-powered system, from discovery through deployment and operationalization.</li>
+<li>Monitoring is a documented discipline, not an afterthought: for the API, outputs are analyzed continuously for problems such as successful injection, and findings feed back into prompts, validation, and filtering. For Claude Code, usage, cost, and tool activity across an organization can be exported via OpenTelemetry, and analytics dashboards track adoption and contribution metrics.</li>
+<li>Handoff succeeds when the receiving team can inspect and operate the system without the original architect: resolved settings, permission rules, evaluation sets, and runbooks are the handoff artifacts.</li>
+<li>Iteration is triggered by evidence — monitoring signals, evaluation regressions, stakeholder feedback, model or pricing changes — and each change re-enters the lifecycle at design, with its trade-offs re-communicated.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Plan the lifecycle at design time: define what will be monitored, who owns it after handoff, and what threshold triggers an iteration cycle.</li>
+<li>Execute a handoff checklist: architecture document, configuration in version control, evaluation set and baseline scores, known limitations, and escalation paths.</li>
+<li>Close the loop: turn a monitoring signal (rising refusals, cost growth, injection attempts, adoption drop) into a scoped change with re-evaluation before release.</li>
+</ul>
+<p><strong>Official sources:</strong> Official CCAR-P Exam Guide v1.0, Sections 2, 4 and 6 · <a href="https://code.claude.com/docs/en/monitoring-usage">Monitoring — Claude Code</a> · <a href="https://code.claude.com/docs/en/analytics">Track team usage with analytics — Claude Code</a> · <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks">Mitigate jailbreaks and prompt injections</a></p></div><div class="cell zh"><h2>6.5 支持生命周期各阶段（发现、设计、交接、监控、迭代）</h2>
+<p><em>EN: Support lifecycle phases (discovery, design, handoff, monitoring, iteration)</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Earning the credential signals to employers, clients, and teams that the holder can own or significantly contribute to the full lifecycle of a Claude-powered system."
+— Claude Certified Architect – Professional Exam Guide v1.0, Section 2, Anthropic (https://everpath-course-content.s3-accelerate.amazonaws.com/instructor/6nizmqk8tpzpfjvt6qmmav7rh/public/1783542810/Claude%20Certified%20Architect%20%E2%80%93%20Professional%20Exam%20Guide.pdf)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>该目标中的生命周期 —— 发现、设计、交接、监控、迭代 —— 镜像了指南对这个角色的描述：拥有或显著贡献于一个 Claude 驱动系统的完整生命周期，从发现到部署与运营。</li>
+<li>监控是一门有文档记录的纪律，不是一个事后想法：对 API 而言，输出被持续分析以发现诸如成功注入之类的问题，发现会反馈进提示、校验与过滤。对 Claude Code 而言，一个组织内的使用、成本与工具活动可通过 OpenTelemetry 导出，分析仪表盘跟踪采用与贡献指标。</li>
+<li>交接成功，是当接收团队无需原架构师就能检查并运营这个系统时：已解析的设置、权限规则、评估集与运行手册（runbooks）就是交接工件。</li>
+<li>迭代由证据触发 —— 监控信号、评估回归、利益相关方反馈、模型或定价变化 —— 每个改动都在设计阶段重新进入生命周期，其权衡被重新传达。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>在设计时就规划生命周期：定义将监控什么、交接后谁拥有它，以及什么阈值触发一个迭代周期。</li>
+<li>执行一份交接清单：架构文档、版本控制中的配置、评估集与基线分数、已知局限与升级路径。</li>
+<li>闭合回路：把一个监控信号（拒绝率上升、成本增长、注入尝试、采用率下降）转化为一个有范围的改动，并在发布前重新评估。</li>
+</ul>
+<p><strong>官方来源：</strong> 官方 CCAR-P 考试指南 v1.0，第 2、4 与 6 节 · <a href="https://code.claude.com/docs/en/monitoring-usage">监控 — Claude Code（Monitoring — Claude Code）</a> · <a href="https://code.claude.com/docs/en/analytics">用分析跟踪团队使用 — Claude Code（Track team usage with analytics — Claude Code）</a> · <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks">缓解越狱与提示注入（Mitigate jailbreaks and prompt injections）</a></p></div></div>
+<div class="band" id="d7"><div class="band-en">Domain 7: Developer Productivity &amp; Operational Enablement (7%)</div><div class="band-zh">领域 7：开发者生产力与运营赋能（Domain 7: Developer Productivity &amp; Operational Enablement）（7%）</div></div>
+<div class="row obj"><div class="cell en"><h2>7.1 Configure Claude tools and environments for teams (e.g., Claude Code)</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Claude Code supports fine-grained permissions so that you can specify exactly what the agent is allowed to do and what it can’t. You can check permission settings into version control to share them with every developer in your organization."
+— Configure permissions, Anthropic (https://code.claude.com/docs/en/permissions)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Claude Code configuration is layered by scope: managed settings apply first when present, then local, project, and user settings, with command-line flags and environment variables as a further override layer. Administrators use managed (enterprise policy) settings to enforce rules users cannot override.</li>
+<li>Permissions are fine-grained and shareable: allow, ask, and deny rules are evaluated in that precedence order (deny first), can be checked into version control and distributed to the whole organization, and are inspected with <code>/permissions</code>, which shows each rule and the settings file it came from.</li>
+<li>Permission modes set the default posture (for example <code>default</code>/Manual prompts before most edits, shell commands, and network requests; plan mode allows analysis without modification), and hooks extend permissions with custom shell commands evaluated at runtime — a <code>PreToolUse</code> hook runs before the permission prompt and can deny, force a prompt, or let a call proceed.</li>
+<li>Team setup also covers identity and cost surfaces: authentication via Claude.ai, the Anthropic API, Amazon Bedrock, or Google Vertex AI; OpenTelemetry export configured by administrators through managed settings; and analytics dashboards for Team/Enterprise and API organizations.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Design a team's baseline configuration: managed policy for non-negotiables, project settings shared in version control, and personal overrides kept local.</li>
+<li>Write permission rules that pre-approve routine safe actions, ask before consequential ones, and deny secrets and destructive paths — then verify with <code>/permissions</code> and <code>/status</code> what actually resolved.</li>
+<li>Roll out configuration safely: validate settings files (an invalid file surfaces in <code>claude doctor</code>), pilot on one team, and confirm managed settings are in effect before fleet-wide deployment.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://code.claude.com/docs/en/permissions">Configure permissions — Claude Code</a> · <a href="https://code.claude.com/docs/en/debug-your-config">Debug your configuration — Claude Code</a> · <a href="https://code.claude.com/docs/en/monitoring-usage">Monitoring — Claude Code</a></p></div><div class="cell zh"><h2>7.1 为团队配置 Claude 工具与环境（例如 Claude Code）</h2>
+<p><em>EN: Configure Claude tools and environments for teams (e.g., Claude Code)</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Claude Code supports fine-grained permissions so that you can specify exactly what the agent is allowed to do and what it can’t. You can check permission settings into version control to share them with every developer in your organization."
+— Configure permissions, Anthropic (https://code.claude.com/docs/en/permissions)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>Claude Code 的配置按作用域分层：托管设置（managed settings）在存在时最先应用，然后是本地、项目与用户设置，命令行标志与环境变量是又一层覆盖。管理员使用托管（企业政策）设置来强制执行用户不能覆盖的规则。</li>
+<li>权限是细粒度且可共享的：allow、ask 与 deny 规则按该优先级顺序评估（deny 最先），可以签入版本控制并分发到整个组织，并可用 <code>/permissions</code> 检查，它显示每条规则及其来自的设置文件。</li>
+<li>权限模式设定默认姿态（例如 <code>default</code>/Manual 在大多数编辑、shell 命令与网络请求之前提示；plan 模式允许分析而不修改），hooks 用在运行时评估的自定义 shell 命令扩展权限 —— 一个 <code>PreToolUse</code> hook 在权限提示之前运行，可以拒绝、强制提示，或放行一次调用。</li>
+<li>团队设置还涵盖身份与成本表面：通过 Claude.ai、Anthropic API、Amazon Bedrock 或 Google Vertex AI 进行认证；由管理员通过托管设置配置的 OpenTelemetry 导出；以及面向 Team/Enterprise 与 API 组织的分析仪表盘。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>设计一个团队的基线配置：托管政策管不可商量的部分，项目设置在版本控制中共享，个人覆盖保持本地。</li>
+<li>编写权限规则，预先批准例行的安全行动、对有后果的行动先询问、并拒绝秘密与破坏性路径 —— 然后用 <code>/permissions</code> 与 <code>/status</code> 验证实际解析出的结果。</li>
+<li>安全地推出配置：验证设置文件（无效文件会在 <code>claude doctor</code> 中显现），先在一个团队试点，并在全队部署前确认托管设置已生效。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://code.claude.com/docs/en/permissions">配置权限 — Claude Code（Configure permissions — Claude Code）</a> · <a href="https://code.claude.com/docs/en/debug-your-config">调试你的配置 — Claude Code（Debug your configuration — Claude Code）</a> · <a href="https://code.claude.com/docs/en/monitoring-usage">监控 — Claude Code（Monitoring — Claude Code）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>7.2 Improve developer workflows using AI-assisted tooling</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Claude Code provides analytics dashboards to help organizations understand developer usage patterns, track contribution metrics, and measure how Claude Code impacts engineering velocity."
+— Track team usage with analytics, Anthropic (https://code.claude.com/docs/en/analytics)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Programmatic use is a first-class workflow: Claude Code runs non-interactively (<code>claude -p</code>) for scripts and CI, where permissions must be declared up front (allowed tools, permission mode, turn and budget caps) because no human is present to answer prompts, and JSON output makes results, session IDs, and cost machine-readable.</li>
+<li>Hooks turn conventions into enforcement: because a hook runs regardless of what the model decides, checks such as running tests or a linter after edits belong in <code>PostToolUse</code>/<code>Stop</code> hooks rather than as requests in <code>CLAUDE.md</code>.</li>
+<li>Shared project knowledge is configuration, not chat history: <code>CLAUDE.md</code>, project skills, subagents, and MCP servers load per session and per scope, and <code>/context</code> and <code>/skills</code> show what is actually available — workflow improvements stick when they are encoded in these surfaces.</li>
+<li>Adoption is measurable: analytics dashboards report lines of code accepted, suggestion accept rate, daily active users and sessions, and contribution metrics such as PRs shipped with Claude Code assistance, which is how a workflow change is justified or rolled back.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Move a repeated manual pattern into the right surface: a hook for always-run checks, a skill for reusable know-how, project settings for team-wide permissions, a headless CI job for routine reviews.</li>
+<li>Automate a CI task end to end with declared permissions and cost caps, and verify it fails safe (denies what nothing approved) rather than hanging on a prompt.</li>
+<li>Measure a workflow change with the analytics surfaces (accept rate, active users, PRs) before and after, instead of relying on anecdote.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://code.claude.com/docs/en/analytics">Track team usage with analytics — Claude Code</a> · <a href="https://code.claude.com/docs/en/debug-your-config">Debug your configuration — Claude Code</a> · <a href="https://code.claude.com/docs/en/permissions">Configure permissions — Claude Code</a></p></div><div class="cell zh"><h2>7.2 用 AI 辅助工具改进开发者工作流</h2>
+<p><em>EN: Improve developer workflows using AI-assisted tooling</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Claude Code provides analytics dashboards to help organizations understand developer usage patterns, track contribution metrics, and measure how Claude Code impacts engineering velocity."
+— Track team usage with analytics, Anthropic (https://code.claude.com/docs/en/analytics)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>程序化使用是一等的工作流：Claude Code 以非交互方式运行（<code>claude -p</code>）用于脚本与 CI，在那里权限必须预先声明（允许的工具、权限模式、轮次与预算上限），因为没有人在场回答提示，且 JSON 输出使结果、会话 ID 与成本可被机器读取。</li>
+<li>Hooks 把约定变成强制：因为 hook 无论模型决定什么都会运行，诸如在编辑后运行测试或 linter 之类的检查属于 <code>PostToolUse</code>/<code>Stop</code> hooks，而不是 <code>CLAUDE.md</code> 中的请求。</li>
+<li>共享的项目知识是配置，不是聊天历史：<code>CLAUDE.md</code>、项目 skills、子智能体与 MCP 服务器按会话、按作用域加载，<code>/context</code> 与 <code>/skills</code> 显示实际可用的东西 —— 工作流改进在被编码进这些表面时才能留存。</li>
+<li>采用是可度量的：分析仪表盘报告被接受的代码行数、建议接受率、每日活跃用户与会话，以及诸如在 Claude Code 协助下发布的 PR 等贡献指标，这正是工作流改动被证明合理或被回滚的方式。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>把一个重复的手工模式搬到正确的表面：总是运行的检查用 hook，可复用的诀窍用 skill，团队范围的权限用项目设置，例行审查用无头（headless）CI 任务。</li>
+<li>以声明好的权限与成本上限端到端地自动化一个 CI 任务，并验证它在失败时是安全的（拒绝未被任何人批准的东西），而不是卡在一个提示上。</li>
+<li>在改动前后用分析表面（接受率、活跃用户、PR）度量一次工作流改动，而不是依赖轶事。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://code.claude.com/docs/en/analytics">用分析跟踪团队使用 — Claude Code（Track team usage with analytics — Claude Code）</a> · <a href="https://code.claude.com/docs/en/debug-your-config">调试你的配置 — Claude Code（Debug your configuration — Claude Code）</a> · <a href="https://code.claude.com/docs/en/permissions">配置权限 — Claude Code（Configure permissions — Claude Code）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>7.3 Support debugging and operational issue resolution</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "When Claude ignores an instruction or a feature you configured doesn’t appear, the cause is usually that the file didn’t load, it loaded from a different location than you expected, or another file overrode it."
+— Debug your configuration, Anthropic (https://code.claude.com/docs/en/debug-your-config)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Claude Code ships a structured debugging path: <code>/context</code> shows what occupies the context window and where each item loaded from; <code>/doctor</code> checks installation health, invalid settings files, and unused extensions and proposes fixes; <code>/debug [issue]</code> enables debug logging; <code>/status</code> shows active settings sources including whether managed settings are in effect.</li>
+<li>The debug guide's central lesson is that most "Claude ignored my instruction" cases are configuration resolution problems — the file did not load, loaded from a different location than expected, or was overridden by a closer scope or an environment variable — not model problems.</li>
+<li>Component-specific checks exist for each surface: <code>/mcp</code> for server connection status (project-scoped servers need a one-time approval; a connected server listing zero tools has a tool-list problem), <code>/hooks</code> for registered hooks (a hook that does not appear was not loaded; one that appears but does not fire usually has a matcher problem), and <code>/permissions</code> for resolved rules.</li>
+<li>Isolation is built in: <code>claude --safe-mode</code> starts a session with customizations (CLAUDE.md, skills, plugins, hooks, MCP servers) disabled while authentication, model selection, and permissions still work, so an operator can bisect whether a problem follows the configuration or the environment. Operational monitoring (OpenTelemetry metrics and events, analytics) covers the fleet-level view beyond a single session.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Triage in order: reproduce, inspect what loaded (<code>/context</code>, <code>/status</code>), check the specific surface (<code>/mcp</code>, <code>/hooks</code>, <code>/permissions</code>), then bisect with safe mode before changing anything.</li>
+<li>Distinguish the three root-cause classes — not loaded, loaded from the wrong place, overridden — and fix at the scope that actually wins.</li>
+<li>Feed recurring operational issues back into team configuration (a corrected matcher, a missing deny rule, a managed-settings fix) so the same incident does not recur per developer.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://code.claude.com/docs/en/debug-your-config">Debug your configuration — Claude Code</a> · <a href="https://code.claude.com/docs/en/monitoring-usage">Monitoring — Claude Code</a></p>
+<hr /></div><div class="cell zh"><h2>7.3 支持调试与运营问题解决</h2>
+<p><em>EN: Support debugging and operational issue resolution</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "When Claude ignores an instruction or a feature you configured doesn’t appear, the cause is usually that the file didn’t load, it loaded from a different location than you expected, or another file overrode it."
+— Debug your configuration, Anthropic (https://code.claude.com/docs/en/debug-your-config)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>Claude Code 带有一条结构化的调试路径：<code>/context</code> 显示什么占据了上下文窗口、每项从哪里加载；<code>/doctor</code> 检查安装健康、无效的设置文件与未使用的扩展，并提出修复；<code>/debug [issue]</code> 启用调试日志；<code>/status</code> 显示在生效的设置来源，包括托管设置是否在生效。</li>
+<li>调试指南的核心教训是：大多数「Claude 忽略了我的指令」的案例是配置解析问题 —— 文件没有加载、从与预期不同的位置加载，或被更近的作用域或环境变量覆盖 —— 不是模型问题。</li>
+<li>每个表面都有组件专属的检查：<code>/mcp</code> 看服务器连接状态（项目作用域的服务器需要一次性批准；一个已连接但列出零个工具的服务器有工具列表问题），<code>/hooks</code> 看已注册的 hooks（一个没有出现的 hook 是没被加载；一个出现了却不触发的通常有匹配器（matcher）问题），<code>/permissions</code> 看已解析的规则。</li>
+<li>隔离是内置的：<code>claude --safe-mode</code> 启动一个禁用了自定义项（CLAUDE.md、skills、插件、hooks、MCP 服务器）的会话，而认证、模型选择与权限仍然工作，因此运营者可以二分定位问题是跟随配置还是跟随环境。运营监控（OpenTelemetry 指标与事件、分析）覆盖单个会话之外的全队视图。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>按顺序分诊：复现、检查加载了什么（<code>/context</code>、<code>/status</code>）、检查具体表面（<code>/mcp</code>、<code>/hooks</code>、<code>/permissions</code>），然后在改动任何东西之前用安全模式二分定位。</li>
+<li>区分三类根因 —— 没加载、从错误位置加载、被覆盖 —— 并在实际胜出的作用域上修复。</li>
+<li>把反复出现的运营问题反馈进团队配置（一个修正过的匹配器、一条缺失的 deny 规则、一个托管设置修复），使同一次事故不会在每个开发者身上重演。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://code.claude.com/docs/en/debug-your-config">调试你的配置 — Claude Code（Debug your configuration — Claude Code）</a> · <a href="https://code.claude.com/docs/en/monitoring-usage">监控 — Claude Code（Monitoring — Claude Code）</a></p>
+<hr /></div></div>
+<div class="band" id="samples"><div class="band-en">Official Sample Questions</div><div class="band-zh">官方样题</div></div>
+<div class="row obj"><div class="cell en"><p>From Section 8 of the official Exam Guide v1.0. These illustrative items show the style and cognitive level of the exam; they are not drawn from the live item bank.</p>
+<h2>Sample 1 · Domain 3 — Integration</h2>
+<p>A team exposes a customer-support agent that can read tickets, draft replies, issue refunds, and delete user accounts. Support staff only ever need to read tickets and draft replies. Applying least-privilege principles, which change best reduces risk?</p>
+<ul>
+<li>A. Add logging to the refund and delete tools so misuse can be audited later.</li>
+<li>B. Remove the refund and delete tools from the agent's configuration entirely.</li>
+<li>C. Keep all tools but add a confirmation prompt before refunds and deletions.</li>
+<li>D. Replace the agent with a larger model that follows instructions more reliably.</li>
+</ul>
+<p><strong>Answer: B.</strong> Least privilege means removing capabilities the role does not require, eliminating the attack surface rather than monitoring or guarding it. Logging (A) and confirmations (C) are detective/compensating controls, not removal of unnecessary privilege; model size (D) is unrelated to authorization scope.</p>
+<h2>Sample 2 · Domain 2 — Models, Prompting &amp; Context Engineering</h2>
+<p>An application sends the same 8,000-token system prompt and policy document on every request, followed by a short, varying user message. Latency and cost are both concerns. Which optimization most directly addresses both?</p>
+<ul>
+<li>A. Truncate the policy document to the first 1,000 tokens.</li>
+<li>B. Switch to the smallest available model regardless of task fit.</li>
+<li>C. Place the static system prompt and policy before the dynamic content and enable prompt caching.</li>
+<li>D. Move the policy document into a few-shot example block.</li>
+</ul>
+<p><strong>Answer: C.</strong> Ordering stable content first and enabling prompt caching lets repeated prefixes be reused, reducing both time-to-first-token and per-request cost without discarding required context. Truncation (A) loses needed policy; downsizing blindly (B) risks quality; relocating to few-shot (D) does not create a cacheable, reusable prefix.</p>
+<h2>Sample 3 · Domain 4 — Evaluation, Testing &amp; Optimization</h2>
+<p>A RAG system suddenly returns confident but incorrect answers after a document refresh, while latency and model version are unchanged. What is the most likely first place to investigate?</p>
+<ul>
+<li>A. The model weights have silently changed.</li>
+<li>B. The retrieval/indexing step is returning irrelevant or stale chunks.</li>
+<li>C. The temperature setting is too low.</li>
+<li>D. The context window has shrunk.</li>
+</ul>
+<p><strong>Answer: B.</strong> Confident-but-wrong answers following a document refresh, with model and latency unchanged, point to retrieval feeding the model poor context — for example a broken re-index or mismatched embeddings. The other options would not be triggered specifically by a document refresh.</p></div><div class="cell zh"><p>来自官方考试指南 v1.0 第 8 节。这些示例题目展示考试的风格与认知层级；它们并非取自真实题库。</p>
+<h2>样题 1 · 领域 3 — 集成（Sample 1 · Domain 3 — Integration）</h2>
+<p>一个团队暴露了一个客户支持智能体，它能读工单、起草回复、发放退款并删除用户账户。支持人员实际只需要读工单和起草回复。运用最小权限原则，哪项改动最能降低风险？</p>
+<ul>
+<li>A. 为退款与删除工具添加日志，以便滥用可在事后审计。</li>
+<li>B. 把退款与删除工具从智能体的配置中完全移除。</li>
+<li>C. 保留全部工具，但在退款与删除之前添加一个确认提示。</li>
+<li>D. 把智能体换成一个更大的、更可靠地遵循指令的模型。</li>
+</ul>
+<p><strong>答案：B。</strong> 最小权限意味着移除该角色不需要的能力，消除攻击面，而不是监控或守卫它。日志（A）与确认（C）是侦测性/补偿性控制，不是移除不必要的权限；模型大小（D）与授权范围无关。</p>
+<h2>样题 2 · 领域 2 — 模型、提示与上下文工程（Sample 2 · Domain 2 — Models, Prompting &amp; Context Engineering）</h2>
+<p>一个应用在每次请求中都发送同样的 8,000 token 系统提示与政策文档，后面跟着一条简短的、变化的用户消息。延迟与成本都令人担忧。哪项优化最直接地同时解决这两者？</p>
+<ul>
+<li>A. 把政策文档截断到前 1,000 个 token。</li>
+<li>B. 不顾任务适配，换成可用的最小模型。</li>
+<li>C. 把静态的系统提示与政策放在动态内容之前，并启用提示缓存（prompt caching）。</li>
+<li>D. 把政策文档移进一个少样本示例块。</li>
+</ul>
+<p><strong>答案：C。</strong> 把稳定内容排在前面并启用提示缓存，使重复的前缀能被复用，在不丢弃必需上下文的情况下同时减少首 token 时间与每请求成本。截断（A）会丢失需要的政策；盲目缩小模型（B）有质量风险；移到少样本（D）并不能创造一个可缓存、可复用的前缀。</p>
+<h2>样题 3 · 领域 4 — 评估、测试与优化（Sample 3 · Domain 4 — Evaluation, Testing &amp; Optimization）</h2>
+<p>一个 RAG 系统在文档刷新之后突然返回自信但错误的答案，而延迟与模型版本未变。最可能首先要调查的地方是哪里？</p>
+<ul>
+<li>A. 模型权重已经悄悄变了。</li>
+<li>B. 检索/索引步骤正在返回无关或过时的块。</li>
+<li>C. 温度（temperature）设置太低。</li>
+<li>D. 上下文窗口已经缩小了。</li>
+</ul>
+<p><strong>答案：B。</strong> 在文档刷新之后出现自信但错误的答案，且模型与延迟未变，这指向检索在给模型喂差的上下文 —— 例如一次坏掉的重建索引或不匹配的嵌入。其他选项不会被一次文档刷新专门触发。</p></div></div>
+</body></html>
