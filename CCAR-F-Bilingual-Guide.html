@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CCAR-F Study Guide — 中英并列版</title>
+<style>
+:root{--ink:#1a2332;--mut:#5b6b82;--line:#d8dee8;--accent:#b7791f;--qbg:#fdf6e3;--band:#16283f;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",Segoe UI,Roboto,sans-serif;color:var(--ink);font-size:15px;line-height:1.65;background:#fff}
+header.top{position:sticky;top:0;background:var(--band);color:#fff;padding:10px 20px;z-index:10;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:baseline}
+header.top b{font-size:17px}
+header.top nav a{color:#ffd98a;text-decoration:none;margin-right:12px;font-size:14px}
+header.top .sub{color:#b9c7da;font-size:13px}
+.colhead{display:grid;grid-template-columns:1fr 1fr;background:#eef2f7;border-bottom:2px solid var(--band);font-weight:700}
+.colhead div{padding:8px 20px}
+.colhead .zh{border-left:1px solid var(--line)}
+.row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+.cell{padding:14px 20px;min-width:0;overflow-wrap:break-word}
+.cell.zh{border-left:1px solid var(--line);background:#fcfcf9}
+.band{display:grid;grid-template-columns:1fr 1fr;background:var(--band);color:#fff;margin-top:6px}
+.band div{padding:12px 20px;font-size:18px;font-weight:700}
+.band .band-zh{border-left:1px solid rgba(255,255,255,.25)}
+h1{font-size:20px;margin:.4em 0}
+h2{font-size:17px;margin:.6em 0 .3em;color:var(--band)}
+h3{font-size:15px;margin:.8em 0 .2em}
+ul{margin:.3em 0 .6em;padding-left:1.3em}
+li{margin:.25em 0}
+blockquote{margin:.6em 0;padding:10px 14px;background:var(--qbg);border-left:4px solid var(--accent);border-radius:0 6px 6px 0}
+blockquote p{margin:.2em 0}
+table{border-collapse:collapse;margin:.6em 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:5px 10px;text-align:left}
+a{color:#1d4ed8}
+hr{border:none;border-top:1px solid var(--line)}
+@media (max-width:760px){.row,.band,.colhead{grid-template-columns:1fr}.cell.zh{border-left:none;border-top:1px dashed var(--line)}}
+</style></head><body>
+<header class="top"><b>CCAR-F Study Guide · 中英并列版</b><span class="sub">Official Exam Guide v1.0 · 左 EN / 右 中文 · 整页一起滚动</span><nav><a href="#d1">D1</a><a href="#d2">D2</a><a href="#d3">D3</a><a href="#d4">D4</a><a href="#d5">D5</a><a href="#samples">样题</a></nav></header>
+<div class="colhead"><div>English</div><div class="zh">中文</div></div>
+<div class="row front"><div class="cell en"><h1>Claude Certified Architect — Foundations Certification</h1>
+<h2>Study Guide (Based on the Official Exam Guide)</h2>
+<blockquote>
+<p>Built on the official <strong>Claude Certified Architect – Foundations Exam Guide, Version 1.0 (effective July 2026), exam code CCAR-F</strong>. Structure follows the format of paullarionov/claude-certified-architect's study guides; all content is drawn from the official Exam Guide and official Anthropic documentation (platform.claude.com/docs, code.claude.com/docs, anthropic.com/engineering and research posts). Domain and task statement headings reproduce the official blueprint wording. Key knowledge / Key skills points condense the Exam Guide's own "Knowledge of:" and "Skills in:" lists for each task statement — follow the source links at the end of each section for the full official documentation.</p>
+</blockquote>
+<hr />
+<h2>Introduction</h2>
+<p>The Claude Certified Architect – Foundations certification validates that practitioners can make informed decisions about tradeoffs when implementing real-world solutions with Claude. This exam tests foundational knowledge across Claude Code, the Claude Agent SDK, the Claude API, and Model Context Protocol (MCP), the core technologies used to build production-grade applications with Claude.</p>
+<p>Questions on this exam are grounded in realistic scenarios drawn from actual customer use cases, including building agentic systems for customer support, designing multi-agent research pipelines, integrating Claude Code into CI/CD workflows, building developer productivity tools, and extracting structured data from unstructured documents. Candidates must demonstrate not only conceptual knowledge but practical judgment about architecture, configuration, and tradeoffs in production deployments.</p>
+<p>This guide is the study companion to the official Exam Guide, which is the authoritative reference for the credential: its content, domains and task statements, sample questions, and preparation strategies.</p>
+<hr />
+<h2>Target Candidate</h2>
+<p>The ideal candidate for this certification is a solution architect who designs and implements production applications with Claude. This candidate has hands-on experience with:</p>
+<ul>
+<li>Building agentic applications using the Claude Agent SDK, including multi-agent orchestration, subagent delegation, tool integration, and lifecycle hooks</li>
+<li>Configuring and customizing Claude Code for team workflows using CLAUDE.md files, Agent Skills, MCP server integrations, and plan mode</li>
+<li>Designing Model Context Protocol (MCP) tool and resource interfaces for backend system integration</li>
+<li>Engineering prompts that produce reliable structured output, leveraging JSON schemas, few-shot examples, and extraction patterns</li>
+<li>Managing context windows effectively across long documents, multi-turn conversations, and multi-agent handoffs</li>
+<li>Integrating Claude into CI/CD pipelines for automated code review, test generation, and pull request feedback</li>
+<li>Making sound escalation and reliability decisions, including error handling, human-in-the-loop workflows, and self-evaluation patterns</li>
+</ul>
+<p>The candidate typically has 6+ months of practical experience building with Claude APIs, Agent SDK, Claude Code, and MCP, understanding both the capabilities and limitations of large language models in production environments.</p>
+<hr />
+<h2>Exam Format</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exam code</td>
+<td>CCAR-F</td>
+</tr>
+<tr>
+<td>Number of items</td>
+<td>60</td>
+</tr>
+<tr>
+<td>Item format</td>
+<td>Multiple-choice and multiple-response items; each item states how many responses to select</td>
+</tr>
+<tr>
+<td>Exam structure</td>
+<td>4 scenarios drawn from a bank of 6</td>
+</tr>
+<tr>
+<td>Time limit</td>
+<td>120 minutes</td>
+</tr>
+<tr>
+<td>Delivery</td>
+<td>Proctored: online proctored and/or test center, per program policy</td>
+</tr>
+<tr>
+<td>Passing score</td>
+<td>Scaled score of <strong>720</strong> on a scale of 100–1,000</td>
+</tr>
+<tr>
+<td>Exam fee</td>
+<td>$125 USD</td>
+</tr>
+<tr>
+<td>Validity period</td>
+<td>12 months from the date the credential is awarded</td>
+</tr>
+<tr>
+<td>Result reporting</td>
+<td>Pass/fail with scaled score (100–1,000), plus percent-correct by domain on the score report</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Exam Content: 5 Domains</h2>
+<table>
+<thead>
+<tr>
+<th>Domain</th>
+<th>Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Agentic Architecture &amp; Orchestration</td>
+<td><strong>27%</strong></td>
+</tr>
+<tr>
+<td>2. Tool Design &amp; MCP Integration</td>
+<td><strong>18%</strong></td>
+</tr>
+<tr>
+<td>3. Claude Code Configuration &amp; Workflows</td>
+<td><strong>20%</strong></td>
+</tr>
+<tr>
+<td>4. Prompt Engineering &amp; Structured Output</td>
+<td><strong>20%</strong></td>
+</tr>
+<tr>
+<td>5. Context Management &amp; Reliability</td>
+<td><strong>15%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The percentages indicate the approximate proportion of scored items drawn from each domain. Exam items are written against the task statements listed under each domain in Part II.</p>
+<hr />
+<h2>Exam Scenarios</h2>
+<p>Each scenario presents a realistic production context that frames a set of questions. During the exam, 4 scenarios are presented, picked at random from the full set of 6 below.</p>
+<ul>
+<li><strong>Scenario 1: Customer Support Resolution Agent</strong> — A Claude Agent SDK support agent handling high-ambiguity returns, billing disputes, and account issues via custom MCP tools, targeting 80%+ first-contact resolution with sound escalation. <em>Primary domains: Agentic Architecture &amp; Orchestration, Tool Design &amp; MCP Integration, Context Management &amp; Reliability</em></li>
+<li><strong>Scenario 2: Code Generation with Claude Code</strong> — Using Claude Code for code generation, refactoring, debugging, and documentation, with custom slash commands, CLAUDE.md configuration, and plan mode vs direct execution judgment. <em>Primary domains: Claude Code Configuration &amp; Workflows, Context Management &amp; Reliability</em></li>
+<li><strong>Scenario 3: Multi-Agent Research System</strong> — A coordinator agent delegating to specialized subagents (web search, document analysis, synthesis, report generation) to produce comprehensive, cited reports. <em>Primary domains: Agentic Architecture &amp; Orchestration, Tool Design &amp; MCP Integration, Context Management &amp; Reliability</em></li>
+<li><strong>Scenario 4: Developer Productivity with Claude</strong> — Agent SDK tools that help engineers explore unfamiliar codebases, understand legacy systems, generate boilerplate, and automate repetitive tasks using built-in tools and MCP servers. <em>Primary domains: Tool Design &amp; MCP Integration, Claude Code Configuration &amp; Workflows, Agentic Architecture &amp; Orchestration</em></li>
+<li><strong>Scenario 5: Claude Code for Continuous Integration</strong> — Claude Code in a CI/CD pipeline running automated code reviews, generating test cases, and giving pull request feedback, with prompts designed for actionable feedback and minimal false positives. <em>Primary domains: Claude Code Configuration &amp; Workflows, Prompt Engineering &amp; Structured Output</em></li>
+<li><strong>Scenario 6: Structured Data Extraction</strong> — A system that extracts information from unstructured documents, validates output using JSON schemas, handles edge cases gracefully, and integrates with downstream systems. <em>Primary domains: Prompt Engineering &amp; Structured Output, Context Management &amp; Reliability</em></li>
+</ul>
+<hr />
+<h2>How to Use This Guide (per the official Exam Guide, Section 7)</h2>
+<ul>
+<li>Build an agent with the Claude Agent SDK: implement a complete agentic loop with tool calling, error handling, and session management; practice spawning subagents and passing context between them</li>
+<li>Configure Claude Code for a real project: set up CLAUDE.md with a configuration hierarchy, create path-specific rules in .claude/rules/, build custom skills with frontmatter options (context: fork, allowed-tools), and integrate at least one MCP server</li>
+<li>Design and test MCP tools: write tool descriptions that clearly differentiate similar tools, implement structured error responses with error categories and retryable flags, and test tool selection reliability with ambiguous requests</li>
+<li>Build a structured data extraction pipeline: use tool_use with JSON schemas, implement validation-retry loops, design schemas with optional/nullable fields, and practice batch processing with the Message Batches API</li>
+<li>Practice prompt engineering techniques: write few-shot examples for ambiguous scenarios, define explicit review criteria to reduce false positives, and design multi-pass review architectures for large code reviews</li>
+<li>Study context management patterns and escalation / human-in-the-loop patterns, then complete the sample questions at the end of this guide to familiarize yourself with item style</li>
+</ul>
+<hr /></div><div class="cell zh"><h1>Claude 认证架构师 — 基础级认证（Claude Certified Architect — Foundations Certification）</h1>
+<h2>学习指南（基于官方考试指南）</h2>
+<blockquote>
+<p>基于官方 <strong>Claude 认证架构师 – 基础级考试指南（Claude Certified Architect – Foundations Exam Guide）第 1.0 版（2026 年 7 月生效），考试代码 CCAR-F</strong>。结构参照 paullarionov/claude-certified-architect 学习指南的格式；全部内容取自官方考试指南与 Anthropic 官方文档（platform.claude.com/docs、code.claude.com/docs、anthropic.com/engineering 及研究文章）。领域与任务陈述标题复现官方蓝图原文。关键知识 / 关键技能要点是对官方考试指南中每个任务陈述自带的「Knowledge of:」与「Skills in:」清单的浓缩 —— 完整官方文档请跟随各节末尾的来源链接阅读。</p>
+</blockquote>
+<hr />
+<h2>引言（Introduction）</h2>
+<p>Claude 认证架构师 – 基础级（Claude Certified Architect – Foundations）认证证明从业者在用 Claude 实现真实世界解决方案时，能够就各种权衡做出明智决策。本考试测试 Claude Code、Claude Agent SDK、Claude API 与模型上下文协议（Model Context Protocol，MCP）方面的基础知识 —— 这些是使用 Claude 构建生产级应用的核心技术。</p>
+<p>本考试的题目以取自真实客户用例的现实场景为基础，包括为客户支持构建智能体系统、设计多智能体研究流水线、将 Claude Code 集成进 CI/CD 工作流、构建开发者生产力工具，以及从非结构化文档中提取结构化数据。考生不仅要展示概念知识，还要展示在生产部署中关于架构、配置与权衡的实践判断力。</p>
+<p>本指南是官方考试指南的学习伴侣。官方考试指南是该证书的权威参考：它说明考试内容、领域与任务陈述、样题及备考策略。</p>
+<hr />
+<h2>目标考生（Target Candidate）</h2>
+<p>本认证的理想考生是设计并实现基于 Claude 的生产应用的解决方案架构师。这类考生具备以下实操经验：</p>
+<ul>
+<li>使用 Claude Agent SDK 构建智能体应用，包括多智能体编排、子智能体委派、工具集成与生命周期钩子（hooks）</li>
+<li>使用 CLAUDE.md 文件、Agent Skills、MCP 服务器集成与计划模式（plan mode），为团队工作流配置与定制 Claude Code</li>
+<li>设计模型上下文协议（MCP）的工具与资源接口，用于后端系统集成</li>
+<li>运用 JSON 模式（schemas）、少样本（few-shot）示例与提取模式，设计能产生可靠结构化输出的提示</li>
+<li>在长文档、多轮对话与多智能体交接中有效管理上下文窗口</li>
+<li>将 Claude 集成进 CI/CD 流水线，用于自动化代码审查、测试生成与拉取请求反馈</li>
+<li>做出稳健的升级（escalation）与可靠性决策，包括错误处理、人在回路（human-in-the-loop）工作流与自我评估模式</li>
+</ul>
+<p>这类考生通常拥有 6 个月以上使用 Claude API、Agent SDK、Claude Code 与 MCP 构建应用的实践经验，理解大语言模型在生产环境中的能力与局限。</p>
+<hr />
+<h2>考试形式（Exam Format）</h2>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考试代码</td>
+<td>CCAR-F</td>
+</tr>
+<tr>
+<td>题目数量</td>
+<td>60</td>
+</tr>
+<tr>
+<td>题目形式</td>
+<td>单选题与多选题；每题会注明应选几项</td>
+</tr>
+<tr>
+<td>考试结构</td>
+<td>从 6 个场景题库中抽取 4 个场景</td>
+</tr>
+<tr>
+<td>时间限制</td>
+<td>120 分钟</td>
+</tr>
+<tr>
+<td>交付方式</td>
+<td>监考：在线监考和/或考点，依项目政策</td>
+</tr>
+<tr>
+<td>及格分数</td>
+<td>量化分数 <strong>720</strong> 分，满分区间 100–1,000</td>
+</tr>
+<tr>
+<td>考试费用</td>
+<td>125 美元</td>
+</tr>
+<tr>
+<td>有效期</td>
+<td>自证书颁发之日起 12 个月</td>
+</tr>
+<tr>
+<td>成绩报告</td>
+<td>通过/未通过及量化分数（100–1,000），外加成绩单上各领域正确率百分比</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>考试内容：5 个领域（Exam Content: 5 Domains）</h2>
+<table>
+<thead>
+<tr>
+<th>领域</th>
+<th>权重</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 智能体架构与编排（Agentic Architecture &amp; Orchestration）</td>
+<td><strong>27%</strong></td>
+</tr>
+<tr>
+<td>2. 工具设计与 MCP 集成（Tool Design &amp; MCP Integration）</td>
+<td><strong>18%</strong></td>
+</tr>
+<tr>
+<td>3. Claude Code 配置与工作流（Claude Code Configuration &amp; Workflows）</td>
+<td><strong>20%</strong></td>
+</tr>
+<tr>
+<td>4. 提示工程与结构化输出（Prompt Engineering &amp; Structured Output）</td>
+<td><strong>20%</strong></td>
+</tr>
+<tr>
+<td>5. 上下文管理与可靠性（Context Management &amp; Reliability）</td>
+<td><strong>15%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>百分比表示从每个领域抽取的计分题的大致比例。考题是针对第二部分中每个领域下列出的任务陈述命制的。</p>
+<hr />
+<h2>考试场景（Exam Scenarios）</h2>
+<p>每个场景呈现一个现实的生产情境，为一组题目提供框架。考试时呈现 4 个场景，从以下全部 6 个场景中随机抽取。</p>
+<ul>
+<li><strong>场景 1：客户支持解决智能体（Customer Support Resolution Agent）</strong> —— 一个使用 Claude Agent SDK 的支持智能体，通过自定义 MCP 工具处理退货、账单争议与账户问题等高歧义请求，目标是 80% 以上的一次联系解决率，并懂得何时升级。<em>主要领域：智能体架构与编排、工具设计与 MCP 集成、上下文管理与可靠性</em></li>
+<li><strong>场景 2：用 Claude Code 生成代码（Code Generation with Claude Code）</strong> —— 使用 Claude Code 进行代码生成、重构、调试与文档编写，配合自定义斜杠命令、CLAUDE.md 配置，并判断何时用计划模式、何时直接执行。<em>主要领域：Claude Code 配置与工作流、上下文管理与可靠性</em></li>
+<li><strong>场景 3：多智能体研究系统（Multi-Agent Research System）</strong> —— 一个协调者智能体委派给专门的子智能体（网络搜索、文档分析、综合、报告生成），产出全面且带引用的报告。<em>主要领域：智能体架构与编排、工具设计与 MCP 集成、上下文管理与可靠性</em></li>
+<li><strong>场景 4：用 Claude 提升开发者生产力（Developer Productivity with Claude）</strong> —— 使用 Agent SDK 构建的工具，帮助工程师探索陌生代码库、理解遗留系统、生成样板代码并自动化重复任务，使用内置工具与 MCP 服务器。<em>主要领域：工具设计与 MCP 集成、Claude Code 配置与工作流、智能体架构与编排</em></li>
+<li><strong>场景 5：用于持续集成的 Claude Code（Claude Code for Continuous Integration）</strong> —— 在 CI/CD 流水线中运行 Claude Code，做自动化代码审查、生成测试用例并提供拉取请求反馈，提示设计追求可操作的反馈与最少的误报。<em>主要领域：Claude Code 配置与工作流、提示工程与结构化输出</em></li>
+<li><strong>场景 6：结构化数据提取（Structured Data Extraction）</strong> —— 一个从非结构化文档中提取信息、用 JSON 模式校验输出、优雅处理边缘情况并与下游系统集成的系统。<em>主要领域：提示工程与结构化输出、上下文管理与可靠性</em></li>
+</ul>
+<hr />
+<h2>如何使用本指南（How to Use This Guide）（依据官方考试指南第 7 节）</h2>
+<ul>
+<li>用 Claude Agent SDK 构建一个智能体：实现带工具调用、错误处理与会话管理的完整智能体循环（agentic loop）；练习生成子智能体并在它们之间传递上下文</li>
+<li>为真实项目配置 Claude Code：建立带配置层级的 CLAUDE.md、在 .claude/rules/ 中创建路径专属规则、构建带 frontmatter 选项（context: fork、allowed-tools）的自定义技能，并集成至少一个 MCP 服务器</li>
+<li>设计并测试 MCP 工具：撰写能清晰区分相似工具的工具描述，实现带错误类别与可重试标志的结构化错误响应，并用歧义请求测试工具选择的可靠性</li>
+<li>构建结构化数据提取流水线：用带 JSON 模式的 tool_use、实现校验-重试循环、设计带可选/可空字段的模式，并用消息批处理 API（Message Batches API）练习批处理</li>
+<li>练习提示工程技术：为歧义场景编写少样本示例、定义明确的审查标准以减少误报，并为大型代码审查设计多遍（multi-pass）审查架构</li>
+<li>学习上下文管理模式与升级 / 人在回路模式，然后完成本指南末尾的样题，熟悉题目风格</li>
+</ul>
+<hr /></div></div>
+<div class="band" id="d1"><div class="band-en">Domain 1: Agentic Architecture &amp; Orchestration (27%)</div><div class="band-zh">领域 1：智能体架构与编排（Domain 1: Agentic Architecture &amp; Orchestration）（27%）</div></div>
+<div class="row obj"><div class="cell en"><h2>1.1 Design and implement agentic loops for autonomous task execution</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Claude responds with <code>stop_reason: "tool_use"</code> and one or more <code>tool_use</code> blocks. Your code runs the operation and sends back a <code>tool_result</code>."
+— Tool use with Claude, Anthropic (https://platform.claude.com/docs/en/build-with-claude/tool-use)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The agentic loop lifecycle: sending requests to Claude, inspecting stop_reason ("tool_use" vs "end_turn"), executing requested tools, and returning results for the next iteration</li>
+<li>How tool results are appended to conversation history so the model can reason about the next action</li>
+<li>The distinction between model-driven decision-making (Claude reasons about which tool to call next based on context) and pre-configured decision trees or tool sequences</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Implementing agentic loop control flow that continues when stop_reason is "tool_use" and terminates when stop_reason is "end_turn"</li>
+<li>Adding tool results to conversation context between iterations so the model can incorporate new information into its reasoning</li>
+<li>Avoiding anti-patterns such as parsing natural language signals to determine loop termination, setting arbitrary iteration caps as the primary stopping mechanism, or checking for assistant text content as a completion indicator</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/tool-use">Tool use with Claude</a> | <a href="https://code.claude.com/docs/en/agent-sdk/agent-loop">How the agent loop works</a> | <a href="https://platform.claude.com/docs/en/agent-sdk/overview">Agent SDK overview</a></p></div><div class="cell zh"><h2>1.1 为自主任务执行设计并实现智能体循环（agentic loops）</h2>
+<p><em>EN: Design and implement agentic loops for autonomous task execution</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Claude responds with <code>stop_reason: "tool_use"</code> and one or more <code>tool_use</code> blocks. Your code runs the operation and sends back a <code>tool_result</code>."
+— Tool use with Claude, Anthropic (https://platform.claude.com/docs/en/build-with-claude/tool-use)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>智能体循环的生命周期：向 Claude 发送请求、检查 stop_reason（「tool_use」与「end_turn」）、执行所请求的工具，并返回结果进入下一轮迭代</li>
+<li>工具结果如何被追加到对话历史中，使模型能据此推理下一步行动</li>
+<li>模型驱动决策（Claude 根据上下文推理下一步调用哪个工具）与预先配置的决策树或工具序列之间的区别</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>实现智能体循环的控制流：当 stop_reason 为「tool_use」时继续，为「end_turn」时终止</li>
+<li>在迭代之间把工具结果加入对话上下文，使模型能把新信息纳入其推理</li>
+<li>避免反模式，例如解析自然语言信号来判断循环终止、把任意迭代上限作为主要停止机制，或检查助手文本内容作为完成指标</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/tool-use">与 Claude 使用工具（Tool use with Claude）</a> | <a href="https://code.claude.com/docs/en/agent-sdk/agent-loop">智能体循环如何工作（How the agent loop works）</a> | <a href="https://platform.claude.com/docs/en/agent-sdk/overview">Agent SDK 总览（Agent SDK overview）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>1.2 Orchestrate multi-agent systems with coordinator-subagent patterns</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Our Research system uses a multi-agent architecture with an orchestrator-worker pattern, where a lead agent coordinates the process while delegating to specialized subagents that operate in parallel."
+— How we built our multi-agent research system, Anthropic (https://www.anthropic.com/research/multi-agent-research-system)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Hub-and-spoke architecture where a coordinator agent manages all inter-subagent communication, error handling, and information routing</li>
+<li>How subagents operate with isolated context — they do not inherit the coordinator's conversation history automatically</li>
+<li>The role of the coordinator in task decomposition, delegation, result aggregation, and deciding which subagents to invoke based on query complexity</li>
+<li>Risks of overly narrow task decomposition by the coordinator, leading to incomplete coverage of broad research topics</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Designing coordinator agents that analyze query requirements and dynamically select which subagents to invoke rather than always routing through the full pipeline</li>
+<li>Partitioning research scope across subagents to minimize duplication (e.g., assigning distinct subtopics or source types to each agent)</li>
+<li>Implementing iterative refinement loops where the coordinator evaluates synthesis output for gaps, re-delegates to search and analysis subagents with targeted queries, and re-invokes synthesis until coverage is sufficient</li>
+<li>Routing all subagent communication through the coordinator for observability, consistent error handling, and controlled information flow</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/research/multi-agent-research-system">How we built our multi-agent research system</a> | <a href="https://platform.claude.com/docs/en/agent-sdk/subagents">Subagents in the SDK</a></p></div><div class="cell zh"><h2>1.2 用协调者-子智能体模式编排多智能体系统</h2>
+<p><em>EN: Orchestrate multi-agent systems with coordinator-subagent patterns</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Our Research system uses a multi-agent architecture with an orchestrator-worker pattern, where a lead agent coordinates the process while delegating to specialized subagents that operate in parallel."
+— How we built our multi-agent research system, Anthropic (https://www.anthropic.com/research/multi-agent-research-system)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>中心辐射（hub-and-spoke）架构：一个协调者智能体管理所有子智能体之间的通信、错误处理与信息路由</li>
+<li>子智能体如何在隔离的上下文中运作 —— 它们不会自动继承协调者的对话历史</li>
+<li>协调者在任务分解、委派、结果聚合，以及根据查询复杂度决定调用哪些子智能体方面的角色</li>
+<li>协调者任务分解过窄的风险，会导致对宽泛研究主题的覆盖不完整</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>设计能分析查询需求、动态选择调用哪些子智能体的协调者，而不是总是走完整流水线</li>
+<li>在子智能体之间划分研究范围以尽量减少重复（例如为每个智能体分配不同的子主题或来源类型）</li>
+<li>实现迭代精化循环：协调者评估综合输出的缺口，用有针对性的查询重新委派给搜索与分析子智能体，并重新调用综合，直到覆盖充分</li>
+<li>把所有子智能体通信都经由协调者路由，以获得可观测性、一致的错误处理与受控的信息流</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/research/multi-agent-research-system">我们如何构建多智能体研究系统（How we built our multi-agent research system）</a> | <a href="https://platform.claude.com/docs/en/agent-sdk/subagents">SDK 中的子智能体（Subagents in the SDK）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>1.3 Configure subagent invocation, context passing, and spawning</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Subagents are separate agent instances that your main agent can spawn to handle focused subtasks. Claude invokes subagents through the <code>Agent</code> tool."
+— Subagents in the SDK, Anthropic (https://platform.claude.com/docs/en/agent-sdk/subagents)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The Task tool as the mechanism for spawning subagents, and the requirement that allowedTools must include "Task" for a coordinator to invoke subagents</li>
+<li>That subagent context must be explicitly provided in the prompt — subagents do not automatically inherit parent context or share memory between invocations</li>
+<li>The AgentDefinition configuration including descriptions, system prompts, and tool restrictions for each subagent type</li>
+<li>Fork-based session management for exploring divergent approaches from a shared analysis baseline</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Including complete findings from prior agents directly in the subagent's prompt (e.g., passing web search results and document analysis outputs to the synthesis subagent)</li>
+<li>Using structured data formats to separate content from metadata (source URLs, document names, page numbers) when passing context between agents to preserve attribution</li>
+<li>Spawning parallel subagents by emitting multiple Task tool calls in a single coordinator response rather than across separate turns</li>
+<li>Designing coordinator prompts that specify research goals and quality criteria rather than step-by-step procedural instructions, to enable subagent adaptability</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/agent-sdk/subagents">Subagents in the SDK</a></p></div><div class="cell zh"><h2>1.3 配置子智能体的调用、上下文传递与生成</h2>
+<p><em>EN: Configure subagent invocation, context passing, and spawning</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Subagents are separate agent instances that your main agent can spawn to handle focused subtasks. Claude invokes subagents through the <code>Agent</code> tool."
+— Subagents in the SDK, Anthropic (https://platform.claude.com/docs/en/agent-sdk/subagents)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>Task 工具是生成子智能体的机制，且协调者的 allowedTools 必须包含「Task」才能调用子智能体</li>
+<li>子智能体的上下文必须在提示中显式提供 —— 子智能体不会自动继承父级上下文，也不在多次调用之间共享记忆</li>
+<li>AgentDefinition 配置，包括每种子智能体类型的描述、系统提示与工具限制</li>
+<li>基于 fork 的会话管理，用于从共享的分析基线出发探索不同的方案</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>把先前智能体的完整发现直接写进子智能体的提示（例如把网络搜索结果与文档分析输出传给综合子智能体）</li>
+<li>使用结构化数据格式，在智能体之间传递上下文时把内容与元数据（来源 URL、文档名、页码）分开，以保留归属</li>
+<li>在协调者的一次回复中发出多个 Task 工具调用来并行生成子智能体，而不是跨多个回合</li>
+<li>撰写指定研究目标与质量标准的协调者提示，而不是逐步的操作指令，以使子智能体能灵活应变</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/agent-sdk/subagents">SDK 中的子智能体（Subagents in the SDK）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>1.4 Implement multi-step workflows with enforcement and handoff patterns</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "The Claude Agent SDK provides permission controls to manage how Claude uses tools. Use permission modes and rules to define what's allowed automatically, and the <code>canUseTool</code> callback to handle calls that still need approval."
+— Configure permissions, Anthropic (https://platform.claude.com/docs/en/agent-sdk/permissions)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The difference between programmatic enforcement (hooks, prerequisite gates) and prompt-based guidance for workflow ordering</li>
+<li>When deterministic compliance is required (e.g., identity verification before financial operations), prompt instructions alone have a non-zero failure rate</li>
+<li>Structured handoff protocols for mid-process escalation that include customer details, root cause analysis, and recommended actions</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Implementing programmatic prerequisites that block downstream tool calls until prerequisite steps have completed (e.g., blocking process_refund until get_customer has returned a verified customer ID)</li>
+<li>Decomposing multi-concern customer requests into distinct items, then investigating each in parallel using shared context before synthesizing a unified resolution</li>
+<li>Compiling structured handoff summaries (customer ID, root cause, refund amount, recommended action) when escalating to human agents who lack access to the conversation transcript</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/agent-sdk/permissions">Configure permissions</a> | <a href="https://platform.claude.com/docs/en/agent-sdk/hooks">Intercept and control agent behavior with hooks</a></p></div><div class="cell zh"><h2>1.4 实现带强制执行与交接模式的多步骤工作流</h2>
+<p><em>EN: Implement multi-step workflows with enforcement and handoff patterns</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "The Claude Agent SDK provides permission controls to manage how Claude uses tools. Use permission modes and rules to define what's allowed automatically, and the <code>canUseTool</code> callback to handle calls that still need approval."
+— Configure permissions, Anthropic (https://platform.claude.com/docs/en/agent-sdk/permissions)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>工作流顺序方面，程序化强制（hooks、前置关卡）与基于提示的指导之间的区别</li>
+<li>当需要确定性合规时（例如金融操作前的身份验证），仅靠提示指令存在非零的失败率</li>
+<li>流程中途升级的结构化交接协议，包括客户详情、根源分析和建议行动</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>实现程序化前置条件，在前置步骤完成之前阻止下游工具调用（例如在 get_customer 返回已验证的客户 ID 之前阻止 process_refund）</li>
+<li>把客户的多诉求请求分解为不同事项，然后用共享上下文并行调查每一项，最后综合成统一的解决方案</li>
+<li>在升级给无法访问对话记录的人工客服时，编制结构化交接摘要（客户 ID、根源、退款金额、建议行动）</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/agent-sdk/permissions">配置权限（Configure permissions）</a> | <a href="https://platform.claude.com/docs/en/agent-sdk/hooks">用钩子拦截并控制智能体行为（Intercept and control agent behavior with hooks）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>1.5 Apply Agent SDK hooks for tool call interception and data normalization</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Hooks are callback functions that run your code in response to agent events, like a tool being called, a session starting, or execution stopping."
+— Intercept and control agent behavior with hooks, Anthropic (https://platform.claude.com/docs/en/agent-sdk/hooks)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Hook patterns (e.g., PostToolUse) that intercept tool results for transformation before the model processes them</li>
+<li>Hook patterns that intercept outgoing tool calls to enforce compliance rules (e.g., blocking refunds above a threshold)</li>
+<li>The distinction between using hooks for deterministic guarantees versus relying on prompt instructions for probabilistic compliance</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Implementing PostToolUse hooks to normalize heterogeneous data formats (Unix timestamps, ISO 8601, numeric status codes) from different MCP tools before the agent processes them</li>
+<li>Implementing tool call interception hooks that block policy-violating actions (e.g., refunds exceeding $500) and redirect to alternative workflows (e.g., human escalation)</li>
+<li>Choosing hooks over prompt-based enforcement when business rules require guaranteed compliance</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/agent-sdk/hooks">Intercept and control agent behavior with hooks</a></p></div><div class="cell zh"><h2>1.5 应用 Agent SDK 钩子进行工具调用拦截与数据规范化</h2>
+<p><em>EN: Apply Agent SDK hooks for tool call interception and data normalization</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Hooks are callback functions that run your code in response to agent events, like a tool being called, a session starting, or execution stopping."
+— Intercept and control agent behavior with hooks, Anthropic (https://platform.claude.com/docs/en/agent-sdk/hooks)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>拦截工具结果、在模型处理之前进行转换的钩子模式（例如 PostToolUse）</li>
+<li>拦截外发工具调用以执行合规规则的钩子模式（例如阻止超过阈值的退款）</li>
+<li>用钩子获得确定性保证，与依赖提示指令获得概率性合规之间的区别</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>实现 PostToolUse 钩子，在智能体处理之前，把来自不同 MCP 工具的异构数据格式（Unix 时间戳、ISO 8601、数字状态码）规范化</li>
+<li>实现工具调用拦截钩子，阻止违反政策的行动（例如超过 500 美元的退款），并重定向到替代工作流（例如人工升级）</li>
+<li>当业务规则要求有保证的合规时，选择钩子而非基于提示的强制</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/agent-sdk/hooks">用钩子拦截并控制智能体行为（Intercept and control agent behavior with hooks）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>1.6 Design task decomposition strategies for complex workflows</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Prompt chaining decomposes a task into a sequence of steps, where each LLM call processes the output of the previous one."
+— Building effective AI agents, Anthropic (https://www.anthropic.com/research/building-effective-agents)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>When to use fixed sequential pipelines (prompt chaining) versus dynamic adaptive decomposition based on intermediate findings</li>
+<li>Prompt chaining patterns that break reviews into sequential steps (e.g., analyze each file individually, then run a cross-file integration pass)</li>
+<li>The value of adaptive investigation plans that generate subtasks based on what is discovered at each step</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Selecting task decomposition patterns appropriate to the workflow: prompt chaining for predictable multi-aspect reviews, dynamic decomposition for open-ended investigation tasks</li>
+<li>Splitting large code reviews into per-file local analysis passes plus a separate cross-file integration pass to avoid attention dilution</li>
+<li>Decomposing open-ended tasks (e.g., "add comprehensive tests to a legacy codebase") by first mapping structure, identifying high-impact areas, then creating a prioritized plan that adapts as dependencies are discovered</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/research/building-effective-agents">Building effective AI agents</a></p></div><div class="cell zh"><h2>1.6 为复杂工作流设计任务分解策略</h2>
+<p><em>EN: Design task decomposition strategies for complex workflows</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Prompt chaining decomposes a task into a sequence of steps, where each LLM call processes the output of the previous one."
+— Building effective AI agents, Anthropic (https://www.anthropic.com/research/building-effective-agents)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>何时使用固定的顺序流水线（提示链，prompt chaining），何时根据中间发现做动态自适应分解</li>
+<li>把审查拆成顺序步骤的提示链模式（例如先逐个文件分析，再跑一遍跨文件集成检查）</li>
+<li>自适应调查计划的价值：根据每一步的发现生成子任务</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>为工作流选择合适的任务分解模式：可预测的多方面审查用提示链，开放式调查任务用动态分解</li>
+<li>把大型代码审查拆成逐文件的局部分析遍，加一个单独的跨文件集成遍，以避免注意力稀释</li>
+<li>分解开放式任务（例如「给一个遗留代码库添加全面测试」）：先摸清结构、识别高影响区域，再制定一个随依赖关系发现而调整的优先级计划</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/research/building-effective-agents">构建有效的智能体（Building effective AI agents）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>1.7 Manage session state, resumption, and forking</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Forking creates a new session that starts with a copy of the original's history but diverges from that point. The fork gets its own session ID; the original's ID and history stay unchanged."
+— Work with sessions, Anthropic (https://platform.claude.com/docs/en/agent-sdk/sessions)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Named session resumption using --resume <session-name> to continue a specific prior conversation</li>
+<li>fork_session for creating independent branches from a shared analysis baseline to explore divergent approaches</li>
+<li>The importance of informing the agent about changes to previously analyzed files when resuming sessions after code modifications</li>
+<li>Why starting a new session with a structured summary is more reliable than resuming with stale tool results</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Using --resume with session names to continue named investigation sessions across work sessions</li>
+<li>Using fork_session to create parallel exploration branches (e.g., comparing two testing strategies or refactoring approaches from a shared codebase analysis)</li>
+<li>Choosing between session resumption (when prior context is mostly valid) and starting fresh with injected summaries (when prior tool results are stale)</li>
+<li>Informing a resumed session about specific file changes for targeted re-analysis rather than requiring full re-exploration</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/agent-sdk/sessions">Work with sessions</a></p>
+<hr /></div><div class="cell zh"><h2>1.7 管理会话状态、恢复与分叉（forking）</h2>
+<p><em>EN: Manage session state, resumption, and forking</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Forking creates a new session that starts with a copy of the original's history but diverges from that point. The fork gets its own session ID; the original's ID and history stay unchanged."
+— Work with sessions, Anthropic (https://platform.claude.com/docs/en/agent-sdk/sessions)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>用 --resume <session-name> 按名称恢复会话，继续某个特定的先前对话</li>
+<li>fork_session 用于从共享的分析基线创建独立分支，探索不同的方案</li>
+<li>在代码修改后恢复会话时，告知智能体先前分析过的文件发生了变化的重要性</li>
+<li>为什么用结构化摘要开启新会话，比带着过时的工具结果恢复会话更可靠</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>用带会话名称的 --resume 跨工作时段继续已命名的调查会话</li>
+<li>用 fork_session 创建并行探索分支（例如从共享的代码库分析出发，比较两种测试策略或重构方案）</li>
+<li>在会话恢复（先前上下文大体仍然有效）与带着注入摘要全新开始（先前工具结果已过时）之间做选择</li>
+<li>告知恢复的会话具体的文件变化，以便有针对性地重新分析，而不是要求全面重新探索</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/agent-sdk/sessions">使用会话（Work with sessions）</a></p>
+<hr /></div></div>
+<div class="band" id="d2"><div class="band-en">Domain 2: Tool Design &amp; MCP Integration (18%)</div><div class="band-zh">领域 2：工具设计与 MCP 集成（Domain 2: Tool Design &amp; MCP Integration）（18%）</div></div>
+<div class="row obj"><div class="cell en"><h2>2.1 Design effective tool interfaces with clear descriptions and boundaries</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Tool use (also called function calling) lets Claude call functions that you define or that Anthropic provides. Claude determines when to call a tool based on the user's request and the tool's description."
+— Tool use with Claude, Anthropic (https://platform.claude.com/docs/en/build-with-claude/tool-use)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Tool descriptions as the primary mechanism LLMs use for tool selection; minimal descriptions lead to unreliable selection among similar tools</li>
+<li>The importance of including input formats, example queries, edge cases, and boundary explanations in tool descriptions</li>
+<li>How ambiguous or overlapping tool descriptions cause misrouting (e.g., analyze_content vs analyze_document with near-identical descriptions)</li>
+<li>The impact of system prompt wording on tool selection: keyword-sensitive instructions can create unintended tool associations</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Writing tool descriptions that clearly differentiate each tool's purpose, expected inputs, outputs, and when to use it versus similar alternatives</li>
+<li>Renaming tools and updating descriptions to eliminate functional overlap (e.g., renaming analyze_content to extract_web_results with a web-specific description)</li>
+<li>Splitting generic tools into purpose-specific tools with defined input/output contracts (e.g., splitting a generic analyze_document into extract_data_points, summarize_content, and verify_claim_against_source)</li>
+<li>Reviewing system prompts for keyword-sensitive instructions that might override well-written tool descriptions</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/tool-use">Tool use with Claude</a> | <a href="https://www.anthropic.com/engineering/writing-tools-for-agents">Writing effective tools for AI agents</a></p></div><div class="cell zh"><h2>2.1 设计带清晰描述与边界的有效工具接口</h2>
+<p><em>EN: Design effective tool interfaces with clear descriptions and boundaries</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Tool use (also called function calling) lets Claude call functions that you define or that Anthropic provides. Claude determines when to call a tool based on the user's request and the tool's description."
+— Tool use with Claude, Anthropic (https://platform.claude.com/docs/en/build-with-claude/tool-use)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>工具描述是 LLM 用于工具选择的主要机制；描述过于简略会导致在相似工具之间选择不可靠</li>
+<li>在工具描述中包含输入格式、示例查询、边缘情况与边界说明的重要性</li>
+<li>含糊或重叠的工具描述如何导致误路由（例如描述几乎相同的 analyze_content 与 analyze_document）</li>
+<li>系统提示措辞对工具选择的影响：对关键字敏感的指令可能造成意外的工具关联</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>撰写能清晰区分每个工具的用途、预期输入、输出，以及何时用它而非相似替代品的工具描述</li>
+<li>重命名工具并更新描述以消除功能重叠（例如把 analyze_content 改名为 extract_web_results 并配网络专属描述）</li>
+<li>把通用工具拆成带明确输入/输出契约的专用途工具（例如把一个通用的 analyze_document 拆成 extract_data_points、summarize_content 与 verify_claim_against_source）</li>
+<li>审查系统提示中对关键字敏感、可能覆盖写得很好的工具描述的指令</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/tool-use">与 Claude 使用工具（Tool use with Claude）</a> | <a href="https://www.anthropic.com/engineering/writing-tools-for-agents">为 AI 智能体编写有效的工具（Writing effective tools for AI agents）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>2.2 Implement structured error responses for MCP tools</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "When a client tool fails or a call is invalid, send a <code>tool_result</code> block with <code>is_error</code> set to <code>true</code>. Claude might then call the tool again with a new <code>tool_use</code> block, so limit how many retries your loop allows."
+— Handle tool calls, Anthropic (https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The MCP isError flag pattern for communicating tool failures back to the agent</li>
+<li>The distinction between transient errors (timeouts, service unavailability), validation errors (invalid input), business errors (policy violations), and permission errors</li>
+<li>Why uniform error responses (generic "Operation failed") prevent the agent from making appropriate recovery decisions</li>
+<li>The difference between retryable and non-retryable errors, and how returning structured metadata prevents wasted retry attempts</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Returning structured error metadata including errorCategory (transient/validation/permission), isRetryable boolean, and human-readable descriptions</li>
+<li>Including retriable: false flags and customer-friendly explanations for business rule violations so the agent can communicate appropriately</li>
+<li>Implementing local error recovery within subagents for transient failures, propagating to the coordinator only errors that cannot be resolved locally along with partial results and what was attempted</li>
+<li>Distinguishing between access failures (needing retry decisions) and valid empty results (representing successful queries with no matches)</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls">Handle tool calls</a> | <a href="https://platform.claude.com/docs/en/build-with-claude/tool-use">Tool use with Claude</a></p></div><div class="cell zh"><h2>2.2 为 MCP 工具实现结构化错误响应</h2>
+<p><em>EN: Implement structured error responses for MCP tools</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "When a client tool fails or a call is invalid, send a <code>tool_result</code> block with <code>is_error</code> set to <code>true</code>. Claude might then call the tool again with a new <code>tool_use</code> block, so limit how many retries your loop allows."
+— Handle tool calls, Anthropic (https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>用于把工具失败回传给智能体的 MCP isError 标志模式</li>
+<li>瞬时错误（超时、服务不可用）、校验错误（无效输入）、业务错误（政策违规）与权限错误之间的区别</li>
+<li>为什么统一的错误响应（笼统的「操作失败」）会妨碍智能体做出合适的恢复决策</li>
+<li>可重试与不可重试错误的区别，以及返回结构化元数据如何避免浪费重试</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>返回结构化错误元数据，包括 errorCategory（transient/validation/permission）、isRetryable 布尔值与人类可读的说明</li>
+<li>为业务规则违规包含 retriable: false 标志和对客户友好的解释，使智能体能恰当地沟通</li>
+<li>在子智能体内部为瞬时失败实现本地错误恢复，只把无法本地解决的错误连同部分结果和已尝试的内容向上传播给协调者</li>
+<li>区分访问失败（需要重试决策）与有效的空结果（代表查询成功但无匹配）</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls">处理工具调用（Handle tool calls）</a> | <a href="https://platform.claude.com/docs/en/build-with-claude/tool-use">与 Claude 使用工具（Tool use with Claude）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>2.3 Distribute tools appropriately across agents and configure tool choice</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "With the default <code>tool_choice</code> of <code>{"type": "auto"}</code>, Claude determines on each turn whether to call a tool or respond directly."
+— Tool use with Claude, Anthropic (https://platform.claude.com/docs/en/build-with-claude/tool-use)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The principle that giving an agent access to too many tools (e.g., 18 instead of 4-5) degrades tool selection reliability by increasing decision complexity</li>
+<li>Why agents with tools outside their specialization tend to misuse them (e.g., a synthesis agent attempting web searches)</li>
+<li>Scoped tool access: giving agents only the tools needed for their role, with limited cross-role tools for specific high-frequency needs</li>
+<li>tool_choice configuration options: "auto", "any", and forced tool selection ({"type": "tool", "name": "..."})</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Restricting each subagent's tool set to those relevant to its role, preventing cross-specialization misuse</li>
+<li>Replacing generic tools with constrained alternatives (e.g., replacing fetch_url with load_document that validates document URLs)</li>
+<li>Providing scoped cross-role tools for high-frequency needs (e.g., a verify_fact tool for the synthesis agent) while routing complex cases through the coordinator</li>
+<li>Using tool_choice forced selection to ensure a specific tool is called first (e.g., forcing extract_metadata before enrichment tools), then processing subsequent steps in follow-up turns</li>
+<li>Setting tool_choice: "any" to guarantee the model calls a tool rather than returning conversational text</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/tool-use">Tool use with Claude</a> | <a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools">Define tools</a></p></div><div class="cell zh"><h2>2.3 在智能体之间恰当分配工具并配置工具选择（tool choice）</h2>
+<p><em>EN: Distribute tools appropriately across agents and configure tool choice</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "With the default <code>tool_choice</code> of <code>{"type": "auto"}</code>, Claude determines on each turn whether to call a tool or respond directly."
+— Tool use with Claude, Anthropic (https://platform.claude.com/docs/en/build-with-claude/tool-use)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>给一个智能体太多工具（例如 18 个而不是 4-5 个）会增加决策复杂度、降低工具选择可靠性的原则</li>
+<li>为什么拥有专业外工具的智能体容易误用它们（例如综合智能体尝试做网络搜索）</li>
+<li>受限的工具访问：只给智能体其角色所需的工具，并为特定的高频需求提供有限的跨角色工具</li>
+<li>tool_choice 配置选项：「auto」、「any」与强制工具选择（{"type": "tool", "name": "..."}）</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>把每个子智能体的工具集限制在与其角色相关的工具，防止跨专业误用</li>
+<li>用受约束的替代品替换通用工具（例如用会校验文档 URL 的 load_document 替换 fetch_url）</li>
+<li>为高频需求提供受限的跨角色工具（例如给综合智能体的 verify_fact 工具），同时把复杂情况经协调者路由</li>
+<li>使用 tool_choice 强制选择，确保某个特定工具先被调用（例如在富化工具之前强制 extract_metadata），然后在后续回合处理接下来的步骤</li>
+<li>设置 tool_choice: "any"，保证模型调用工具而不是返回对话文本</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/tool-use">与 Claude 使用工具（Tool use with Claude）</a> | <a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools">定义工具（Define tools）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>2.4 Integrate MCP servers into Claude Code and agent workflows</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "MCP servers can be configured at three scopes. The scope you choose controls which projects the server loads in and whether the configuration is shared with your team."
+— Connect Claude Code to tools via MCP, Anthropic (https://code.claude.com/docs/en/mcp)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>MCP server scoping: project-level (.mcp.json) for shared team tooling vs user-level (~/.claude.json) for personal/experimental servers</li>
+<li>Environment variable expansion in .mcp.json (e.g., ${GITHUB_TOKEN}) for credential management without committing secrets</li>
+<li>That tools from all configured MCP servers are discovered at connection time and available simultaneously to the agent</li>
+<li>MCP resources as a mechanism for exposing content catalogs (e.g., issue summaries, documentation hierarchies, database schemas) to reduce exploratory tool calls</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Configuring shared MCP servers in project-scoped .mcp.json with environment variable expansion for authentication tokens</li>
+<li>Configuring personal/experimental MCP servers in user-scoped ~/.claude.json</li>
+<li>Enhancing MCP tool descriptions to explain capabilities and outputs in detail, preventing the agent from preferring built-in tools (like Grep) over more capable MCP tools</li>
+<li>Choosing existing community MCP servers over custom implementations for standard integrations (e.g., Jira), reserving custom servers for team-specific workflows</li>
+<li>Exposing content catalogs as MCP resources to give agents visibility into available data without requiring exploratory tool calls</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://code.claude.com/docs/en/mcp">Connect Claude Code to tools via MCP</a></p></div><div class="cell zh"><h2>2.4 把 MCP 服务器集成进 Claude Code 与智能体工作流</h2>
+<p><em>EN: Integrate MCP servers into Claude Code and agent workflows</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "MCP servers can be configured at three scopes. The scope you choose controls which projects the server loads in and whether the configuration is shared with your team."
+— Connect Claude Code to tools via MCP, Anthropic (https://code.claude.com/docs/en/mcp)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>MCP 服务器的作用域：项目级（.mcp.json）用于团队共享工具，用户级（~/.claude.json）用于个人/实验性服务器</li>
+<li>.mcp.json 中的环境变量展开（例如 ${GITHUB_TOKEN}），用于在不提交密钥的情况下管理凭据</li>
+<li>所有已配置 MCP 服务器的工具在连接时被发现，并同时可供智能体使用</li>
+<li>MCP 资源（resources）作为一种暴露内容目录（例如问题摘要、文档层级、数据库模式）的机制，可减少探索性工具调用</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>在项目作用域的 .mcp.json 中配置共享 MCP 服务器，并用环境变量展开提供认证令牌</li>
+<li>在用户作用域的 ~/.claude.json 中配置个人/实验性 MCP 服务器</li>
+<li>增强 MCP 工具描述，详细说明其能力与输出，防止智能体偏好内置工具（如 Grep）而非能力更强的 MCP 工具</li>
+<li>对标准集成（如 Jira）优先选择现有的社区 MCP 服务器而非自定义实现，把自定义服务器留给团队专属工作流</li>
+<li>把内容目录暴露为 MCP 资源，让智能体无需探索性工具调用就能了解可用数据</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://code.claude.com/docs/en/mcp">通过 MCP 把 Claude Code 连接到工具（Connect Claude Code to tools via MCP）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>2.5 Select and apply built-in tools (Read, Write, Edit, Bash, Grep, Glob) effectively</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Claude Code has access to a set of built-in tools that help it understand and modify your codebase."
+— Tools reference, Anthropic (https://code.claude.com/docs/en/tools-reference)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Grep for content search (searching file contents for patterns like function names, error messages, or import statements)</li>
+<li>Glob for file path pattern matching (finding files by name or extension patterns)</li>
+<li>Read/Write for full file operations; Edit for targeted modifications using unique text matching</li>
+<li>When Edit fails due to non-unique text matches, using Read + Write as a fallback for reliable file modifications</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Selecting Grep for searching code content across a codebase (e.g., finding all callers of a function, locating error messages)</li>
+<li>Selecting Glob for finding files matching naming patterns (e.g., **/*.test.tsx)</li>
+<li>Using Read to load full file contents followed by Write when Edit cannot find unique anchor text</li>
+<li>Building codebase understanding incrementally: starting with Grep to find entry points, then using Read to follow imports and trace flows, rather than reading all files upfront</li>
+<li>Tracing function usage across wrapper modules by first identifying all exported names, then searching for each name across the codebase</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://code.claude.com/docs/en/tools-reference">Tools reference</a></p>
+<hr /></div><div class="cell zh"><h2>2.5 有效选择与应用内置工具（Read、Write、Edit、Bash、Grep、Glob）</h2>
+<p><em>EN: Select and apply built-in tools (Read, Write, Edit, Bash, Grep, Glob) effectively</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Claude Code has access to a set of built-in tools that help it understand and modify your codebase."
+— Tools reference, Anthropic (https://code.claude.com/docs/en/tools-reference)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>Grep 用于内容搜索（在文件内容中搜索函数名、错误信息或导入语句等模式）</li>
+<li>Glob 用于文件路径模式匹配（按名称或扩展名模式查找文件）</li>
+<li>Read/Write 用于完整文件操作；Edit 使用唯一文本匹配做定向修改</li>
+<li>当 Edit 因文本匹配不唯一而失败时，用 Read + Write 作为可靠修改文件的后备方案</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>选择 Grep 在代码库中搜索代码内容（例如找出某函数的所有调用者、定位错误信息）</li>
+<li>选择 Glob 查找符合命名模式的文件（例如 **/*.test.tsx）</li>
+<li>当 Edit 找不到唯一锚文本时，用 Read 加载完整文件内容后再用 Write</li>
+<li>增量地建立对代码库的理解：先用 Grep 找入口点，再用 Read 跟随导入并追踪流程，而不是一开始就读所有文件</li>
+<li>追踪函数在封装模块间的用法：先识别所有导出的名称，再在整个代码库中逐个搜索这些名称</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://code.claude.com/docs/en/tools-reference">工具参考（Tools reference）</a></p>
+<hr /></div></div>
+<div class="band" id="d3"><div class="band-en">Domain 3: Claude Code Configuration &amp; Workflows (20%)</div><div class="band-zh">领域 3：Claude Code 配置与工作流（Domain 3: Claude Code Configuration &amp; Workflows）（20%）</div></div>
+<div class="row obj"><div class="cell en"><h2>3.1 Configure CLAUDE.md files with appropriate hierarchy, scoping, and modular organization</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "CLAUDE.md files are markdown files that give Claude persistent instructions for a project, your personal workflow, or your entire organization. CLAUDE.md files can import additional files using <code>@path/to/import</code> syntax."
+— How Claude remembers your project, Anthropic (https://code.claude.com/docs/en/memory)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The CLAUDE.md configuration hierarchy: user-level (~/.claude/CLAUDE.md), project-level (.claude/CLAUDE.md or root CLAUDE.md), and directory-level (subdirectory CLAUDE.md files)</li>
+<li>That user-level settings apply only to that user — instructions in ~/.claude/CLAUDE.md are not shared with teammates via version control</li>
+<li>The @import syntax for referencing external files to keep CLAUDE.md modular (e.g., importing specific standards files relevant to each package)</li>
+<li>.claude/rules/ directory for organizing topic-specific rule files as an alternative to a monolithic CLAUDE.md</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Diagnosing configuration hierarchy issues (e.g., a new team member not receiving instructions because they're in user-level rather than project-level configuration)</li>
+<li>Using @import to selectively include relevant standards files in each package's CLAUDE.md based on maintainer domain knowledge</li>
+<li>Splitting large CLAUDE.md files into focused topic-specific files in .claude/rules/ (e.g., testing.md, api-conventions.md, deployment.md)</li>
+<li>Using the /memory command to verify which memory files are loaded and diagnose inconsistent behavior across sessions</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://code.claude.com/docs/en/memory">How Claude remembers your project</a></p></div><div class="cell zh"><h2>3.1 以恰当的层级、作用域与模块化组织配置 CLAUDE.md 文件</h2>
+<p><em>EN: Configure CLAUDE.md files with appropriate hierarchy, scoping, and modular organization</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "CLAUDE.md files are markdown files that give Claude persistent instructions for a project, your personal workflow, or your entire organization. CLAUDE.md files can import additional files using <code>@path/to/import</code> syntax."
+— How Claude remembers your project, Anthropic (https://code.claude.com/docs/en/memory)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>CLAUDE.md 配置层级：用户级（~/.claude/CLAUDE.md）、项目级（.claude/CLAUDE.md 或根目录 CLAUDE.md）与目录级（子目录 CLAUDE.md 文件）</li>
+<li>用户级设置只对该用户生效 —— ~/.claude/CLAUDE.md 中的指令不会通过版本控制与队友共享</li>
+<li>@import 语法用于引用外部文件，使 CLAUDE.md 保持模块化（例如导入与每个包相关的具体标准文件）</li>
+<li>.claude/rules/ 目录用于组织按主题划分的规则文件，作为单个庞大 CLAUDE.md 的替代方案</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>诊断配置层级问题（例如新队员没有收到指令，因为指令在用户级而非项目级配置中）</li>
+<li>用 @import 根据维护者的领域知识，有选择地在每个包的 CLAUDE.md 中包含相关的标准文件</li>
+<li>把大型 CLAUDE.md 文件拆成 .claude/rules/ 中聚焦的、按主题划分的文件（例如 testing.md、api-conventions.md、deployment.md）</li>
+<li>用 /memory 命令验证哪些记忆文件被加载，并诊断不同会话之间行为不一致的问题</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://code.claude.com/docs/en/memory">Claude 如何记住你的项目（How Claude remembers your project）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>3.2 Create and configure custom slash commands and skills</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Skills extend what Claude can do. Create a <code>SKILL.md</code> file with instructions, and Claude adds it to its toolkit. Add <code>context: fork</code> to your frontmatter when you want a skill to run in isolation."
+— Extend Claude with skills, Anthropic (https://code.claude.com/docs/en/skills)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Project-scoped commands in .claude/commands/ (shared via version control) vs user-scoped commands in ~/.claude/commands/ (personal)</li>
+<li>Skills in .claude/skills/ with SKILL.md files that support frontmatter configuration including context: fork, allowed-tools, and argument-hint</li>
+<li>The context: fork frontmatter option for running skills in an isolated sub-agent context, preventing skill outputs from polluting the main conversation</li>
+<li>Personal skill customization: creating personal variants in ~/.claude/skills/ with different names to avoid affecting teammates</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Creating project-scoped slash commands in .claude/commands/ for team-wide availability via version control</li>
+<li>Using context: fork to isolate skills that produce verbose output (e.g., codebase analysis) or exploratory context (e.g., brainstorming alternatives) from the main session</li>
+<li>Configuring allowed-tools in skill frontmatter to restrict tool access during skill execution (e.g., limiting to file write operations to prevent destructive actions)</li>
+<li>Using argument-hint frontmatter to prompt developers for required parameters when they invoke the skill without arguments</li>
+<li>Choosing between skills (on-demand invocation for task-specific workflows) and CLAUDE.md (always-loaded universal standards)</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://code.claude.com/docs/en/skills">Extend Claude with skills</a></p></div><div class="cell zh"><h2>3.2 创建并配置自定义斜杠命令与技能（skills）</h2>
+<p><em>EN: Create and configure custom slash commands and skills</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Skills extend what Claude can do. Create a <code>SKILL.md</code> file with instructions, and Claude adds it to its toolkit. Add <code>context: fork</code> to your frontmatter when you want a skill to run in isolation."
+— Extend Claude with skills, Anthropic (https://code.claude.com/docs/en/skills)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>项目作用域命令位于 .claude/commands/（通过版本控制共享），用户作用域命令位于 ~/.claude/commands/（个人）</li>
+<li>.claude/skills/ 中的技能带 SKILL.md 文件，支持包括 context: fork、allowed-tools 与 argument-hint 在内的 frontmatter 配置</li>
+<li>context: fork frontmatter 选项用于在隔离的子智能体上下文中运行技能，防止技能输出污染主对话</li>
+<li>个人技能定制：在 ~/.claude/skills/ 中用不同的名称创建个人变体，避免影响队友</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>在 .claude/commands/ 中创建项目作用域斜杠命令，通过版本控制供全队使用</li>
+<li>用 context: fork 隔离会产生冗长输出的技能（例如代码库分析）或探索性上下文（例如头脑风暴备选方案），使其不进入主会话</li>
+<li>在技能 frontmatter 中配置 allowed-tools，限制技能执行期间的工具访问（例如只限文件写操作，以防破坏性动作）</li>
+<li>用 argument-hint frontmatter，在开发者未带参数调用技能时提示其提供必需参数</li>
+<li>在技能（按需调用、用于特定任务工作流）与 CLAUDE.md（始终加载的通用标准）之间做选择</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://code.claude.com/docs/en/skills">用技能扩展 Claude（Extend Claude with skills）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>3.3 Apply path-specific rules for conditional convention loading</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Rules can be scoped to specific files using YAML frontmatter with the <code>paths</code> field. These conditional rules only apply when Claude is working with files matching the specified patterns."
+— How Claude remembers your project, Anthropic (https://code.claude.com/docs/en/memory)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>.claude/rules/ files with YAML frontmatter paths fields containing glob patterns for conditional rule activation</li>
+<li>How path-scoped rules load only when editing matching files, reducing irrelevant context and token usage</li>
+<li>The advantage of glob-pattern rules over directory-level CLAUDE.md files for conventions that span multiple directories (e.g., test files spread throughout a codebase)</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Creating .claude/rules/ files with YAML frontmatter path scoping (e.g., paths: ["terraform/**/*"]) so rules load only when editing matching files</li>
+<li>Using glob patterns in path-specific rules to apply conventions to files by type regardless of directory location (e.g., **/*.test.tsx for all test files)</li>
+<li>Choosing path-specific rules over subdirectory CLAUDE.md files when conventions must apply to files spread across the codebase</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://code.claude.com/docs/en/memory">How Claude remembers your project</a></p></div><div class="cell zh"><h2>3.3 应用路径专属规则进行有条件的约定加载</h2>
+<p><em>EN: Apply path-specific rules for conditional convention loading</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Rules can be scoped to specific files using YAML frontmatter with the <code>paths</code> field. These conditional rules only apply when Claude is working with files matching the specified patterns."
+— How Claude remembers your project, Anthropic (https://code.claude.com/docs/en/memory)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>.claude/rules/ 文件带 YAML frontmatter 的 paths 字段，其中包含 glob 模式，用于有条件地激活规则</li>
+<li>路径作用域规则只在编辑匹配文件时加载，减少无关上下文与 token 使用</li>
+<li>glob 模式规则相对于目录级 CLAUDE.md 文件的优势，适用于跨多个目录的约定（例如散布在整个代码库中的测试文件）</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>创建带 YAML frontmatter 路径作用域的 .claude/rules/ 文件（例如 paths: ["terraform/**/*"]），使规则只在编辑匹配文件时加载</li>
+<li>在路径专属规则中使用 glob 模式，按文件类型应用约定而不论其目录位置（例如 **/*.test.tsx 适用于所有测试文件）</li>
+<li>当约定必须适用于散布在整个代码库中的文件时，选择路径专属规则而非子目录 CLAUDE.md 文件</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://code.claude.com/docs/en/memory">Claude 如何记住你的项目（How Claude remembers your project）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>3.4 Determine when to use plan mode vs direct execution</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "With <code>context: fork</code>, you write the task in your skill and pick an agent type to execute it. The built-in Explore and Plan agents start without CLAUDE.md and git status to keep their context small."
+— Extend Claude with skills, Anthropic (https://code.claude.com/docs/en/skills)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Plan mode is designed for complex tasks involving large-scale changes, multiple valid approaches, architectural decisions, and multi-file modifications</li>
+<li>Direct execution is appropriate for simple, well-scoped changes (e.g., adding a single validation check to one function)</li>
+<li>Plan mode enables safe codebase exploration and design before committing to changes, preventing costly rework</li>
+<li>The Explore subagent for isolating verbose discovery output and returning summaries to preserve main conversation context</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Selecting plan mode for tasks with architectural implications (e.g., microservice restructuring, library migrations affecting 45+ files, choosing between integration approaches with different infrastructure requirements)</li>
+<li>Selecting direct execution for well-understood changes with clear scope (e.g., a single-file bug fix with a clear stack trace, adding a date validation conditional)</li>
+<li>Using the Explore subagent for verbose discovery phases to prevent context window exhaustion during multi-phase tasks</li>
+<li>Combining plan mode for investigation with direct execution for implementation (e.g., planning a library migration, then executing the planned approach)</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://code.claude.com/docs/en/skills">Extend Claude with skills</a> | <a href="https://code.claude.com/docs/en/permission-modes">Permission modes</a></p></div><div class="cell zh"><h2>3.4 判断何时使用计划模式（plan mode）、何时直接执行</h2>
+<p><em>EN: Determine when to use plan mode vs direct execution</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "With <code>context: fork</code>, you write the task in your skill and pick an agent type to execute it. The built-in Explore and Plan agents start without CLAUDE.md and git status to keep their context small."
+— Extend Claude with skills, Anthropic (https://code.claude.com/docs/en/skills)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>计划模式为涉及大规模改动、多种可行方案、架构决策与多文件修改的复杂任务而设计</li>
+<li>直接执行适合简单、范围明确的改动（例如给一个函数添加单个校验）</li>
+<li>计划模式能在承诺改动之前安全地探索代码库并做设计，防止昂贵的返工</li>
+<li>Explore 子智能体用于隔离冗长的发现输出并返回摘要，以保留主对话上下文</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>为有架构影响的任务选择计划模式（例如微服务重构、影响 45 个以上文件的库迁移、在基础设施需求不同的集成方案之间做选择）</li>
+<li>为范围清楚、已被充分理解的改动选择直接执行（例如带清晰堆栈跟踪的单文件 bug 修复、添加一个日期校验条件）</li>
+<li>在多阶段任务的冗长发现阶段使用 Explore 子智能体，防止上下文窗口耗尽</li>
+<li>把计划模式用于调查、直接执行用于实现相结合（例如先规划一次库迁移，再执行规划好的方案）</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://code.claude.com/docs/en/skills">用技能扩展 Claude（Extend Claude with skills）</a> | <a href="https://code.claude.com/docs/en/permission-modes">权限模式（Permission modes）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>3.5 Apply iterative refinement techniques for progressive improvement</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "When you don't know exactly what you want yet, you don't have to work it all out before you prompt. Ask Claude to interview you instead: If you give it something that comes back pass or fail, Claude can close that loop itself."
+— Best practices for Claude Code, Anthropic (https://code.claude.com/docs/en/best-practices)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Concrete input/output examples as the most effective way to communicate expected transformations when prose descriptions are interpreted inconsistently</li>
+<li>Test-driven iteration: writing test suites first, then iterating by sharing test failures to guide progressive improvement</li>
+<li>The interview pattern: having Claude ask questions to surface considerations the developer may not have anticipated before implementing</li>
+<li>When to provide all issues in a single message (interacting problems) versus fixing them sequentially (independent problems)</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Providing 2-3 concrete input/output examples to clarify transformation requirements when natural language descriptions produce inconsistent results</li>
+<li>Writing test suites covering expected behavior, edge cases, and performance requirements before implementation, then iterating by sharing test failures</li>
+<li>Using the interview pattern to surface design considerations (e.g., cache invalidation strategies, failure modes) before implementing solutions in unfamiliar domains</li>
+<li>Providing specific test cases with example input and expected output to fix edge case handling (e.g., null values in migration scripts)</li>
+<li>Addressing multiple interacting issues in a single detailed message when fixes interact, versus sequential iteration for independent issues</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://code.claude.com/docs/en/best-practices">Best practices for Claude Code</a></p></div><div class="cell zh"><h2>3.5 应用迭代精化技术实现渐进改进</h2>
+<p><em>EN: Apply iterative refinement techniques for progressive improvement</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "When you don't know exactly what you want yet, you don't have to work it all out before you prompt. Ask Claude to interview you instead: If you give it something that comes back pass or fail, Claude can close that loop itself."
+— Best practices for Claude Code, Anthropic (https://code.claude.com/docs/en/best-practices)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>具体的输入/输出示例是传达预期变换的最有效方式，尤其当散文描述被不一致地理解时</li>
+<li>测试驱动迭代：先写测试套件，然后通过分享测试失败来迭代，引导渐进改进</li>
+<li>访谈模式（interview pattern）：让 Claude 提问，以浮现在实现之前开发者可能没有预料到的考虑因素</li>
+<li>何时应把所有问题写在一条消息里（相互影响的问题），何时应逐个顺序修复（相互独立的问题）</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>提供 2-3 个具体的输入/输出示例，在自然语言描述产生不一致结果时澄清变换需求</li>
+<li>在实现之前编写覆盖预期行为、边缘情况与性能需求的测试套件，然后通过分享测试失败来迭代</li>
+<li>用访谈模式在不熟悉的领域实现方案之前，浮现设计考虑因素（例如缓存失效策略、故障模式）</li>
+<li>提供带示例输入与预期输出的具体测试用例，修复边缘情况处理（例如迁移脚本中的空值）</li>
+<li>当多个问题相互影响时，在一条详细消息中一并处理；问题相互独立时则顺序迭代</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://code.claude.com/docs/en/best-practices">Claude Code 最佳实践（Best practices for Claude Code）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>3.6 Integrate Claude Code into CI/CD pipelines</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Add the <code>-p</code> (or <code>--print</code>) flag to any <code>claude</code> command to run it non-interactively. To get output conforming to a specific schema, use <code>--output-format json</code> with <code>--json-schema</code> and a JSON Schema definition."
+— Run Claude Code programmatically, Anthropic (https://code.claude.com/docs/en/headless)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The -p (or --print) flag for running Claude Code in non-interactive mode in automated pipelines</li>
+<li>--output-format json and --json-schema CLI flags for enforcing structured output in CI contexts</li>
+<li>CLAUDE.md as the mechanism for providing project context (testing standards, fixture conventions, review criteria) to CI-invoked Claude Code</li>
+<li>Session context isolation: why the same Claude session that generated code is less effective at reviewing its own changes compared to an independent review instance</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Running Claude Code in CI with the -p flag to prevent interactive input hangs</li>
+<li>Using --output-format json with --json-schema to produce machine-parseable structured findings for automated posting as inline PR comments</li>
+<li>Including prior review findings in context when re-running reviews after new commits, instructing Claude to report only new or still-unaddressed issues to avoid duplicate comments</li>
+<li>Providing existing test files in context so test generation avoids suggesting duplicate scenarios already covered by the test suite</li>
+<li>Documenting testing standards, valuable test criteria, and available fixtures in CLAUDE.md to improve test generation quality and reduce low-value test output</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://code.claude.com/docs/en/headless">Run Claude Code programmatically</a></p>
+<hr /></div><div class="cell zh"><h2>3.6 把 Claude Code 集成进 CI/CD 流水线</h2>
+<p><em>EN: Integrate Claude Code into CI/CD pipelines</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Add the <code>-p</code> (or <code>--print</code>) flag to any <code>claude</code> command to run it non-interactively. To get output conforming to a specific schema, use <code>--output-format json</code> with <code>--json-schema</code> and a JSON Schema definition."
+— Run Claude Code programmatically, Anthropic (https://code.claude.com/docs/en/headless)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>-p（或 --print）标志用于在自动化流水线中以非交互模式运行 Claude Code</li>
+<li>--output-format json 与 --json-schema CLI 标志用于在 CI 环境中强制结构化输出</li>
+<li>CLAUDE.md 是向 CI 调用的 Claude Code 提供项目上下文（测试标准、夹具约定、审查标准）的机制</li>
+<li>会话上下文隔离：为什么生成代码的同一个 Claude 会话审查自己的改动，不如一个独立的审查实例有效</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>在 CI 中用 -p 标志运行 Claude Code，防止交互输入导致挂起</li>
+<li>用 --output-format json 配合 --json-schema 产生机器可解析的结构化发现，以便自动发布为 PR 行内评论</li>
+<li>在新提交后重新运行审查时，把先前的审查发现包含在上下文中，并指示 Claude 只报告新的或仍未处理的问题，避免重复评论</li>
+<li>把现有测试文件提供在上下文中，使测试生成避免建议测试套件已经覆盖的重复场景</li>
+<li>在 CLAUDE.md 中记录测试标准、有价值的测试标准与可用的夹具（fixtures），以提高测试生成质量、减少低价值测试输出</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://code.claude.com/docs/en/headless">以编程方式运行 Claude Code（Run Claude Code programmatically）</a></p>
+<hr /></div></div>
+<div class="band" id="d4"><div class="band-en">Domain 4: Prompt Engineering &amp; Structured Output (20%)</div><div class="band-zh">领域 4：提示工程与结构化输出（Domain 4: Prompt Engineering &amp; Structured Output）（20%）</div></div>
+<div class="row obj"><div class="cell en"><h2>4.1 Design prompts with explicit criteria to improve precision and reduce false positives</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Claude responds well to clear, explicit instructions. Being specific about the output you want can help enhance results. The more precisely you explain what you want, the better the result."
+— Prompting best practices, Anthropic (https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The importance of explicit criteria over vague instructions (e.g., "flag comments only when claimed behavior contradicts actual code behavior" vs "check that comments are accurate")</li>
+<li>How general instructions like "be conservative" or "only report high-confidence findings" fail to improve precision compared to specific categorical criteria</li>
+<li>The impact of false positive rates on developer trust: high false positive categories undermine confidence in accurate categories</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Writing specific review criteria that define which issues to report (bugs, security) versus skip (minor style, local patterns) rather than relying on confidence-based filtering</li>
+<li>Temporarily disabling high false-positive categories to restore developer trust while improving prompts for those categories</li>
+<li>Defining explicit severity criteria with concrete code examples for each severity level to achieve consistent classification</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a></p></div><div class="cell zh"><h2>4.1 用明确标准设计提示，提高精度并减少误报</h2>
+<p><em>EN: Design prompts with explicit criteria to improve precision and reduce false positives</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Claude responds well to clear, explicit instructions. Being specific about the output you want can help enhance results. The more precisely you explain what you want, the better the result."
+— Prompting best practices, Anthropic (https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>明确标准胜过含糊指令的重要性（例如「仅当声称的行为与实际代码行为矛盾时才标记注释」对比「检查注释是否准确」）</li>
+<li>为什么「保守一点」或「只报告高置信度发现」这类笼统指令，与具体的分类标准相比，无法提高精度</li>
+<li>误报率对开发者信任的影响：误报率高的类别会削弱对准确类别的信心</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>撰写具体的审查标准，定义哪些问题要报告（bug、安全）与哪些要跳过（小的风格问题、局部模式），而不是依赖基于置信度的过滤</li>
+<li>暂时禁用误报率高的类别以恢复开发者信任，同时改进这些类别的提示</li>
+<li>用每个严重级别的具体代码示例定义明确的严重程度标准，以实现一致的分类</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">提示最佳实践（Prompting best practices）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>4.2 Apply few-shot prompting to improve output consistency and quality</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Examples are one of the most reliable ways to steer Claude's output format, tone, and structure. A few well-crafted examples (known as few-shot or multishot prompting) improve accuracy and consistency."
+— Prompting best practices, Anthropic (https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Few-shot examples as the most effective technique for achieving consistently formatted, actionable output when detailed instructions alone produce inconsistent results</li>
+<li>The role of few-shot examples in demonstrating ambiguous-case handling (e.g., tool selection for ambiguous requests, branch-level test coverage gaps)</li>
+<li>How few-shot examples enable the model to generalize judgment to novel patterns rather than matching only pre-specified cases</li>
+<li>The effectiveness of few-shot examples for reducing hallucination in extraction tasks (e.g., handling informal measurements, varied document structures)</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Creating 2-4 targeted few-shot examples for ambiguous scenarios that show reasoning for why one action was chosen over plausible alternatives</li>
+<li>Including few-shot examples that demonstrate specific desired output format (location, issue, severity, suggested fix) to achieve consistency</li>
+<li>Providing few-shot examples distinguishing acceptable code patterns from genuine issues to reduce false positives while enabling generalization</li>
+<li>Using few-shot examples to demonstrate correct handling of varied document structures (inline citations vs bibliographies, methodology sections vs embedded details)</li>
+<li>Adding few-shot examples showing correct extraction from documents with varied formats to address empty/null extraction of required fields</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a></p></div><div class="cell zh"><h2>4.2 应用少样本（few-shot）提示，提高输出一致性与质量</h2>
+<p><em>EN: Apply few-shot prompting to improve output consistency and quality</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Examples are one of the most reliable ways to steer Claude's output format, tone, and structure. A few well-crafted examples (known as few-shot or multishot prompting) improve accuracy and consistency."
+— Prompting best practices, Anthropic (https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>当只有详细指令却产生不一致结果时，少样本示例是实现格式一致、可操作输出的最有效技术</li>
+<li>少样本示例在演示歧义情况处理方面的作用（例如歧义请求的工具选择、分支级测试覆盖缺口）</li>
+<li>少样本示例如何使模型能把判断推广到新模式，而不是只匹配预先指定的情况</li>
+<li>少样本示例在减少提取任务幻觉方面的有效性（例如处理非正式的计量单位、多样的文档结构）</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>为歧义场景创建 2-4 个有针对性的少样本示例，展示为什么选择某个行动而非看似合理的替代方案的推理</li>
+<li>包含展示具体期望输出格式（位置、问题、严重程度、建议修复）的少样本示例，以实现一致性</li>
+<li>提供能区分可接受代码模式与真实问题的少样本示例，在减少误报的同时实现推广</li>
+<li>用少样本示例演示对多样文档结构的正确处理（行内引用与参考文献列表、方法部分与嵌入的细节）</li>
+<li>添加展示从多样格式文档中正确提取的少样本示例，解决必填字段提取为空/空值的问题</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">提示最佳实践（Prompting best practices）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>4.3 Enforce structured output using tool use and JSON schemas</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Structured outputs constrain Claude's responses to follow a specific schema, ensuring valid, parseable output for downstream processing. JSON outputs control Claude's response format (what Claude says). Strict tool use validates tool parameters (how Claude calls your functions)."
+— Structured outputs, Anthropic (https://platform.claude.com/docs/en/build-with-claude/structured-outputs)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Tool use (tool_use) with JSON schemas as the most reliable approach for guaranteed schema-compliant structured output, eliminating JSON syntax errors</li>
+<li>The distinction between tool_choice: "auto" (model may return text instead of calling a tool), "any" (model must call a tool but can choose which), and forced tool selection (model must call a specific named tool)</li>
+<li>That strict JSON schemas via tool use eliminate syntax errors but do not prevent semantic errors (e.g., line items that don't sum to total, values in wrong fields)</li>
+<li>Schema design considerations: required vs optional fields, enum fields with "other" + detail string patterns for extensible categories</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Defining extraction tools with JSON schemas as input parameters and extracting structured data from the tool_use response</li>
+<li>Setting tool_choice: "any" to guarantee structured output when multiple extraction schemas exist and the document type is unknown</li>
+<li>Forcing a specific tool with tool_choice: {"type": "tool", "name": "extract_metadata"} to ensure a particular extraction runs before enrichment steps</li>
+<li>Designing schema fields as optional (nullable) when source documents may not contain the information, preventing the model from fabricating values to satisfy required fields</li>
+<li>Adding enum values like "unclear" for ambiguous cases and "other" + detail fields for extensible categorization</li>
+<li>Including format normalization rules in prompts alongside strict output schemas to handle inconsistent source formatting</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/structured-outputs">Structured outputs</a></p></div><div class="cell zh"><h2>4.3 用工具使用（tool use）与 JSON 模式强制结构化输出</h2>
+<p><em>EN: Enforce structured output using tool use and JSON schemas</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Structured outputs constrain Claude's responses to follow a specific schema, ensuring valid, parseable output for downstream processing. JSON outputs control Claude's response format (what Claude says). Strict tool use validates tool parameters (how Claude calls your functions)."
+— Structured outputs, Anthropic (https://platform.claude.com/docs/en/build-with-claude/structured-outputs)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>带 JSON 模式的工具使用（tool_use）是保证符合模式的结构化输出、消除 JSON 语法错误的最可靠方法</li>
+<li>tool_choice: "auto"（模型可能返回文本而不调用工具）、"any"（模型必须调用一个工具但可自选）与强制工具选择（模型必须调用某个指定的工具）之间的区别</li>
+<li>通过工具使用实现的严格 JSON 模式能消除语法错误，但不能防止语义错误（例如明细项加总与总计不符、值放错字段）</li>
+<li>模式设计考虑：必填与可选字段、带「other」+ 细节字符串模式的枚举字段，用于可扩展的分类</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>定义以 JSON 模式为输入参数的提取工具，并从 tool_use 响应中提取结构化数据</li>
+<li>当存在多个提取模式且文档类型未知时，设置 tool_choice: "any" 以保证结构化输出</li>
+<li>用 tool_choice: {"type": "tool", "name": "extract_metadata"} 强制某个特定工具，确保某个提取在富化步骤之前运行</li>
+<li>当源文档可能不包含所需信息时，把模式字段设计为可选（可空），防止模型为满足必填字段而编造值</li>
+<li>为歧义情况添加如「unclear」这样的枚举值，并为可扩展分类添加「other」+ 细节字段</li>
+<li>在严格输出模式之外，在提示中包含格式规范化规则，以处理源格式不一致的问题</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/structured-outputs">结构化输出（Structured outputs）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>4.4 Implement validation, retry, and feedback loops for extraction quality</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "This catches errors reliably, especially for coding and math. Retry with a higher <code>max_tokens</code> value to get the complete structured output."
+— Prompting best practices, Anthropic (https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Retry-with-error-feedback: appending specific validation errors to the prompt on retry to guide the model toward correction</li>
+<li>The limits of retry: retries are ineffective when the required information is simply absent from the source document (vs format or structural errors)</li>
+<li>Feedback loop design: tracking which code constructs trigger findings (detected_pattern field) to enable systematic analysis of dismissal patterns</li>
+<li>The difference between semantic validation errors (values don't sum, wrong field placement) and schema syntax errors (eliminated by tool use)</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Implementing follow-up requests that include the original document, the failed extraction, and specific validation errors for model self-correction</li>
+<li>Identifying when retries will be ineffective (e.g., information exists only in an external document not provided) versus when they will succeed (format mismatches, structural output errors)</li>
+<li>Adding detected_pattern fields to structured findings to enable analysis of false positive patterns when developers dismiss findings</li>
+<li>Designing self-correction validation flows: extracting "calculated_total" alongside "stated_total" to flag discrepancies, adding "conflict_detected" booleans for inconsistent source data</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a> | <a href="https://platform.claude.com/docs/en/build-with-claude/structured-outputs">Structured outputs</a></p></div><div class="cell zh"><h2>4.4 为提取质量实现校验、重试与反馈回路</h2>
+<p><em>EN: Implement validation, retry, and feedback loops for extraction quality</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "This catches errors reliably, especially for coding and math. Retry with a higher <code>max_tokens</code> value to get the complete structured output."
+— Prompting best practices, Anthropic (https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>带错误反馈的重试（retry-with-error-feedback）：重试时把具体的校验错误追加到提示中，引导模型纠正</li>
+<li>重试的局限：当所需信息根本不在源文档中时（相对于格式或结构错误），重试是无效的</li>
+<li>反馈回路设计：跟踪哪些代码构造触发发现（detected_pattern 字段），以便系统地分析驳回模式</li>
+<li>语义校验错误（值加总不符、字段放错）与模式语法错误（由工具使用消除）之间的区别</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>实现后续请求，包含原始文档、失败的提取与具体的校验错误，供模型自我纠正</li>
+<li>识别重试何时无效（例如信息只存在于未提供的外部文档中）、何时能成功（格式不匹配、结构性输出错误）</li>
+<li>在结构化发现中添加 detected_pattern 字段，以便在开发者驳回发现时分析误报模式</li>
+<li>设计自我纠正校验流程：同时提取「calculated_total」与「stated_total」以标记差异，为不一致的源数据添加「conflict_detected」布尔值</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">提示最佳实践（Prompting best practices）</a> | <a href="https://platform.claude.com/docs/en/build-with-claude/structured-outputs">结构化输出（Structured outputs）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>4.5 Design efficient batch processing strategies</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "The Message Batches API is a powerful, cost-effective way to asynchronously process large volumes of Messages requests. All usage is charged at 50 percent of the standard API prices."
+— Batch processing, Anthropic (https://platform.claude.com/docs/en/build-with-claude/batch-processing)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The Message Batches API: 50% cost savings, up to 24-hour processing window, no guaranteed latency SLA</li>
+<li>Batch processing is appropriate for non-blocking, latency-tolerant workloads (overnight reports, weekly audits, nightly test generation) and inappropriate for blocking workflows (pre-merge checks)</li>
+<li>The batch API does not support multi-turn tool calling within a single request (cannot execute tools mid-request and return results)</li>
+<li>custom_id fields for correlating batch request/response pairs</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Matching API approach to workflow latency requirements: synchronous API for blocking pre-merge checks, batch API for overnight/weekly analysis</li>
+<li>Calculating batch submission frequency based on SLA constraints (e.g., 4-hour windows to guarantee 30-hour SLA with 24-hour batch processing)</li>
+<li>Handling batch failures: resubmitting only failed documents (identified by custom_id) with appropriate modifications (e.g., chunking documents that exceeded context limits)</li>
+<li>Using prompt refinement on a sample set before batch-processing large volumes to maximize first-pass success rates and reduce iterative resubmission costs</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/batch-processing">Batch processing</a></p></div><div class="cell zh"><h2>4.5 设计高效的批处理策略</h2>
+<p><em>EN: Design efficient batch processing strategies</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "The Message Batches API is a powerful, cost-effective way to asynchronously process large volumes of Messages requests. All usage is charged at 50 percent of the standard API prices."
+— Batch processing, Anthropic (https://platform.claude.com/docs/en/build-with-claude/batch-processing)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>消息批处理 API（Message Batches API）：节省 50% 成本、最长 24 小时处理窗口、不保证延迟 SLA</li>
+<li>批处理适合非阻塞、能容忍延迟的工作负载（连夜报告、每周审计、夜间测试生成），不适合阻塞性工作流（合并前检查）</li>
+<li>批处理 API 不支持单个请求内的多轮工具调用（不能在请求中途执行工具并返回结果）</li>
+<li>custom_id 字段用于关联批处理请求/响应对</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>把 API 方式与工作流的延迟需求相匹配：阻塞性的合并前检查用同步 API，连夜/每周分析用批处理 API</li>
+<li>根据 SLA 约束计算批处理提交频率（例如用 4 小时窗口，在 24 小时批处理下保证 30 小时 SLA）</li>
+<li>处理批处理失败：只重新提交失败的文档（由 custom_id 识别），并做适当修改（例如对超出上下文限制的文档进行分块）</li>
+<li>在批量处理大量文档之前，先在一组样本上精化提示，以最大化一次通过成功率、降低迭代重提交的成本</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/batch-processing">批处理（Batch processing）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>4.6 Design multi-instance and multi-pass review architectures</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "LLMs can sometimes work simultaneously on a task and have their outputs aggregated programmatically. In the evaluator-optimizer workflow, one LLM call generates a response while another provides evaluation and feedback in a loop."
+— Building effective AI agents, Anthropic (https://www.anthropic.com/engineering/building-effective-agents)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Self-review limitations: a model retains reasoning context from generation, making it less likely to question its own decisions in the same session</li>
+<li>Independent review instances (without prior reasoning context) are more effective at catching subtle issues than self-review instructions or extended thinking</li>
+<li>Multi-pass review: splitting large reviews into per-file local analysis passes plus cross-file integration passes to avoid attention dilution and contradictory findings</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Using a second independent Claude instance to review generated code without the generator's reasoning context</li>
+<li>Splitting large multi-file reviews into focused per-file passes for local issues plus separate integration passes for cross-file data flow analysis</li>
+<li>Running verification passes where the model self-reports confidence alongside each finding to enable calibrated review routing</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/engineering/building-effective-agents">Building effective AI agents</a></p>
+<hr /></div><div class="cell zh"><h2>4.6 设计多实例与多遍（multi-pass）审查架构</h2>
+<p><em>EN: Design multi-instance and multi-pass review architectures</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "LLMs can sometimes work simultaneously on a task and have their outputs aggregated programmatically. In the evaluator-optimizer workflow, one LLM call generates a response while another provides evaluation and feedback in a loop."
+— Building effective AI agents, Anthropic (https://www.anthropic.com/engineering/building-effective-agents)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>自我审查的局限：模型保留了生成时的推理上下文，使它在同一个会话中不太会质疑自己的决策</li>
+<li>独立的审查实例（没有先前的推理上下文）比自我审查指令或扩展思考更能发现细微问题</li>
+<li>多遍审查：把大型审查拆成逐文件的局部分析遍，加跨文件集成遍，以避免注意力稀释和自相矛盾的发现</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>使用第二个独立的 Claude 实例审查生成的代码，不带生成者的推理上下文</li>
+<li>把大型多文件审查拆成聚焦的逐文件遍（处理局部问题），加单独的集成遍（处理跨文件数据流分析）</li>
+<li>运行验证遍，让模型在每个发现旁自报置信度，以便按校准情况路由审查</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/engineering/building-effective-agents">构建有效的 AI 智能体（Building effective AI agents）</a></p>
+<hr /></div></div>
+<div class="band" id="d5"><div class="band-en">Domain 5: Context Management &amp; Reliability (15%)</div><div class="band-zh">领域 5：上下文管理与可靠性（Domain 5: Context Management &amp; Reliability）（15%）</div></div>
+<div class="row obj"><div class="cell en"><h2>5.1 Manage conversation context to preserve critical information across long interactions</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Studies on needle-in-a-haystack style benchmarking have uncovered the concept of context rot: as the number of tokens in the context window increases, the model's ability to accurately recall information from that context decreases."
+— Effective context engineering for AI agents, Anthropic (https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Progressive summarization risks: condensing numerical values, percentages, dates, and customer-stated expectations into vague summaries</li>
+<li>The "lost in the middle" effect: models reliably process information at the beginning and end of long inputs but may omit findings from middle sections</li>
+<li>How tool results accumulate in context and consume tokens disproportionately to their relevance (e.g., 40+ fields per order lookup when only 5 are relevant)</li>
+<li>The importance of passing complete conversation history in subsequent API requests to maintain conversational coherence</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Extracting transactional facts (amounts, dates, order numbers, statuses) into a persistent "case facts" block included in each prompt, outside summarized history</li>
+<li>Extracting and persisting structured issue data (order IDs, amounts, statuses) into a separate context layer for multi-issue sessions</li>
+<li>Trimming verbose tool outputs to only relevant fields before they accumulate in context (e.g., keeping only return-relevant fields from order lookups)</li>
+<li>Placing key findings summaries at the beginning of aggregated inputs and organizing detailed results with explicit section headers to mitigate position effects</li>
+<li>Requiring subagents to include metadata (dates, source locations, methodological context) in structured outputs to support accurate downstream synthesis</li>
+<li>Modifying upstream agents to return structured data (key facts, citations, relevance scores) instead of verbose content and reasoning chains when downstream agents have limited context budgets</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Effective context engineering for AI agents</a></p></div><div class="cell zh"><h2>5.1 在长交互中管理对话上下文，保留关键信息</h2>
+<p><em>EN: Manage conversation context to preserve critical information across long interactions</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Studies on needle-in-a-haystack style benchmarking have uncovered the concept of context rot: as the number of tokens in the context window increases, the model's ability to accurately recall information from that context decreases."
+— Effective context engineering for AI agents, Anthropic (https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>渐进式摘要的风险：把数值、百分比、日期与客户陈述的期望压缩成含糊的摘要</li>
+<li>「中间遗失」（lost in the middle）效应：模型能可靠地处理长输入开头和结尾的信息，但可能遗漏中间部分的发现</li>
+<li>工具结果如何在上下文中累积，并消耗与其相关性不成比例的 token（例如每次订单查询有 40 多个字段，而只有 5 个相关）</li>
+<li>在后续 API 请求中传递完整对话历史以保持对话连贯性的重要性</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>把交易事实（金额、日期、订单号、状态）提取到一个持久的「案例事实」（case facts）块中，包含在每个提示里，置于被摘要的历史之外</li>
+<li>把结构化的问题数据（订单 ID、金额、状态）提取并持久化到一个单独的上下文层，用于多问题会话</li>
+<li>在冗长的工具输出累积进上下文之前，把它们裁剪到只剩相关字段（例如订单查询只保留与退货相关的字段）</li>
+<li>把关键发现摘要放在聚合输入的开头，并用明确的小节标题组织详细结果，以缓解位置效应</li>
+<li>要求子智能体在结构化输出中包含元数据（日期、来源位置、方法学背景），以支持准确的下游综合</li>
+<li>当下游智能体的上下文预算有限时，修改上游智能体，使其返回结构化数据（关键事实、引用、相关性分数），而不是冗长的内容与推理链</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">为 AI 智能体做有效的上下文工程（Effective context engineering for AI agents）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>5.2 Design effective escalation and ambiguity resolution patterns</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Claude requests user input in two situations: when it needs permission to use a tool (like deleting files or running commands), and when it has clarifying questions (via the <code>AskUserQuestion</code> tool)."
+— Handle approvals and user input, Anthropic (https://platform.claude.com/docs/en/agent-sdk/user-input)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Appropriate escalation triggers: customer requests for a human, policy exceptions/gaps (not just complex cases), and inability to make meaningful progress</li>
+<li>The distinction between escalating immediately when a customer explicitly demands it versus offering to resolve when the issue is straightforward</li>
+<li>Why sentiment-based escalation and self-reported confidence scores are unreliable proxies for actual case complexity</li>
+<li>How multiple customer matches require clarification (requesting additional identifiers) rather than heuristic selection</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Adding explicit escalation criteria with few-shot examples to the system prompt demonstrating when to escalate versus resolve autonomously</li>
+<li>Honoring explicit customer requests for human agents immediately without first attempting investigation</li>
+<li>Acknowledging frustration while offering resolution when the issue is within the agent's capability, escalating only if the customer reiterates their preference</li>
+<li>Escalating when policy is ambiguous or silent on the customer's specific request (e.g., competitor price matching when policy only addresses own-site adjustments)</li>
+<li>Instructing the agent to ask for additional identifiers when tool results return multiple matches, rather than selecting based on heuristics</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/agent-sdk/user-input">Handle approvals and user input</a></p></div><div class="cell zh"><h2>5.2 设计有效的升级与歧义解决模式</h2>
+<p><em>EN: Design effective escalation and ambiguity resolution patterns</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Claude requests user input in two situations: when it needs permission to use a tool (like deleting files or running commands), and when it has clarifying questions (via the <code>AskUserQuestion</code> tool)."
+— Handle approvals and user input, Anthropic (https://platform.claude.com/docs/en/agent-sdk/user-input)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>恰当的升级触发条件：客户要求人工处理、政策例外/空白（不只是复杂案例），以及无法取得有意义的进展</li>
+<li>客户明确要求时立即升级，与问题简单时先提出由自己解决之间的区别</li>
+<li>为什么基于情感的升级和自报置信度分数是衡量实际案例复杂度的不可靠代理指标</li>
+<li>多个客户匹配时需要澄清（请求额外的标识信息），而不是靠启发式选择</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>在系统提示中添加明确的升级标准并配少样本示例，展示何时升级、何时自主解决</li>
+<li>立即响应客户对人工客服的明确要求，不先尝试调查</li>
+<li>在问题处于智能体能力范围内时，先认可客户的挫败情绪并提出由自己解决，只有客户重申其偏好时才升级</li>
+<li>当政策对客户的具体请求含糊或没有规定时升级（例如政策只涉及自家网站的价格调整时，客户要求竞争对手价格匹配）</li>
+<li>指示智能体在工具结果返回多个匹配时请求额外的标识信息，而不是基于启发式进行选择</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/agent-sdk/user-input">处理审批与用户输入（Handle approvals and user input）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>5.3 Implement error propagation strategies across multi-agent systems</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "The compound nature of errors in agentic systems means that minor issues for traditional software can derail agents entirely."
+— How we built our multi-agent research system, Anthropic (https://www.anthropic.com/research/multi-agent-research-system)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Structured error context (failure type, attempted query, partial results, alternative approaches) as enabling intelligent coordinator recovery decisions</li>
+<li>The distinction between access failures (timeouts needing retry decisions) and valid empty results (successful queries with no matches)</li>
+<li>Why generic error statuses ("search unavailable") hide valuable context from the coordinator</li>
+<li>Why silently suppressing errors (returning empty results as success) or terminating entire workflows on single failures are both anti-patterns</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Returning structured error context including failure type, what was attempted, partial results, and potential alternatives to enable coordinator recovery</li>
+<li>Distinguishing access failures from valid empty results in error reporting so the coordinator can make appropriate decisions</li>
+<li>Having subagents implement local recovery for transient failures and only propagate errors they cannot resolve, including what was attempted and partial results</li>
+<li>Structuring synthesis output with coverage annotations indicating which findings are well-supported versus which topic areas have gaps due to unavailable sources</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/research/multi-agent-research-system">How we built our multi-agent research system</a> | <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Effective context engineering for AI agents</a></p></div><div class="cell zh"><h2>5.3 在多智能体系统中实现错误传播策略</h2>
+<p><em>EN: Implement error propagation strategies across multi-agent systems</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "The compound nature of errors in agentic systems means that minor issues for traditional software can derail agents entirely."
+— How we built our multi-agent research system, Anthropic (https://www.anthropic.com/research/multi-agent-research-system)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>结构化错误上下文（失败类型、尝试过的查询、部分结果、替代方案）如何使协调者能做出智能的恢复决策</li>
+<li>访问失败（超时，需要重试决策）与有效的空结果（查询成功但无匹配）之间的区别</li>
+<li>为什么笼统的错误状态（「搜索不可用」）会向协调者隐藏宝贵的上下文</li>
+<li>为什么静默压制错误（把空结果作为成功返回）或因单个失败就终止整个工作流，都是反模式</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>返回结构化错误上下文，包括失败类型、尝试过什么、部分结果与潜在替代方案，以支持协调者恢复</li>
+<li>在错误报告中区分访问失败与有效的空结果，使协调者能做出恰当的决策</li>
+<li>让子智能体为瞬时失败实现本地恢复，只向上传播它们无法解决的错误，并包含尝试过什么与部分结果</li>
+<li>为综合输出添加覆盖标注，指出哪些发现有充分支持、哪些主题领域因来源不可用而存在缺口</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/research/multi-agent-research-system">我们如何构建多智能体研究系统（How we built our multi-agent research system）</a> | <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">为 AI 智能体做有效的上下文工程（Effective context engineering for AI agents）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>5.4 Manage context effectively in large codebase exploration</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Compaction is the practice of taking a conversation nearing the context window limit, summarizing its contents, and reinitiating a new context window with the summary."
+— Effective context engineering for AI agents, Anthropic (https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Context degradation in extended sessions: models start giving inconsistent answers and referencing "typical patterns" rather than specific classes discovered earlier</li>
+<li>The role of scratchpad files for persisting key findings across context boundaries</li>
+<li>Subagent delegation for isolating verbose exploration output while the main agent coordinates high-level understanding</li>
+<li>Structured state persistence for crash recovery: each agent exports state to a known location, and the coordinator loads a manifest on resume</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Spawning subagents to investigate specific questions (e.g., "find all test files," "trace refund flow dependencies") while the main agent preserves high-level coordination</li>
+<li>Having agents maintain scratchpad files recording key findings, referencing them for subsequent questions to counteract context degradation</li>
+<li>Summarizing key findings from one exploration phase before spawning sub-agents for the next phase, injecting summaries into initial context</li>
+<li>Designing crash recovery using structured agent state exports (manifests) that the coordinator loads on resume and injects into agent prompts</li>
+<li>Using /compact to reduce context usage during extended exploration sessions when context fills with verbose discovery output</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Effective context engineering for AI agents</a></p></div><div class="cell zh"><h2>5.4 在大型代码库探索中有效管理上下文</h2>
+<p><em>EN: Manage context effectively in large codebase exploration</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Compaction is the practice of taking a conversation nearing the context window limit, summarizing its contents, and reinitiating a new context window with the summary."
+— Effective context engineering for AI agents, Anthropic (https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>长会话中的上下文退化：模型开始给出不一致的回答，并引用「典型模式」而不是先前发现的具体类</li>
+<li>暂存文件（scratchpad files）在跨上下文边界持久保存关键发现方面的作用</li>
+<li>用子智能体委派隔离冗长的探索输出，同时主智能体保持高层理解的协调</li>
+<li>用于崩溃恢复的结构化状态持久化：每个智能体把状态导出到已知位置，协调者在恢复时加载一份清单（manifest）</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>生成子智能体调查具体问题（例如「找出所有测试文件」「追踪退款流程的依赖」），同时主智能体保留高层协调</li>
+<li>让智能体维护记录关键发现的暂存文件，并在后续问题中引用它们，以对抗上下文退化</li>
+<li>在一轮探索阶段生成子智能体进行下一阶段之前，先总结该阶段的关键发现，并把摘要注入初始上下文</li>
+<li>用结构化的智能体状态导出（清单）设计崩溃恢复，由协调者在恢复时加载并注入智能体提示</li>
+<li>当上下文被冗长的发现输出填满时，在长探索会话中使用 /compact 减少上下文占用</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">为 AI 智能体做有效的上下文工程（Effective context engineering for AI agents）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>5.5 Design human review workflows and confidence calibration</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Human grading: Most flexible and high quality, but slow and expensive. Avoid if possible."
+— Define success criteria and build evaluations, Anthropic (https://platform.claude.com/docs/en/test-and-evaluate/develop-tests)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The risk that aggregate accuracy metrics (e.g., 97% overall) may mask poor performance on specific document types or fields</li>
+<li>Stratified random sampling for measuring error rates in high-confidence extractions and detecting novel error patterns</li>
+<li>Field-level confidence scores calibrated using labeled validation sets for routing review attention</li>
+<li>The importance of validating accuracy by document type and field segment before automating high-confidence extractions</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Implementing stratified random sampling of high-confidence extractions for ongoing error rate measurement and novel pattern detection</li>
+<li>Analyzing accuracy by document type and field to verify consistent performance across all segments before reducing human review</li>
+<li>Having models output field-level confidence scores, then calibrating review thresholds using labeled validation sets</li>
+<li>Routing extractions with low model confidence or ambiguous/contradictory source documents to human review, prioritizing limited reviewer capacity</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/test-and-evaluate/develop-tests">Define success criteria and build evaluations</a></p></div><div class="cell zh"><h2>5.5 设计人工审查工作流与置信度校准</h2>
+<p><em>EN: Design human review workflows and confidence calibration</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Human grading: Most flexible and high quality, but slow and expensive. Avoid if possible."
+— Define success criteria and build evaluations, Anthropic (https://platform.claude.com/docs/en/test-and-evaluate/develop-tests)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>总体准确率指标（例如总体 97%）可能掩盖在特定文档类型或字段上表现不佳的风险</li>
+<li>分层随机抽样（stratified random sampling）用于测量高置信度提取的错误率并发现新的错误模式</li>
+<li>用带标签的验证集校准的字段级置信度分数，用于路由审查注意力</li>
+<li>在自动化高置信度提取之前，按文档类型与字段分段验证准确率的重要性</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>对高置信度提取实施分层随机抽样，持续测量错误率并发现新模式</li>
+<li>按文档类型与字段分析准确率，在减少人工审查之前验证所有分段的表现一致</li>
+<li>让模型输出字段级置信度分数，然后用带标签的验证集校准审查阈值</li>
+<li>把模型置信度低或源文档含糊/自相矛盾的提取路由到人工审查，优先使用有限的审查人力</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/test-and-evaluate/develop-tests">定义成功标准并构建评估（Define success criteria and build evaluations）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>5.6 Preserve information provenance and handle uncertainty in multi-source synthesis</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "In our case, human testers noticed that our early agents consistently chose SEO-optimized content farms over authoritative but less highly-ranked sources like academic PDFs or personal blogs."
+— How we built our multi-agent research system, Anthropic (https://www.anthropic.com/research/multi-agent-research-system)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>How source attribution is lost during summarization steps when findings are compressed without preserving claim-source mappings</li>
+<li>The importance of structured claim-source mappings that the synthesis agent must preserve and merge when combining findings</li>
+<li>How to handle conflicting statistics from credible sources: annotating conflicts with source attribution rather than arbitrarily selecting one value</li>
+<li>Temporal data: requiring publication/collection dates in structured outputs to prevent temporal differences from being misinterpreted as contradictions</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Requiring subagents to output structured claim-source mappings (source URLs, document names, relevant excerpts) that downstream agents preserve through synthesis</li>
+<li>Structuring reports with explicit sections distinguishing well-established findings from contested ones, preserving original source characterizations and methodological context</li>
+<li>Completing document analysis with conflicting values included and explicitly annotated, letting the coordinator decide how to reconcile before passing to synthesis</li>
+<li>Requiring subagents to include publication or data collection dates in structured outputs to enable correct temporal interpretation</li>
+<li>Rendering different content types appropriately in synthesis outputs — financial data as tables, news as prose, technical findings as structured lists — rather than converting everything to a uniform format</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/research/multi-agent-research-system">How we built our multi-agent research system</a></p>
+<hr /></div><div class="cell zh"><h2>5.6 在多来源综合中保留信息出处并处理不确定性</h2>
+<p><em>EN: Preserve information provenance and handle uncertainty in multi-source synthesis</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "In our case, human testers noticed that our early agents consistently chose SEO-optimized content farms over authoritative but less highly-ranked sources like academic PDFs or personal blogs."
+— How we built our multi-agent research system, Anthropic (https://www.anthropic.com/research/multi-agent-research-system)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>当发现被压缩而没有保留论断-来源映射时，来源归属如何在摘要步骤中丢失</li>
+<li>结构化的论断-来源映射的重要性：综合智能体在合并发现时必须保留并合并这些映射</li>
+<li>如何处理来自可信来源的相互冲突的统计数据：给冲突添加来源归属标注，而不是武断地选择一个值</li>
+<li>时间数据：要求在结构化输出中包含发表/收集日期，防止时间差异被误读为矛盾</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>要求子智能体输出结构化的论断-来源映射（来源 URL、文档名、相关摘录），由下游智能体在综合过程中保留</li>
+<li>把报告组织成明确区分已被充分确立的发现与有争议的发现的小节，保留原始来源的表述与方法学背景</li>
+<li>完成文档分析时把冲突值一并包含并明确标注，让协调者在传给综合之前决定如何调和</li>
+<li>要求子智能体在结构化输出中包含发表或数据收集日期，以便正确地按时间解读</li>
+<li>在综合输出中按内容类型恰当地呈现 —— 财务数据用表格、新闻用散文、技术发现用结构化列表 —— 而不是把一切都转换成统一格式</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/research/multi-agent-research-system">我们如何构建多智能体研究系统（How we built our multi-agent research system）</a></p>
+<hr /></div></div>
+<div class="band" id="samples"><div class="band-en">Official Sample Questions</div><div class="band-zh">官方样题</div></div>
+<div class="row obj"><div class="cell en"><p>From Section 9 of the official Exam Guide v1.0. These sample questions illustrate the format and difficulty level of the exam; they are drawn from the practice test and include explanations to aid learning.</p>
+<h2>Scenario: Customer Support Resolution Agent</h2>
+<h3>Question 1</h3>
+<p>Production data shows that in 12% of cases, your agent skips get_customer entirely and calls lookup_order using only the customer's stated name, occasionally leading to misidentified accounts and incorrect refunds. What change would most effectively address this reliability issue?</p>
+<ul>
+<li>A. Add a programmatic prerequisite that blocks lookup_order and process_refund calls until get_customer has returned a verified customer ID.</li>
+<li>B. Enhance the system prompt to state that customer verification via get_customer is mandatory before any order operations.</li>
+<li>C. Add few-shot examples showing the agent always calling get_customer first, even when customers volunteer order details.</li>
+<li>D. Implement a routing classifier that analyzes each request and enables only the subset of tools appropriate for that request type.</li>
+</ul>
+<p><strong>Answer: A.</strong> When a specific tool sequence is required for critical business logic (like verifying customer identity before processing refunds), programmatic enforcement provides deterministic guarantees that prompt-based approaches cannot. Options B and C rely on probabilistic LLM compliance, which is insufficient when errors have financial consequences. Option D addresses tool availability rather than tool ordering, which is not the actual problem.</p>
+<h3>Question 2</h3>
+<p>Production logs show the agent frequently calls get_customer when users ask about orders (e.g., "check my order #12345"), instead of calling lookup_order. Both tools have minimal descriptions ("Retrieves customer information" / "Retrieves order details") and accept similar identifier formats. What's the most effective first step to improve tool selection reliability?</p>
+<ul>
+<li>A. Add few-shot examples to the system prompt demonstrating correct tool selection patterns, with 5-8 examples showing order-related queries routing to lookup_order.</li>
+<li>B. Expand each tool's description to include input formats it handles, example queries, edge cases, and boundaries explaining when to use it versus similar tools.</li>
+<li>C. Implement a routing layer that parses user input before each turn and pre-selects the appropriate tool based on detected keywords and identifier patterns.</li>
+<li>D. Consolidate both tools into a single lookup_entity tool that accepts any identifier and internally determines which backend to query.</li>
+</ul>
+<p><strong>Answer: B.</strong> Tool descriptions are the primary mechanism LLMs use for tool selection. When descriptions are minimal, models lack the context to differentiate between similar tools. Option B directly addresses this root cause with a low-effort, high-leverage fix. Few-shot examples (A) add token overhead without fixing the underlying issue. A routing layer (C) is over-engineered and bypasses the LLM's natural language understanding. Consolidating tools (D) is a valid architectural choice but requires more effort than a "first step" warrants when the immediate problem is inadequate descriptions.</p>
+<h3>Question 3</h3>
+<p>Your agent achieves 55% first-contact resolution, well below the 80% target. Logs show it escalates straightforward cases (standard damage replacements with photo evidence) while attempting to autonomously handle complex situations requiring policy exceptions. What's the most effective way to improve escalation calibration?</p>
+<ul>
+<li>A. Add explicit escalation criteria to your system prompt with few-shot examples demonstrating when to escalate versus resolve autonomously.</li>
+<li>B. Have the agent self-report a confidence score (1-10) before each response and automatically route requests to humans when confidence falls below a threshold.</li>
+<li>C. Deploy a separate classifier model trained on historical tickets to predict which requests need escalation before the main agent begins processing.</li>
+<li>D. Implement sentiment analysis to detect customer frustration levels and automatically escalate when negative sentiment exceeds a threshold.</li>
+</ul>
+<p><strong>Answer: A.</strong> Adding explicit escalation criteria with few-shot examples directly addresses the root cause: unclear decision boundaries. This is the proportionate first response before adding infrastructure. Option B fails because LLM self-reported confidence is poorly calibrated — the agent is already incorrectly confident on hard cases. Option C is over-engineered, requiring labeled data and ML infrastructure when prompt optimization hasn't been tried. Option D solves a different problem entirely; sentiment doesn't correlate with case complexity, which is the actual issue.</p>
+<h2>Scenario: Code Generation with Claude Code</h2>
+<h3>Question 4</h3>
+<p>You want to create a custom /review slash command that runs your team's standard code review checklist. This command should be available to every developer when they clone or pull the repository. Where should you create this command file?</p>
+<ul>
+<li>A. In the .claude/commands/ directory in the project repository</li>
+<li>B. In ~/.claude/commands/ in each developer's home directory</li>
+<li>C. In the CLAUDE.md file at the project root</li>
+<li>D. In a .claude/config.json file with a commands array</li>
+</ul>
+<p><strong>Answer: A.</strong> Project-scoped custom slash commands should be stored in the .claude/commands/ directory within the repository. These commands are version-controlled and automatically available to all developers when they clone or pull the repo. Option B (~/.claude/commands/) is for personal commands that aren't shared via version control. Option C (CLAUDE.md) is for project instructions and context, not command definitions. Option D describes a configuration mechanism that doesn't exist in Claude Code.</p>
+<h3>Question 5</h3>
+<p>You've been assigned to restructure the team's monolithic application into microservices. This will involve changes across dozens of files and requires decisions about service boundaries and module dependencies. Which approach should you take?</p>
+<ul>
+<li>A. Enter plan mode to explore the codebase, understand dependencies, and design an implementation approach before making changes.</li>
+<li>B. Start with direct execution and make changes incrementally, letting the implementation reveal the natural service boundaries.</li>
+<li>C. Use direct execution with comprehensive upfront instructions detailing exactly how each service should be structured.</li>
+<li>D. Begin in direct execution mode and only switch to plan mode if you encounter unexpected complexity during implementation.</li>
+</ul>
+<p><strong>Answer: A.</strong> Plan mode is designed for complex tasks involving large-scale changes, multiple valid approaches, and architectural decisions — exactly what monolith-to-microservices restructuring requires. It enables safe codebase exploration and design before committing to changes. Option B risks costly rework when dependencies are discovered late. Option C assumes you already know the right structure without exploring the code. Option D ignores that the complexity is already stated in the requirements, not something that might emerge later.</p>
+<h3>Question 6</h3>
+<p>Your codebase has distinct areas with different coding conventions: React components use functional style with hooks, API handlers use async/await with specific error handling, and database models follow a repository pattern. Test files are spread throughout the codebase alongside the code they test (e.g., Button.test.tsx next to Button.tsx), and you want all tests to follow the same conventions regardless of location. What's the most maintainable way to ensure Claude automatically applies the correct conventions when generating code?</p>
+<ul>
+<li>A. Create rule files in .claude/rules/ with YAML frontmatter specifying glob patterns to conditionally apply conventions based on file paths</li>
+<li>B. Consolidate all conventions in the root CLAUDE.md file under headers for each area, relying on Claude to infer which section applies</li>
+<li>C. Create skills in .claude/skills/ for each code type that include the relevant conventions in their SKILL.md files</li>
+<li>D. Place a separate CLAUDE.md file in each subdirectory containing that area's specific conventions</li>
+</ul>
+<p><strong>Answer: A.</strong> Option A is correct because .claude/rules/ with glob patterns (e.g., **/*.test.tsx) allows conventions to be automatically applied based on file paths regardless of directory location, essential for test files spread throughout the codebase. Option B relies on inference rather than explicit matching, making it unreliable. Option C requires manual skill invocation or relies on Claude choosing to load them, contradicting the need for deterministic "automatic" application based on file paths. Option D can't easily handle files spread across many directories since CLAUDE.md files are directory-bound.</p>
+<h2>Scenario: Multi-Agent Research System</h2>
+<h3>Question 7</h3>
+<p>After running the system on the topic "impact of AI on creative industries," you observe that each subagent completes successfully: the web search agent finds relevant articles, the document analysis agent summarizes papers correctly, and the synthesis agent produces coherent output. However, the final reports cover only visual arts, completely missing music, writing, and film production. When you examine the coordinator's logs, you see it decomposed the topic into three subtasks: "AI in digital art creation," "AI in graphic design," and "AI in photography." What is the most likely root cause?</p>
+<ul>
+<li>A. The synthesis agent lacks instructions for identifying coverage gaps in the findings it receives from other agents.</li>
+<li>B. The coordinator agent's task decomposition is too narrow, resulting in subagent assignments that don't cover all relevant domains of the topic.</li>
+<li>C. The web search agent's queries are not comprehensive enough and need to be expanded to cover more creative industry sectors.</li>
+<li>D. The document analysis agent is filtering out sources related to non-visual creative industries due to overly restrictive relevance criteria.</li>
+</ul>
+<p><strong>Answer: B.</strong> The coordinator's logs reveal the root cause directly: it decomposed "creative industries" into only visual arts subtasks (digital art, graphic design, photography), completely omitting music, writing, and film. The subagents executed their assigned tasks correctly — the problem is what they were assigned. Options A, C, and D incorrectly blame downstream agents that are working correctly within their assigned scope.</p>
+<h3>Question 8</h3>
+<p>The web search subagent times out while researching a complex topic. You need to design how this failure information flows back to the coordinator agent. Which error propagation approach best enables intelligent recovery?</p>
+<ul>
+<li>A. Return structured error context to the coordinator including the failure type, the attempted query, any partial results, and potential alternative approaches.</li>
+<li>B. Implement automatic retry logic with exponential backoff within the subagent, returning a generic "search unavailable" status only after all retries are exhausted.</li>
+<li>C. Catch the timeout within the subagent and return an empty result set marked as successful.</li>
+<li>D. Propagate the timeout exception directly to a top-level handler that terminates the entire research workflow.</li>
+</ul>
+<p><strong>Answer: A.</strong> Structured error context gives the coordinator the information it needs to make intelligent recovery decisions — whether to retry with a modified query, try an alternative approach, or proceed with partial results. Option B's generic status hides valuable context from the coordinator, preventing informed decisions. Option C suppresses the error by marking failure as success, which prevents any recovery and risks incomplete research outputs. Option D terminates the entire workflow unnecessarily when recovery strategies could succeed.</p>
+<h3>Question 9</h3>
+<p>During testing, you observe that the synthesis agent frequently needs to verify specific claims while combining findings. Currently, when verification is needed, the synthesis agent returns control to the coordinator, which invokes the web search agent, then re-invokes synthesis with results. This adds 2-3 round trips per task and increases latency by 40%. Your evaluation shows that 85% of these verifications are simple fact-checks (dates, names, statistics) while 15% require deeper investigation. What's the most effective approach to reduce overhead while maintaining system reliability?</p>
+<ul>
+<li>A. Give the synthesis agent a scoped verify_fact tool for simple lookups, while complex verifications continue delegating to the web search agent through the coordinator.</li>
+<li>B. Have the synthesis agent accumulate all verification needs and return them as a batch to the coordinator at the end of its pass, which then sends them all to the web search agent at once.</li>
+<li>C. Give the synthesis agent access to all web search tools so it can handle any verification need directly without round-trips through the coordinator.</li>
+<li>D. Have the web search agent proactively cache extra context around each source during initial research, anticipating what the synthesis agent might need to verify.</li>
+</ul>
+<p><strong>Answer: A.</strong> Option A applies the principle of least privilege by giving the synthesis agent only what it needs for the 85% common case (simple fact verification) while preserving the existing coordination pattern for complex cases. Option B's batching approach creates blocking dependencies since synthesis steps may depend on earlier verified facts. Option C over-provisions the synthesis agent, violating separation of concerns. Option D relies on speculative caching that cannot reliably predict what the synthesis agent will need to verify.</p>
+<h2>Scenario: Claude Code for Continuous Integration</h2>
+<h3>Question 10</h3>
+<p>Your pipeline script runs claude "Analyze this pull request for security issues" but the job hangs indefinitely. Logs indicate Claude Code is waiting for interactive input. What's the correct approach to run Claude Code in an automated pipeline?</p>
+<ul>
+<li>A. Add the -p flag: claude -p "Analyze this pull request for security issues"</li>
+<li>B. Set the environment variable CLAUDE_HEADLESS=true before running the command</li>
+<li>C. Redirect stdin from /dev/null: claude "Analyze this pull request for security issues" &lt; /dev/null</li>
+<li>D. Add the --batch flag: claude --batch "Analyze this pull request for security issues"</li>
+</ul>
+<p><strong>Answer: A.</strong> The -p (or --print) flag is the documented way to run Claude Code in non-interactive mode. It processes the prompt, outputs the result to stdout, and exits without waiting for user input — exactly what CI/CD pipelines require. The other options reference non-existent features (CLAUDE_HEADLESS environment variable, --batch flag) or use Unix workarounds that don't properly address Claude Code's command syntax.</p>
+<h3>Question 11</h3>
+<p>Your team wants to reduce API costs for automated analysis. Currently, real-time Claude calls power two workflows: (1) a blocking pre-merge check that must complete before developers can merge, and (2) a technical debt report generated overnight for review the next morning. Your manager proposes switching both to the Message Batches API for its 50% cost savings. How should you evaluate this proposal?</p>
+<ul>
+<li>A. Use batch processing for the technical debt reports only; keep real-time calls for pre-merge checks.</li>
+<li>B. Switch both workflows to batch processing with status polling to check for completion.</li>
+<li>C. Keep real-time calls for both workflows to avoid batch result ordering issues.</li>
+<li>D. Switch both to batch processing with a timeout fallback to real-time if batches take too long.</li>
+</ul>
+<p><strong>Answer: A.</strong> The Message Batches API offers 50% cost savings but has processing times up to 24 hours with no guaranteed latency SLA. This makes it unsuitable for blocking pre-merge checks where developers wait for results, but ideal for overnight batch jobs like technical debt reports. Option B is wrong because relying on "often faster" completion isn't acceptable for blocking workflows. Option C reflects a misconception — batch results can be correlated using custom_id fields. Option D adds unnecessary complexity when the simpler solution is matching each API to its appropriate use case.</p>
+<h3>Question 12</h3>
+<p>A pull request modifies 14 files across the stock tracking module. Your single-pass review analyzing all files together produces inconsistent results: detailed feedback for some files but superficial comments for others, obvious bugs missed, and contradictory feedback — flagging a pattern as problematic in one file while approving identical code elsewhere in the same PR. How should you restructure the review?</p>
+<ul>
+<li>A. Split into focused passes: analyze each file individually for local issues, then run a separate integration-focused pass examining cross-file data flow.</li>
+<li>B. Require developers to split large PRs into smaller submissions of 3-4 files before the automated review runs.</li>
+<li>C. Switch to a higher-tier model with a larger context window to give all 14 files adequate attention in one pass.</li>
+<li>D. Run three independent review passes on the full PR and only flag issues that appear in at least two of the three runs.</li>
+</ul>
+<p><strong>Answer: A.</strong> Splitting reviews into focused passes directly addresses the root cause: attention dilution when processing many files at once. File-by-file analysis ensures consistent depth, while a separate integration pass catches cross-file issues. Option B shifts burden to developers without improving the system. Option C misunderstands that larger context windows don't solve attention quality issues. Option D would actually suppress detection of real bugs by requiring consensus on issues that may only be caught intermittently.</p></div><div class="cell zh"><p>取自官方考试指南第 1.0 版第 9 节。这些样题展示了考试的形式与难度水平；它们取自练习测试，并附有帮助学习的解析。</p>
+<h2>场景：客户支持解决智能体（Customer Support Resolution Agent）</h2>
+<h3>问题 1</h3>
+<p>生产数据显示，在 12% 的情况下，你的智能体完全跳过 get_customer，只凭客户口述的姓名就调用 lookup_order，偶尔导致账户识别错误和退款错误。哪项改变最能有效解决这个可靠性问题？</p>
+<ul>
+<li>A. 添加一个程序化前置条件：在 get_customer 返回已验证的客户 ID 之前，阻止 lookup_order 和 process_refund 调用。</li>
+<li>B. 强化系统提示，声明在任何订单操作之前必须通过 get_customer 验证客户。</li>
+<li>C. 添加少样本示例，展示智能体总是先调用 get_customer，即使客户主动提供了订单细节。</li>
+<li>D. 实现一个路由分类器，分析每个请求，只启用适合该请求类型的工具子集。</li>
+</ul>
+<p><strong>答案：A。</strong> 当某个特定工具顺序是关键业务逻辑所必需的（例如在处理退款前验证客户身份），程序化强制能提供基于提示的方法无法提供的确定性保证。选项 B 和 C 依赖 LLM 的概率性遵从，当错误会带来财务后果时这并不足够。选项 D 解决的是工具可用性而非工具顺序，不是真正的问题所在。</p>
+<h3>问题 2</h3>
+<p>生产日志显示，当用户询问订单时（例如「查一下我的订单 #12345」），智能体频繁调用 get_customer，而不是 lookup_order。两个工具的描述都很简略（「检索客户信息」/「检索订单详情」），且接受相似的标识符格式。提高工具选择可靠性的最有效第一步是什么？</p>
+<ul>
+<li>A. 在系统提示中添加少样本示例，展示正确的工具选择模式，用 5-8 个示例展示订单相关查询应路由到 lookup_order。</li>
+<li>B. 扩展每个工具的描述，包含它处理的输入格式、示例查询、边缘情况，以及何时用它而非相似工具的边界说明。</li>
+<li>C. 实现一个路由层，在每轮对话前解析用户输入，根据检测到的关键字和标识符模式预选合适的工具。</li>
+<li>D. 把两个工具合并为一个 lookup_entity 工具，接受任何标识符并在内部决定查询哪个后端。</li>
+</ul>
+<p><strong>答案：B。</strong> 工具描述是 LLM 用于工具选择的主要机制。描述过于简略时，模型缺乏区分相似工具的上下文。选项 B 以低投入、高杠杆的方式直接解决这一根源。少样本示例（A）增加 token 开销，却不修复底层问题。路由层（C）过度工程化，且绕过了 LLM 的自然语言理解。合并工具（D）是有效的架构选择，但当眼前问题只是描述不足时，它比「第一步」所需的投入更大。</p>
+<h3>问题 3</h3>
+<p>你的智能体一次联系解决率只有 55%，远低于 80% 的目标。日志显示，它把简单案例（带照片证据的标准损坏换货）升级了，却试图自主处理需要政策例外（policy exceptions）的复杂情况。提高升级校准（escalation calibration）最有效的方法是什么？</p>
+<ul>
+<li>A. 在系统提示中添加明确的升级标准，并配少样本示例，展示何时升级、何时自主解决。</li>
+<li>B. 让智能体在每次回复前自报一个置信度分数（1-10），当置信度低于阈值时自动转交人工。</li>
+<li>C. 部署一个单独的分类器模型，用历史工单训练，在主智能体开始处理前预测哪些请求需要升级。</li>
+<li>D. 实现情感分析，检测客户的挫败程度，当负面情绪超过阈值时自动升级。</li>
+</ul>
+<p><strong>答案：A。</strong> 添加明确的升级标准与少样本示例直接解决根源：决策边界不清晰。这是在增加基础设施之前相称的第一反应。选项 B 失败的原因是 LLM 自报的置信度校准很差 —— 智能体在难案例上已经错误地自信了。选项 C 过度工程化，在提示优化还没试过时就需要标注数据和 ML 基础设施。选项 D 解决的是完全不同的问题；情感与案例复杂度并不相关，而后者才是真正的问题。</p>
+<h2>场景：用 Claude Code 生成代码（Code Generation with Claude Code）</h2>
+<h3>问题 4</h3>
+<p>你想创建一个自定义 /review 斜杠命令，运行团队的标准代码审查清单。这个命令应当在每个开发者克隆或拉取仓库时都可用。你应该把命令文件建在哪里？</p>
+<ul>
+<li>A. 项目仓库中的 .claude/commands/ 目录</li>
+<li>B. 每个开发者主目录中的 ~/.claude/commands/</li>
+<li>C. 项目根目录的 CLAUDE.md 文件</li>
+<li>D. 带 commands 数组的 .claude/config.json 文件</li>
+</ul>
+<p><strong>答案：A。</strong> 项目级（project-scoped）自定义斜杠命令应存放在仓库内的 .claude/commands/ 目录。这些命令受版本控制，开发者克隆或拉取仓库时自动可用。选项 B（~/.claude/commands/）用于不通过版本控制共享的个人命令。选项 C（CLAUDE.md）用于项目指令与上下文，而不是命令定义。选项 D 描述的配置机制在 Claude Code 中并不存在。</p>
+<h3>问题 5</h3>
+<p>你被指派把团队的单体应用重构为微服务。这将涉及跨数十个文件的改动，并需要就服务边界与模块依赖做出决策。你应该采取哪种方式？</p>
+<ul>
+<li>A. 进入计划模式（plan mode），探索代码库、理解依赖，并在动手改动前设计实现方案。</li>
+<li>B. 从直接执行开始，逐步改动，让实现过程揭示自然的服务边界。</li>
+<li>C. 使用直接执行，并给出全面细致的前置指令，精确说明每个服务应如何组织。</li>
+<li>D. 先以直接执行模式开始，只有在实现中遇到意外复杂性时才切换到计划模式。</li>
+</ul>
+<p><strong>答案：A。</strong> 计划模式正是为涉及大规模改动、多种可行方案与架构决策的复杂任务设计的 —— 这正是单体到微服务重构所需要的。它能在承诺改动之前安全地探索代码库并做设计。选项 B 的风险是依赖关系发现得太晚、导致昂贵的返工。选项 C 假设你在不探索代码的情况下就已经知道正确的结构。选项 D 忽略了一个事实：复杂性已经写在需求里了，而不是可能在途中才出现的东西。</p>
+<h3>问题 6</h3>
+<p>你的代码库有不同区域、不同的编码约定：React 组件用带 hooks 的函数式风格，API 处理器用带特定错误处理的 async/await，数据库模型遵循仓储（repository）模式。测试文件散布在整个代码库中、紧挨着被测代码（例如 Button.test.tsx 紧挨着 Button.tsx），你希望所有测试无论位置如何都遵循同一套约定。确保 Claude 在生成代码时自动应用正确约定的最易维护方式是什么？</p>
+<ul>
+<li>A. 在 .claude/rules/ 中创建规则文件，用 YAML frontmatter 指定 glob 模式，根据文件路径有条件地应用约定</li>
+<li>B. 把所有约定汇总到根 CLAUDE.md 文件中，按区域分节，依赖 Claude 推断哪一节适用</li>
+<li>C. 在 .claude/skills/ 中为每种代码类型创建技能，把相关约定写进各自的 SKILL.md 文件</li>
+<li>D. 在每个子目录中放置一个单独的 CLAUDE.md 文件，包含该区域的专属约定</li>
+</ul>
+<p><strong>答案：A。</strong> 选项 A 正确，因为带 glob 模式（如 **/*.test.tsx）的 .claude/rules/ 能根据文件路径自动应用约定，不受目录位置限制，这对散布在整个代码库中的测试文件至关重要。选项 B 依赖推断而非显式匹配，不可靠。选项 C 需要手动调用技能，或依赖 Claude 自行选择加载，与基于文件路径确定性「自动」应用的要求相矛盾。选项 D 难以处理散布在许多目录中的文件，因为 CLAUDE.md 文件是与目录绑定的。</p>
+<h2>场景：多智能体研究系统（Multi-Agent Research System）</h2>
+<h3>问题 7</h3>
+<p>在主题「AI 对创意产业的影响」上运行系统后，你观察到每个子智能体都成功完成了任务：网络搜索智能体找到了相关文章，文档分析智能体正确总结了论文，综合智能体产出了连贯的输出。然而，最终报告只覆盖了视觉艺术，完全遗漏了音乐、写作和电影制作。查看协调者的日志，你发现它把主题分解成了三个子任务：「AI 在数字艺术创作中的应用」「AI 在平面设计中的应用」「AI 在摄影中的应用」。最可能的根源是什么？</p>
+<ul>
+<li>A. 综合智能体缺乏识别其收到的研究结果中覆盖缺口的指令。</li>
+<li>B. 协调者智能体的任务分解太窄，导致子智能体的分工没有覆盖该主题的所有相关领域。</li>
+<li>C. 网络搜索智能体的查询不够全面，需要扩展到更多创意产业部门。</li>
+<li>D. 文档分析智能体因相关性标准过严，过滤掉了与非视觉创意产业相关的来源。</li>
+</ul>
+<p><strong>答案：B。</strong> 协调者的日志直接揭示了根源：它把「创意产业」只分解成了视觉艺术子任务（数字艺术、平面设计、摄影），完全遗漏了音乐、写作和电影。子智能体都正确执行了被分配的任务 —— 问题出在它们被分配了什么。选项 A、C、D 都错误地指责了在各自分配范围内正常工作的下游智能体。</p>
+<h3>问题 8</h3>
+<p>网络搜索子智能体在研究一个复杂主题时超时了。你需要设计这个失败信息如何回流给协调者智能体。哪种错误传播方式最能支持智能恢复？</p>
+<ul>
+<li>A. 向协调者返回结构化错误上下文，包括失败类型、尝试过的查询、任何部分结果，以及潜在的替代方案。</li>
+<li>B. 在子智能体内部实现带指数退避的自动重试逻辑，只有在所有重试都耗尽后才返回一个笼统的「搜索不可用」状态。</li>
+<li>C. 在子智能体内部捕获超时，返回一个标记为成功的空结果集。</li>
+<li>D. 把超时异常直接传播到顶层处理器，终止整个研究工作流。</li>
+</ul>
+<p><strong>答案：A。</strong> 结构化错误上下文让协调者拥有做出智能恢复决策所需的信息 —— 是用修改过的查询重试、尝试替代方案，还是带着部分结果继续。选项 B 的笼统状态向协调者隐藏了宝贵的上下文，使其无法做出知情决策。选项 C 把失败标记为成功、压制了错误，阻止了任何恢复，并可能产生不完整的研究输出。选项 D 在恢复策略本可能成功时，不必要地终止了整个工作流。</p>
+<h3>问题 9</h3>
+<p>在测试中，你观察到综合智能体在合并研究结果时经常需要核实具体的论断。目前，每当需要核实时，综合智能体把控制权交还协调者，协调者调用网络搜索智能体，然后带着结果重新调用综合。这给每个任务增加了 2-3 次往返，延迟增加 40%。你的评估显示，这些核实中有 85% 是简单的事实核查（日期、姓名、统计数据），15% 需要更深入的调查。在保持系统可靠性的同时减少开销的最有效方法是什么？</p>
+<ul>
+<li>A. 给综合智能体一个受限的 verify_fact 工具做简单查询，复杂核实继续通过协调者委派给网络搜索智能体。</li>
+<li>B. 让综合智能体把所有核实需求累积起来，在其一遍处理结束时批量返回给协调者，由协调者一次性全部发给网络搜索智能体。</li>
+<li>C. 给综合智能体全部网络搜索工具的访问权，使它能直接处理任何核实需求，无需经协调者往返。</li>
+<li>D. 让网络搜索智能体在初步研究时主动缓存每个来源周围的额外上下文，预判综合智能体可能需要核实什么。</li>
+</ul>
+<p><strong>答案：A。</strong> 选项 A 应用了最小权限原则（principle of least privilege）：只给综合智能体处理 85% 常见情况（简单事实核查）所需的东西，复杂情况则保留现有的协调模式。选项 B 的批处理方式会造成阻塞依赖，因为综合步骤可能依赖先前已核实的事实。选项 C 给综合智能体过度授权，违反关注点分离。选项 D 依赖投机性缓存，无法可靠预判综合智能体需要核实什么。</p>
+<h2>场景：用于持续集成的 Claude Code（Claude Code for Continuous Integration）</h2>
+<h3>问题 10</h3>
+<p>你的流水线脚本运行 claude "Analyze this pull request for security issues"，但作业无限期挂起。日志表明 Claude Code 正在等待交互输入。在自动化流水线中运行 Claude Code 的正确方式是什么？</p>
+<ul>
+<li>A. 添加 -p 标志：claude -p "Analyze this pull request for security issues"</li>
+<li>B. 在运行命令前设置环境变量 CLAUDE_HEADLESS=true</li>
+<li>C. 把 stdin 从 /dev/null 重定向：claude "Analyze this pull request for security issues" &lt; /dev/null</li>
+<li>D. 添加 --batch 标志：claude --batch "Analyze this pull request for security issues"</li>
+</ul>
+<p><strong>答案：A。</strong> -p（或 --print）标志是以非交互模式运行 Claude Code 的官方文档方式。它处理提示、把结果输出到 stdout，然后退出，不等待用户输入 —— 正是 CI/CD 流水线所需要的。其他选项引用了不存在的功能（CLAUDE_HEADLESS 环境变量、--batch 标志），或使用不能正确处理 Claude Code 命令语法的 Unix 变通办法。</p>
+<h3>问题 11</h3>
+<p>你的团队想降低自动化分析的 API 成本。目前，实时 Claude 调用支撑着两个工作流：（1）一个阻塞性的合并前检查，开发者必须等它完成才能合并；（2）一个连夜生成、供次日早上评审的技术债报告。你的经理提议把两者都切换到消息批处理 API（Message Batches API），以获得其 50% 的成本节省。你应如何评估这个提议？</p>
+<ul>
+<li>A. 只对技术债报告使用批处理；合并前检查保持实时调用。</li>
+<li>B. 两个工作流都切换到批处理，用状态轮询检查是否完成。</li>
+<li>C. 两个工作流都保持实时调用，以避免批处理结果排序问题。</li>
+<li>D. 两者都切换到批处理，若批处理耗时过长则以超时回退到实时调用。</li>
+</ul>
+<p><strong>答案：A。</strong> 消息批处理 API 提供 50% 的成本节省，但处理时间最长可达 24 小时，且不保证延迟 SLA。这使它不适合开发者要等待结果的阻塞性合并前检查，但非常适合技术债报告这样的连夜批处理作业。选项 B 错误，因为对阻塞性工作流来说，依赖「通常更快」的完成时间不可接受。选项 C 反映了一个误解 —— 批处理结果可以用 custom_id 字段关联。选项 D 增加了不必要的复杂性，而更简单的解法是让每个 API 各自匹配适合的用例。</p>
+<h3>问题 12</h3>
+<p>一个拉取请求修改了库存跟踪模块的 14 个文件。你的单遍审查（把所有文件放在一起分析）产生不一致的结果：某些文件有详细反馈，另一些只有肤浅评论；明显的 bug 被遗漏；反馈还自相矛盾 —— 在一个文件中把某种模式标记为问题，却在同一个 PR 的其他地方批准了相同的代码。你应如何重构这个审查？</p>
+<ul>
+<li>A. 拆分为聚焦的多遍：先逐个文件单独分析局部问题，再运行一个单独的、聚焦集成的遍，检查跨文件数据流。</li>
+<li>B. 要求开发者在自动化审查运行前，把大型 PR 拆成 3-4 个文件的较小提交。</li>
+<li>C. 切换到上下文窗口更大的更高层级模型，让 14 个文件在单遍中都得到足够关注。</li>
+<li>D. 对整个 PR 运行三遍独立审查，只标记在至少两遍中都出现的问题。</li>
+</ul>
+<p><strong>答案：A。</strong> 把审查拆成聚焦的多遍直接解决根源：一次处理许多文件时的注意力稀释（attention dilution）。逐文件分析保证深度一致，单独的集成遍则捕获跨文件问题。选项 B 把负担转移给开发者，却不改善系统。选项 C 误解了问题：更大的上下文窗口并不能解决注意力质量问题。选项 D 反而会压制对真实 bug 的检出，因为它要求对可能只是间歇性被发现的问题达成共识。</p></div></div>
+</body></html>

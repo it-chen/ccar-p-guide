@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CCDV-F Study Guide — 中英并列版</title>
+<style>
+:root{--ink:#1a2332;--mut:#5b6b82;--line:#d8dee8;--accent:#b7791f;--qbg:#fdf6e3;--band:#16283f;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",Segoe UI,Roboto,sans-serif;color:var(--ink);font-size:15px;line-height:1.65;background:#fff}
+header.top{position:sticky;top:0;background:var(--band);color:#fff;padding:10px 20px;z-index:10;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:baseline}
+header.top b{font-size:17px}
+header.top nav a{color:#ffd98a;text-decoration:none;margin-right:12px;font-size:14px}
+header.top .sub{color:#b9c7da;font-size:13px}
+.colhead{display:grid;grid-template-columns:1fr 1fr;background:#eef2f7;border-bottom:2px solid var(--band);font-weight:700}
+.colhead div{padding:8px 20px}
+.colhead .zh{border-left:1px solid var(--line)}
+.row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+.cell{padding:14px 20px;min-width:0;overflow-wrap:break-word}
+.cell.zh{border-left:1px solid var(--line);background:#fcfcf9}
+.band{display:grid;grid-template-columns:1fr 1fr;background:var(--band);color:#fff;margin-top:6px}
+.band div{padding:12px 20px;font-size:18px;font-weight:700}
+.band .band-zh{border-left:1px solid rgba(255,255,255,.25)}
+h1{font-size:20px;margin:.4em 0}
+h2{font-size:17px;margin:.6em 0 .3em;color:var(--band)}
+h3{font-size:15px;margin:.8em 0 .2em}
+ul{margin:.3em 0 .6em;padding-left:1.3em}
+li{margin:.25em 0}
+blockquote{margin:.6em 0;padding:10px 14px;background:var(--qbg);border-left:4px solid var(--accent);border-radius:0 6px 6px 0}
+blockquote p{margin:.2em 0}
+table{border-collapse:collapse;margin:.6em 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:5px 10px;text-align:left}
+a{color:#1d4ed8}
+hr{border:none;border-top:1px solid var(--line)}
+@media (max-width:760px){.row,.band,.colhead{grid-template-columns:1fr}.cell.zh{border-left:none;border-top:1px dashed var(--line)}}
+</style></head><body>
+<header class="top"><b>CCDV-F Study Guide · 中英并列版</b><span class="sub">Official Exam Guide v1.0 · 左 EN / 右 中文 · 整页一起滚动</span><nav><a href="#d1">D1</a><a href="#d2">D2</a><a href="#d3">D3</a><a href="#d4">D4</a><a href="#d5">D5</a><a href="#d6">D6</a><a href="#d7">D7</a><a href="#d8">D8</a><a href="#samples">样题</a></nav></header>
+<div class="colhead"><div>English</div><div class="zh">中文</div></div>
+<div class="row front"><div class="cell en"><h1>Claude Certified Developer — Foundations Certification</h1>
+<h2>Study Guide (Based on the Official Exam Guide)</h2>
+<blockquote>
+<p>Built on the official <strong>Claude Certified Developer – Foundations Exam Guide, Version 1.0 (effective July 2026), exam code CCDV-F</strong>. Structure follows the format of paullarionov/claude-certified-architect's study guides; all content is drawn from the official Exam Guide and official Anthropic documentation (platform.claude.com/docs, code.claude.com/docs, anthropic.com/engineering and research posts). Domain and skill headings reproduce the official blueprint wording, and each section's italic line is the skill's official description from the Exam Guide. Key knowledge / Key skills points are faithful paraphrases of the official sources cited at the end of each section — follow the links for the full original text.</p>
+</blockquote>
+<hr />
+<h2>Introduction</h2>
+<p>The Claude Certified Developer – Foundations certification validates that an individual can build, integrate, and ship production-grade applications, agents, and workflows using Anthropic's Claude platform at a foundational level. It is intended for technical professionals who bridge Claude's capabilities and production-ready applications, translating technical requirements into working systems through API integration, agent and tool construction, prompt and context engineering, evaluation, security, and model selection.</p>
+<p>This guide is the study companion to the official Exam Guide, which is the authoritative reference for the credential: its purpose, intended audience, exam format and content blueprint, scoring, and policies.</p>
+<hr />
+<h2>Target Candidate</h2>
+<p>The certification is intended for technical professionals who build, integrate, and ship production-grade AI solutions using large language models (LLMs), particularly Anthropic's Claude platform — primarily AI and machine learning engineers, technical leads, and senior software engineers operating at the intersection of business requirements and technical implementation.</p>
+<p>The exam targets the <strong>minimally qualified candidate (MQC)</strong>: a hands-on technical individual who builds, integrates, and ships Claude-powered applications, agents, and workflows, translating technical requirements into working applications. Recommended experience (recommended, not required — there are no mandatory prerequisites):</p>
+<ul>
+<li>One to five years of experience in software engineering</li>
+<li>At least six months of hands-on experience with Claude or comparable LLM-based systems</li>
+<li>Proficiency in Python and/or TypeScript</li>
+<li>Fluency with REST APIs and CLI tools</li>
+<li>Working understanding of LLM fundamentals, agents, context management, and MCP</li>
+</ul>
+<hr />
+<h2>Exam Format</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exam code</td>
+<td>CCDV-F</td>
+</tr>
+<tr>
+<td>Number of items</td>
+<td>53</td>
+</tr>
+<tr>
+<td>Item format</td>
+<td>Multiple-choice and multiple-response; each item states how many responses to select</td>
+</tr>
+<tr>
+<td>Time limit</td>
+<td>120 minutes</td>
+</tr>
+<tr>
+<td>Delivery</td>
+<td>Proctored: online proctored and/or test center (Pearson VUE)</td>
+</tr>
+<tr>
+<td>Passing score</td>
+<td>Scaled score of <strong>720</strong> on a scale of 100–1,000</td>
+</tr>
+<tr>
+<td>Exam fee</td>
+<td>$125 USD</td>
+</tr>
+<tr>
+<td>Validity period</td>
+<td>12 months from the date the credential is awarded</td>
+</tr>
+<tr>
+<td>Result reporting</td>
+<td>Pass/fail with scaled score (100–1,000), plus percent-correct by domain</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Exam Content: 8 Domains</h2>
+<table>
+<thead>
+<tr>
+<th>Domain</th>
+<th>Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Agents and Workflows</td>
+<td><strong>14.7%</strong></td>
+</tr>
+<tr>
+<td>2. Applications and Integration</td>
+<td><strong>33.1%</strong></td>
+</tr>
+<tr>
+<td>3. Claude Code</td>
+<td><strong>3.1%</strong></td>
+</tr>
+<tr>
+<td>4. Eval, Testing, and Debugging</td>
+<td><strong>2.6%</strong></td>
+</tr>
+<tr>
+<td>5. Model Selection and Optimization</td>
+<td><strong>16.8%</strong></td>
+</tr>
+<tr>
+<td>6. Prompt and Context Engineering</td>
+<td><strong>11.0%</strong></td>
+</tr>
+<tr>
+<td>7. Security and Safety</td>
+<td><strong>8.1%</strong></td>
+</tr>
+<tr>
+<td>8. Tools and MCPs</td>
+<td><strong>10.6%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The percentages indicate the approximate proportion of scored items drawn from each domain. Exam items are written against the skills listed under each domain in Part II; each skill's own weight is shown in its section heading.</p>
+<hr />
+<h2>How to Use This Guide (per the official Exam Guide, Section 7)</h2>
+<ul>
+<li>Study the exam blueprint and self-assess against each skill</li>
+<li>Review official Anthropic documentation for the Claude API, models, prompt engineering, Claude Code, Skills, and MCP</li>
+<li>Build and operate at least one Claude application that exercises the API, integrates one or more tools, applies basic prompt and context engineering, and includes simple security and evaluation practices</li>
+<li>Practice the developer competencies: writing prompts and system instructions, building agents and workflows, configuring Claude Code, managing tokens and cost, implementing guardrails, and creating custom tools or MCP servers</li>
+<li>Complete the sample questions (end of this guide) to familiarize yourself with item style</li>
+</ul>
+<hr /></div><div class="cell zh"><h1>Claude 认证开发者 — 基础级认证（Claude Certified Developer — Foundations Certification）</h1>
+<h2>学习指南（基于官方考试指南）</h2>
+<blockquote>
+<p>基于官方 <strong>Claude 认证开发者 – 基础级考试指南（Claude Certified Developer – Foundations Exam Guide）第 1.0 版（2026 年 7 月生效），考试代码 CCDV-F</strong>。结构参照 paullarionov/claude-certified-architect 学习指南的格式；全部内容取自官方考试指南与 Anthropic 官方文档（platform.claude.com/docs、code.claude.com/docs、anthropic.com/engineering 及研究文章）。领域与技能标题复现官方蓝图原文，每节的斜体行是考试指南中该技能的官方描述。关键知识 / 关键技能要点是对各节末尾所引官方来源的忠实转述 —— 完整原文请跟随链接阅读。</p>
+</blockquote>
+<hr />
+<h2>引言（Introduction）</h2>
+<p>Claude 认证开发者 – 基础级（Claude Certified Developer – Foundations）认证证明持证者能够在基础层级上使用 Anthropic 的 Claude 平台构建、集成并交付生产级的应用、智能体与工作流。它面向在 Claude 的能力与生产就绪的应用之间架桥的技术专业人员：他们通过 API 集成、智能体与工具构建、提示与上下文工程、评估、安全与模型选择，把技术需求转化为可工作的系统。</p>
+<p>本指南是官方考试指南的学习伴侣。官方考试指南是该证书的权威参考：它说明证书的目的、目标受众、考试形式与内容蓝图、评分方式及相关政策。</p>
+<hr />
+<h2>目标考生（Target Candidate）</h2>
+<p>本认证面向使用大语言模型（尤其是 Anthropic 的 Claude 平台）构建、集成并交付生产级 AI 解决方案的技术专业人员 —— 主要是 AI 与机器学习工程师、技术负责人和高级软件工程师，他们工作在业务需求与技术实现的交界处。</p>
+<p>本考试以<strong>最低合格考生（minimally qualified candidate，MQC）</strong>为标尺：一位动手型技术人员，构建、集成并交付 Claude 驱动的应用、智能体与工作流，把技术需求转化为可工作的应用。推荐经验如下（仅为推荐、并非强制 —— 没有强制性先决条件）：</p>
+<ul>
+<li>1 至 5 年软件工程经验</li>
+<li>至少 6 个月使用 Claude 或同类基于 LLM 的系统的实操经验</li>
+<li>熟练使用 Python 和/或 TypeScript</li>
+<li>熟练使用 REST API 与命令行（CLI）工具</li>
+<li>对 LLM 基础、智能体、上下文管理与 MCP 有工作层面的理解</li>
+</ul>
+<hr />
+<h2>考试形式（Exam Format）</h2>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考试代码</td>
+<td>CCDV-F</td>
+</tr>
+<tr>
+<td>题目数量</td>
+<td>53</td>
+</tr>
+<tr>
+<td>题目形式</td>
+<td>单选题与多选题；每题会注明应选几项</td>
+</tr>
+<tr>
+<td>时间限制</td>
+<td>120 分钟</td>
+</tr>
+<tr>
+<td>交付方式</td>
+<td>监考：在线监考和/或考点（Pearson VUE）</td>
+</tr>
+<tr>
+<td>及格分数</td>
+<td>量化分数 <strong>720</strong> 分，满分区间 100–1,000</td>
+</tr>
+<tr>
+<td>考试费用</td>
+<td>125 美元</td>
+</tr>
+<tr>
+<td>有效期</td>
+<td>自证书颁发之日起 12 个月</td>
+</tr>
+<tr>
+<td>成绩报告</td>
+<td>通过/未通过及量化分数（100–1,000），外加各领域正确率百分比</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>考试内容：8 个领域（Exam Content: 8 Domains）</h2>
+<table>
+<thead>
+<tr>
+<th>领域</th>
+<th>权重</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 智能体与工作流（Agents and Workflows）</td>
+<td><strong>14.7%</strong></td>
+</tr>
+<tr>
+<td>2. 应用与集成（Applications and Integration）</td>
+<td><strong>33.1%</strong></td>
+</tr>
+<tr>
+<td>3. Claude Code（Claude Code）</td>
+<td><strong>3.1%</strong></td>
+</tr>
+<tr>
+<td>4. 评估、测试与调试（Eval, Testing, and Debugging）</td>
+<td><strong>2.6%</strong></td>
+</tr>
+<tr>
+<td>5. 模型选择与优化（Model Selection and Optimization）</td>
+<td><strong>16.8%</strong></td>
+</tr>
+<tr>
+<td>6. 提示与上下文工程（Prompt and Context Engineering）</td>
+<td><strong>11.0%</strong></td>
+</tr>
+<tr>
+<td>7. 安全与安保（Security and Safety）</td>
+<td><strong>8.1%</strong></td>
+</tr>
+<tr>
+<td>8. 工具与 MCP（Tools and MCPs）</td>
+<td><strong>10.6%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>百分比表示从每个领域抽取的计分题的大致比例。考题是针对第二部分中每个领域下列出的技能命制的；每项技能自身的权重标在其小节标题中。</p>
+<hr />
+<h2>如何使用本指南（How to Use This Guide）（依据官方考试指南第 7 节）</h2>
+<ul>
+<li>研读考试蓝图，并对照每项技能做自我评估</li>
+<li>查阅 Anthropic 官方文档：Claude API、模型、提示工程（prompt engineering）、Claude Code、Skills 与 MCP</li>
+<li>至少构建并运营一个 Claude 应用：它要实际调用 API、集成一个或多个工具、运用基本的提示与上下文工程，并包含简单的安全与评估实践</li>
+<li>练习开发者核心能力：编写提示与系统指令、构建智能体与工作流、配置 Claude Code、管理 token 与成本、实现护栏（guardrails），以及创建自定义工具或 MCP 服务器</li>
+<li>完成样题（本指南末尾），熟悉题目风格</li>
+</ul>
+<hr /></div></div>
+<div class="band" id="d1"><div class="band-en">Domain 1: Agents and Workflows (14.7%)</div><div class="band-zh">领域 1：智能体与工作流（Domain 1: Agents and Workflows）（14.7%）</div></div>
+<div class="row obj"><div class="cell en"><h2>1.1 Agent Architecture (4.5%)</h2>
+<p><em>Principles, patterns, and tradeoffs of agent and workflow architecture, including the decision criteria for using a workflow versus an agent, the structure of manager/supervisor hierarchies, and the role of subagents in improving task execution.</em></p>
+<blockquote>
+<p><strong>Official wording:</strong> "Workflows are systems where LLMs and tools are orchestrated through predefined code paths. … Agents, on the other hand, are systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks."
+— Building effective agents, Anthropic (https://www.anthropic.com/research/building-effective-agents)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The foundational distinction is control flow: in a <strong>workflow</strong>, LLMs and tools are orchestrated through predefined code paths; in an <strong>agent</strong>, the LLM dynamically directs its own process and tool usage. The decision criterion is predictability — if the steps can be specified in advance, a workflow is simpler, cheaper, and easier to verify; an agent earns its cost and risk only when the path cannot be predetermined.</li>
+<li>Anthropic's guidance is to find the simplest solution possible and only increase complexity when it demonstrably improves outcomes: a single augmented-LLM call, then a workflow, then an agent, in that order of preference.</li>
+<li>Manager/supervisor hierarchies (orchestrator-workers, lead agent with subagents) decompose a task under one coordinating agent: the manager plans, delegates self-contained subtasks, and synthesizes results. Subagents improve execution through parallel exploration and context isolation — each works in its own context window and returns a distilled result instead of raw intermediate work.</li>
+<li>Agentic systems trade latency and cost for task performance, and add failure modes a workflow does not have: compounding errors across self-directed steps, harder debugging, and the need for sandbox testing, guardrails, and explicit stopping conditions.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Given a scenario, apply the workflow-versus-agent test: predictable steps → workflow; open-ended, environment-driven steps → agent — and name the deciding feature in the stem.</li>
+<li>Sketch a supervisor hierarchy for a multi-part task: what the manager keeps, what it delegates, and what each subagent returns.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/research/building-effective-agents">Building effective agents</a> · <a href="https://www.anthropic.com/research/multi-agent-research-system">How we built our multi-agent research system</a></p></div><div class="cell zh"><h2>1.1 智能体架构（4.5%）</h2>
+<p><em>EN: Principles, patterns, and tradeoffs of agent and workflow architecture, including the decision criteria for using a workflow versus an agent, the structure of manager/supervisor hierarchies, and the role of subagents in improving task execution.</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Workflows are systems where LLMs and tools are orchestrated through predefined code paths. … Agents, on the other hand, are systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks."
+— Building effective agents, Anthropic (https://www.anthropic.com/research/building-effective-agents)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>根本区分在于控制流：在<strong>工作流（workflow）</strong>中，LLM 与工具通过预定义的代码路径编排；在<strong>智能体（agent）</strong>中，LLM 动态主导自身流程与工具使用。决策标准是可预测性 —— 如果步骤可以预先指定，工作流更简单、更便宜、更容易验证；只有当路径无法预先确定时，智能体的成本与风险才值得。</li>
+<li>Anthropic 的指引是找到尽可能简单的方案，只在能明显改善结果时才增加复杂度：优先顺序是单次增强型 LLM（augmented LLM）调用、然后工作流、最后才是智能体。</li>
+<li>管理者/监督者层级（编排者-工作者、带子智能体的主智能体）在一个协调智能体之下分解任务：管理者负责规划、委派自包含的子任务并综合结果。子智能体（subagents）通过并行探索与上下文隔离改善执行 —— 每个子智能体在自己的上下文窗口中工作，返回提炼过的结果，而不是原始的中间工作。</li>
+<li>智能体系统以延迟和成本换取任务表现，并带来工作流没有的失败模式：自导步骤间的错误累积、更难的调试，以及对沙箱测试、护栏（guardrails）与明确停止条件的需求。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>给定一个场景，运用工作流与智能体的判断测试：步骤可预测 → 工作流；开放式、由环境驱动的步骤 → 智能体 —— 并说出题干中的决定性特征。</li>
+<li>为一个多部分任务画出监督者层级：管理者保留什么、委派什么、每个子智能体返回什么。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/research/building-effective-agents">构建有效的智能体（Building effective agents）</a> · <a href="https://www.anthropic.com/research/multi-agent-research-system">我们如何构建多智能体研究系统（How we built our multi-agent research system）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>1.2 Agent Construction with Claude (5.3%)</h2>
+<p><em>Methods, tools, and platforms for constructing Claude agents, including the Claude Agent SDK, custom agent loops and harnesses, managed agent deployment models (self-hosted vs. Anthropic-hosted), and hooks for deterministic actions.</em></p>
+<blockquote>
+<p><strong>Official wording:</strong> "The Agent SDK gives you the same tools, agent loop, and context management that power Claude Code, programmable in Python and TypeScript."
+— Agent SDK overview, Anthropic (https://platform.claude.com/docs/en/agent-sdk/overview)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The <strong>Claude Agent SDK</strong> packages the Claude Code agent loop as a library for Python and TypeScript: built-in tools (read, write, edit files, run commands, search the web), hooks, subagents, MCP connections, permissions, and sessions are all available programmatically. An agent built on it is an application that plans its own steps and calls tools to complete a task.</li>
+<li>A <strong>custom agent loop</strong> is the alternative: your code calls the Messages API, executes the tool calls Claude requests, returns <code>tool_result</code> blocks, and repeats until a stop condition. You own the loop's control flow, state, and error handling — more work, more control.</li>
+<li>Deployment models split by who runs the harness: <strong>self-hosted</strong> (you run the Agent SDK or your own loop in your infrastructure) versus <strong>Anthropic-hosted Managed Agents</strong> (a hosted agent harness runs the loop, with sessions in an Anthropic-managed cloud sandbox or a self-hosted sandbox on your infrastructure, driven via SDK, the <code>ant</code> CLI, or the REST API).</li>
+<li><strong>Hooks</strong> are the deterministic layer inside an otherwise probabilistic system: user-defined code that runs automatically at lifecycle points (for example before a tool call executes) and can inspect, modify, or block actions — the mechanism for enforcing rules that must hold every time rather than relying on the model to comply.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Choose the construction method from the stem's constraints: fastest path to a working agent → Agent SDK; unusual control-flow or embedding requirements → custom loop; no infrastructure to run → Managed Agents.</li>
+<li>Identify where a requirement ("this action must always be checked first") belongs: in a hook or permission rule, not in the system prompt.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/agent-sdk/overview">Agent SDK overview</a> · <a href="https://code.claude.com/docs/en/hooks">Hooks reference — Claude Code</a></p></div><div class="cell zh"><h2>1.2 用 Claude 构建智能体（5.3%）</h2>
+<p><em>EN: Methods, tools, and platforms for constructing Claude agents, including the Claude Agent SDK, custom agent loops and harnesses, managed agent deployment models (self-hosted vs. Anthropic-hosted), and hooks for deterministic actions.</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "The Agent SDK gives you the same tools, agent loop, and context management that power Claude Code, programmable in Python and TypeScript."
+— Agent SDK overview, Anthropic (https://platform.claude.com/docs/en/agent-sdk/overview)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li><strong>Claude Agent SDK</strong> 把 Claude Code 的智能体循环打包成 Python 与 TypeScript 的库：内置工具（读、写、编辑文件，运行命令，搜索网络）、hooks、子智能体、MCP 连接、权限与会话，全部可编程调用。用它构建的智能体是一个能规划自身步骤、调用工具完成任务的应用。</li>
+<li><strong>自定义智能体循环（custom agent loop）</strong>是另一种选择：你的代码调用 Messages API，执行 Claude 请求的工具调用，返回 <code>tool_result</code> 块，如此重复直到停止条件。循环的控制流、状态与错误处理都归你所有 —— 工作更多，控制也更多。</li>
+<li>部署模型按谁来运行框架（harness）划分：<strong>自托管（self-hosted）</strong>（你在自己的基础设施里运行 Agent SDK 或自己的循环）与 <strong>Anthropic 托管的 Managed Agents</strong>（一个托管的智能体框架运行循环，会话位于 Anthropic 管理的云沙箱、或你自己基础设施上的自托管沙箱，通过 SDK、<code>ant</code> CLI 或 REST API 驱动）。</li>
+<li><strong>Hooks</strong> 是这个概率系统内部的确定性层：用户定义的代码在生命周期节点（例如工具调用执行之前）自动运行，可以检查、修改或阻止动作 —— 它是强制执行「每次都必须成立」的规则的机制，而不是依赖模型自觉遵守。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>从题干的约束出发选择构建方法：最快得到可工作的智能体 → Agent SDK；不寻常的控制流或嵌入需求 → 自定义循环；没有可运行的基础设施 → Managed Agents。</li>
+<li>判断一条需求（「这个动作必须总是先被检查」）属于哪里：属于 hook 或权限规则，而不是系统提示。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/agent-sdk/overview">Agent SDK 总览（Agent SDK overview）</a> · <a href="https://code.claude.com/docs/en/hooks">Hooks 参考 — Claude Code（Hooks reference — Claude Code）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>1.3 Agent Patterns and Frameworks (4.9%)</h2>
+<p><em>Common agent design patterns (tool-use loops, sub-agents, memory, context-window management) and agentic abstraction frameworks (e.g., Strands, LangGraph, PydanticAI) for building agents and workflows for multi-step tasks.</em></p>
+<blockquote>
+<p><strong>Official wording:</strong> "Prompt chaining decomposes a task into a sequence of steps, where each LLM call processes the output of the previous one."
+— Building effective agents, Anthropic (https://www.anthropic.com/research/building-effective-agents)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The core pattern inventory: the <strong>tool-use loop</strong> (model requests a tool, harness executes it, result returns, repeat until done), <strong>prompt chaining</strong> and the other workflow patterns (routing, parallelization, orchestrator-workers, evaluator-optimizer), <strong>sub-agents</strong> for delegated subtasks, <strong>memory</strong> (information carried across steps or sessions, from conversation history to external stores), and <strong>context-window management</strong> (curating, pruning, and compacting what the model sees).</li>
+<li>Patterns compose: a chained workflow can contain a tool-use loop at one step; an orchestrator can give each worker its own memory and context budget. The exam tests whether you can name the pattern a scenario describes and spot the one that does not fit.</li>
+<li>Agentic frameworks (Strands, LangGraph, PydanticAI, and similar) are abstraction layers over the same primitives — loops, tool dispatch, state, and orchestration graphs. They trade the transparency and control of a hand-written loop for speed of construction and built-in structure; Anthropic's guidance is to understand what the framework does on your behalf before adopting it, because hidden prompt and control-flow abstractions make debugging harder.</li>
+<li>Framework or not, the underlying mechanics are identical: messages, tool definitions and results, stop conditions, and context contents are what actually determine behavior.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Map a described system to its pattern (fixed sequence → chaining; classification front door → routing; generate-then-critique → evaluator-optimizer; delegated parallel exploration → sub-agents).</li>
+<li>State the trade-off when a stem offers a framework versus a hand-rolled loop: construction speed and structure versus visibility and control.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/research/building-effective-agents">Building effective agents</a> · <a href="https://platform.claude.com/docs/en/agent-sdk/overview">Agent SDK overview</a></p>
+<hr /></div><div class="cell zh"><h2>1.3 智能体模式与框架（4.9%）</h2>
+<p><em>EN: Common agent design patterns (tool-use loops, sub-agents, memory, context-window management) and agentic abstraction frameworks (e.g., Strands, LangGraph, PydanticAI) for building agents and workflows for multi-step tasks.</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Prompt chaining decomposes a task into a sequence of steps, where each LLM call processes the output of the previous one."
+— Building effective agents, Anthropic (https://www.anthropic.com/research/building-effective-agents)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>核心模式清单：<strong>工具使用循环（tool-use loop）</strong>（模型请求工具、框架执行、结果返回、重复直至完成）、<strong>提示链（prompt chaining）</strong>与其他工作流模式（路由、并行化、编排者-工作者、评估者-优化者）、用于委派子任务的<strong>子智能体（sub-agents）</strong>、<strong>记忆（memory）</strong>（跨步骤或跨会话携带的信息，从对话历史到外部存储），以及<strong>上下文窗口管理</strong>（策展、修剪与压缩模型所见的内容）。</li>
+<li>模式可以组合：一个链式工作流可以在某一步包含工具使用循环；一个编排者可以给每个工作者各自的记忆与上下文预算。考试考的是你能否说出场景所描述的模式，并识别出不合適的那一个。</li>
+<li>智能体框架（Strands、LangGraph、PydanticAI 等）是同一批原语之上的抽象层 —— 循环、工具分发、状态与编排图。它们以手写循环的透明性与控制力换取构建速度与内置结构；Anthropic 的指引是：在采用框架之前先理解它替你做了什么，因为隐藏的提示与控制流抽象会让调试更难。</li>
+<li>无论是否用框架，底层机制都相同：消息、工具定义与结果、停止条件与上下文内容，才是实际决定行为的东西。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>把描述中的系统映射到它的模式（固定序列 → 链式；分类前门 → 路由；先生成后批评 → 评估者-优化者；委派并行探索 → 子智能体）。</li>
+<li>当题干在框架与手写循环之间给出选择时，说清权衡：构建速度与结构，对比可见性与控制力。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/research/building-effective-agents">构建有效的智能体（Building effective agents）</a> · <a href="https://platform.claude.com/docs/en/agent-sdk/overview">Agent SDK 总览（Agent SDK overview）</a></p>
+<hr /></div></div>
+<div class="band" id="d2"><div class="band-en">Domain 2: Applications and Integration (33.1%)</div><div class="band-zh">领域 2：应用与集成（Domain 2: Applications and Integration）（33.1%）</div></div>
+<div class="row obj"><div class="cell en"><h2>2.1 Understanding Requirements (3.4%)</h2>
+<p><em>Functional and infrastructure requirements based on business requirements and solution architecture.</em></p>
+<blockquote>
+<p><strong>Official wording:</strong> "They bridge Claude's capabilities and production-ready applications, translating technical requirements into working applications."
+— Claude Certified Developer – Foundations Exam Guide v1.0, Anthropic</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Requirements work splits into <strong>functional</strong> requirements (what the system must do: tasks, inputs and outputs, accuracy and quality bars, which tools and data it needs) and <strong>infrastructure</strong> requirements (how it must run: latency, throughput, cost ceiling, data residency and privacy, availability, integration points with existing systems).</li>
+<li>Both derive from the business requirement and the solution architecture, not from the model's capabilities: a Claude application is designed backwards from the job, the constraints, and the success criteria that will be measured.</li>
+<li>Requirements decide downstream choices before any code exists: real-time versus batch processing, which model tier, whether tools are needed at all, and what evaluation will prove the system works. Vague requirements ("make it smart") are a defect to fix in discovery, not a prompt problem.</li>
+<li>The candidate profile in the Exam Guide frames the developer's role exactly this way: bridging Claude's capabilities and production-ready applications, translating technical requirements into working applications at the intersection of business requirements and technical implementation.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Restate a business ask as functional requirements (task, inputs, outputs, quality bar) plus infrastructure requirements (latency, volume, cost, privacy) before proposing an implementation.</li>
+<li>Spot the missing requirement in a scenario stem — the unstated latency, volume, or compliance constraint that changes the correct design.</li>
+</ul>
+<p><strong>Official sources:</strong> Claude Certified Developer – Foundations Exam Guide v1.0, Sections 3–4, Anthropic</p></div><div class="cell zh"><h2>2.1 理解需求（3.4%）</h2>
+<p><em>EN: Functional and infrastructure requirements based on business requirements and solution architecture.</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "They bridge Claude's capabilities and production-ready applications, translating technical requirements into working applications."
+— Claude Certified Developer – Foundations Exam Guide v1.0, Anthropic</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>需求工作分为<strong>功能需求</strong>（系统必须做什么：任务、输入与输出、准确性与质量标准、需要哪些工具与数据）与<strong>基础设施需求</strong>（系统必须如何运行：延迟、吞吐量、成本上限、数据驻留与隐私、可用性、与既有系统的集成点）。</li>
+<li>两者都源自业务需求与解决方案架构，而不是模型的能力：Claude 应用是从工作本身、约束条件与将被度量的成功标准倒推设计的。</li>
+<li>需求在任何代码存在之前就决定了下游选择：实时处理还是批处理、用哪个模型层级、到底需不需要工具、以及用什么评估来证明系统有效。含糊的需求（「让它变聪明点」）是发现阶段要修的缺陷，不是提示问题。</li>
+<li>考试指南中的考生画像正是这样框定开发者的角色的：在 Claude 的能力与生产就绪的应用之间架桥，在业务需求与技术实现的交界处把技术需求转化为可工作的应用。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>在提出实现方案之前，把一个业务诉求重述为功能需求（任务、输入、输出、质量标准）加上基础设施需求（延迟、量级、成本、隐私）。</li>
+<li>在场景题干中识别缺失的需求 —— 那个未言明的延迟、量级或合规约束，它会改变正确的设计。</li>
+</ul>
+<p><strong>官方来源：</strong> Claude 认证开发者 – 基础级考试指南 v1.0（Claude Certified Developer – Foundations Exam Guide v1.0）第 3–4 节，Anthropic</p></div></div>
+<div class="row obj"><div class="cell en"><h2>2.2 Systems Life Cycle (2.8%)</h2>
+<p><em>Systems life cycle management concepts and frameworks used to develop, implement, operate, and maintain IT systems.</em></p>
+<blockquote>
+<p><strong>Official wording:</strong> "Candidates who earn the credential can demonstrate that they are able to effectively apply knowledge in the following areas: Building agents and workflows … Integrating Claude into application code … Designing and running evals … Selecting Claude model tiers … Applying secure-by-design principles … Building custom tools, function schemas, and MCP servers."
+— Claude Certified Developer – Foundations Exam Guide v1.0, Anthropic</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The systems life cycle runs from requirements and design through development, implementation/deployment, operation, and maintenance, ending in iteration or retirement. Claude applications follow the same cycle as other IT systems — the AI-specific work (prompts, evals, model selection, guardrails) slots into the standard phases rather than replacing them.</li>
+<li>Operation is a phase, not an afterthought: production Claude systems need monitoring of quality, cost, and latency, plus a feedback path from observed failures back into prompts, eval sets, and design.</li>
+<li>Maintenance has AI-specific triggers: model releases change behavior, so upgrades require re-evaluation before rollout; prompts and configurations are versioned artifacts that change under the same discipline as code.</li>
+<li>The credential's own life cycle mirrors this: the credential is valid for 12 months, renewed by reviewing what has changed and completing a renewal assessment — the same "review what changed, re-validate" loop expected of the systems themselves.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Place a described activity in its life-cycle phase (an eval run before a model upgrade is maintenance-phase validation; a post-launch quality dashboard is operations).</li>
+<li>Argue for the operate-and-maintain work a launch plan is missing: monitoring, feedback collection, and a re-evaluation gate for model changes.</li>
+</ul>
+<p><strong>Official sources:</strong> Claude Certified Developer – Foundations Exam Guide v1.0, Sections 2 and 14, Anthropic</p></div><div class="cell zh"><h2>2.2 系统生命周期（2.8%）</h2>
+<p><em>EN: Systems life cycle management concepts and frameworks used to develop, implement, operate, and maintain IT systems.</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Candidates who earn the credential can demonstrate that they are able to effectively apply knowledge in the following areas: Building agents and workflows … Integrating Claude into application code … Designing and running evals … Selecting Claude model tiers … Applying secure-by-design principles … Building custom tools, function schemas, and MCP servers."
+— Claude Certified Developer – Foundations Exam Guide v1.0, Anthropic</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>系统生命周期从需求与设计出发，经过开发、实施/部署、运营与维护，最后到迭代或退役。Claude 应用遵循与其他 IT 系统相同的周期 —— AI 专属的工作（提示、评估、模型选择、护栏）是嵌入标准阶段之中，而不是取代它们。</li>
+<li>运营是一个阶段，不是可以事后再补的：生产级 Claude 系统需要监控质量、成本与延迟，还需要一条从观察到的失败回到提示、评估集与设计的反馈路径。</li>
+<li>维护有 AI 专属的触发点：模型发布会改变行为，因此升级在推出前需要重新评估；提示与配置是版本化的制品，与代码遵循同样的变更纪律。</li>
+<li>证书自身的生命周期与此呼应：证书有效期 12 个月，通过复查变化的内容并完成续期评估来续期 —— 与系统本身被期待的「复查变化、重新验证」回路是同一个。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>把描述中的活动放进它的生命周期阶段（模型升级前跑一轮评估是维护阶段的验证；上线后的质量看板是运营）。</li>
+<li>为一份上线计划指出它缺失的运营与维护工作：监控、反馈收集，以及模型变更时的重新评估关卡。</li>
+</ul>
+<p><strong>官方来源：</strong> Claude 认证开发者 – 基础级考试指南 v1.0（Claude Certified Developer – Foundations Exam Guide v1.0）第 2 与 14 节，Anthropic</p></div></div>
+<div class="row obj"><div class="cell en"><h2>2.3 Claude API Mechanics (6.8%)</h2>
+<p><em>Claude API behavior and mechanics, including messages, tools, streaming, vision, thinking, caching, invoking Claude through third-party vendors, Messages API data access patterns, batch API use, and tradeoffs between realtime and batch API selection.</em></p>
+<blockquote>
+<p><strong>Official wording:</strong> "Prompt caching covers the full prefix: tools, system, and messages (in that order), up to and including the block designated with cache_control."
+— Prompt caching, Anthropic (https://platform.claude.com/docs/en/build-with-claude/prompt-caching)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The <strong>Messages API</strong> is the core interface: you send a model, a <code>system</code> prompt, and a list of <code>messages</code> (user/assistant turns made of content blocks — text, images, documents, <code>tool_use</code>, <code>tool_result</code>), plus parameters such as <code>max_tokens</code>; the response returns content blocks and a <code>stop_reason</code> that tells you why generation ended (end of turn, tool use, token limit, refusal).</li>
+<li><strong>Tool use</strong> runs through the API: you declare tools with names, descriptions, and JSON input schemas; Claude responds with a <code>tool_use</code> block; your code executes the tool and returns a <code>tool_result</code> block; the loop repeats. <strong>Streaming</strong> delivers the response incrementally as server-sent events for lower time-to-first-token in interactive applications. <strong>Vision</strong> passes images and documents as content blocks alongside text.</li>
+<li><strong>Thinking</strong> gives Claude internal reasoning tokens before (and between) answers — adaptive thinking lets the model decide how much to think, controlled by effort levels — and <strong>prompt caching</strong> reuses a stable prompt prefix (tools, system, messages, in that order) across requests to cut cost and latency, with 5-minute or 1-hour cache lifetimes.</li>
+<li>The <strong>Message Batches API</strong> is the asynchronous counterpart: large workloads are submitted as a batch, processed within a 24-hour window, at 50% of standard token prices. The realtime-versus-batch tradeoff is the exam's favorite in this domain: interactive or deadline-tight work stays synchronous; latency-tolerant, high-volume, cost-sensitive work (overnight jobs, bulk classification) goes to batches. Claude can also be invoked through third-party vendors (Amazon Bedrock, Google Cloud, Microsoft Foundry), where the same Messages API patterns apply under the vendor's platform.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Read a scenario's latency and volume cues and select synchronous Messages API versus Message Batches — overnight, non-urgent, cost-first means batch.</li>
+<li>Identify the mechanical fix for a described symptom: repeated static prefix billed every request → prompt caching; user staring at a spinner → streaming; multi-step external actions → the tool-use loop.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">Prompt caching</a> · <a href="https://platform.claude.com/docs/en/build-with-claude/structured-outputs">Structured outputs</a></p></div><div class="cell zh"><h2>2.3 Claude API 机制（6.8%）</h2>
+<p><em>EN: Claude API behavior and mechanics, including messages, tools, streaming, vision, thinking, caching, invoking Claude through third-party vendors, Messages API data access patterns, batch API use, and tradeoffs between realtime and batch API selection.</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Prompt caching covers the full prefix: tools, system, and messages (in that order), up to and including the block designated with cache_control."
+— Prompt caching, Anthropic (https://platform.claude.com/docs/en/build-with-claude/prompt-caching)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li><strong>Messages API</strong> 是核心接口：你发送模型、一个 <code>system</code> 提示，以及一列 <code>messages</code>（由内容块组成的用户/助手轮次 —— 文本、图像、文档、<code>tool_use</code>、<code>tool_result</code>），再加上 <code>max_tokens</code> 等参数；响应返回内容块与一个 <code>stop_reason</code>，告诉你生成为何结束（轮次结束、工具使用、token 上限、拒绝）。</li>
+<li><strong>工具使用（tool use）</strong>通过 API 运行：你用名称、描述与 JSON 输入架构声明工具；Claude 以 <code>tool_use</code> 块回应；你的代码执行工具并返回 <code>tool_result</code> 块；循环重复。<strong>流式（streaming）</strong>以服务器发送事件（server-sent events）的形式增量交付响应，为交互式应用降低首 token 时间。<strong>视觉（vision）</strong>把图像与文档作为内容块与文本一同传递。</li>
+<li><strong>思考（thinking）</strong>给 Claude 在回答之前（以及回答之间）的内部推理 token —— 自适应思考（adaptive thinking）让模型决定思考多少，由努力等级（effort levels）控制 —— 而<strong>提示缓存（prompt caching）</strong>跨请求复用稳定的提示前缀（顺序为工具、系统、消息），以降低成本与延迟，缓存寿命为 5 分钟或 1 小时。</li>
+<li><strong>Message Batches API</strong> 是异步的对应物：大型工作量以批次提交，在 24 小时窗口内处理，价格为标准 token 价格的 50%。实时与批量的权衡是这个领域考试最爱考的：交互式或截止时间紧的工作保持同步；可容忍延迟、高量级、成本敏感的工作（通宵任务、批量分类）走批处理。Claude 也可以通过第三方供应商（Amazon Bedrock、Google Cloud、Microsoft Foundry）调用，在供应商平台之下适用同样的 Messages API 模式。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>读取场景中的延迟与量级线索，在同步 Messages API 与 Message Batches 之间做出选择 —— 通宵、非紧急、成本优先意味着批处理。</li>
+<li>为描述中的症状找到机制层面的修复：重复的静态前缀每次请求都计费 → 提示缓存；用户盯着转圈 → 流式；多步外部动作 → 工具使用循环。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">提示缓存（Prompt caching）</a> · <a href="https://platform.claude.com/docs/en/build-with-claude/structured-outputs">结构化输出（Structured outputs）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>2.4 Software Engineering Foundations (7.4%)</h2>
+<p><em>Core software engineering principles and practices, including REST APIs, JSON, asynchronous programming, version control, SDLC integration, code review, and small- and large-scale refactoring.</em></p>
+<blockquote>
+<p><strong>Official wording:</strong> "They are proficient in Python and/or TypeScript, fluent with REST APIs and Command Line Interface (CLI) tools, and have a working understanding of LLM fundamentals, agents, context management, and MCP."
+— Claude Certified Developer – Foundations Exam Guide v1.0, Anthropic</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Claude applications are software first: the API is a REST interface exchanging JSON, client code is asynchronous where I/O dominates (streaming responses, parallel tool calls, batch submission), and everything Claude-specific — prompts, schemas, configuration — is code that belongs in version control.</li>
+<li><strong>Version control discipline</strong> applies to more than source code: prompts, CLAUDE.md files, settings, and tool schemas are shared, reviewable artifacts; checking permission settings into version control is Anthropic's documented way of sharing them with every developer in an organization.</li>
+<li><strong>Code review and refactoring</strong> scale from small (a single function, a prompt tweak validated against an eval set) to large (codebase modernization, where Claude Code's role is to work across many files under the same review discipline as a human contributor).</li>
+<li>SDLC integration means the AI components pass through the same gates as the rest of the system: tests and evals in CI, review before merge, staged rollout, and monitoring after release — not a separate, unreviewed path to production.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Treat a prompt or schema change like a code change: version it, review it, and validate it against the eval set before it ships.</li>
+<li>Choose the asynchronous pattern a scenario needs (streaming for interactive output, parallel calls for independent tools, batch for bulk) instead of serializing everything.</li>
+</ul>
+<p><strong>Official sources:</strong> Claude Certified Developer – Foundations Exam Guide v1.0, Sections 3–4, Anthropic · <a href="https://code.claude.com/docs/en/permissions">Configure permissions — Claude Code</a></p></div><div class="cell zh"><h2>2.4 软件工程基础（7.4%）</h2>
+<p><em>EN: Core software engineering principles and practices, including REST APIs, JSON, asynchronous programming, version control, SDLC integration, code review, and small- and large-scale refactoring.</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "They are proficient in Python and/or TypeScript, fluent with REST APIs and Command Line Interface (CLI) tools, and have a working understanding of LLM fundamentals, agents, context management, and MCP."
+— Claude Certified Developer – Foundations Exam Guide v1.0, Anthropic</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>Claude 应用首先是软件：API 是交换 JSON 的 REST 接口；客户端代码在 I/O 主导之处是异步的（流式响应、并行工具调用、批次提交）；而一切 Claude 专属的东西 —— 提示、架构、配置 —— 都是属于版本控制的代码。</li>
+<li><strong>版本控制纪律</strong>不只适用于源代码：提示、CLAUDE.md 文件、设置与工具架构都是可共享、可审查的制品；把权限设置签入版本控制，是 Anthropic 在文档中给出的与组织内每位开发者共享它们的方法。</li>
+<li><strong>代码审查与重构</strong>从小到大都有：小的如单个函数、用评估集验证过的一次提示微调；大的如代码库现代化，此时 Claude Code 的角色是在与人类贡献者相同的审查纪律之下跨多个文件工作。</li>
+<li>SDLC 集成意味着 AI 组件要通过与系统其余部分相同的关卡：CI 中的测试与评估、合并前审查、分阶段推出、发布后监控 —— 而不是一条独立、未经审查的上生产路径。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>把提示或架构的变更当作代码变更对待：给它版本、审查它、在发布前用评估集验证它。</li>
+<li>为场景选择它需要的异步模式（交互式输出用流式、独立工具用并行调用、大批量用批处理），而不是把一切都串行化。</li>
+</ul>
+<p><strong>官方来源：</strong> Claude 认证开发者 – 基础级考试指南 v1.0（Claude Certified Developer – Foundations Exam Guide v1.0）第 3–4 节，Anthropic ·<a href="https://code.claude.com/docs/en/permissions">配置权限 — Claude Code（Configure permissions — Claude Code）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>2.5 Claude Application Design (8.6%)</h2>
+<p><em>Design considerations for building Claude applications, including how Claude interprets instructions across interfaces (Claude Code, Desktop, claude.ai, API, SDKs), content boundaries, schema design, session hygiene, and plugin management.</em></p>
+<blockquote>
+<p><strong>Official wording:</strong> "Structured outputs constrain Claude's responses to follow a specific schema, ensuring valid, parseable output for downstream processing."
+— Structured outputs, Anthropic (https://platform.claude.com/docs/en/build-with-claude/structured-outputs)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li><strong>Instructions are interpreted per surface.</strong> The same Claude sits behind Claude Code, the desktop app, claude.ai, the API, and the SDKs, but each surface assembles context differently — system prompts, project files such as CLAUDE.md, tool sets, and conversation state differ — so an instruction that works in one interface is not guaranteed to behave identically in another. Design for the surface you ship on.</li>
+<li><strong>Content boundaries</strong> are a design primitive: trusted instructions (system prompt, your code) must stay structurally separate from untrusted content (user input, retrieved documents, tool results). Delimiters, XML tags, JSON encoding, and the system/user/tool-result placement of each content type are how the boundary is enforced.</li>
+<li><strong>Schema design</strong> decides reliability downstream: tool input schemas and structured-output schemas should be explicit, typed, and as small as the task allows — structured outputs constrain responses to a JSON schema so output is valid and parseable, and strict tool use guarantees schema validation on tool names and inputs. Vague schemas push validation work into defensive parsing.</li>
+<li><strong>Session hygiene</strong> keeps long-lived interactions healthy: fresh sessions for new tasks, deliberate management of what accumulates in context, and compaction or pruning before drift sets in. <strong>Plugins</strong> package skills, agents, hooks, and MCP servers for distribution and are managed as versioned dependencies, not ad-hoc copies.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Audit a design for boundary violations: untrusted text concatenated into the system prompt, or instructions hidden inside tool results.</li>
+<li>Design the schema first for an extraction or tool task — fields, types, required versus optional — and let the prompt reference it, instead of describing the format in prose.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/structured-outputs">Structured outputs</a> · <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks">Mitigate jailbreaks and prompt injections</a></p></div><div class="cell zh"><h2>2.5 Claude 应用设计（8.6%）</h2>
+<p><em>EN: Design considerations for building Claude applications, including how Claude interprets instructions across interfaces (Claude Code, Desktop, claude.ai, API, SDKs), content boundaries, schema design, session hygiene, and plugin management.</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Structured outputs constrain Claude's responses to follow a specific schema, ensuring valid, parseable output for downstream processing."
+— Structured outputs, Anthropic (https://platform.claude.com/docs/en/build-with-claude/structured-outputs)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li><strong>指令是按表面（surface）解释的。</strong> 同一个 Claude 位于 Claude Code、桌面应用、claude.ai、API 与 SDK 背后，但每个表面组装上下文的方式不同 —— 系统提示、CLAUDE.md 等项目文件、工具集与对话状态都不同 —— 因此在某个界面里有效的指令，不保证在另一个界面里行为一致。要为你实际交付的表面做设计。</li>
+<li><strong>内容边界</strong>是一个设计原语：可信指令（系统提示、你的代码）必须在结构上与不可信内容（用户输入、检索到的文档、工具结果）分开。分隔符、XML 标签、JSON 编码，以及每类内容在 system/user/tool-result 中的放置位置，就是边界的执行方式。</li>
+<li><strong>架构设计（schema design）</strong>决定下游的可靠性：工具输入架构与结构化输出架构应当明确、有类型、且在任务允许范围内尽量小 —— 结构化输出把响应约束到一个 JSON 架构，使输出有效且可解析；严格工具使用（strict tool use）保证对工具名称与输入的架构校验。含糊的架构会把校验工作推给防御性解析。</li>
+<li><strong>会话卫生（session hygiene）</strong>让长寿命的交互保持健康：新任务开新会话、有意识地管理上下文中累积的东西、在漂移出现之前压缩或修剪。<strong>插件（plugins）</strong>把技能、智能体、hooks 与 MCP 服务器打包以便分发，并作为版本化的依赖来管理，而不是临时拷贝。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>审查一个设计中的边界违规：不可信文本被拼接进系统提示，或者指令被藏在工具结果里。</li>
+<li>为抽取或工具任务先设计架构 —— 字段、类型、必填与可选 —— 并让提示引用它，而不是用散文描述格式。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/structured-outputs">结构化输出（Structured outputs）</a> · <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks">缓解越狱与提示注入（Mitigate jailbreaks and prompt injections）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>2.6 Configuration Management (4.1%)</h2>
+<p><em>Configuration management for Claude system components, including CLAUDE.md files, settings.json, model version pinning, prompt versioning, and plugin dependencies.</em></p>
+<blockquote>
+<p><strong>Official wording:</strong> "CLAUDE.md files are markdown files that give Claude persistent instructions for a project, your personal workflow, or your entire organization."
+— How Claude remembers your project, Anthropic (https://code.claude.com/docs/en/memory)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li><strong>CLAUDE.md</strong> carries persistent instructions across sessions and is organized as a hierarchy — managed policy, user, project, and local files — with more specific scopes read later and taking practical precedence. Files are context, not enforced configuration: they guide Claude but cannot block an action the way a hook or permission rule can.</li>
+<li><strong>settings.json</strong> is the enforced-configuration counterpart: permissions, hooks, environment variables, and model defaults live in settings files at managed, user, project, and local scopes, merged with closer scopes winning for most keys.</li>
+<li><strong>Model version pinning</strong> is a configuration decision with behavioral consequences: pinning a specific model version keeps behavior stable across a deployment; floating on an alias adopts improvements automatically but exposes the application to breaking behavior changes, so upgrades are validated against evals before rollout.</li>
+<li><strong>Prompt versioning and plugin dependencies</strong> complete the picture: prompts are versioned artifacts (changed deliberately, reviewed, rolled back when an eval regresses), and plugins bundle skills, agents, hooks, and MCP servers whose versions are managed as dependencies of the project.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Put each configuration item at the right scope and in the right file: a team-wide instruction in project CLAUDE.md, an enforced block in settings.json permissions or a hook, a personal preference in user or local files.</li>
+<li>Diagnose a configuration surprise by scope: the instruction that wins is the one from the file that actually loaded, at the scope that actually applies.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://code.claude.com/docs/en/memory">How Claude remembers your project</a> · <a href="https://code.claude.com/docs/en/permissions">Configure permissions — Claude Code</a></p>
+<hr /></div><div class="cell zh"><h2>2.6 配置管理（4.1%）</h2>
+<p><em>EN: Configuration management for Claude system components, including CLAUDE.md files, settings.json, model version pinning, prompt versioning, and plugin dependencies.</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "CLAUDE.md files are markdown files that give Claude persistent instructions for a project, your personal workflow, or your entire organization."
+— How Claude remembers your project, Anthropic (https://code.claude.com/docs/en/memory)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li><strong>CLAUDE.md</strong> 跨会话携带持久指令，并按层级组织 —— 托管策略、用户、项目与本地文件 —— 越具体的作用域读得越晚，并在实际上占优先。这些文件是上下文，不是强制配置：它们引导 Claude，但不能像 hook 或权限规则那样阻止一个动作。</li>
+<li><strong>settings.json</strong> 是强制配置的对应物：权限、hooks、环境变量与模型默认值都住在设置文件里，分布于托管、用户、项目与本地作用域，合并时对大多数键而言越近的作用域胜出。</li>
+<li><strong>模型版本锁定（pinning）</strong>是一个有行为后果的配置决策：锁定一个具体模型版本可使一次部署内的行为保持稳定；浮动在别名上会自动采纳改进，但会把应用暴露于破坏性的行为变化，因此升级在推出前要用评估验证。</li>
+<li><strong>提示版本管理与插件依赖</strong>补全了这幅图：提示是版本化的制品（有意识地变更、审查、在评估退步时回滚），而插件打包了技能、智能体、hooks 与 MCP 服务器，其版本作为项目的依赖来管理。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>把每个配置项放进正确的作用域与正确的文件：全团队的指令放项目 CLAUDE.md，强制性的阻止放 settings.json 权限或 hook，个人偏好放用户或本地文件。</li>
+<li>按作用域诊断配置意外：胜出的指令，来自实际加载了的那个文件、实际生效的那个作用域。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://code.claude.com/docs/en/memory">Claude 如何记住你的项目（How Claude remembers your project）</a> · <a href="https://code.claude.com/docs/en/permissions">配置权限 — Claude Code（Configure permissions — Claude Code）</a></p>
+<hr /></div></div>
+<div class="band" id="d3"><div class="band-en">Domain 3: Claude Code (3.1%)</div><div class="band-zh">领域 3：Claude Code（Domain 3: Claude Code）（3.1%）</div></div>
+<div class="row obj"><div class="cell en"><h2>3.1 Claude Code Operation (3.1%)</h2>
+<p><em>Claude Code core components (Rules, Skills, Commands, Agents, Agent Memory), features (session management, built-in and custom slash commands, headless mode, streaming mode, auto-mode), the CLAUDE.md hierarchy, repository initialization, and settings.json configuration.</em></p>
+<blockquote>
+<p><strong>Official wording:</strong> "Claude Code is an agentic coding tool that reads your codebase, edits files, runs commands, and integrates with your development tools."
+— Overview, Anthropic (https://code.claude.com/docs/en/overview)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Claude Code's core components are <strong>Rules</strong> (path-scoped instruction files under <code>.claude/rules/</code>), <strong>Skills</strong> (filesystem-based capability packages loaded on demand), <strong>Commands</strong> (slash commands, built-in and custom), <strong>Agents</strong> (subagents with their own prompts, tool sets, and context), and <strong>Agent Memory</strong> (CLAUDE.md files plus auto memory that carry knowledge across sessions).</li>
+<li>The <strong>CLAUDE.md hierarchy</strong> loads instructions from managed policy, user, project, and local scopes; every session starts with a fresh context window, and CLAUDE.md files and auto memory are what carry knowledge across sessions. Repository initialization (<code>/init</code>) generates a starting CLAUDE.md from the codebase.</li>
+<li><strong>settings.json</strong> is where behavior is enforced and configured: permissions, hooks, environment variables, and model defaults, layered across managed, user, project, and local files.</li>
+<li>Operating modes matter for automation: <strong>headless mode</strong> (<code>-p</code>) runs Claude Code non-interactively for scripts and CI, <strong>streaming mode</strong> emits incremental output (including <code>stream-json</code> for programmatic consumption), and <strong>auto-mode</strong> lets a classifier review actions instead of prompting the user for each approval. Session management covers resuming, forking, and compacting sessions.</li>
+<li>Every surface — terminal, IDE extensions, desktop app, and web — connects to the same underlying engine, so a repo's CLAUDE.md files, settings, and MCP servers work across all of them.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Name the component a requirement belongs to: an always-on project rule → CLAUDE.md or a path-scoped rule; a reusable multi-step capability → a Skill; a repeatable invocation → a custom slash command; unattended CI execution → headless mode.</li>
+<li>Predict what a fresh session knows: only what CLAUDE.md, auto memory, settings, and discovered project files load — not anything from a previous session's conversation.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://code.claude.com/docs/en/overview">Overview — Claude Code</a> · <a href="https://code.claude.com/docs/en/memory">How Claude remembers your project</a> · <a href="https://code.claude.com/docs/en/authentication">Authentication — Claude Code</a></p>
+<hr /></div><div class="cell zh"><h2>3.1 Claude Code 操作（3.1%）</h2>
+<p><em>EN: Claude Code core components (Rules, Skills, Commands, Agents, Agent Memory), features (session management, built-in and custom slash commands, headless mode, streaming mode, auto-mode), the CLAUDE.md hierarchy, repository initialization, and settings.json configuration.</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Claude Code is an agentic coding tool that reads your codebase, edits files, runs commands, and integrates with your development tools."
+— Overview, Anthropic (https://code.claude.com/docs/en/overview)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>Claude Code 的核心组件是 <strong>Rules</strong>（<code>.claude/rules/</code> 下按路径作用域的指令文件）、<strong>Skills</strong>（基于文件系统、按需加载的能力包）、<strong>Commands</strong>（斜杠命令，分内置与自定义）、<strong>Agents</strong>（带自己的提示、工具集与上下文的子智能体）与 <strong>Agent Memory</strong>（CLAUDE.md 文件加上跨会话携带知识的自动记忆 auto memory）。</li>
+<li><strong>CLAUDE.md 层级</strong>从托管策略、用户、项目与本地作用域加载指令；每个会话都从一个全新的上下文窗口开始，跨会话携带知识的是 CLAUDE.md 文件与自动记忆。仓库初始化（<code>/init</code>）会从代码库生成一份起步的 CLAUDE.md。</li>
+<li><strong>settings.json</strong> 是行为被强制与配置的地方：权限、hooks、环境变量与模型默认值，分层分布于托管、用户、项目与本地文件。</li>
+<li>操作模式对自动化很重要：<strong>headless 模式</strong>（<code>-p</code>）为脚本与 CI 非交互地运行 Claude Code，<strong>流式模式（streaming mode）</strong>发出增量输出（包括供程序消费的 <code>stream-json</code>），<strong>auto-mode</strong> 让一个分类器审查动作，而不是为每次批准都提示用户。会话管理涵盖恢复、分叉（fork）与压缩会话。</li>
+<li>每个表面 —— 终端、IDE 扩展、桌面应用与 web —— 都连接到同一个底层引擎，因此一个仓库的 CLAUDE.md 文件、设置与 MCP 服务器在所有表面上都有效。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>说出一条需求属于哪个组件：常开的项目规则 → CLAUDE.md 或按路径作用域的 rule；可复用的多步能力 → Skill；可重复的调用 → 自定义斜杠命令；无人值守的 CI 执行 → headless 模式。</li>
+<li>预测一个新会话知道什么：只有 CLAUDE.md、自动记忆、设置与被发现的项目文件所加载的东西 —— 而不是上一个会话对话中的任何内容。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://code.claude.com/docs/en/overview">总览 — Claude Code（Overview — Claude Code）</a> · <a href="https://code.claude.com/docs/en/memory">Claude 如何记住你的项目（How Claude remembers your project）</a> · <a href="https://code.claude.com/docs/en/authentication">认证 — Claude Code（Authentication — Claude Code）</a></p>
+<hr /></div></div>
+<div class="band" id="d4"><div class="band-en">Domain 4: Eval, Testing, and Debugging (2.6%)</div><div class="band-zh">领域 4：评估、测试与调试（Domain 4: Eval, Testing, and Debugging）（2.6%）</div></div>
+<div class="row obj"><div class="cell en"><h2>4.1 Debugging and Error Handling (2.6%)</h2>
+<p><em>Debugging and error handling techniques for Claude applications, including error type identification, recovery strategy selection, trace analysis to identify failure modes, and problem origin isolation between the integration layer and model output.</em></p>
+<blockquote>
+<p><strong>Official wording:</strong> "When Claude ignores an instruction or a feature you configured doesn't appear, the cause is usually that the file didn't load, it loaded from a different location than you expected, or another file overrode it."
+— Debug your configuration, Anthropic (https://code.claude.com/docs/en/debug-your-config)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Debugging a Claude application starts with <strong>error type identification</strong>: API and transport errors (rate limits, overloads, invalid requests), configuration errors (a file that didn't load, loaded from the wrong place, or was overridden), and model-output errors (wrong format, wrong tool choice, hallucinated content) each have different fixes, and confusing them wastes the debugging session.</li>
+<li><strong>Problem origin isolation</strong> is the central skill: is the failure in the integration layer (your code, request construction, tool execution, configuration resolution) or in the model output (prompt quality, missing context, model capability)? Configuration surprises in Claude Code are usually resolution problems — not loaded, wrong location, overridden — not model problems, and the same suspicion order applies to API applications.</li>
+<li><strong>Trace analysis</strong> reads the record of what actually happened — requests, tool calls, tool results, stop reasons, token usage — to find the step where behavior diverged, instead of guessing from the final output. In structured outputs, for example, a <code>stop_reason</code> of "refusal" or "max_tokens" explains an off-schema response that looks like a model failure but is neither.</li>
+<li><strong>Recovery strategy selection</strong> follows the diagnosis: retry with backoff for transient API errors, fix the configuration at the scope that actually wins for resolution problems, add validation and retry-with-feedback for output problems, and feed every recurring failure back into the eval set so it is tested forever after.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Triage in order: reproduce, inspect what actually loaded and what the trace shows, classify the error (transport, configuration, or model output), then fix at that layer.</li>
+<li>Refuse the model-blaming distractor: when the stem shows a configuration or integration cause, the correct answer fixes the harness, not the prompt or the model.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://code.claude.com/docs/en/debug-your-config">Debug your configuration — Claude Code</a> · <a href="https://platform.claude.com/docs/en/build-with-claude/structured-outputs">Structured outputs</a></p>
+<hr /></div><div class="cell zh"><h2>4.1 调试与错误处理（2.6%）</h2>
+<p><em>EN: Debugging and error handling techniques for Claude applications, including error type identification, recovery strategy selection, trace analysis to identify failure modes, and problem origin isolation between the integration layer and model output.</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "When Claude ignores an instruction or a feature you configured doesn't appear, the cause is usually that the file didn't load, it loaded from a different location than you expected, or another file overrode it."
+— Debug your configuration, Anthropic (https://code.claude.com/docs/en/debug-your-config)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>调试一个 Claude 应用从<strong>错误类型识别</strong>开始：API 与传输错误（速率限制、过载、无效请求）、配置错误（文件没加载、从错误位置加载、被覆盖）与模型输出错误（格式错误、工具选错、幻觉内容）各有不同的修复方法，混淆它们会浪费整个调试过程。</li>
+<li><strong>问题来源隔离</strong>是核心技能：失败是在集成层（你的代码、请求构造、工具执行、配置解析）还是在模型输出（提示质量、缺失上下文、模型能力）？Claude Code 中的配置意外通常是解析问题 —— 没加载、位置错误、被覆盖 —— 而不是模型问题，同样的怀疑顺序也适用于 API 应用。</li>
+<li><strong>追踪分析（trace analysis）</strong>读取实际发生之事的记录 —— 请求、工具调用、工具结果、stop reasons、token 用量 —— 找到行为偏离的那一步，而不是从最终输出去猜。例如在结构化输出中，<code>stop_reason</code> 为 "refusal" 或 "max_tokens" 就能解释一个看似模型失败、实则两者都不是的偏离架构的响应。</li>
+<li><strong>恢复策略选择</strong>跟随诊断：瞬时 API 错误用退避重试；解析问题在实际胜出的作用域修配置；输出问题加校验与带反馈重试；并把每个反复出现的失败喂回评估集，使它从此被永久测试。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>按顺序分诊：复现、检查实际加载了什么以及追踪显示什么、给错误分类（传输、配置还是模型输出），然后在那一层修复。</li>
+<li>拒绝怪罪模型的干扰项：当题干显示的是配置或集成原因时，正确答案修的是框架（harness），而不是提示或模型。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://code.claude.com/docs/en/debug-your-config">调试你的配置 — Claude Code（Debug your configuration — Claude Code）</a> · <a href="https://platform.claude.com/docs/en/build-with-claude/structured-outputs">结构化输出（Structured outputs）</a></p>
+<hr /></div></div>
+<div class="band" id="d5"><div class="band-en">Domain 5: Model Selection and Optimization (16.8%)</div><div class="band-zh">领域 5：模型选择与优化（Domain 5: Model Selection and Optimization）（16.8%）</div></div>
+<div class="row obj"><div class="cell en"><h2>5.1 LLM Fundamentals (5.2%)</h2>
+<p><em>Basic understanding of LLMs (tokens, context windows, sampling, non-determinism, next-token generation), model options (fast mode, extended thinking, adaptive thinking, effort levels), and fundamental prompting techniques (zero-shot, single-shot, multi-shot).</em></p>
+<blockquote>
+<p><strong>Official wording:</strong> "The "context window" refers to all the text a language model can reference when generating a response, including the response itself."
+— Context windows, Anthropic (https://platform.claude.com/docs/en/build-with-claude/context-windows)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>An LLM generates text one <strong>token</strong> at a time by predicting the next token; everything it can condition on lives in the <strong>context window</strong> — the system prompt, all messages, tool definitions and results, and the response itself all count toward it. More context is not automatically better: as token count grows, accuracy and recall degrade (context rot).</li>
+<li><strong>Sampling</strong> makes generation probabilistic: the model picks among likely next tokens, so identical inputs can produce different outputs — <strong>non-determinism</strong> is a property of the system, and applications that need consistency get it from structure, validation, and evals, not from expecting identical replies.</li>
+<li>Model options tune the reasoning budget: <strong>extended thinking</strong> gives Claude internal reasoning tokens; <strong>adaptive thinking</strong> lets the model decide how much to think, steered by <strong>effort levels</strong>; <strong>fast mode</strong> trades cost for lower latency on supported models. Thinking tokens are billed as output tokens and count toward the context window.</li>
+<li>Fundamental prompting techniques form a ladder: <strong>zero-shot</strong> (instruction only), <strong>single-shot</strong> (one example), and <strong>multi-shot / few-shot</strong> (several examples) — examples are added when instructions alone do not pin down the format or behavior.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Explain a symptom from first principles: inconsistent answers across identical calls → sampling non-determinism; degraded quality in a very long session → context rot and window pressure.</li>
+<li>Pick the reasoning configuration from the task: routine extraction → low effort or thinking off; multi-step reasoning → adaptive thinking at higher effort.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/context-windows">Context windows</a> · <a href="https://platform.claude.com/docs/en/models/overview">Models overview</a></p></div><div class="cell zh"><h2>5.1 LLM 基础（5.2%）</h2>
+<p><em>EN: Basic understanding of LLMs (tokens, context windows, sampling, non-determinism, next-token generation), model options (fast mode, extended thinking, adaptive thinking, effort levels), and fundamental prompting techniques (zero-shot, single-shot, multi-shot).</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "The "context window" refers to all the text a language model can reference when generating a response, including the response itself."
+— Context windows, Anthropic (https://platform.claude.com/docs/en/build-with-claude/context-windows)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>LLM 通过预测下一个 token、一次一个 <strong>token</strong> 地生成文本；它能依据的一切都住在<strong>上下文窗口（context window）</strong>里 —— 系统提示、全部消息、工具定义与结果、以及响应本身都计入其中。上下文不是越多越好：随着 token 数增长，准确性与回忆会退化（上下文腐烂 context rot）。</li>
+<li><strong>采样（sampling）</strong>使生成成为概率性的：模型在可能的下一个 token 中挑选，因此相同的输入可以产生不同的输出 —— <strong>非确定性（non-determinism）</strong>是这个系统的属性，需要一致性的应用从结构、校验与评估中获得它，而不是指望完全相同的回复。</li>
+<li>模型选项调节推理预算：<strong>扩展思考（extended thinking）</strong>给 Claude 内部推理 token；<strong>自适应思考（adaptive thinking）</strong>让模型决定思考多少，由<strong>努力等级（effort levels）</strong>引导；<strong>快速模式（fast mode）</strong>在受支持的模型上以成本换更低延迟。思考 token 按输出 token 计费，并计入上下文窗口。</li>
+<li>基础提示技术构成一个阶梯：<strong>零示例（zero-shot）</strong>（只有指令）、<strong>单示例（single-shot）</strong>（一个示例）与<strong>多示例（multi-shot / few-shot）</strong>（多个示例）—— 当指令本身不足以锁定格式或行为时，添加示例。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>从第一性原理解释症状：相同调用给出不一致的答案 → 采样非确定性；很长的会话中质量退化 → 上下文腐烂与窗口压力。</li>
+<li>从任务出发选择推理配置：例行抽取 → 低努力等级或关闭思考；多步推理 → 更高努力等级的自适应思考。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/context-windows">上下文窗口（Context windows）</a> · <a href="https://platform.claude.com/docs/en/models/overview">模型总览（Models overview）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>5.2 Technical Fundamentals (6.1%)</h2>
+<p><em>Foundational technical concepts supporting AI application development, including basic engineering practices (integrating with SDKs that wrap REST APIs, websockets).</em></p>
+<blockquote>
+<p><strong>Official wording:</strong> "When creating a Message, you can set "stream": true to incrementally stream the response using server-sent events (SSE)."
+— Streaming messages, Anthropic (https://platform.claude.com/docs/en/build-with-claude/streaming)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The Claude API is a REST API; the official <strong>client SDKs</strong> wrap it, handling request construction, authentication, retries, and response parsing in Python, TypeScript, and other languages — you integrate with the SDK's types and helpers rather than hand-building HTTP calls.</li>
+<li><strong>Asynchronous programming</strong> is the default shape of Claude applications: streaming responses arrive incrementally as server-sent events (SSE), independent tool calls can run in parallel, and long workloads are submitted and polled rather than held open. Websocket-style, event-driven handling is how interactive applications consume token streams and agent events.</li>
+<li>Streaming has a defined event protocol — <code>message_start</code>, content block start/delta/stop events, <code>message_delta</code>, <code>message_stop</code>, plus possible <code>ping</code> and error events — and robust clients accumulate deltas (including partial JSON for tool inputs) instead of assuming whole messages.</li>
+<li>Error handling is part of the foundation: overloaded and rate-limit errors are expected operational events with retry-and-backoff strategies, and interrupted streams on supported models can be recovered by capturing the partial response and continuing, rather than restarting from zero.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Choose the consumption pattern a scenario needs: full response for short calls, SSE streaming for interactive output, asynchronous batch submission for bulk work.</li>
+<li>Build the client defensively: accumulate streamed deltas, handle mid-stream error events, and retry transient failures with backoff.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/streaming">Streaming messages</a> · <a href="https://platform.claude.com/docs/en/agent-sdk/overview">Agent SDK overview</a></p></div><div class="cell zh"><h2>5.2 技术基础（6.1%）</h2>
+<p><em>EN: Foundational technical concepts supporting AI application development, including basic engineering practices (integrating with SDKs that wrap REST APIs, websockets).</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "When creating a Message, you can set "stream": true to incrementally stream the response using server-sent events (SSE)."
+— Streaming messages, Anthropic (https://platform.claude.com/docs/en/build-with-claude/streaming)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>Claude API 是一个 REST API；官方<strong>客户端 SDK</strong> 对它做了封装，在 Python、TypeScript 与其他语言中处理请求构造、认证、重试与响应解析 —— 你与 SDK 的类型与辅助工具集成，而不是手工拼 HTTP 调用。</li>
+<li><strong>异步编程</strong>是 Claude 应用的默认形态：流式响应以服务器发送事件（SSE）的形式增量到达，独立的工具调用可以并行运行，长工作量被提交后轮询而不是一直挂着连接。Websocket 式的、事件驱动的处理方式，是交互式应用消费 token 流与智能体事件的方式。</li>
+<li>流式有一套已定义的事件协议 —— <code>message_start</code>、内容块 start/delta/stop 事件、<code>message_delta</code>、<code>message_stop</code>，外加可能的 <code>ping</code> 与错误事件 —— 稳健的客户端累积增量（包括工具输入的部分 JSON），而不是假设收到的是完整消息。</li>
+<li>错误处理是基础的一部分：过载与速率限制错误是预期内的运营事件，配有重试与退避策略；在受支持的模型上，中断的流可以通过捕获部分响应并继续来恢复，而不是从零重来。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>为场景选择消费模式：短调用用完整响应，交互式输出用 SSE 流式，大批量工作用异步批次提交。</li>
+<li>防御性地构建客户端：累积流式增量，处理流中途的错误事件，并以退避重试瞬时失败。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/streaming">流式消息（Streaming messages）</a> · <a href="https://platform.claude.com/docs/en/agent-sdk/overview">Agent SDK 总览（Agent SDK overview）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>5.3 Model Selection and Tradeoffs (2.7%)</h2>
+<p><em>Claude model capabilities (Opus vs. Sonnet vs. Haiku use cases, adaptive thinking support), tradeoffs across quality/latency/cost parameters, and breaking behavior changes across model releases when selecting models for tasks.</em></p>
+<blockquote>
+<p><strong>Official wording:</strong> "If you're unsure which model to use, start with Claude Opus 5.5 for most workloads. Use Claude Fable 5.2 for demanding reasoning and long-horizon agentic work, or when your evals on Claude Opus 5.5 at higher effort still fall short."
+— Models overview, Anthropic (https://platform.claude.com/docs/en/models/overview)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The model tiers trade quality, latency, and cost: the <strong>Opus</strong> class is the most capable for complex reasoning and long agentic work; <strong>Sonnet</strong> is the balance point — the best combination of speed and intelligence for most applications; <strong>Haiku</strong> is the fastest and cheapest, aimed at high-volume, latency-sensitive tasks such as classification, extraction, and routing. (Check the Models overview for the current lineup and prices — they change between exam versions.)</li>
+<li>Official selection guidance is counter-intuitive: start with the most intelligent generally available model and dial performance and cost with the <strong>effort</strong> level, because a more capable model often finishes in fewer turns, making cost-per-task lower despite a higher per-token price. <strong>Adaptive thinking</strong> support differs by model and belongs in the selection criteria.</li>
+<li><strong>Model releases can break behavior</strong>: prompts tuned on one generation may over- or under-trigger on the next, so a model upgrade is a change to validate against your eval set — and pinning a model version is how you defer that change until you are ready to validate it.</li>
+<li>Selection is per-task, not per-product: one system can route easy traffic to Haiku, default to Sonnet, and reserve Opus for the hardest reasoning, with the routing decision itself made by rules or a cheap classifier call.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Match the tier to the stem's constraint: quality-critical reasoning → Opus class; balanced default → Sonnet; volume- and latency-bound classification → Haiku.</li>
+<li>Treat a proposed model swap as a release: name the validation step (run the eval set, compare behavior) that must pass before it ships.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/models/overview">Models overview</a></p></div><div class="cell zh"><h2>5.3 模型选择与权衡（2.7%）</h2>
+<p><em>EN: Claude model capabilities (Opus vs. Sonnet vs. Haiku use cases, adaptive thinking support), tradeoffs across quality/latency/cost parameters, and breaking behavior changes across model releases when selecting models for tasks.</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "If you're unsure which model to use, start with Claude Opus 5.5 for most workloads. Use Claude Fable 5.2 for demanding reasoning and long-horizon agentic work, or when your evals on Claude Opus 5.5 at higher effort still fall short."
+— Models overview, Anthropic (https://platform.claude.com/docs/en/models/overview)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>模型层级在质量、延迟与成本之间权衡：<strong>Opus</strong> 级对复杂推理与长时智能体工作能力最强；<strong>Sonnet</strong> 是平衡点 —— 对大多数应用而言是速度与智能的最佳组合；<strong>Haiku</strong> 最快、最便宜，面向分类、抽取与路由等高量级、对延迟敏感的任务。（当前的阵容与价格请查模型总览 —— 它们在考试版本之间会变。）</li>
+<li>官方的选择指引是反直觉的：从最智能的普遍可用模型开始，用<strong>努力等级（effort）</strong>来调节表现与成本，因为能力更强的模型往往用更少的轮次完成任务，使得每任务成本更低，尽管每 token 价格更高。<strong>自适应思考</strong>的支持情况因模型而异，应纳入选择标准。</li>
+<li><strong>模型发布可能破坏行为</strong>：为一代模型调好的提示在下一代上可能过度或不足触发，因此模型升级是一个要用你的评估集验证的变更 —— 而锁定模型版本就是把这个变更推迟到你准备好验证时的方法。</li>
+<li>选择是按任务的，不是按产品的：一个系统可以把简单流量路由到 Haiku、默认用 Sonnet、把 Opus 留给最难的推理，而路由决策本身由规则或一次便宜的分类器调用做出。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>把层级匹配到题干的约束：质量关键的推理 → Opus 级；平衡的默认 → Sonnet；受量级与延迟约束的分类 → Haiku。</li>
+<li>把一次提议的模型更换当作一次发布对待：说出它上线前必须通过的验证步骤（跑评估集、比较行为）。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/models/overview">模型总览（Models overview）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>5.4 Cost and Token Management (2.8%)</h2>
+<p><em>Token budgeting and cost management techniques for Claude applications, including token usage tracking, cost modeling, and caching techniques (prompt caching, cache check-pointing) for cost optimization.</em></p>
+<blockquote>
+<p><strong>Official wording:</strong> "Prompt caching optimizes your API usage by letting the API resume from specific prefixes in your prompts. This significantly reduces processing time and costs for repetitive tasks or prompts with consistent elements."
+— Prompt caching, Anthropic (https://platform.claude.com/docs/en/build-with-claude/prompt-caching)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Cost is tokens times price, so management starts with <strong>tracking</strong>: every response reports its consumption in the <code>usage</code> field (input, output, cache creation, and cache read tokens), and the token counting API estimates a request before you send it. A <strong>cost model</strong> multiplies expected token volumes by per-model prices to forecast spend per feature or per task.</li>
+<li><strong>Token budgeting</strong> caps the downside: <code>max_tokens</code> bounds output, effort levels bound thinking spend, and context discipline (pruning tool results, compacting history) bounds input growth across a long session or agent loop.</li>
+<li><strong>Prompt caching</strong> is the biggest lever for repeated prefixes: content up to a <code>cache_control</code> breakpoint — covering tools, system, and messages in that order — is written once (at a premium over base input price) and read back at a fraction of it, with a 5-minute lifetime refreshed on use or a 1-hour option. <strong>Cache check-pointing</strong> in long conversations (automatic caching) moves the breakpoint forward as the conversation grows, so each turn re-reads the accumulated history from cache.</li>
+<li>Caching has failure modes a budget owner must know: changing anything at or before the breakpoint invalidates the prefix, breakpoints placed on per-request content never hit, and cached prefixes still occupy the context window — caching changes what you pay, not what counts.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Build a rough cost model from a scenario: requests × (input + output tokens) × tier price, then name the lever that reduces it (caching, batch, tier routing, effort).</li>
+<li>Place cache breakpoints correctly: at the end of the static prefix (tools, system, stable context), never on the varying per-request block.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">Prompt caching</a> · <a href="https://platform.claude.com/docs/en/build-with-claude/context-windows">Context windows</a></p>
+<hr /></div><div class="cell zh"><h2>5.4 成本与 Token 管理（2.8%）</h2>
+<p><em>EN: Token budgeting and cost management techniques for Claude applications, including token usage tracking, cost modeling, and caching techniques (prompt caching, cache check-pointing) for cost optimization.</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Prompt caching optimizes your API usage by letting the API resume from specific prefixes in your prompts. This significantly reduces processing time and costs for repetitive tasks or prompts with consistent elements."
+— Prompt caching, Anthropic (https://platform.claude.com/docs/en/build-with-claude/prompt-caching)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>成本等于 token 乘以价格，因此管理从<strong>追踪</strong>开始：每个响应都在 <code>usage</code> 字段报告其消耗（输入、输出、缓存创建与缓存读取 token），而 token 计数 API 在你发送前估算一个请求。<strong>成本模型</strong>把预期的 token 量乘以各模型的价格，预测每个功能或每个任务的花费。</li>
+<li><strong>Token 预算</strong>封住下行风险：<code>max_tokens</code> 限定输出，努力等级限定思考花费，上下文纪律（修剪工具结果、压缩历史）限定长会话或智能体循环中的输入增长。</li>
+<li><strong>提示缓存</strong>是重复前缀的最大杠杆：直到某个 <code>cache_control</code> 断点的内容 —— 按顺序覆盖工具、系统与消息 —— 只写入一次（价格高于基础输入价），之后以一小部分价格读回，寿命为使用时刷新的 5 分钟或可选的 1 小时。长对话中的<strong>缓存检查点（cache check-pointing）</strong>（自动缓存）随对话增长把断点向前移动，使每一轮都从缓存重读累积的历史。</li>
+<li>缓存有预算负责人必须知道的失败模式：在断点处或断点之前改动任何东西都会使前缀失效；放在每请求变化内容上的断点永远不会命中；缓存的前缀仍然占据上下文窗口 —— 缓存改变的是你付什么，而不是什么计入窗口。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>从场景出发建一个粗略成本模型：请求数 ×（输入 + 输出 token）× 层级价格，然后说出降低它的杠杆（缓存、批处理、层级路由、努力等级）。</li>
+<li>正确放置缓存断点：在静态前缀的末尾（工具、系统、稳定上下文），绝不放在每请求变化的块上。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">提示缓存（Prompt caching）</a> · <a href="https://platform.claude.com/docs/en/build-with-claude/context-windows">上下文窗口（Context windows）</a></p>
+<hr /></div></div>
+<div class="band" id="d6"><div class="band-en">Domain 6: Prompt and Context Engineering (11.0%)</div><div class="band-zh">领域 6：提示与上下文工程（Domain 6: Prompt and Context Engineering）（11.0%）</div></div>
+<div class="row obj"><div class="cell en"><h2>6.1 Context Engineering (3.8%)</h2>
+<p><em>Context and memory management techniques for Claude applications, including context window management, prevention of context drift and bloat (tool output pruning, compaction), and context isolation through subagents or multi-step agentic workflows.</em></p>
+<blockquote>
+<p><strong>Official wording:</strong> "As token count grows, accuracy and recall degrade, a phenomenon known as context rot. This makes curating what's in context just as important as how much space is available."
+— Context windows, Anthropic (https://platform.claude.com/docs/en/build-with-claude/context-windows)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Context engineering is the discipline of curating what occupies the context window: the window is a finite working memory, everything in the request counts toward it, and quality degrades as it fills — so the goal is the smallest set of high-signal tokens that does the job, not the most data available.</li>
+<li><strong>Context bloat</strong> has named sources and named fixes: raw tool outputs are pruned to the fields the task needs (tool output pruning, tool result clearing), long conversations are summarized (<strong>compaction</strong> — server-side compaction automatically summarizes earlier parts of the conversation so it can continue past the limit), and stale instructions are removed before they conflict.</li>
+<li><strong>Context drift</strong> is the behavioral symptom: as sessions lengthen and accumulate off-task or contradictory material, the model's adherence to the original instructions decays. Session hygiene — fresh sessions for new tasks, deliberate pruning, compaction at the right moment — is the prevention.</li>
+<li><strong>Context isolation</strong> keeps one task's noise out of another's: subagents work in their own context windows and return distilled results, and multi-step agentic workflows pass structured state between steps instead of one ever-growing transcript.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Diagnose drift and bloat from a stem (long session, huge tool results, fading instruction adherence) and prescribe the matching fix: prune, compact, or isolate.</li>
+<li>Decide what survives compaction: the facts, decisions, and state the next step needs — not the raw transcript.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/context-windows">Context windows</a></p></div><div class="cell zh"><h2>6.1 上下文工程（3.8%）</h2>
+<p><em>EN: Context and memory management techniques for Claude applications, including context window management, prevention of context drift and bloat (tool output pruning, compaction), and context isolation through subagents or multi-step agentic workflows.</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "As token count grows, accuracy and recall degrade, a phenomenon known as context rot. This makes curating what's in context just as important as how much space is available."
+— Context windows, Anthropic (https://platform.claude.com/docs/en/build-with-claude/context-windows)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>上下文工程是策展「什么占据上下文窗口」的学科：窗口是有限的工作记忆，请求中的一切都计入其中，且质量随它填满而退化 —— 因此目标是能完成工作的最小高信号 token 集合，而不是尽可能多的数据。</li>
+<li><strong>上下文膨胀（context bloat）</strong>有具名的来源与具名的修复：原始工具输出被修剪到任务需要的字段（工具输出修剪、工具结果清除），长对话被总结（<strong>压缩 compaction</strong> —— 服务器端压缩自动总结对话较早的部分，使它能越过上限继续），过时的指令在它们冲突之前被移除。</li>
+<li><strong>上下文漂移（context drift）</strong>是行为层面的症状：随着会话变长并累积偏离任务或相互矛盾的材料，模型对原始指令的遵循会衰减。会话卫生 —— 新任务开新会话、有意识的修剪、在恰当时机压缩 —— 是预防之道。</li>
+<li><strong>上下文隔离</strong>让一个任务的噪音不进入另一个任务：子智能体在自己的上下文窗口中工作并返回提炼过的结果，多步智能体工作流在步骤之间传递结构化状态，而不是一份不断增长的记录。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>从题干中诊断漂移与膨胀（长会话、巨大的工具结果、指令遵循衰退），并开出匹配的修复：修剪、压缩或隔离。</li>
+<li>决定什么在压缩后存活：下一步需要的事实、决策与状态 —— 而不是原始记录。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/context-windows">上下文窗口（Context windows）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>6.2 Prompt Engineering (4.6%)</h2>
+<p><em>Prompt engineering principles and methods (instruction clarity, few-shot examples, system versus user placement, output constraints, prompt and instruction placement across components, iterative refinement, prompt adjustment, input sanitization) when writing and iterating on prompts for Claude.</em></p>
+<blockquote>
+<p><strong>Official wording:</strong> "Examples are one of the most reliable ways to steer Claude's output format, tone, and structure. A few well-crafted examples (known as few-shot or multishot prompting) improve accuracy and consistency."
+— Prompting best practices, Anthropic (https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li><strong>Instruction clarity</strong> is the first principle: be clear, direct, and specific about the output you want, with context and motivation for why — the official test is whether a colleague with minimal context could follow the prompt without confusion. Vague instructions get inferred behavior; explicit criteria get followed behavior.</li>
+<li><strong>Placement</strong> is structural: stable instructions and role belong in the <strong>system prompt</strong>; the task and variable input belong in user messages; examples steer format, tone, and structure and should be relevant, diverse, and structured (wrapped in <code>&lt;example&gt;</code> tags); XML tags separate instructions, context, and input in complex prompts; long documents go at the top, above the query.</li>
+<li><strong>Output constraints</strong> are stated positively and concretely — tell Claude what to do instead of what not to do, specify format and length, and match the prompt's own style to the output style you want.</li>
+<li><strong>Iteration is the method</strong>: prompt changes are hypotheses tested against examples and evals — adjust one thing, re-measure, keep what improves. <strong>Input sanitization</strong> belongs to the prompt layer too: untrusted input is delimited, encoded, and kept separate from instructions so it cannot blend into them.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Rewrite a vague prompt into a clear one: role in system, task and input delimited in the user turn, explicit output format, and a few-shot example when format consistency matters.</li>
+<li>Choose the lightest fix that matches the failure: unclear instruction → clarify; format drift → examples or structured outputs; inconsistent behavior across components → fix placement, not wording.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a></p></div><div class="cell zh"><h2>6.2 提示工程（4.6%）</h2>
+<p><em>EN: Prompt engineering principles and methods (instruction clarity, few-shot examples, system versus user placement, output constraints, prompt and instruction placement across components, iterative refinement, prompt adjustment, input sanitization) when writing and iterating on prompts for Claude.</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Examples are one of the most reliable ways to steer Claude's output format, tone, and structure. A few well-crafted examples (known as few-shot or multishot prompting) improve accuracy and consistency."
+— Prompting best practices, Anthropic (https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li><strong>指令清晰度（instruction clarity）</strong>是第一原则：对你想要的输出要清晰、直接、具体，并给出上下文与为什么的动机 —— 官方的检验是：一位只有最少上下文的同事能否不困惑地照着这个提示做。含糊的指令得到被推断的行为；明确的标准得到被遵循的行为。</li>
+<li><strong>放置（placement）</strong>是结构性的：稳定的指令与角色属于<strong>系统提示</strong>；任务与可变输入属于用户消息；示例引导格式、语气与结构，应当相关、多样且结构化（包在 <code>&lt;example&gt;</code> 标签中）；在复杂提示中 XML 标签分隔指令、上下文与输入；长文档放在顶部、在查询之上。</li>
+<li><strong>输出约束</strong>以肯定、具体的方式陈述 —— 告诉 Claude 该做什么，而不是不该做什么；指定格式与长度；并让提示自身的风格与你想要的输出风格匹配。</li>
+<li><strong>迭代就是方法</strong>：提示变更是用示例与评估检验的假设 —— 调整一件事、重新度量、保留有改进的。<strong>输入净化（input sanitization）</strong>也属于提示层：不可信输入被分隔、编码，并与指令分开保存，使它无法混入指令。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>把一个含糊的提示重写为清晰的：角色放 system，任务与输入在用户轮次中分隔，明确的输出格式，以及在格式一致性重要时给出一个 few-shot 示例。</li>
+<li>选择与失败相匹配的最轻修复：指令不清 → 澄清；格式漂移 → 示例或结构化输出；跨组件行为不一致 → 修放置，而不是措辞。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">提示最佳实践（Prompting best practices）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>6.3 Output Handling (2.6%)</h2>
+<p><em>Established patterns and techniques for producing, validating, and consuming Claude output, including structured output patterns, response validation, defensive parsing, and skepticism toward confident output.</em></p>
+<blockquote>
+<p><strong>Official wording:</strong> "Without structured outputs, Claude can generate malformed JSON responses or invalid tool inputs that break your applications."
+— Structured outputs, Anthropic (https://platform.claude.com/docs/en/build-with-claude/structured-outputs)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The reliable pattern is to make output machine-checkable at the source: <strong>structured outputs</strong> constrain responses to a JSON schema through constrained decoding (always valid, type safe, no retries needed for schema violations), and strict tool use does the same for tool inputs.</li>
+<li><strong>Response validation</strong> still matters at the edges: structured outputs can miss the schema when the model refuses (<code>stop_reason: "refusal"</code>) or is cut off (<code>stop_reason: "max_tokens"</code>), and enum casing is not guaranteed — so consumers check stop reasons and compare enum values case-insensitively.</li>
+<li><strong>Defensive parsing</strong> is the fallback discipline for unconstrained output: parse tolerantly, validate fields and types in code, and retry with feedback when validation fails, rather than assuming the text is well-formed.</li>
+<li><strong>Skepticism toward confident output</strong> is an explicit design stance: fluent, confident text is not evidence of correctness. High-stakes output gets verified — grounded against sources, checked by a second pass or a human — before it is consumed or acted on.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Pick the output strategy by consumer: another program → structured outputs or strict tool use; a human reader → prose with validation of any extracted fields.</li>
+<li>Handle the two off-schema cases by stop reason: refusal → surface or reroute, never parse; max_tokens → retry with a higher limit.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/structured-outputs">Structured outputs</a></p>
+<hr /></div><div class="cell zh"><h2>6.3 输出处理（2.6%）</h2>
+<p><em>EN: Established patterns and techniques for producing, validating, and consuming Claude output, including structured output patterns, response validation, defensive parsing, and skepticism toward confident output.</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Without structured outputs, Claude can generate malformed JSON responses or invalid tool inputs that break your applications."
+— Structured outputs, Anthropic (https://platform.claude.com/docs/en/build-with-claude/structured-outputs)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>可靠的模式是让输出在源头就可被机器检查：<strong>结构化输出</strong>通过约束解码（constrained decoding）把响应约束到一个 JSON 架构（永远有效、类型安全、架构违规不需要重试），严格工具使用对工具输入做同样的事。</li>
+<li><strong>响应校验</strong>在边缘处仍然重要：当模型拒绝（<code>stop_reason: "refusal"</code>）或被截断（<code>stop_reason: "max_tokens"</code>）时，结构化输出也可能偏离架构，且枚举的大小写不被保证 —— 因此消费者要检查 stop reasons 并以不区分大小写的方式比较枚举值。</li>
+<li><strong>防御性解析</strong>是无约束输出的回退纪律：宽容地解析、在代码中校验字段与类型、校验失败时带反馈重试，而不是假设文本格式良好。</li>
+<li><strong>对自信输出保持怀疑</strong>是一种明确的设计立场：流畅、自信的文本不是正确性的证据。高风险输出在被消费或据此行动之前要经过核验 —— 对照来源 grounding、由第二轮检查或人类复核。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>按消费者选择输出策略：另一个程序 → 结构化输出或严格工具使用；人类读者 → 散文，并对任何抽取的字段做校验。</li>
+<li>按 stop reason 处理两种偏离架构的情况：refusal → 呈现或改道，绝不解析；max_tokens → 提高上限重试。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/structured-outputs">结构化输出（Structured outputs）</a></p>
+<hr /></div></div>
+<div class="band" id="d7"><div class="band-en">Domain 7: Security and Safety (8.1%)</div><div class="band-zh">领域 7：安全与安保（Domain 7: Security and Safety）（8.1%）</div></div>
+<div class="row obj"><div class="cell en"><h2>7.1 AI Application Security (3.2%)</h2>
+<p><em>Data privacy and security best practices, including prompt injection awareness and mitigation, jailbreak defense, untrusted input handling, data leakage prevention, PII handling, and ensuring authentication, authorization, confidentiality, privacy, and integrity.</em></p>
+<blockquote>
+<p><strong>Official wording:</strong> "Tell Claude explicitly that content returned from tools, documents, or searches is untrusted data and must never override the system prompt or the user's original request."
+— Mitigate jailbreaks and prompt injections, Anthropic (https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li><strong>Prompt injection</strong> comes in two threat models: direct injection and jailbreaks, where the user is the adversary; and indirect injection, where a trusted user asks Claude to process third-party content (webpages, emails, documents, tool results) that contains adversarial instructions. The mitigations differ, and the exam tests which one a scenario describes.</li>
+<li>The structural defense is separation: untrusted content goes only in tool results or clearly delimited blocks — never in the system prompt — its source is labeled, it is JSON-encoded where possible, and the system prompt states explicitly that tool/document/search content is untrusted data that must never override instructions. Your own instructions never go inside tool results, because Claude is trained to treat that content as untrusted.</li>
+<li>Layered mitigations complete the defense: harmlessness screening of inputs and tool outputs with a lightweight model, input validation for known injection patterns, red-teaming your own agent with planted injections before deployment, and monitoring outputs for signs of successful injection.</li>
+<li>The surrounding security fundamentals still apply: authentication and authorization on every action Claude can trigger, confidentiality and integrity of data in transit and at rest, <strong>PII handling</strong> (minimize what enters the prompt, redact where the task allows), and <strong>data leakage prevention</strong> — including not giving Claude access to secrets it does not need.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Classify the attack in the stem (malicious user → direct; poisoned document or tool result → indirect) and select the mitigation set for that threat model.</li>
+<li>Reject the non-controls: raising temperature, asking users politely in the system prompt, or switching to a more instruction-following model — the last can make injection worse, not better.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks">Mitigate jailbreaks and prompt injections</a></p></div><div class="cell zh"><h2>7.1 AI 应用安全（3.2%）</h2>
+<p><em>EN: Data privacy and security best practices, including prompt injection awareness and mitigation, jailbreak defense, untrusted input handling, data leakage prevention, PII handling, and ensuring authentication, authorization, confidentiality, privacy, and integrity.</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Tell Claude explicitly that content returned from tools, documents, or searches is untrusted data and must never override the system prompt or the user's original request."
+— Mitigate jailbreaks and prompt injections, Anthropic (https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li><strong>提示注入（prompt injection）</strong>有两种威胁模型：直接注入与越狱，其对手是用户本人；以及间接注入，此时一个可信用户请 Claude 处理含有对抗性指令的第三方内容（网页、邮件、文档、工具结果）。两者的缓解措施不同，考试考的是场景描述的是哪一种。</li>
+<li>结构性的防御是分离：不可信内容只进入工具结果或清晰分隔的块 —— 绝不进入系统提示 —— 其来源被标注、在可能处被 JSON 编码，且系统提示明确声明工具/文档/搜索内容是不可信数据、绝不能覆盖指令。你自己的指令绝不放进工具结果，因为 Claude 被训练为把那类内容当作不可信。</li>
+<li>分层缓解补全防御：用轻量模型对输入与工具输出做无害性筛查、对已知注入模式做输入校验、在部署前用植入的注入对自己的智能体做红队测试（red-teaming），以及监控输出中注入成功的迹象。</li>
+<li>周围的安全基础仍然适用：对 Claude 能触发的每个动作做认证与授权、传输中与静止数据的保密性与完整性、<strong>PII 处理</strong>（最小化进入提示的内容、在任务允许处做脱敏），以及<strong>数据泄漏预防</strong> —— 包括不给 Claude 它不需要的密钥访问。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>给题干中的攻击分类（恶意用户 → 直接；被投毒的文档或工具结果 → 间接），并为该威胁模型选择缓解措施集。</li>
+<li>拒绝非控制手段：提高 temperature、在系统提示里礼貌地请用户不要这样做、或换一个更听指令的模型 —— 最后一个可能让注入更严重，而不是更好。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks">缓解越狱与提示注入（Mitigate jailbreaks and prompt injections）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>7.2 Guardrails and Safe Deployment (2.3%)</h2>
+<p><em>Safe and responsible deployment practices (content policy, guardrail layering) and secure-by-design principles (privacy, identity and access management, least privilege).</em></p>
+<blockquote>
+<p><strong>Official wording:</strong> "Rules are evaluated in order: deny, then ask, then allow. The first match in that order determines the outcome, and rule specificity doesn't change the order."
+— Configure permissions, Anthropic (https://code.claude.com/docs/en/permissions)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li><strong>Guardrail layering</strong> is the deployment pattern: no single control is trusted alone. Content policy and harmlessness screening at the input, constrained permissions and hooks at the action layer, validation at the output, and monitoring after deployment stack so that one layer's miss is another layer's catch.</li>
+<li><strong>Least privilege</strong> is the secure-by-design core: scope permissions as narrowly as possible, don't give Claude access to secrets it doesn't need, and run tools in sandboxed environments, so a successful injection or a model mistake can do minimal damage.</li>
+<li>In Claude Code, the permission system is the concrete guardrail: fine-grained allow/ask/deny rules per tool and pattern, evaluated deny → ask → allow with the first match deciding, and permission modes that set the default posture from manual approval to classifier-reviewed auto mode. Managed settings let an organization enforce a floor that local settings cannot override.</li>
+<li><strong>Identity and access management</strong> ties the layers to people: who may use the system, which organization their login must belong to, and which actions require a human approval are deployment decisions made in configuration, not in prompts.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Design the layers for a described risk: name the input control, the action control, and the monitoring control — a single-layer answer is the distractor.</li>
+<li>Apply least privilege concretely: narrow the tool set, scope the permission rule, or move the action behind an approval, rather than adding warning text to the prompt.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://code.claude.com/docs/en/permissions">Configure permissions — Claude Code</a> · <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks">Mitigate jailbreaks and prompt injections</a></p></div><div class="cell zh"><h2>7.2 护栏与安全部署（2.3%）</h2>
+<p><em>EN: Safe and responsible deployment practices (content policy, guardrail layering) and secure-by-design principles (privacy, identity and access management, least privilege).</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Rules are evaluated in order: deny, then ask, then allow. The first match in that order determines the outcome, and rule specificity doesn't change the order."
+— Configure permissions, Anthropic (https://code.claude.com/docs/en/permissions)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li><strong>护栏分层（guardrail layering）</strong>是部署模式：没有任何单一控制被独自信任。输入端的内容政策与无害性筛查、动作层的受限权限与 hooks、输出端的校验、部署后的监控层层叠加，使一层的漏检成为另一层的拦截。</li>
+<li><strong>最小权限（least privilege）</strong>是安全设计（secure-by-design）的核心：把权限范围缩到尽可能窄，不给 Claude 它不需要的密钥访问，在沙箱环境中运行工具，使一次成功的注入或一次模型错误只能造成最小损害。</li>
+<li>在 Claude Code 中，权限系统是具体的护栏：按工具与模式的细粒度 allow/ask/deny 规则，按 deny → ask → allow 评估、第一个匹配决定结果，以及从手动批准到分类器审查的 auto mode 的权限模式设定默认姿态。托管设置让组织强制执行一个本地设置无法覆盖的底线。</li>
+<li><strong>身份与访问管理</strong>把各层与人联系起来：谁可以使用系统、他们的登录必须属于哪个组织、哪些动作需要人工批准 —— 这些都是在配置中做出的部署决策，而不是在提示中。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>为一个描述中的风险设计各层：说出输入控制、动作控制与监控控制 —— 单层答案就是干扰项。</li>
+<li>具体地应用最小权限：收窄工具集、限定权限规则的范围，或把动作移到批准之后，而不是往提示里加警告文字。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://code.claude.com/docs/en/permissions">配置权限 — Claude Code（Configure permissions — Claude Code）</a> · <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks">缓解越狱与提示注入（Mitigate jailbreaks and prompt injections）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>7.3 Claude Hooks (1.0%)</h2>
+<p><em>Leveraging hooks for guardrails and safety controls to prevent destructive actions within Claude applications.</em></p>
+<blockquote>
+<p><strong>Official wording:</strong> "Hooks are user-defined shell commands, HTTP endpoints, MCP tool calls, LLM prompts, or subagents that execute automatically at specific points in Claude Code's lifecycle."
+— Hooks reference, Anthropic (https://code.claude.com/docs/en/hooks)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>A <strong>hook</strong> is deterministic code — a shell command, HTTP endpoint, MCP tool call, LLM prompt, or subagent — that Claude Code runs automatically when a lifecycle event fires and a matcher matches. Because the code is yours, its decision does not depend on the model's judgment: that is what makes hooks the enforcement layer.</li>
+<li>The safety-critical events are <code>PreToolUse</code> (fires before a tool call executes and can block it — the canonical example blocks <code>rm -rf</code> commands), <code>PermissionRequest</code> and <code>PermissionDenied</code> around approval decisions, and <code>UserPromptSubmit</code> for screening input before Claude processes it. Post-events (<code>PostToolUse</code>, <code>PostToolUseFailure</code>) support auditing and reaction after the fact.</li>
+<li>Hooks are configured in settings JSON with three levels of nesting — event, matcher group, handlers — and merge across settings scopes; managed hooks cannot be disabled from outside managed settings, which is how an organization guarantees a guardrail.</li>
+<li>The exam's distinction: anything that must <strong>always</strong> hold (block destructive commands, require approval for a class of actions, log every tool call) is a hook or permission rule. A system-prompt instruction is a request the model usually follows; a hook is a control it cannot talk its way past.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Convert a safety requirement into a hook design: event (<code>PreToolUse</code>), matcher (the tool or command pattern), handler decision (deny with a reason the model can act on).</li>
+<li>Choose hook over prompt when the stem says "must never," "always block," or "guarantee" — and prompt over hook for guidance about judgment and style.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://code.claude.com/docs/en/hooks">Hooks reference — Claude Code</a> · <a href="https://code.claude.com/docs/en/permissions">Configure permissions — Claude Code</a></p></div><div class="cell zh"><h2>7.3 Claude Hooks（1.0%）</h2>
+<p><em>EN: Leveraging hooks for guardrails and safety controls to prevent destructive actions within Claude applications.</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Hooks are user-defined shell commands, HTTP endpoints, MCP tool calls, LLM prompts, or subagents that execute automatically at specific points in Claude Code's lifecycle."
+— Hooks reference, Anthropic (https://code.claude.com/docs/en/hooks)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li><strong>Hook</strong> 是确定性的代码 —— 一个 shell 命令、HTTP 端点、MCP 工具调用、LLM 提示或子智能体 —— 当一个生命周期事件触发且匹配器匹配时，Claude Code 自动运行它。因为代码是你的，它的决定不依赖模型的判断：这正是 hooks 成为强制层的原因。</li>
+<li>对安全关键的事件有 <code>PreToolUse</code>（在工具调用执行前触发并可阻止它 —— 经典例子是阻止 <code>rm -rf</code> 命令）、围绕批准决策的 <code>PermissionRequest</code> 与 <code>PermissionDenied</code>，以及在 Claude 处理输入前做筛查的 <code>UserPromptSubmit</code>。事后事件（<code>PostToolUse</code>、<code>PostToolUseFailure</code>）支持事后的审计与反应。</li>
+<li>Hooks 在 settings JSON 中以三层嵌套配置 —— 事件、匹配器组、处理器 —— 并跨设置作用域合并；托管 hooks 不能从托管设置之外被禁用，这正是组织保证一道护栏的方式。</li>
+<li>考试的区分点：任何必须<strong>永远</strong>成立的事（阻止破坏性命令、要求一类动作须经批准、记录每次工具调用）都是 hook 或权限规则。系统提示中的指令是模型通常会遵循的请求；hook 是它无法靠话术绕过的控制。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>把一条安全需求转化为 hook 设计：事件（<code>PreToolUse</code>）、匹配器（工具或命令模式）、处理器决定（deny 并附一个模型能据此行动的理由）。</li>
+<li>当题干说「绝不能（must never）」「总是阻止（always block）」或「保证（guarantee）」时选 hook 而非提示 —— 而关于判断与风格的引导则选提示而非 hook。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://code.claude.com/docs/en/hooks">Hooks 参考 — Claude Code（Hooks reference — Claude Code）</a> · <a href="https://code.claude.com/docs/en/permissions">配置权限 — Claude Code（Configure permissions — Claude Code）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>7.4 Identity, Secrets, and Key Management (1.6%)</h2>
+<p><em>Managing secrets, credentials, and API keys across Claude development and production environments, including identity validation and authentication, access approval and level verification, and authorized access monitoring.</em></p>
+<blockquote>
+<p><strong>Official wording:</strong> "In practice, the profile stores an OAuth login while an API key is a static credential."
+— Authentication, Anthropic (https://code.claude.com/docs/en/authentication)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Know the credential types and how they differ: a <strong>claude.ai / Console OAuth login</strong> (stored as a profile, refreshed automatically, revoked on logout), an <strong>API key</strong> (a static credential you create, store, and rotate yourself — typically supplied via the <code>ANTHROPIC_API_KEY</code> environment variable), and cloud-provider credentials when Claude runs through Amazon Bedrock, Google Cloud's Agent Platform, or Microsoft Foundry.</li>
+<li><strong>Identity validation</strong> is enforceable in configuration: managed settings can require a specific login method (<code>forceLoginMethod</code>) and restrict logins to a specific organization (<code>forceLoginOrgUUID</code>), and can restrict which API providers a machine may use — access approval and level verification are settings, not conventions.</li>
+<li>Secrets hygiene across environments: credentials live in environment variables or managed stores, never in prompts, code, or repositories; development and production use separate keys so a dev leak does not compromise production; a key that may have leaked is revoked and rotated, and Claude Code refuses sessions in some managed configurations when stray environment credentials are present.</li>
+<li><strong>Authorized access monitoring</strong> closes the loop: authentication events and usage are auditable (who signed in, with which credential type, from which organization), and unexpected credential use is a signal to investigate, not a curiosity.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Pick the credential for the environment: interactive developer → OAuth login/profile; application server → API key in an environment variable or secret store; regulated organization → managed settings enforcing login method and organization.</li>
+<li>Respond to a suspected key leak in the right order: revoke/rotate the key first, then investigate usage — not the reverse.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://code.claude.com/docs/en/authentication">Authentication — Claude Code</a></p>
+<hr /></div><div class="cell zh"><h2>7.4 身份、密钥与凭据管理（1.6%）</h2>
+<p><em>EN: Managing secrets, credentials, and API keys across Claude development and production environments, including identity validation and authentication, access approval and level verification, and authorized access monitoring.</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "In practice, the profile stores an OAuth login while an API key is a static credential."
+— Authentication, Anthropic (https://code.claude.com/docs/en/authentication)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>了解凭据类型及其区别：<strong>claude.ai / Console OAuth 登录</strong>（存储为 profile、自动刷新、登出时撤销）、<strong>API 密钥</strong>（一个由你自己创建、存储与轮换的静态凭据 —— 通常通过 <code>ANTHROPIC_API_KEY</code> 环境变量提供），以及当 Claude 通过 Amazon Bedrock、Google Cloud 的 Agent Platform 或 Microsoft Foundry 运行时使用的云供应商凭据。</li>
+<li><strong>身份验证</strong>可在配置中强制执行：托管设置可以要求特定的登录方式（<code>forceLoginMethod</code>）、把登录限制到特定组织（<code>forceLoginOrgUUID</code>），并可限制一台机器能使用哪些 API 供应商 —— 访问批准与级别核验是设置，不是惯例。</li>
+<li>跨环境的密钥卫生：凭据住在环境变量或托管存储中，绝不出现在提示、代码或仓库里；开发与生产使用分开的密钥，使开发环境泄露不危及生产；一个可能已泄露的密钥要被撤销并轮换，并且在某些托管配置下，当环境中存在游离的环境凭据时 Claude Code 会拒绝会话。</li>
+<li><strong>授权访问监控</strong>闭合这个回路：认证事件与使用情况可审计（谁登录了、用哪种凭据类型、来自哪个组织），意外的凭据使用是需要调查的信号，而不是小事一桩。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>为环境选择凭据：交互式开发者 → OAuth 登录/profile；应用服务器 → 环境变量或密钥存储中的 API 密钥；受监管的组织 → 强制登录方式与组织的托管设置。</li>
+<li>以正确的顺序应对疑似密钥泄露：先撤销/轮换密钥，然后调查使用情况 —— 而不是反过来。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://code.claude.com/docs/en/authentication">认证 — Claude Code（Authentication — Claude Code）</a></p>
+<hr /></div></div>
+<div class="band" id="d8"><div class="band-en">Domain 8: Tools and MCPs (10.6%)</div><div class="band-zh">领域 8：工具与 MCP（Domain 8: Tools and MCPs）（10.6%）</div></div>
+<div class="row obj"><div class="cell en"><h2>8.1 Tool Implementation (4.4%)</h2>
+<p><em>Tool implementation practices for Claude applications, including tool use and function calling, configuration for external system interaction, tool description writing, error handling, tool usage patterns (agentic harness dispatch, client-side vs. server-side tools, approval patterns), and tool set construction best practices.</em></p>
+<blockquote>
+<p><strong>Official wording:</strong> "Tools are a new kind of software which reflects a contract between deterministic systems and non-deterministic agents. More tools don't always lead to better outcomes."
+— Writing effective tools for AI agents, Anthropic (https://www.anthropic.com/research/writing-tools-for-agents)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>A tool is a contract: a name, a description, and a JSON input schema that your code implements and Claude invokes through <code>tool_use</code> blocks. The <strong>agentic harness</strong> dispatches each call, executes it, and returns the <code>tool_result</code>; Claude never executes anything itself. <strong>Client-side tools</strong> run in your application; <strong>server-side tools</strong> (such as web search and code execution) run on Anthropic's infrastructure.</li>
+<li><strong>Tool descriptions are the interface</strong>: because the model chooses tools from their descriptions, a description must say what the tool does, when to use it, and what it returns — written for a reader who cannot see your code. Vague descriptions and overlapping tools are the leading cause of wrong-tool and wrong-argument failures.</li>
+<li><strong>Tool set construction</strong> is deliberately minimal: consolidate operations the agent needs into a small set of high-level tools rather than exposing every low-level API endpoint, return only the information the next decision needs, and remember that more tools do not always lead to better outcomes — every tool definition also consumes context.</li>
+<li><strong>Error handling and approval patterns</strong> are part of the tool, not an afterthought: return structured, actionable errors the model can recover from (what failed, what to change), and put consequential actions behind approval — permission rules or hooks that ask a human before the call executes.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Rewrite a failing tool: sharpen the description, narrow or consolidate the schema, and trim the result payload — before touching the prompt or the model.</li>
+<li>Decide where a tool runs and what gates it: server-side built-in, client-side custom, or client-side behind an approval pattern, based on where the system it touches lives.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/research/writing-tools-for-agents">Writing effective tools for AI agents</a> · <a href="https://platform.claude.com/docs/en/build-with-claude/structured-outputs">Structured outputs</a></p></div><div class="cell zh"><h2>8.1 工具实现（4.4%）</h2>
+<p><em>EN: Tool implementation practices for Claude applications, including tool use and function calling, configuration for external system interaction, tool description writing, error handling, tool usage patterns (agentic harness dispatch, client-side vs. server-side tools, approval patterns), and tool set construction best practices.</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Tools are a new kind of software which reflects a contract between deterministic systems and non-deterministic agents. More tools don't always lead to better outcomes."
+— Writing effective tools for AI agents, Anthropic (https://www.anthropic.com/research/writing-tools-for-agents)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>工具是一份契约：一个名称、一段描述与一个 JSON 输入架构，由你的代码实现、由 Claude 通过 <code>tool_use</code> 块调用。<strong>智能体框架（agentic harness）</strong>分发每个调用、执行它并返回 <code>tool_result</code>；Claude 自己从不执行任何东西。<strong>客户端工具</strong>在你的应用中运行；<strong>服务器端工具</strong>（如网络搜索与代码执行）在 Anthropic 的基础设施上运行。</li>
+<li><strong>工具描述就是接口</strong>：因为模型是根据描述来选择工具的，一段描述必须说明工具做什么、何时使用、返回什么 —— 为一个看不到你代码的读者而写。含糊的描述与重叠的工具是选错工具与传错参数失败的首要原因。</li>
+<li><strong>工具集构建</strong>刻意保持最小：把智能体需要的操作整合为一小套高层工具，而不是暴露每个低层 API 端点；只返回下一个决策需要的信息；并记住工具更多并不总是带来更好的结果 —— 每个工具定义也消耗上下文。</li>
+<li><strong>错误处理与批准模式</strong>是工具的一部分，不是事后补的：返回结构化、可行动的错误，使模型能从中恢复（什么失败了、该改什么），并把重大动作放在批准之后 —— 在调用执行前向人类询问的权限规则或 hooks。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>重写一个失败的工具：磨利描述、收窄或整合架构、修剪结果负载 —— 在动提示或模型之前先做这些。</li>
+<li>决定一个工具在哪里运行、由什么把关：服务器端内置、客户端自定义，或客户端加批准模式 —— 依据它所触及的系统住在哪里。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/research/writing-tools-for-agents">为 AI 智能体编写有效的工具（Writing effective tools for AI agents）</a> · <a href="https://platform.claude.com/docs/en/build-with-claude/structured-outputs">结构化输出（Structured outputs）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>8.2 MCP Server Development (2.1%)</h2>
+<p><em>MCP server development practices, including server authoring, deployment, integration with Claude applications, MCP resources, tools, and prompts, and communication patterns (stdio, sockets, client vs. server).</em></p>
+<blockquote>
+<p><strong>Official wording:</strong> "MCP (Model Context Protocol) is an open-source standard for connecting AI applications to external systems."
+— What is the Model Context Protocol (MCP)?, Model Context Protocol (https://modelcontextprotocol.io/docs/getting-started/intro)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The <strong>Model Context Protocol</strong> standardizes how AI applications connect to external systems — data sources, tools, and workflows — the way USB-C standardizes device connections. An <strong>MCP server</strong> exposes capabilities once, and any MCP <strong>client</strong> (Claude applications, Claude Code, IDEs) can connect to it, which is what makes the capability reusable across applications and maintainable independently of any one app.</li>
+<li>A server exposes three primitive types: <strong>tools</strong> (functions Claude can invoke), <strong>resources</strong> (data the application can read into context), and <strong>prompts</strong> (reusable prompt templates). Authoring a server means implementing these primitives with the same description-and-schema discipline as any tool.</li>
+<li><strong>Communication patterns</strong> split by deployment: <strong>stdio</strong> transport, where the client launches the server as a local subprocess and talks over standard input/output — the default for local tools; and HTTP/sockets-based transports for remote servers that many clients share. The client-versus-server roles are fixed by the protocol: the client hosts the model interaction and connects out; the server only exposes capabilities.</li>
+<li>Integration with Claude applications can also skip a local client: the Messages API's MCP connector connects to remote MCP servers directly, without a separate MCP client in your code.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Choose the transport from the deployment: local developer tool → stdio server; shared internal service for several applications → remote server over HTTP.</li>
+<li>Recognize the MCP answer in a stem: "reusable across applications, maintained independently" is the protocol's reason to exist — build the server, don't hard-code the integration into each app.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://modelcontextprotocol.io/docs/getting-started/intro">What is the Model Context Protocol (MCP)?</a></p></div><div class="cell zh"><h2>8.2 MCP 服务器开发（2.1%）</h2>
+<p><em>EN: MCP server development practices, including server authoring, deployment, integration with Claude applications, MCP resources, tools, and prompts, and communication patterns (stdio, sockets, client vs. server).</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "MCP (Model Context Protocol) is an open-source standard for connecting AI applications to external systems."
+— What is the Model Context Protocol (MCP)?, Model Context Protocol (https://modelcontextprotocol.io/docs/getting-started/intro)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li><strong>Model Context Protocol</strong> 标准化了 AI 应用如何连接到外部系统 —— 数据源、工具与工作流 —— 就像 USB-C 标准化了设备连接一样。一个 <strong>MCP 服务器</strong>把能力暴露一次，任何 MCP <strong>客户端</strong>（Claude 应用、Claude Code、IDE）都能连接它，这正是该能力能跨应用复用、并能独立于任何单个应用维护的原因。</li>
+<li>服务器暴露三种原语类型：<strong>工具（tools）</strong>（Claude 可调用的函数）、<strong>资源（resources）</strong>（应用可读入上下文的数据）与<strong>提示（prompts）</strong>（可复用的提示模板）。编写服务器意味着以与任何工具相同的描述与架构纪律实现这些原语。</li>
+<li><strong>通信模式</strong>按部署划分：<strong>stdio</strong> 传输，客户端把服务器作为本地子进程启动并通过标准输入/输出通信 —— 本地工具的默认方式；以及基于 HTTP/sockets 的传输，用于许多客户端共享的远程服务器。客户端与服务器的角色由协议固定：客户端托管模型交互并向外连接；服务器只暴露能力。</li>
+<li>与 Claude 应用的集成也可以跳过本地客户端：Messages API 的 MCP connector 直接连接到远程 MCP 服务器，无需在你的代码里另设 MCP 客户端。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>从部署出发选择传输：本地开发者工具 → stdio 服务器；供多个应用共享的内部服务 → HTTP 上的远程服务器。</li>
+<li>在题干中识别 MCP 答案：「跨应用复用、独立维护」是这个协议存在的理由 —— 构建服务器，而不是把集成硬编码进每个应用。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://modelcontextprotocol.io/docs/getting-started/intro">什么是 Model Context Protocol（MCP）？（What is the Model Context Protocol (MCP)?）</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>8.3 Agentic Customization (4.1%)</h2>
+<p><em>Tradeoffs among built-in Tools, custom Tools, Skills, and MCPs for selecting and applying the appropriate approach for a given use case.</em></p>
+<blockquote>
+<p><strong>Official wording:</strong> "Skills are reusable, filesystem-based resources that give Claude domain-specific expertise: workflows, context, and best practices that turn a general-purpose agent into a specialist."
+— Agent Skills, Anthropic (https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Four customization mechanisms, four different jobs. <strong>Built-in tools</strong> are Anthropic's ready-made capabilities (file operations, bash, web search, code execution): zero construction cost, fixed behavior. <strong>Custom tools</strong> are your functions behind the tool-use contract: full control, your maintenance burden, scoped to the application that defines them.</li>
+<li><strong>Skills</strong> package expertise rather than actions: instructions, workflows, and reference material on the filesystem, loaded by <strong>progressive disclosure</strong> — only the name and description occupy context until the Skill triggers, then its instructions load, then bundled resources and scripts load as needed. A Skill teaches Claude how to do a class of work; it is created once and used automatically across conversations.</li>
+<li><strong>MCPs</strong> package connectivity rather than expertise: a server exposes tools/resources/prompts over the protocol so many applications can share one maintained integration. The same capability can legitimately exist at several layers — the exam asks which layer the stem's requirement (reuse across apps? procedural know-how? a single function call?) actually points to.</li>
+<li>The tradeoffs in one line each: built-in = fastest, least control; custom tool = one action, one app; Skill = reusable know-how with near-zero idle context cost; MCP = reusable connectivity across applications and teams, at the cost of running and securing a server.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Classify the requirement before choosing: "Claude must call our inventory API" → tool or MCP; "Claude must follow our review procedure" → Skill; "every team's apps need the same integration" → MCP; "just read and edit files" → built-in tools.</li>
+<li>Argue the context economics: prefer the mechanism whose idle cost matches its use frequency — progressive-disclosure Skills for occasionally needed expertise, always-loaded tool definitions only for constantly used actions.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview">Agent Skills</a> · <a href="https://modelcontextprotocol.io/docs/getting-started/intro">What is the Model Context Protocol (MCP)?</a></p>
+<hr /></div><div class="cell zh"><h2>8.3 智能体定制（4.1%）</h2>
+<p><em>EN: Tradeoffs among built-in Tools, custom Tools, Skills, and MCPs for selecting and applying the appropriate approach for a given use case.</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Skills are reusable, filesystem-based resources that give Claude domain-specific expertise: workflows, context, and best practices that turn a general-purpose agent into a specialist."
+— Agent Skills, Anthropic (https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>四种定制机制，四种不同的工作。<strong>内置工具（built-in tools）</strong>是 Anthropic 现成的能力（文件操作、bash、网络搜索、代码执行）：零构建成本、行为固定。<strong>自定义工具（custom tools）</strong>是工具使用契约背后的你的函数：完全控制、你的维护负担、作用域限于定义它的应用。</li>
+<li><strong>Skills</strong> 打包的是专长而不是动作：文件系统上的指令、工作流与参考材料，通过<strong>渐进披露（progressive disclosure）</strong>加载 —— 直到 Skill 触发前只有名称与描述占据上下文，然后它的指令加载，再然后打包的资源与脚本按需加载。一个 Skill 教 Claude 如何做一类工作；它创建一次，便跨对话自动使用。</li>
+<li><strong>MCP</strong> 打包的是连接性而不是专长：一个服务器通过协议暴露工具/资源/提示，使许多应用能共享一份被维护的集成。同一个能力可以合理地存在于多个层 —— 考试问的是题干的需求（跨应用复用？程序性诀窍？单个函数调用？）实际指向哪一层。</li>
+<li>每种权衡用一句话说：内置 = 最快、控制最少；自定义工具 = 一个动作、一个应用；Skill = 可复用的诀窍，闲置上下文成本近乎零；MCP = 跨应用与团队的可复用连接性，代价是运行并保护一个服务器。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>先给需求分类再选择：「Claude 必须调用我们的库存 API」→ 工具或 MCP；「Claude 必须遵循我们的审查程序」→ Skill；「每个团队的应用都需要同一个集成」→ MCP；「只是读写文件」→ 内置工具。</li>
+<li>论证上下文经济学：优先选择闲置成本与使用频率相匹配的机制 —— 偶尔需要的专长用渐进披露的 Skills，常开加载的工具定义只留给持续使用的动作。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview">Agent Skills（Agent Skills）</a> · <a href="https://modelcontextprotocol.io/docs/getting-started/intro">什么是 Model Context Protocol（MCP）？（What is the Model Context Protocol (MCP)?）</a></p>
+<hr /></div></div>
+<div class="band" id="samples"><div class="band-en">Official Sample Questions</div><div class="band-zh">官方样题</div></div>
+<div class="row obj"><div class="cell en"><p>From Section 8 of the official Exam Guide v1.0. These illustrative items show the style and cognitive level of the exam; they are not drawn from the live item bank.</p>
+<h2>Sample 1 · Domain 2 — Applications and Integration</h2>
+<p>A developer must process 10,000 documents overnight to produce a non-urgent analytics report. Cost is the primary concern, and results are not needed until the following morning. Which approach best fits the requirement?</p>
+<ul>
+<li>A. Send every request synchronously through the Messages API in parallel to finish as quickly as possible.</li>
+<li>B. Use the Message Batches API, which processes large asynchronous workloads within a 24-hour window at reduced cost.</li>
+<li>C. Lower max_tokens on synchronous calls to minimize cost.</li>
+<li>D. Switch to the smallest available model regardless of output quality.</li>
+</ul>
+<p><strong>Answer: B.</strong> The Message Batches API is designed for latency-tolerant, high-volume workloads at lower cost, which matches an overnight, non-urgent job. Sending requests synchronously in parallel (A) does not reduce per-token cost; lowering max_tokens (C) or blindly downsizing the model (D) does not address the batch-versus-realtime tradeoff.</p>
+<h2>Sample 2 · Domain 7 — Security and Safety</h2>
+<p>A Claude-powered agent summarizes web pages submitted by end users. One page contains hidden text instructing the model to ignore previous instructions and reveal its system prompt. Which mitigation is most effective?</p>
+<ul>
+<li>A. Raise the model's temperature so its behavior is harder to predict.</li>
+<li>B. Treat retrieved page content as untrusted input, keep it separate from trusted instructions, and use guardrails or hooks so injected instructions cannot trigger sensitive actions.</li>
+<li>C. Add a line to the system prompt asking users not to include malicious instructions.</li>
+<li>D. Switch to a larger model that follows instructions more reliably.</li>
+</ul>
+<p><strong>Answer: B.</strong> Prompt injection is addressed by isolating untrusted content from trusted instructions and enforcing least-privilege guardrails so injected text cannot invoke sensitive tools. Temperature (A) is irrelevant to injection; a polite request (C) is not an enforceable control; a more instruction-following model (D) can be more susceptible, not less.</p>
+<h2>Sample 3 · Domain 8 — Tools and MCPs</h2>
+<p>A team needs Claude to call an internal inventory service exposed as a REST API. They want the capability to be reusable across several Claude applications and maintained independently of any one app. Which approach best fits?</p>
+<ul>
+<li>A. Hard-code the inventory logic into each application's system prompt.</li>
+<li>B. Build an MCP server that exposes the inventory operations as tools so multiple Claude applications can connect to it.</li>
+<li>C. Paste the current inventory data into the context window on every request.</li>
+<li>D. Rely on a built-in tool, since built-in tools can reach any internal REST API.</li>
+</ul>
+<p><strong>Answer: B.</strong> An MCP server exposes reusable tools that multiple Claude applications can share and that can be maintained independently. Hard-coding logic into prompts (A) is neither reusable nor maintainable; pasting data (C) gives no live access and wastes context; built-in tools (D) do not automatically reach arbitrary internal APIs.</p></div><div class="cell zh"><p><em>样题出自官方考试指南第 8 节。它们展示考试的题目风格与认知层级；它们并不取自真实题库。</em></p>
+<h2>样题 1 · 领域 2 — 应用与集成（Sample 1 · Domain 2 — Applications and Integration）</h2>
+<p>一位开发者必须在一夜之间处理 10,000 份文档，以产出一份不紧急的分析报告。成本是首要考虑，结果要到第二天早上才需要。哪种方法最符合要求？</p>
+<ul>
+<li>A. 通过 Messages API 同步并行发送每个请求，以尽快完成</li>
+<li>B. 使用 Message Batches API，它在 24 小时窗口内以更低成本处理大型异步工作量</li>
+<li>C. 在同步调用上调低 max_tokens 以最小化成本</li>
+<li>D. 不顾输出质量，切换到最小的可用模型</li>
+</ul>
+<p><strong>正确答案：B。</strong> Message Batches API 是为可容忍延迟、高量级、低成本的工作量设计的，这与一份通宵、非紧急的任务相符。同步并行发送请求（A）并不降低每 token 成本；调低 max_tokens（C）或盲目缩小模型（D）都没有触及批量与实时的权衡。</p>
+<h2>样题 2 · 领域 7 — 安全与安保（Sample 2 · Domain 7 — Security and Safety）</h2>
+<p>一个由 Claude 驱动的智能体总结最终用户提交的网页。其中一个网页含有隐藏文本，指示模型忽略之前的指令并泄露其系统提示。哪种缓解措施最有效？</p>
+<ul>
+<li>A. 提高模型的 temperature，使其行为更难预测</li>
+<li>B. 把检索到的网页内容当作不可信输入，与可信指令分开保存，并使用护栏（guardrails）或 hooks，使注入的指令无法触发敏感动作</li>
+<li>C. 在系统提示中加一行，请用户不要包含恶意指令</li>
+<li>D. 切换到一个遵循指令更可靠的更大模型</li>
+</ul>
+<p><strong>正确答案：B。</strong> 提示注入的应对是把不可信内容与可信指令隔离，并强制执行最小权限的护栏，使注入的文本无法调用敏感工具。Temperature（A）与注入无关；礼貌的请求（C）不是可强制执行的控制；一个更听指令的模型（D）可能更容易受影响，而不是更不容易。</p>
+<h2>样题 3 · 领域 8 — 工具与 MCP（Sample 3 · Domain 8 — Tools and MCPs）</h2>
+<p>一个团队需要 Claude 调用一个以 REST API 形式暴露的内部库存服务。他们希望这个能力能跨多个 Claude 应用复用，并能独立于任何单个应用进行维护。哪种方法最合适？</p>
+<ul>
+<li>A. 把库存逻辑硬编码进每个应用的系统提示</li>
+<li>B. 构建一个 MCP 服务器，把库存操作暴露为工具，使多个 Claude 应用可以连接到它</li>
+<li>C. 在每次请求时把当前的库存数据粘贴进上下文窗口</li>
+<li>D. 依赖一个内置工具，因为内置工具可以访问任何内部 REST API</li>
+</ul>
+<p><strong>正确答案：B。</strong> 一个 MCP 服务器暴露可复用的工具，多个 Claude 应用可以共享它，并能独立维护它。把逻辑硬编码进提示（A）既不可复用也不可维护；粘贴数据（C）没有实时访问且浪费上下文；内置工具（D）并不会自动访问任意内部 API。</p></div></div>
+</body></html>

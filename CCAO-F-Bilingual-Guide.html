@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CCAO-F Study Guide — 中英并列版</title>
+<style>
+:root{--ink:#1a2332;--mut:#5b6b82;--line:#d8dee8;--accent:#b7791f;--qbg:#fdf6e3;--band:#16283f;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",Segoe UI,Roboto,sans-serif;color:var(--ink);font-size:15px;line-height:1.65;background:#fff}
+header.top{position:sticky;top:0;background:var(--band);color:#fff;padding:10px 20px;z-index:10;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:baseline}
+header.top b{font-size:17px}
+header.top nav a{color:#ffd98a;text-decoration:none;margin-right:12px;font-size:14px}
+header.top .sub{color:#b9c7da;font-size:13px}
+.colhead{display:grid;grid-template-columns:1fr 1fr;background:#eef2f7;border-bottom:2px solid var(--band);font-weight:700}
+.colhead div{padding:8px 20px}
+.colhead .zh{border-left:1px solid var(--line)}
+.row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+.cell{padding:14px 20px;min-width:0;overflow-wrap:break-word}
+.cell.zh{border-left:1px solid var(--line);background:#fcfcf9}
+.band{display:grid;grid-template-columns:1fr 1fr;background:var(--band);color:#fff;margin-top:6px}
+.band div{padding:12px 20px;font-size:18px;font-weight:700}
+.band .band-zh{border-left:1px solid rgba(255,255,255,.25)}
+h1{font-size:20px;margin:.4em 0}
+h2{font-size:17px;margin:.6em 0 .3em;color:var(--band)}
+h3{font-size:15px;margin:.8em 0 .2em}
+ul{margin:.3em 0 .6em;padding-left:1.3em}
+li{margin:.25em 0}
+blockquote{margin:.6em 0;padding:10px 14px;background:var(--qbg);border-left:4px solid var(--accent);border-radius:0 6px 6px 0}
+blockquote p{margin:.2em 0}
+table{border-collapse:collapse;margin:.6em 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:5px 10px;text-align:left}
+a{color:#1d4ed8}
+hr{border:none;border-top:1px solid var(--line)}
+@media (max-width:760px){.row,.band,.colhead{grid-template-columns:1fr}.cell.zh{border-left:none;border-top:1px dashed var(--line)}}
+</style></head><body>
+<header class="top"><b>CCAO-F Study Guide · 中英并列版</b><span class="sub">Official Exam Guide v1.0 · 左 EN / 右 中文 · 整页一起滚动</span><nav><a href="#d1">D1</a><a href="#d2">D2</a><a href="#d3">D3</a><a href="#d4">D4</a><a href="#d5">D5</a><a href="#d6">D6</a><a href="#d7">D7</a><a href="#samples">样题</a></nav></header>
+<div class="colhead"><div>English</div><div class="zh">中文</div></div>
+<div class="row front"><div class="cell en"><h1>Claude Certified Associate — Foundations Certification</h1>
+<h2>Study Guide (Based on the Official Exam Guide)</h2>
+<blockquote>
+<p>Built on the official <strong>Claude Certified Associate – Foundations Exam Guide, Version 1.0 (effective July 2026), exam code CCAO-F</strong>. Structure follows the format of paullarionov/claude-certified-architect's study guides; all content is drawn from the official Exam Guide and official Anthropic documentation and help articles (support.claude.com, claude.com, platform.claude.com/docs). Domain and objective headings reproduce the official blueprint wording. Key knowledge / Key skills points are faithful paraphrases of the official sources cited at the end of each section — follow the links for the full original text.</p>
+</blockquote>
+<hr />
+<h2>Introduction</h2>
+<p>The Claude Certified Associate – Foundations certification validates that an individual can apply Claude to complete business and productivity tasks with minimal guidance. This includes using built-in platform features, capabilities, and tools to streamline workflows; identifying opportunities to improve processes with Claude; selecting approaches that balance quality, efficiency, and cost; and recognizing limitations and escalating more complex or technical work to Claude Architects and Developers.</p>
+<p>This guide is the study companion to the official Exam Guide, which is the authoritative reference for the credential: its purpose, intended audience, exam format and content blueprint, scoring, and policies.</p>
+<hr />
+<h2>Target Candidate</h2>
+<p>The certification is intended for professionals who use Claude as a productivity tool and build Claude Projects in their day-to-day roles. They operate across functions such as operations, marketing, project management, education, communications, and general knowledge work, applying AI to improve efficiency, decision-making, and content development. The audience includes both internal staff who maintain and optimize ongoing AI-enabled workflows and external consultants who support implementation, use-case identification, and process redesign.</p>
+<p>The exam targets the <strong>minimally qualified candidate (MQC)</strong>: a professional who uses Claude as a core productivity tool and can apply it effectively within real-world workflows to improve efficiency, quality, and outcomes. The MQC has foundational, applied knowledge of Claude's capabilities, including prompt structuring, task orchestration, and familiarity with features such as Projects, Artifacts, and workflow-based interactions. Candidates generally have limited to moderate technical expertise: they are positioned between casual AI prompt users and technical AI practitioners. Recommended experience (recommended, not required — there are no mandatory prerequisites, and no software-development or API experience is needed):</p>
+<ul>
+<li>Regular, hands-on experience using Claude in a professional setting</li>
+<li>A foundational understanding of structured problem-solving, workflow design, and digital tool usage</li>
+<li>Experience in roles such as business analyst, project manager, operations lead, marketing/communications/HR/education professional, consultant, or knowledge worker</li>
+<li>A practical understanding of AI limitations, including hallucinations, context constraints, and data sensitivity</li>
+</ul>
+<p>This certification is not intended for software developers who build against APIs or design agentic systems, nor for specialists in machine learning or advanced AI system design; that scope belongs to the Claude Architect and Claude Developer credentials.</p>
+<hr />
+<h2>Exam Format</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exam code</td>
+<td>CCAO-F</td>
+</tr>
+<tr>
+<td>Number of items</td>
+<td>60</td>
+</tr>
+<tr>
+<td>Item format</td>
+<td>Multiple-choice and multiple-response; each item states how many responses to select</td>
+</tr>
+<tr>
+<td>Time limit</td>
+<td>120 minutes</td>
+</tr>
+<tr>
+<td>Delivery</td>
+<td>Proctored: online proctored and/or test center (Pearson VUE)</td>
+</tr>
+<tr>
+<td>Passing score</td>
+<td>Scaled score of <strong>720</strong> on a scale of 100–1,000</td>
+</tr>
+<tr>
+<td>Exam fee</td>
+<td>$99 USD</td>
+</tr>
+<tr>
+<td>Validity period</td>
+<td>12 months from the date the credential is awarded</td>
+</tr>
+<tr>
+<td>Result reporting</td>
+<td>Pass/fail with scaled score (100–1,000), plus percent-correct by domain</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Exam Content: 7 Domains</h2>
+<table>
+<thead>
+<tr>
+<th>Domain</th>
+<th>Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Prompting and Task Execution</td>
+<td><strong>14%</strong></td>
+</tr>
+<tr>
+<td>2. Output Evaluation and Validation</td>
+<td><strong>21%</strong></td>
+</tr>
+<tr>
+<td>3. Product and Model Selection</td>
+<td><strong>12%</strong></td>
+</tr>
+<tr>
+<td>4. Workflow Integration and Solution Design</td>
+<td><strong>16%</strong></td>
+</tr>
+<tr>
+<td>5. Configuration and Knowledge Management</td>
+<td><strong>12%</strong></td>
+</tr>
+<tr>
+<td>6. Governance, Risk, and Responsible Use</td>
+<td><strong>15%</strong></td>
+</tr>
+<tr>
+<td>7. Troubleshooting and Optimization</td>
+<td><strong>10%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The percentages indicate the approximate proportion of scored items drawn from each domain. Exam items are written against the objectives listed under each domain in Part II.</p>
+<hr />
+<h2>How to Use This Guide (per the official Exam Guide, Section 7)</h2>
+<ul>
+<li>Study the exam blueprint in Section 6 and self-assess against each objective</li>
+<li>Review official Anthropic documentation and help articles for Claude features such as Projects, Artifacts, Memory, Skills, and Code Execution</li>
+<li>Practice structuring prompts, decomposing tasks, and iterating to improve outputs</li>
+<li>Build real workflows: configure a Project with instructions and knowledge sources, and evaluate outputs for accuracy and bias</li>
+<li>Practice responsible-use judgment: data sensitivity, appropriate use cases, and when to escalate or seek human review</li>
+<li>Complete the sample questions (end of this guide) to familiarize yourself with item style</li>
+</ul>
+<hr /></div><div class="cell zh"><h1>Claude 认证助理 — 基础级认证（Claude Certified Associate — Foundations Certification）</h1>
+<h2>学习指南（基于官方考试指南）</h2>
+<blockquote>
+<p>基于官方 <strong>Claude 认证助理 – 基础级考试指南（Claude Certified Associate – Foundations Exam Guide）第 1.0 版（2026 年 7 月生效），考试代码 CCAO-F</strong>。结构参照 paullarionov/claude-certified-architect 学习指南的格式；全部内容取自官方考试指南与 Anthropic 官方文档及帮助文章（support.claude.com、claude.com、platform.claude.com/docs）。领域与目标标题复现官方蓝图原文。关键知识 / 关键技能要点是对各节末尾所引官方来源的忠实转述 —— 完整原文请跟随链接阅读。</p>
+</blockquote>
+<hr />
+<h2>引言（Introduction）</h2>
+<p>Claude 认证助理 – 基础级（Claude Certified Associate – Foundations）认证证明持证者能够在极少指导下运用 Claude 完成业务与生产力任务。这包括：使用内置的平台功能、能力与工具来精简工作流；识别用 Claude 改进流程的机会；选择在质量、效率与成本之间取得平衡的方法；以及认识到局限性，并将更复杂或更技术性的工作升级给 Claude 架构师（Claude Architects）与开发者（Claude Developers）。</p>
+<p>本指南是官方考试指南的学习伴侣。官方考试指南是该证书的权威参考：它说明证书的目的、目标受众、考试形式与内容蓝图、评分方式及相关政策。</p>
+<hr />
+<h2>目标考生（Target Candidate）</h2>
+<p>本认证面向在日常工作中把 Claude 当作生产力工具使用、并构建 Claude Projects 的专业人士。他们跨越运营、市场营销、项目管理、教育、传播与一般知识工作等职能，运用 AI 来提升效率、决策质量与内容开发水平。受众既包括维护并优化持续运行的 AI 赋能工作流的内部员工，也包括支持实施、用例识别与流程再设计的外部顾问。</p>
+<p>本考试以<strong>最低合格考生（minimally qualified candidate，MQC）</strong>为标尺：一位把 Claude 当作核心生产力工具的专业人士，能够在真实工作流中有效地运用它来提升效率、质量与成果。MQC 具备关于 Claude 能力的基础性、应用性知识，包括提示结构（prompt structuring）、任务编排（task orchestration），以及对 Projects、Artifacts 与基于工作流的交互等功能的熟悉。考生的技术专长一般为有限到中等水平：他们处在 casual AI 提示用户与技术型 AI 从业者之间。推荐经验如下（仅为推荐、并非强制 —— 没有强制性先决条件，也不需要软件开发或 API 经验）：</p>
+<ul>
+<li>在专业场景中经常性、实操性地使用 Claude 的经验</li>
+<li>对结构化问题解决、工作流设计与数字工具使用有基础性理解</li>
+<li>担任过业务分析师、项目经理、运营负责人、市场营销/传播/人力资源/教育专业人士、顾问或知识工作者等角色的经验</li>
+<li>对 AI 的局限性有实际理解，包括幻觉（hallucinations）、上下文约束与数据敏感性</li>
+</ul>
+<p>本认证不面向针对 API 构建应用或设计智能体系统（agentic systems）的软件开发者，也不面向机器学习或高级 AI 系统设计方面的专家；那一范围属于 Claude 架构师（Claude Architect）与 Claude 开发者（Claude Developer）证书。</p>
+<hr />
+<h2>考试形式（Exam Format）</h2>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考试代码</td>
+<td>CCAO-F</td>
+</tr>
+<tr>
+<td>题目数量</td>
+<td>60</td>
+</tr>
+<tr>
+<td>题目形式</td>
+<td>单选题与多选题；每题会注明应选几项</td>
+</tr>
+<tr>
+<td>时间限制</td>
+<td>120 分钟</td>
+</tr>
+<tr>
+<td>交付方式</td>
+<td>监考：在线监考和/或考点（Pearson VUE）</td>
+</tr>
+<tr>
+<td>及格分数</td>
+<td>量化分数 <strong>720</strong> 分，满分区间 100–1,000</td>
+</tr>
+<tr>
+<td>考试费用</td>
+<td>99 美元</td>
+</tr>
+<tr>
+<td>有效期</td>
+<td>自证书颁发之日起 12 个月</td>
+</tr>
+<tr>
+<td>成绩报告</td>
+<td>通过/未通过及量化分数（100–1,000），外加各领域正确率百分比</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>考试内容：7 个领域（Exam Content: 7 Domains）</h2>
+<table>
+<thead>
+<tr>
+<th>领域</th>
+<th>权重</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 提示与任务执行（Prompting and Task Execution）</td>
+<td><strong>14%</strong></td>
+</tr>
+<tr>
+<td>2. 输出评估与验证（Output Evaluation and Validation）</td>
+<td><strong>21%</strong></td>
+</tr>
+<tr>
+<td>3. 产品与模型选择（Product and Model Selection）</td>
+<td><strong>12%</strong></td>
+</tr>
+<tr>
+<td>4. 工作流集成与解决方案设计（Workflow Integration and Solution Design）</td>
+<td><strong>16%</strong></td>
+</tr>
+<tr>
+<td>5. 配置与知识管理（Configuration and Knowledge Management）</td>
+<td><strong>12%</strong></td>
+</tr>
+<tr>
+<td>6. 治理、风险与负责任使用（Governance, Risk, and Responsible Use）</td>
+<td><strong>15%</strong></td>
+</tr>
+<tr>
+<td>7. 故障排查与优化（Troubleshooting and Optimization）</td>
+<td><strong>10%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>百分比表示从每个领域抽取的计分题的大致比例。考题是针对第二部分中每个领域下列出的目标命制的。</p>
+<hr />
+<h2>如何使用本指南（How to Use This Guide）（依据官方考试指南第 7 节）</h2>
+<ul>
+<li>研读第 6 节的考试蓝图，并对照每个目标做自我评估</li>
+<li>查阅 Anthropic 官方文档与帮助文章，了解 Projects、Artifacts、Memory、Skills 与代码执行（Code Execution）等 Claude 功能</li>
+<li>练习结构化提示（prompt）、拆解任务，并通过迭代改进输出</li>
+<li>构建真实工作流：配置一个带指令与知识来源的 Project，并评估输出的准确性与偏见</li>
+<li>练习负责任使用的判断：数据敏感性、合适的用例，以及何时升级或寻求人工审核</li>
+<li>完成样题（本指南末尾），熟悉题目风格</li>
+</ul>
+<hr /></div></div>
+<div class="band" id="d1"><div class="band-en">Domain 1: Prompting and Task Execution (14%)</div><div class="band-zh">领域 1：提示与任务执行（Domain 1: Prompting and Task Execution）（14%）</div></div>
+<div class="row obj"><div class="cell en"><h2>1.1 Create effective prompts for business and technical tasks</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Claude responds well to clear, explicit instructions. Being specific about the output you want can help enhance results."
+— Prompting best practices, Anthropic (https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Be clear and direct: state the task, the audience, and the desired output explicitly, rather than relying on Claude to infer what you meant from a vague prompt.</li>
+<li>Add context to improve performance: explain why the work matters and what goal it serves, so Claude can generalise from that motivation to more targeted responses.</li>
+<li>Be specific about the output format and constraints you want, and give instructions as sequential steps in numbered lists or bullet points when order or completeness matters.</li>
+<li>Use examples effectively: a few well-crafted examples — few-shot or multishot prompting — steer format, tone, and structure, and should be relevant, diverse, and structured.</li>
+<li>Structure complex prompts with XML tags and give Claude a role where that helps focus its behaviour and tone for the use case.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Write a prompt that a colleague with minimal context could follow without asking what you meant.</li>
+<li>Specify format, length, tone, audience, and constraints in the prompt itself, for both everyday business writing and more technical requests.</li>
+<li>Add one to a few relevant examples that show the exact output pattern you want repeated.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a></p></div><div class="cell zh"><h2>1.1 为业务与技术任务创建有效的提示</h2>
+<p><em>EN: Create effective prompts for business and technical tasks</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Claude responds well to clear, explicit instructions. Being specific about the output you want can help enhance results."
+— Prompting best practices, Anthropic (https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>清晰直接：明确陈述任务、受众与期望的输出，而不是指望 Claude 从含糊的提示中推断你的意思。</li>
+<li>补充上下文以提升表现：解释这项工作为什么重要、服务于什么目标，这样 Claude 就能从这一动机出发加以推广，给出更有针对性的回答。</li>
+<li>明确你想要的输出格式与约束；当顺序或完整性重要时，用编号列表或要点列表把指令写成先后有序的步骤。</li>
+<li>有效使用示例：几个精心设计的示例 —— 少样本（few-shot）或多样本（multishot）提示 —— 能引导格式、语气与结构，且示例应当相关、多样并有结构。</li>
+<li>用 XML 标签组织复杂的提示，并在有助于聚焦 Claude 的行为与语气以贴合用例时，为它设定一个角色。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>写出的提示要让一位几乎没有背景信息的同事读了也不必反问你是什么意思。</li>
+<li>在提示本身中写明格式、长度、语气、受众与约束，既适用于日常业务写作，也适用于更技术性的请求。</li>
+<li>加入一到几个相关示例，展示你希望被复现的确切输出模式。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>1.2 Apply task decomposition techniques to structure complex requests</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Explicit prompt chaining (breaking a task into sequential API calls) is still useful when you need to inspect intermediate outputs or enforce a specific pipeline structure."
+— Prompting best practices, Anthropic (https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Task decomposition means breaking a complex request into smaller, focused subtasks, instead of asking for everything in one overloaded prompt where steps can be dropped.</li>
+<li>Prompt chaining connects those subtasks in sequence, so each step works on the output of the previous step and intermediate outputs can be inspected before you continue.</li>
+<li>Claude also handles long-horizon work incrementally, making steady advances on a few things at a time rather than attempting everything at once.</li>
+<li>For long or data-rich work, put long-form data at the top of the prompt and structure documents and metadata with XML tags, so each subtask has the context it needs.</li>
+<li>Use structured formats for state data, such as task status or results tracking, and unstructured text for general progress notes.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Split a large request — for example research, then outline, then draft, then edit — into an ordered chain of single-purpose prompts.</li>
+<li>Define what a successful output looks like for each subtask before moving to the next one.</li>
+<li>Check the intermediate output at each step and correct direction early, rather than only at the end.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a></p></div><div class="cell zh"><h2>1.2 运用任务拆解技术组织复杂请求</h2>
+<p><em>EN: Apply task decomposition techniques to structure complex requests</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Explicit prompt chaining (breaking a task into sequential API calls) is still useful when you need to inspect intermediate outputs or enforce a specific pipeline structure."
+— Prompting best practices, Anthropic (https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>任务拆解（task decomposition）是指把一个复杂请求拆成更小、更聚焦的子任务，而不是把所有东西塞进一个过载的提示里、导致步骤被遗漏。</li>
+<li>提示链（prompt chaining）把这些子任务按顺序连接起来，使每一步都作用于上一步的输出，且中间输出可以在继续之前被检查。</li>
+<li>Claude 也能以增量方式处理长周期（long-horizon）工作：一次稳步推进少数几件事，而不是试图同时做完所有事。</li>
+<li>对于篇幅长或数据丰富的工作，把长篇数据放在提示的顶部，并用 XML 标签组织文档与元数据，使每个子任务都拥有它所需的上下文。</li>
+<li>对状态数据（如任务状态或结果跟踪）使用结构化格式，对一般进度说明使用非结构化文本。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>把一个大请求 —— 例如先研究、再列提纲、再起草、再编辑 —— 拆成一条由单一用途提示组成的有序链条。</li>
+<li>在进入下一个子任务之前，先定义每个子任务的成功输出是什么样子。</li>
+<li>在每一步检查中间输出并尽早纠正方向，而不是只在最后才检查。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>1.3 Iterate prompts to improve output quality</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Ask Claude to self-check. Append something like “Before you finish, verify your answer against [test criteria].” This catches errors reliably, especially for coding and math."
+— Prompting best practices, Anthropic (https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Iteration is a normal part of prompting: generate a draft, review it against clear criteria, and refine it, rather than expecting the first output to be final.</li>
+<li>The most common chaining pattern for improvement is self-correction: generate a draft, have Claude review it against criteria, then have Claude refine it based on that review.</li>
+<li>Prefer general instructions over overly prescriptive steps when asking Claude to think a problem through, because a prompt such as “think thoroughly” often produces better reasoning.</li>
+<li>If a prompt is producing the wrong kind of result, change the instruction itself — for example, tell Claude what to do instead of only what not to do — rather than simply repeating the same prompt.</li>
+<li>Worked examples in a prompt shape how Claude approaches similar problems, so improving the examples is one way to improve later outputs.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Diagnose what is actually wrong with an output — missing content, wrong tone, wrong format, or a factual gap — and name that problem in the follow-up prompt.</li>
+<li>Run a draft → review against criteria → refine cycle, and keep each revision focused on a specific improvement.</li>
+<li>Ask Claude to self-check its answer against criteria you supply before you accept the final version.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a></p></div><div class="cell zh"><h2>1.3 迭代提示以改进输出质量</h2>
+<p><em>EN: Iterate prompts to improve output quality</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Ask Claude to self-check. Append something like “Before you finish, verify your answer against [test criteria].” This catches errors reliably, especially for coding and math."
+— Prompting best practices, Anthropic (https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>迭代是提示的正常组成部分：生成草稿、对照明确的标准审核、再加以完善，而不是期望第一次输出就是最终版。</li>
+<li>最常见的改进链模式是自我纠正：生成草稿、让 Claude 对照标准审核草稿、再让 Claude 根据审核结果完善草稿。</li>
+<li>在让 Claude 思考一个问题时，优先给出一般性指令而非过度规定步骤，因为像「彻底思考」这样的提示往往能产生更好的推理。</li>
+<li>如果一个提示产生的是错误类型的结果，就修改指令本身 —— 例如告诉 Claude 应该做什么，而不只是不应该做什么 —— 而不是简单地重复同一个提示。</li>
+<li>提示中的示例会塑造 Claude 处理类似问题的方式，因此改进示例是改进后续输出的一种方法。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>诊断输出到底哪里出了问题 —— 内容缺失、语气不对、格式不对，还是事实缺口 —— 并在后续提示中点明那个问题。</li>
+<li>运行「草稿 → 对照标准审核 → 完善」的循环，并让每一次修订都聚焦于一项具体的改进。</li>
+<li>在接受最终版本之前，让 Claude 对照你提供的标准自查它的答案。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>1.4 Adapt prompting strategies based on task type (analysis, research, drafting, brainstorming)</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "With research, Claude investigates your question in depth. It runs multiple searches that build on each other and decides what to look into next based on what it finds."
+— Use research on Claude, Anthropic (https://support.claude.com/en/articles/11088861-use-research-on-claude)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Different task types need different prompts: analysis benefits from clear success criteria and step-by-step thinking, drafting benefits from audience, tone, and format instructions, and brainstorming benefits from a deliberately open brief.</li>
+<li>For research tasks, provide clear success criteria, encourage source verification across multiple sources, and use a structured approach for complex questions.</li>
+<li>Research mode is a distinct strategy, not just a longer prompt: Claude explores different angles of the question and works through open questions systematically, searching the web and connected tools.</li>
+<li>For long document analysis, ground responses in quotes: ask Claude to quote relevant parts of the documents first before carrying out its task.</li>
+<li>Giving Claude a role focuses its behaviour and tone for the use case, which matters more for some tasks — such as drafting in a particular voice — than for others.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Choose the prompting approach to match the task: criteria and verification for analysis and research, examples and tone for drafting, breadth and quantity for brainstorming.</li>
+<li>Write a research brief that states the question, the angles to explore, and what a successful answer must contain.</li>
+<li>Decide when a task should stay in ordinary chat and when it should be escalated to research mode.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a>, <a href="https://support.claude.com/en/articles/11088861-use-research-on-claude">Use research on Claude</a></p></div><div class="cell zh"><h2>1.4 根据任务类型（分析、研究、起草、头脑风暴）调整提示策略</h2>
+<p><em>EN: Adapt prompting strategies based on task type (analysis, research, drafting, brainstorming)</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "With research, Claude investigates your question in depth. It runs multiple searches that build on each other and decides what to look into next based on what it finds."
+— Use research on Claude, Anthropic (https://support.claude.com/en/articles/11088861-use-research-on-claude)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>不同任务类型需要不同的提示：分析受益于明确的成功标准与逐步思考，起草受益于受众、语气与格式方面的指令，头脑风暴受益于刻意开放的简报。</li>
+<li>对于研究任务，要提供明确的成功标准，鼓励跨多个来源核实来源，并对复杂问题采用结构化方法。</li>
+<li>研究模式（research mode）是一种独立的策略，而不只是一个更长的提示：Claude 会探索问题的不同角度，系统地处理开放问题，并搜索网络与已连接的工具。</li>
+<li>对于长文档分析，要让回答以引文为依据：先让 Claude 引用文档的相关部分，然后再执行它的任务。</li>
+<li>为 Claude 设定角色能聚焦它的行为与语气以贴合用例；这一点对某些任务 —— 例如以特定声音起草 —— 比对其他任务更重要。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>选择与任务相匹配的提示方法：分析与研究用标准与核实，起草用示例与语气，头脑风暴重广度与数量。</li>
+<li>写一份研究简报，说明问题、要探索的角度，以及一个成功的答案必须包含什么。</li>
+<li>判断一个任务应当留在普通聊天中，还是应当升级到研究模式（research mode）。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a>, <a href="https://support.claude.com/en/articles/11088861-use-research-on-claude">Use research on Claude</a></p></div></div>
+<div class="band" id="d2"><div class="band-en">Domain 2: Output Evaluation and Validation (21%)</div><div class="band-zh">领域 2：输出评估与验证（Domain 2: Output Evaluation and Validation）（21%）</div></div>
+<div class="row obj"><div class="cell en"><h2>2.1 Evaluate Claude-generated outputs for accuracy and completeness</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Users should not rely on Claude as a singular source of truth and should carefully scrutinize any high-stakes advice given by Claude."
+— Claude is providing incorrect or misleading responses. What's going on?, Anthropic (https://support.claude.com/en/articles/8525154-claude-is-providing-incorrect-or-misleading-responses-what-s-going-on)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Evaluating an output means checking two different things: accuracy — are the facts, figures, names, and citations correct — and completeness — does it cover everything the original request asked for.</li>
+<li>Claude's confidence is not evidence of accuracy: an output can be fluent, well structured, and still wrong, so evaluation cannot stop at how convincing it sounds.</li>
+<li>Knowledge limits matter for evaluation: each model has a knowledge cutoff, and models may not have accurate information about events after that date unless current sources are supplied or searched.</li>
+<li>Asking Claude to self-check against criteria you provide is a useful first evaluation step, but it does not replace checking against the original source material.</li>
+<li>Completeness can be checked directly against the prompt: list what was requested, then confirm each item is present in the output.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Compare an output line by line against the source documents or data it was supposed to be based on.</li>
+<li>Check names, dates, numbers, and totals separately from the surrounding prose.</li>
+<li>Mark anything you could not verify, rather than passing the output on as if it had all been checked.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://support.claude.com/en/articles/8525154-claude-is-providing-incorrect-or-misleading-responses-what-s-going-on">Claude is providing incorrect or misleading responses. What's going on?</a>, <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a></p></div><div class="cell zh"><h2>2.1 评估 Claude 生成的输出的准确性与完整性</h2>
+<p><em>EN: Evaluate Claude-generated outputs for accuracy and completeness</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Users should not rely on Claude as a singular source of truth and should carefully scrutinize any high-stakes advice given by Claude."
+— Claude is providing incorrect or misleading responses. What's going on?, Anthropic (https://support.claude.com/en/articles/8525154-claude-is-providing-incorrect-or-misleading-responses-what-s-going-on)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>评估一个输出意味着检查两件不同的事：准确性 —— 事实、数字、名称与引用是否正确 —— 以及完整性 —— 它是否覆盖了原始请求所要求的全部内容。</li>
+<li>Claude 的自信不是准确性的证据：一个输出可以流畅、结构良好，却仍然是错的，因此评估不能止步于它听起来多有说服力。</li>
+<li>知识局限对评估很重要：每个模型都有知识截止日期（knowledge cutoff），对于该日期之后发生的事件，模型可能没有准确信息，除非提供了当前来源或进行了搜索。</li>
+<li>让 Claude 对照你提供的标准自查，是一个有用的第一步评估手段，但它不能取代对照原始素材的核查。</li>
+<li>完整性可以直接对照提示来检查：列出所请求的内容，然后逐项确认每一项都出现在输出中。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>把输出与它本应依据的源文档或数据逐行对比。</li>
+<li>把名称、日期、数字与总计与周围的正文分开，单独核查。</li>
+<li>把任何你无法核实的内容标记出来，而不是把输出当作已经全部核查过一样传递下去。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://support.claude.com/en/articles/8525154-claude-is-providing-incorrect-or-misleading-responses-what-s-going-on">Claude is providing incorrect or misleading responses. What's going on?</a>, <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>2.2 Identify hallucinations, inconsistencies, and biases in responses</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Claude can display quotes that may look authoritative or sound convincing, but are not grounded in fact. In other words, Claude can write things that might look correct but are very mistaken."
+— Claude is providing incorrect or misleading responses. What's going on?, Anthropic (https://support.claude.com/en/articles/8525154-claude-is-providing-incorrect-or-misleading-responses-what-s-going-on)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Producing incorrect or misleading responses is known as “hallucinating” information, and it is a byproduct of current limitations of frontier generative AI models, including Claude.</li>
+<li>Hallucinations often look specific and authoritative: invented quotes, citation numbers, links, names, or figures presented in the same confident style as correct information.</li>
+<li>Claude can also hallucinate its own capabilities, for example claiming to have sent an email or produced an external document when it has no access to a tool that was not explicitly integrated.</li>
+<li>Inconsistencies are a warning sign inside a single output or across outputs: figures, dates, or claims that change between sections, or that contradict the source material supplied.</li>
+<li>Bias shows up in framing, selection, and tone — for example presenting one viewpoint as settled, or generalising about a group — and has to be looked for deliberately, because the output may read as neutral.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Treat unusually specific details — exact quotes, subsection numbers, statistics, and links — as claims to verify, not as evidence in themselves.</li>
+<li>Cross-check repeated facts within the output for internal consistency before checking them externally.</li>
+<li>Re-read a draft specifically for one-sided framing, loaded language, and missing perspectives before it is shared.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://support.claude.com/en/articles/8525154-claude-is-providing-incorrect-or-misleading-responses-what-s-going-on">Claude is providing incorrect or misleading responses. What's going on?</a></p></div><div class="cell zh"><h2>2.2 识别回答中的幻觉、不一致与偏见</h2>
+<p><em>EN: Identify hallucinations, inconsistencies, and biases in responses</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Claude can display quotes that may look authoritative or sound convincing, but are not grounded in fact. In other words, Claude can write things that might look correct but are very mistaken."
+— Claude is providing incorrect or misleading responses. What's going on?, Anthropic (https://support.claude.com/en/articles/8525154-claude-is-providing-incorrect-or-misleading-responses-what-s-going-on)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>产生不正确或误导性的回答被称为「幻觉」（hallucinating）信息，它是当前前沿生成式 AI 模型（包括 Claude）局限性的副产品。</li>
+<li>幻觉往往看起来具体而权威：编造的引文、引用编号、链接、名称或数字，以与正确信息同样自信的风格呈现出来。</li>
+<li>Claude 还可能对自身能力产生幻觉，例如声称已经发送了一封电子邮件或生成了一份外部文档，而实际上它并没有访问某个未被明确集成的工具。</li>
+<li>不一致是单个输出内部或多个输出之间的警告信号：数字、日期或论断在不同章节之间发生变化，或者与所提供的源材料相矛盾。</li>
+<li>偏见会出现在框架、取舍与语气中 —— 例如把某一种观点呈现为已成定论，或者对某个群体作概括 —— 必须刻意去查找，因为输出读起来可能显得中立。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>把异常具体的细节 —— 确切的引文、小节编号、统计数据与链接 —— 当作需要核实的论断，而不是证据本身。</li>
+<li>在对外核查之前，先交叉核对输出内部重复出现的事实，检查其内部一致性。</li>
+<li>在分享之前，专门为单方面的框架、带有倾向性的措辞与缺失的视角重读一遍草稿。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://support.claude.com/en/articles/8525154-claude-is-providing-incorrect-or-misleading-responses-what-s-going-on">Claude is providing incorrect or misleading responses. What's going on?</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>2.3 Apply fact-checking and validation techniques</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "When working with web search results, users should review Claude's cited sources. Original websites may contain important context or details not included in Claude's synthesis."
+— Claude is providing incorrect or misleading responses. What's going on?, Anthropic (https://support.claude.com/en/articles/8525154-claude-is-providing-incorrect-or-misleading-responses-what-s-going-on)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Fact-checking starts at the cited source: open the original website or document, because it may contain context or details that Claude's synthesis left out or misinterpreted.</li>
+<li>The quality of Claude's responses depends on the underlying sources it references, so a weak or outdated source produces a weak answer even when the writing is good.</li>
+<li>Verification across multiple sources is an official research practice: ask Claude to verify information across multiple sources, and compare what independent sources say.</li>
+<li>Grounding is a validation technique for document work: ask Claude to quote the relevant parts of the source first, then check its conclusions against those quotes.</li>
+<li>Self-reported confidence is not a validation technique: asking Claude how confident it is does not establish that a claim is true.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Open and read at least the key cited sources behind a factual output, rather than trusting the citation list alone.</li>
+<li>Triangulate an important claim across two or more independent, authoritative sources before using it.</li>
+<li>Recalculate totals and re-check dates and figures yourself for anything that will be quoted, published, or sent on.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://support.claude.com/en/articles/8525154-claude-is-providing-incorrect-or-misleading-responses-what-s-going-on">Claude is providing incorrect or misleading responses. What's going on?</a>, <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a>, <a href="https://support.claude.com/en/articles/11088861-use-research-on-claude">Use research on Claude</a></p></div><div class="cell zh"><h2>2.3 运用事实核查与验证技术</h2>
+<p><em>EN: Apply fact-checking and validation techniques</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "When working with web search results, users should review Claude's cited sources. Original websites may contain important context or details not included in Claude's synthesis."
+— Claude is providing incorrect or misleading responses. What's going on?, Anthropic (https://support.claude.com/en/articles/8525154-claude-is-providing-incorrect-or-misleading-responses-what-s-going-on)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>事实核查从被引用的来源开始：打开原始网站或文档，因为它可能包含 Claude 的综合整理所遗漏或误解的上下文或细节。</li>
+<li>Claude 回答的质量取决于它所引用的底层来源，因此一个薄弱或过时的来源即使写得再好，也会产生一个薄弱的答案。</li>
+<li>跨多个来源核实是官方的研究实践：让 Claude 跨多个来源核实信息，并比较独立来源的说法。</li>
+<li>以引文为依据（grounding）是文档工作的一种验证技术：先让 Claude 引用来源的相关部分，然后对照那些引文检查它的结论。</li>
+<li>自我报告的自信不是一种验证技术：问 Claude 它有多自信，并不能确立某个论断为真。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>打开并阅读一个事实性输出背后的至少几个关键被引来源，而不是只信引用列表本身。</li>
+<li>在采用一个重要论断之前，用两个或更多独立、权威的来源对它进行三角验证（triangulate）。</li>
+<li>对于任何将被引用、发布或转发的内容，亲自重新计算总计，并重新核查日期与数字。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://support.claude.com/en/articles/8525154-claude-is-providing-incorrect-or-misleading-responses-what-s-going-on">Claude is providing incorrect or misleading responses. What's going on?</a>, <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a>, <a href="https://support.claude.com/en/articles/11088861-use-research-on-claude">Use research on Claude</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>2.4 Determine when human review or additional verification is required</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Language models can fabricate specific-looking details such as citation numbers, a hallucination. Validating factual claims, especially citations bound for a compliance audience, against an authoritative source is the diligence step required."
+— Claude Certified Associate – Foundations Exam Guide v1.0, Anthropic (official exam guide)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The stakes decide the review level: high-stakes advice, and anything bound for compliance, legal, financial, medical, or external audiences, requires human review and verification against an authoritative source before it is shared.</li>
+<li>Confidence is not a substitute for review: sending an output because Claude sounded confident, or because Claude rated its own confidence highly, is not a reliable accuracy signal.</li>
+<li>Reformatting is not verification: rewording a summary to sound more formal does nothing to address whether it is correct.</li>
+<li>Human review is also required when the task exceeds an Associate's scope: the credential expects holders to recognise limitations and escalate more complex or technical work to Claude Architects and Developers.</li>
+<li>Additional verification is required whenever a claim cannot be traced to a source you have actually read, or when the information may post-date the model's knowledge cutoff.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Classify an output by audience and consequence, and set the review step — self-check, source verification, or expert human review — before it leaves your desk.</li>
+<li>Route regulatory, legal, financial, and safety-related content to the responsible human expert, with the unverified claims clearly flagged.</li>
+<li>Stop and escalate, rather than publish, when you cannot verify a material claim.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://support.claude.com/en/articles/8525154-claude-is-providing-incorrect-or-misleading-responses-what-s-going-on">Claude is providing incorrect or misleading responses. What's going on?</a></p></div><div class="cell zh"><h2>2.4 判断何时需要人工审核或额外验证</h2>
+<p><em>EN: Determine when human review or additional verification is required</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Language models can fabricate specific-looking details such as citation numbers, a hallucination. Validating factual claims, especially citations bound for a compliance audience, against an authoritative source is the diligence step required."
+— Claude Certified Associate – Foundations Exam Guide v1.0, Anthropic (official exam guide)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>利害关系决定审核级别：高风险建议，以及任何面向合规、法律、财务、医疗或外部受众的内容，在分享之前都需要人工审核，并对照权威来源进行验证。</li>
+<li>自信不能替代审核：因为 Claude 听起来自信、或因为 Claude 给自己的自信评了高分就发送一个输出，并不是可靠的准确性信号。</li>
+<li>重新排版不是验证：把一份摘要改写得更正式，对它是否正确毫无帮助。</li>
+<li>当任务超出助理级（Associate）的范围时，同样需要人工审核：本证书要求持证者认识到局限性，并将更复杂或更技术性的工作升级给 Claude 架构师（Claude Architects）与开发者（Claude Developers）。</li>
+<li>每当一个论断无法追溯到你实际读过的来源，或者信息可能晚于模型的知识截止日期时，都需要额外验证。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>按受众与后果对输出分类，并在它离开你的桌面之前设定审核步骤 —— 自查、来源核实，或专家人工审核。</li>
+<li>把监管、法律、财务与安全相关内容转交给负责的人类专家，并清楚标记未经核实的论断。</li>
+<li>当你无法核实一个实质性论断时，停下来并升级处理，而不是发布。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://support.claude.com/en/articles/8525154-claude-is-providing-incorrect-or-misleading-responses-what-s-going-on">Claude is providing incorrect or misleading responses. What's going on?</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>2.5 Edit, adapt, refine, and compare outputs for the intended audience</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "The formatting style used in your prompt might influence Claude’s response style."
+— Prompting best practices, Anthropic (https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Adapting an output for an audience is separate work from generating it: executives, customers, students, and technical colleagues need different length, tone, vocabulary, and level of detail from the same underlying content.</li>
+<li>Tell Claude what to do instead of what not to do when steering style — for example, asking for smoothly flowing prose paragraphs rather than only forbidding a format.</li>
+<li>Match your prompt style to the output you want, and give detailed, explicit guidance for specific formatting preferences rather than assuming Claude will infer them.</li>
+<li>Setting a role focuses Claude's behaviour and tone, which is a practical way to generate an audience-specific version of the same material.</li>
+<li>Comparing outputs means generating or requesting more than one version and judging them against the same criteria — accuracy, completeness, tone, and fit for the intended audience.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Rewrite a single source output into distinct versions for different audiences without changing its verified facts.</li>
+<li>Compare two drafts side by side against named criteria and select, or combine, the stronger elements.</li>
+<li>Edit for the reader: cut jargon, shorten or expand, and adjust tone while preserving the checked content.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a>, <a href="https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them">What are artifacts and how do I use them?</a></p></div><div class="cell zh"><h2>2.5 为目标受众编辑、改编、完善并比较输出</h2>
+<p><em>EN: Edit, adapt, refine, and compare outputs for the intended audience</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "The formatting style used in your prompt might influence Claude’s response style."
+— Prompting best practices, Anthropic (https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>为受众改编一个输出是与生成它相分离的工作：高管、客户、学生与技术同事需要从同一份底层内容中得到不同的长度、语气、词汇与详细程度。</li>
+<li>在引导风格时，告诉 Claude 应该做什么，而不是不应该做什么 —— 例如，要求行文流畅的散文段落，而不只是禁止某种格式。</li>
+<li>让你的提示风格与你想要的输出相匹配，并对具体的格式偏好给出详细、明确的指导，而不是假设 Claude 会推断出来。</li>
+<li>设定角色能聚焦 Claude 的行为与语气，这是生成同一份材料的受众专属版本的一种实用方法。</li>
+<li>比较输出意味着生成或要求一个以上的版本，并用同一套标准来评判它们 —— 准确性、完整性、语气，以及是否适合目标受众。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>在不改变其已核实事实的前提下，把一份源输出改写成面向不同受众的不同版本。</li>
+<li>把两份草稿并排放在一起，对照具名的标准进行比较，并选出、或组合其中更强的元素。</li>
+<li>为读者而编辑：删减术语、缩短或扩充，并调整语气，同时保留已核查的内容。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a>, <a href="https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them">What are artifacts and how do I use them?</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>2.6 Organize and curate information and select appropriate output formats (artifacts, inline, structured data)</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "An artifact is anything Claude makes for you that you'd put in front of someone: a design, a deck, a document, a dashboard, or a small interactive tool."
+— What are artifacts and how do I use them?, Anthropic (https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Format is a deliberate choice: a short answer belongs inline in the conversation, while work you would put in front of someone — a document, deck, dashboard, or small interactive tool — belongs in an artifact.</li>
+<li>An artifact opens beside your conversation, and you can edit it, come back to it, and share it with others; everything you make is saved to the Artifacts tab in the sidebar.</li>
+<li>Claude can make an artifact out of almost anything, including documents, code snippets, single-page websites, images, diagrams and flowcharts, dashboards, and small interactive tools.</li>
+<li>Structured data is the right format when information will be tracked, sorted, or reused — for example using structured formats for state data such as test results or task status, and unstructured text for progress notes.</li>
+<li>Curating information means selecting, organising, and keeping what is useful: templates are starting points for work you will share, and a published artifact can be used as the starting point for your own separate version.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Decide the output format before prompting — inline answer, artifact document or deck, or structured data — and name that format in the prompt.</li>
+<li>Organise a set of outputs so they can be found again from the Artifacts tab and shared with the right people.</li>
+<li>Convert the same verified content between formats, for example from an inline summary into a shareable document or a structured tracker, without losing accuracy.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them">What are artifacts and how do I use them?</a>, <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a></p></div><div class="cell zh"><h2>2.6 组织与整理信息，并选择合适的输出格式（Artifacts、内联、结构化数据）</h2>
+<p><em>EN: Organize and curate information and select appropriate output formats (artifacts, inline, structured data)</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "An artifact is anything Claude makes for you that you'd put in front of someone: a design, a deck, a document, a dashboard, or a small interactive tool."
+— What are artifacts and how do I use them?, Anthropic (https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>格式是一种刻意的选择：简短的答案适合内联在对话中，而你会拿给别人看的工作 —— 文档、演示文稿、仪表板或小型交互工具 —— 适合放在 Artifact 中。</li>
+<li>Artifact 会在你的对话旁边打开，你可以编辑它、回头再看它，并与他人分享它；你制作的一切都会保存到侧边栏的 Artifacts 标签页中。</li>
+<li>Claude 几乎可以把任何东西做成 Artifact，包括文档、代码片段、单页网站、图像、图表与流程图、仪表板，以及小型交互工具。</li>
+<li>当信息将被跟踪、排序或复用时，结构化数据是正确的格式 —— 例如对测试结果或任务状态等状态数据使用结构化格式，对进度说明使用非结构化文本。</li>
+<li>整理信息意味着挑选、组织并保留有用的内容：模板是你将要分享的工作的起点，而一个已发布的 Artifact 可以用作你自己的独立版本的起点。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>在提示之前就决定输出格式 —— 内联答案、Artifact 文档或演示文稿，还是结构化数据 —— 并在提示中点明那个格式。</li>
+<li>把一组输出组织好，使它们能从 Artifacts 标签页中再次找到，并分享给正确的人。</li>
+<li>在不损失准确性的前提下，把同一份已核实的内容在格式之间转换，例如从内联摘要转换成可分享的文档或结构化跟踪表。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them">What are artifacts and how do I use them?</a>, <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a></p></div></div>
+<div class="band" id="d3"><div class="band-en">Domain 3: Product and Model Selection (12%)</div><div class="band-zh">领域 3：产品与模型选择（Domain 3: Product and Model Selection）（12%）</div></div>
+<div class="row obj"><div class="cell en"><h2>3.1 Select appropriate Claude product features (Projects, research mode, chat, artifacts)</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Projects allow you to create self-contained workspaces with their own chat histories and knowledge bases. Within each project, you can upload documents, provide context, and have focused chats with Claude."
+— What are projects?, Anthropic (https://support.claude.com/en/articles/9517075-what-are-projects)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li><strong>Chat</strong> is the default surface for one-off questions and short tasks; a standard chat carries only its own conversation as context.</li>
+<li><strong>Projects</strong> are self-contained workspaces with their own chat histories and knowledge bases. You upload documents, text, code, or other files to a project's knowledge base, and you can define project instructions — for example, a more formal tone or answering from the perspective of a specific role or industry — to tailor every chat in that project.</li>
+<li><strong>Research mode</strong> is for questions that need depth: with research, Claude investigates your question in depth, running multiple searches that build on each other across the web and your connected tools (including Google Workspace and other connectors), and decides what to look into next based on what it finds. Research sessions can use up your usage limits faster than standard conversations.</li>
+<li><strong>Artifacts</strong> are for deliverables you will put in front of someone — a design, a deck, a document, a dashboard, or a small interactive tool. An artifact opens beside your conversation, and you can edit it, come back to it, and share it with others; everything you make is saved to the Artifacts tab.</li>
+<li>On paid plans, project knowledge automatically scales through Retrieval Augmented Generation (RAG): when project knowledge approaches context limits, Claude enables RAG mode to expand capacity by up to 10x while maintaining response quality. On Team and Enterprise plans, projects can also be shared for collaboration.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Match the feature to the job: chat for quick one-off work, a Project for recurring work that shares files and instructions, research mode for multi-source investigations, and an artifact when the output is a standalone deliverable to edit or share.</li>
+<li>Set up a Project once — knowledge base plus project instructions — instead of re-uploading files and re-explaining context in every new chat.</li>
+<li>Turn research on deliberately for questions needing comprehensive, cited synthesis, and steer it (for example, "please use the research tool to…") when it does not engage.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://support.claude.com/en/articles/9517075-what-are-projects">What are projects?</a>, <a href="https://support.claude.com/en/articles/11088861-use-research-on-claude">Use research on Claude</a>, <a href="https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them">What are artifacts and how do I use them?</a></p></div><div class="cell zh"><h2>3.1 选择合适的 Claude 产品功能（Projects、研究模式、聊天、Artifacts）</h2>
+<p><em>EN: Select appropriate Claude product features (Projects, research mode, chat, artifacts)</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Projects allow you to create self-contained workspaces with their own chat histories and knowledge bases. Within each project, you can upload documents, provide context, and have focused chats with Claude."
+— What are projects?, Anthropic (https://support.claude.com/en/articles/9517075-what-are-projects)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li><strong>聊天（Chat）</strong>是处理一次性问题与短任务的默认界面；一次标准聊天只携带它自身的对话作为上下文。</li>
+<li><strong>Projects</strong> 是自成一体的工作区，拥有各自的聊天历史与知识库。你可以把文档、文本、代码或其他文件上传到一个 Project 的知识库中，也可以定义项目指令（project instructions）—— 例如使用更正式的语气，或从某个特定角色或行业的视角回答 —— 来定制该 Project 中的每一次聊天。</li>
+<li><strong>研究模式（Research mode）</strong>适用于需要深度的问题：启用研究后，Claude 会深入调查你的问题，在网络与你已连接的工具（包括 Google Workspace 与其他 connectors）上运行多次相互衔接的搜索，并根据所发现的内容决定下一步调查什么。研究会话消耗用量限额的速度比标准对话更快。</li>
+<li><strong>Artifacts</strong> 适用于你会拿给别人看的交付物 —— 一份设计、一份演示文稿、一份文档、一个仪表板，或一个小型交互工具。Artifact 会在你的对话旁边打开，你可以编辑它、回头再看它，并与他人分享它；你制作的一切都会保存到 Artifacts 标签页。</li>
+<li>在付费方案上，项目知识会通过检索增强生成（Retrieval Augmented Generation，RAG）自动扩展：当项目知识接近上下文限额时，Claude 会启用 RAG 模式，在保持回答质量的同时把容量扩大至多 10 倍。在 Team 与 Enterprise 方案上，Projects 还可以共享以便协作。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>让功能与工作相匹配：快速的一次性工作用聊天，反复出现且共享文件与指令的工作用 Project，多来源调查用研究模式（research mode），而当输出是一份要编辑或分享的独立交付物时用 Artifact。</li>
+<li>把一个 Project 一次设置好 —— 知识库加项目指令 —— 而不是在每次新聊天中重新上传文件、重新解释上下文。</li>
+<li>对需要全面、带引用的综合整理的问题，刻意开启研究功能；当它没有启动时，加以引导（例如「请使用研究工具来……」）。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://support.claude.com/en/articles/9517075-what-are-projects">What are projects?</a>, <a href="https://support.claude.com/en/articles/11088861-use-research-on-claude">Use research on Claude</a>, <a href="https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them">What are artifacts and how do I use them?</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>3.2 Differentiate between Claude model types (Haiku, Sonnet, Opus)</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "If you’re unsure which model to use, start with Claude Opus 5.5 for most workloads."
+— Models overview, Anthropic (https://platform.claude.com/docs/en/models/overview)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Claude models come in tiers that trade intelligence against speed and cost. In the current lineup described in the Models overview, <strong>Claude Sonnet</strong> is positioned as "The best combination of speed and intelligence," while <strong>Claude Haiku</strong> is "For high-volume, latency-sensitive tasks such as classification, extraction, and routing."</li>
+<li><strong>Haiku</strong> is the fastest tier (listed as "Fastest" relative speed) and the least expensive; Anthropic describes Haiku as our fastest and least expensive model, built for quick lookups and high-volume work like writing summaries and sorting data, and best suited to short, narrowly scoped tasks.</li>
+<li><strong>Sonnet</strong> is the balanced tier ("Fast"): faster and cheaper than Opus for well-scoped tasks that have a clear brief, such as producing polished documents, slides, and spreadsheets from clear instructions.</li>
+<li><strong>Opus</strong> is the most capable of the three named tiers ("Moderate" relative speed, highest price of the three): built for complex work that needs careful judgment, like research, financial analysis, and producing finished docs, decks, and spreadsheets. Anthropic recommends it as the daily driver for knowledge work — research, analysis, and writing or producing memos, reports, spreadsheets, and decks.</li>
+<li>All current models support text and image input, text output, multilingual capabilities, vision, and tool use — the tiers differ in capability, speed, and price, not in basic input/output features.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Describe each tier in one line for a non-technical colleague: Haiku = fastest and cheapest for simple, high-volume work; Sonnet = balanced speed and intelligence for well-scoped everyday tasks; Opus = strongest judgment for complex, high-stakes work.</li>
+<li>Recognize the direction of the trade-off: moving up a tier buys capability and judgment at the cost of speed and price; moving down buys speed and savings at the cost of depth.</li>
+<li>Avoid hard-coding version numbers or prices in team guidance — describe the durable tier roles, since specific models and prices change.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/models/overview">Models overview</a>, <a href="https://claude.com/resources/articles/using-claude-opus-5-5-as-your-daily-driver-for-knowledge-work">Which Claude model is best to use for knowledge work</a></p></div><div class="cell zh"><h2>3.2 区分 Claude 模型类型（Haiku、Sonnet、Opus）</h2>
+<p><em>EN: Differentiate between Claude model types (Haiku, Sonnet, Opus)</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "If you’re unsure which model to use, start with Claude Opus 5.5 for most workloads."
+— Models overview, Anthropic (https://platform.claude.com/docs/en/models/overview)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>Claude 模型分为不同层级，在智能、速度与成本之间做权衡。在模型总览（Models overview）所描述的当前阵容中，<strong>Claude Sonnet</strong> 被定位为「速度与智能的最佳组合」，而 <strong>Claude Haiku</strong> 则「适用于分类、抽取与路由等高量、对延迟敏感的任务」。</li>
+<li><strong>Haiku</strong> 是最快的层级（相对速度列为「最快」），也是最便宜的；Anthropic 把 Haiku 描述为我们最快、最便宜的模型，专为快速查询与高量工作（如撰写摘要、整理数据）而打造，最适合短小、范围狭窄的任务。</li>
+<li><strong>Sonnet</strong> 是均衡的层级（「快」）：对于简报清晰、范围明确的任务 —— 例如根据清晰的指令产出精致的文档、幻灯片与电子表格 —— 它比 Opus 更快、更便宜。</li>
+<li><strong>Opus</strong> 是三个具名层级中最强大的（相对速度为「中等」，三者中价格最高）：专为需要审慎判断的复杂工作而打造，如研究、财务分析，以及产出成品文档、演示文稿与电子表格。Anthropic 推荐把它作为知识工作的日常主力 —— 研究、分析，以及撰写或产出备忘录、报告、电子表格与演示文稿。</li>
+<li>所有当前模型都支持文本与图像输入、文本输出、多语言能力、视觉与工具使用 —— 各层级的区别在于能力、速度与价格，而不在于基本的输入/输出功能。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>用一句话向非技术同事描述每个层级：Haiku = 最快、最便宜，适合简单、高量的工作；Sonnet = 速度与智能均衡，适合范围明确的日常任务；Opus = 判断力最强，适合复杂、高风险的工作。</li>
+<li>认识权衡的方向：上升一个层级，是以速度与价格为代价换取能力与判断力；下降一个层级，是以深度为代价换取速度与节省。</li>
+<li>避免在团队指南中写死版本号或价格 —— 描述经久不变的层级角色，因为具体的模型与价格会变化。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/models/overview">Models overview</a>, <a href="https://claude.com/resources/articles/using-claude-opus-5-5-as-your-daily-driver-for-knowledge-work">Which Claude model is best to use for knowledge work</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>3.3 Align model selection with task requirements (cost, speed, quality)</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Aligning model selection with task requirements means matching a faster, lower-cost model to straightforward, high-volume work, reserving the most capable model for complex reasoning."
+— Claude Certified Associate – Foundations Exam Guide v1.0, Anthropic (official exam guide)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The three selection factors are <strong>cost, speed, and quality</strong>: higher tiers cost more per token and respond more slowly, but handle complex reasoning and judgment better; lower tiers are faster and cheaper but best limited to straightforward work.</li>
+<li>The exam guide's own sample item makes the rule concrete: for a high volume of short customer-reply drafts where speed and cost matter more than deep reasoning, the correct choice is a faster, lower-cost model suited to straightforward, high-volume tasks — always using the top model wastes the cost and latency budget.</li>
+<li>On subscription plans the same trade-off appears as usage: on Pro, Max, Ultra, and Team plans, higher-priced models use your limits faster, so model choice also manages your plan's usage budget.</li>
+<li>A more capable model can sometimes be the economical choice overall: Anthropic notes that a more capable model can finish a task by doing less work, which can offset much of its higher price per token — judge total cost to a finished, correct result, not price per token alone.</li>
+<li>If you are unsure which model to use, Anthropic's guidance is to start with the most capable everyday model (Opus) for most workloads and adjust down when a task proves well-scoped and repetitive.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Classify a task before choosing: Is it high-volume and straightforward (Haiku), well-scoped with a clear brief (Sonnet), or complex and judgment-heavy (Opus)?</li>
+<li>Pilot on real work: run the same representative task on two tiers, compare output quality, speed, and usage consumed, then set the team default from evidence.</li>
+<li>Escalate a tier when outputs repeatedly miss nuance or need heavy rework; step down a tier when a cheaper model already meets the quality bar.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/models/overview">Models overview</a>, <a href="https://claude.com/resources/articles/using-claude-opus-5-5-as-your-daily-driver-for-knowledge-work">Which Claude model is best to use for knowledge work</a></p></div><div class="cell zh"><h2>3.3 让模型选择与任务要求相匹配（成本、速度、质量）</h2>
+<p><em>EN: Align model selection with task requirements (cost, speed, quality)</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Aligning model selection with task requirements means matching a faster, lower-cost model to straightforward, high-volume work, reserving the most capable model for complex reasoning."
+— Claude Certified Associate – Foundations Exam Guide v1.0, Anthropic (official exam guide)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>三个选择因素是<strong>成本、速度与质量</strong>：更高的层级每 token 成本更高、响应更慢，但更擅长复杂推理与判断；更低的层级更快、更便宜，但最好只限于 straightforward 的简单工作。</li>
+<li>考试指南自己的样题把这条规则讲得很具体：对于大量简短的客户回复草稿，当速度与成本比深度推理更重要时，正确选择是一个更快的、低成本的、适合简单高量任务的模型 —— 始终使用顶级模型会浪费成本与延迟预算。</li>
+<li>在订阅方案上，同样的权衡表现为用量：在 Pro、Max、Ultra 与 Team 方案上，价格更高的模型会更快地消耗你的限额，因此模型选择同时也是在管理你方案的用量预算。</li>
+<li>一个更强大的模型有时总体上反而是更经济的选择：Anthropic 指出，更强大的模型可以用更少的工作量完成一个任务，这可以抵消它每 token 较高价格的很大一部分 —— 要判断的是得到一个完成且正确的结果的总成本，而不只是每 token 的价格。</li>
+<li>如果你不确定该用哪个模型，Anthropic 的指引是从最强大的日常模型（Opus）开始，用于大多数工作负载；当一个任务被证明范围明确且重复性高时，再向下调整。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>在选择之前先对任务分类：它是高量且简单的（Haiku）、简报清晰且范围明确的（Sonnet），还是复杂且高度依赖判断的（Opus）？</li>
+<li>在真实工作上试点：在两个层级上运行同一个有代表性的任务，比较输出质量、速度与消耗的用量，然后根据证据设定团队默认值。</li>
+<li>当输出反复遗漏细微差别或需要大量返工时，上升一个层级；当一个更便宜的模型已经达到质量标准时，下降一个层级。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/models/overview">Models overview</a>, <a href="https://claude.com/resources/articles/using-claude-opus-5-5-as-your-daily-driver-for-knowledge-work">Which Claude model is best to use for knowledge work</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>3.4 Understand and manage context limitations and memory considerations (when to restart, summarize, or persist)</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "The “context window” refers to all the text a language model can reference when generating a response, including the response itself."
+— Context windows, Anthropic (https://platform.claude.com/docs/en/build-with-claude/context-windows)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The <strong>context window</strong> is everything Claude can reference in the current conversation — your messages, Claude's replies, and uploaded content accumulate turn by turn. Context window size varies by model and plan (for example, 200K tokens on models outside the current large-window lineup on paid plans, up to 1M tokens for current models), so very long chats eventually approach the limit.</li>
+<li>More context is not automatically better: as token count grows, accuracy and recall degrade — a phenomenon the platform docs call <em>context rot</em>. Long, unfocused conversations can quietly get worse before they hit any hard limit.</li>
+<li><strong>Automatic context management:</strong> for users on paid plans with code execution enabled, when a conversation approaches the context window limit, Claude summarizes earlier messages to make room for new content, allowing conversations to continue in most cases; the full chat history is preserved so Claude can reference it, even after earlier portions have been summarized. Longer conversations that trigger this use more of your usage limit.</li>
+<li><strong>Memory</strong> is separate from the context window. Claude saves memory as a set of individual topics as you chat, rather than summarizing conversations after they end, and carries that context into new conversations — with memory, Claude transforms from a stateless chat interface into a knowledgeable collaborator that builds understanding over time. You can view, edit, or delete memory topics in Settings, tell Claude to "remember this," or turn memory off for your account or for a single chat.</li>
+<li><strong>Project memory</strong> is scoped: each project has its own memory, and while working in a project Claude uses the project's memory alongside your memory from chats outside of projects, but not memory from other projects.</li>
+<li><strong>Persist vs. restart:</strong> durable context belongs in a Project's knowledge base and instructions or in memory topics; a single chat's context window is temporary. Incognito chats and chats with memory turned off are not saved to memory.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Decide when to <strong>restart</strong>: start a fresh chat when the topic changes, when the conversation has drifted, or when recall of early details starts slipping (context rot).</li>
+<li>Decide when to <strong>summarize</strong>: ask Claude for a concise handoff summary of decisions, facts, and open items, then paste it into a new chat or save it into a Project to continue without the accumulated bulk.</li>
+<li>Decide what to <strong>persist</strong>: put stable facts, preferences, and reference files into memory or a Project's knowledge base and instructions instead of relying on one long conversation to hold them.</li>
+<li>Periodically review and edit saved memory topics so outdated facts (for example, a moved deadline) do not keep shaping new conversations.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/context-windows">Context windows</a>, <a href="https://support.claude.com/en/articles/8606394-how-large-is-the-context-window-on-paid-claude-plans">How large is the context window on paid Claude plans?</a>, <a href="https://support.claude.com/en/articles/11817273-use-claude-chat-search-and-memory-to-build-on-previous-context">Use Claude’s chat search and memory to build on previous context</a>, <a href="https://support.claude.com/en/articles/9517075-what-are-projects">What are projects?</a></p></div><div class="cell zh"><h2>3.4 理解并管理上下文局限与记忆方面的考量（何时重启、何时总结、何时持久保存）</h2>
+<p><em>EN: Understand and manage context limitations and memory considerations (when to restart, summarize, or persist)</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "The “context window” refers to all the text a language model can reference when generating a response, including the response itself."
+— Context windows, Anthropic (https://platform.claude.com/docs/en/build-with-claude/context-windows)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li><strong>上下文窗口（context window）</strong>是 Claude 在当前对话中可以引用的一切 —— 你的消息、Claude 的回复与上传的内容逐轮累积。上下文窗口的大小因模型与方案而异（例如，付费方案上当前大窗口阵容之外的模型为 200K tokens，当前模型最高可达 1M tokens），因此非常长的聊天最终会接近限额。</li>
+<li>上下文越多并不自动越好：随着 token 数量增长，准确性与回忆能力会下降 —— 平台文档把这一现象称为<em>上下文腐化（context rot）</em>。冗长、缺乏焦点的对话可能在触及任何硬性限额之前就悄悄变差。</li>
+<li><strong>自动上下文管理：</strong>对于启用了代码执行的付费方案用户，当一次对话接近上下文窗口限额时，Claude 会总结较早的消息以腾出空间容纳新内容，使对话在大多数情况下可以继续；完整的聊天历史会被保留，因此即使较早的部分已被总结，Claude 仍可引用它。触发这一机制的较长对话会消耗更多的用量限额。</li>
+<li><strong>Memory</strong> 与上下文窗口是分开的。Claude 在你聊天的过程中把记忆保存为一组独立的主题，而不是在对话结束后总结对话，并把这些上下文带入新的对话 —— 有了记忆，Claude 就从一个无状态的聊天界面转变为一个随着时间推移不断加深理解的、见多识广的协作者。你可以在设置（Settings）中查看、编辑或删除记忆主题，告诉 Claude「记住这个（remember this）」，或者为你的账户或某一次聊天关闭记忆。</li>
+<li><strong>Project 记忆是有范围的：</strong>每个 Project 都有它自己的记忆；在某个 Project 中工作时，Claude 会使用该 Project 的记忆以及你来自 Project 之外聊天的记忆，但不会使用其他 Projects 的记忆。</li>
+<li><strong>持久保存与重启：</strong>持久的上下文应当放在一个 Project 的知识库与指令中，或放在记忆主题中；单次聊天的上下文窗口是临时的。无痕（incognito）聊天与关闭了记忆的聊天不会被保存到记忆中。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>判断何时<strong>重启</strong>：当话题改变、当对话已经跑偏，或当对早期细节的回忆开始滑落（上下文腐化）时，开始一次新的聊天。</li>
+<li>判断何时<strong>总结</strong>：让 Claude 给出一份简洁的交接总结，包含决定、事实与未决事项，然后把它粘贴到一次新聊天中，或保存到一个 Project 中，以便在不带累积包袱的情况下继续。</li>
+<li>判断什么要<strong>持久保存</strong>：把稳定的事实、偏好与参考文件放进记忆或一个 Project 的知识库与指令中，而不是依赖一次长对话来承载它们。</li>
+<li>定期检查并编辑已保存的记忆主题，使过时的事实（例如一个已经改期的截止日期）不会持续影响新的对话。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://platform.claude.com/docs/en/build-with-claude/context-windows">Context windows</a>, <a href="https://support.claude.com/en/articles/8606394-how-large-is-the-context-window-on-paid-claude-plans">How large is the context window on paid Claude plans?</a>, <a href="https://support.claude.com/en/articles/11817273-use-claude-chat-search-and-memory-to-build-on-previous-context">Use Claude’s chat search and memory to build on previous context</a>, <a href="https://support.claude.com/en/articles/9517075-what-are-projects">What are projects?</a></p></div></div>
+<div class="band" id="d4"><div class="band-en">Domain 4: Workflow Integration and Solution Design (16%)</div><div class="band-zh">领域 4：工作流集成与解决方案设计（Domain 4: Workflow Integration and Solution Design）（16%）</div></div>
+<div class="row obj"><div class="cell en"><h2>4.1 Apply Claude to analyze requirements and use cases</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "They are positioned between casual AI prompt users and technical AI practitioners, and are distinguished by their ability to translate business objectives into effective AI interactions"
+— Claude Certified Associate – Foundations Exam Guide v1.0, Anthropic (official exam guide)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The Associate's core move is translation: turning a business objective (a recurring report, a backlog of customer replies, a planning cycle) into concrete Claude interactions with defined inputs, outputs, and audiences.</li>
+<li>Requirements analysis with Claude starts from the work itself: what triggers the task, what source material exists, what a good output looks like, who reviews it, and what accuracy bar it must meet.</li>
+<li>Use-case identification is part of the credential's purpose: certificate holders can "Identify opportunities to improve processes using Claude" and apply Claude "to complete structured business tasks with minimal guidance."</li>
+<li>Not every requirement belongs to an Associate: candidates are not expected to design enterprise-scale AI architectures or integrations — that scope belongs to the Claude Architect and Claude Developer credentials, to which Associates escalate more complex or technical work.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Interview the workflow owner and restate the requirement as a task brief Claude can act on: goal, inputs, output format, audience, and quality criteria.</li>
+<li>Break a vague request ("help with onboarding") into discrete, testable use cases and rank them by frequency, effort saved, and risk.</li>
+<li>Flag requirements that exceed Associate scope (API builds, agentic systems, regulated data) early and route them to Architects or Developers.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://support.claude.com/en/articles/9517075-what-are-projects">What are projects?</a>, <a href="https://support.claude.com/en/articles/11088861-use-research-on-claude">Use research on Claude</a></p></div><div class="cell zh"><h2>4.1 运用 Claude 分析需求与用例</h2>
+<p><em>EN: Apply Claude to analyze requirements and use cases</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "They are positioned between casual AI prompt users and technical AI practitioners, and are distinguished by their ability to translate business objectives into effective AI interactions"
+— Claude Certified Associate – Foundations Exam Guide v1.0, Anthropic (official exam guide)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>助理级（Associate）的核心动作是翻译：把一个业务目标（一份周期性报告、一批积压的客户回复、一个规划周期）转化为具体的 Claude 交互，并定义好输入、输出与受众。</li>
+<li>用 Claude 做需求分析要从工作本身出发：什么触发了这个任务、有哪些源材料、一个好的输出是什么样子、谁来审核它、它必须达到什么样的准确性标准。</li>
+<li>用例识别是本证书目的的一部分：持证者能够「识别用 Claude 改进流程的机会」，并「在极少指导下运用 Claude 完成结构化的业务任务」。</li>
+<li>并非每个需求都属于助理级：考生不被期望设计企业级规模的 AI 架构或集成 —— 那一范围属于 Claude 架构师（Claude Architect）与 Claude 开发者（Claude Developer）证书，更复杂或更技术性的工作应升级给他们。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>访谈工作流的负责人，并把需求重述为一份 Claude 可以据以行动的任务简报：目标、输入、输出格式、受众与质量标准。</li>
+<li>把一个含糊的请求（「帮忙做入职引导」）拆解为离散的、可测试的用例，并按频率、节省的精力与风险排序。</li>
+<li>及早标记超出助理级范围的需求（API 构建、智能体系统、受监管数据），并把它们转交给架构师或开发者。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://support.claude.com/en/articles/9517075-what-are-projects">What are projects?</a>, <a href="https://support.claude.com/en/articles/11088861-use-research-on-claude">Use research on Claude</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>4.2 Leverage Claude for research, planning, and process optimization</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Use built-in platform features and tools to streamline workflows"
+— Claude Certified Associate – Foundations Exam Guide v1.0, Anthropic (official exam guide)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li><strong>Research:</strong> research mode transforms a question into a multi-step investigation — Claude runs multiple searches that build on each other across the web and connected tools such as Google Workspace, decides what to look into next based on what it finds, and returns comprehensive, sourced results suited to reports, comparisons, and investigations that would take hours manually.</li>
+<li><strong>Planning:</strong> a Project gives planning work a persistent home — uploaded plans, background documents, and project instructions stay available to every chat in the project, so successive planning sessions build on the same context instead of starting over.</li>
+<li><strong>Process optimization:</strong> the credential expects holders to identify opportunities to improve processes with Claude — mapping a current process, spotting repetitive drafting, summarizing, and sorting steps, and inserting Claude at those steps while keeping human review where accuracy matters.</li>
+<li>Research sessions consume usage faster than standard conversations, so optimization includes budgeting: reserve research mode for questions that genuinely need multi-source synthesis.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Run a research task end to end: frame a specific question, enable research, check the citations in the result, and convert the findings into a plan or decision memo.</li>
+<li>Use a Project to hold a planning cycle — background files in the knowledge base, standing instructions for format and tone, one chat per workstream.</li>
+<li>Before/after a process: record the manual steps and time, redesign with Claude at the repetitive steps, and compare time and quality after a trial period.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://support.claude.com/en/articles/11088861-use-research-on-claude">Use research on Claude</a>, <a href="https://support.claude.com/en/articles/9517075-what-are-projects">What are projects?</a></p></div><div class="cell zh"><h2>4.2 利用 Claude 进行研究、规划与流程优化</h2>
+<p><em>EN: Leverage Claude for research, planning, and process optimization</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Use built-in platform features and tools to streamline workflows"
+— Claude Certified Associate – Foundations Exam Guide v1.0, Anthropic (official exam guide)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li><strong>研究：</strong>研究模式（research mode）把一个问题转化为一项多步骤调查 —— Claude 在网络与已连接的工具（如 Google Workspace）上运行多次相互衔接的搜索，根据所发现的内容决定下一步调查什么，并返回全面、带来源的结果，适用于报告、比较与调查 —— 这些工作人工完成需要数小时。</li>
+<li><strong>规划：</strong>一个 Project 为规划工作提供一个持久的家 —— 上传的计划、背景文档与项目指令对该 Project 中的每一次聊天都保持可用，因此连续的规划会话建立在同一上下文之上，而不是每次从头开始。</li>
+<li><strong>流程优化：</strong>本证书期望持证者识别用 Claude 改进流程的机会 —— 梳理当前流程，找出重复性的起草、总结与整理步骤，并在这些步骤插入 Claude，同时在准确性重要的地方保留人工审核。</li>
+<li>研究会话消耗用量的速度比标准对话更快，因此优化包括预算管理：把研究模式留给真正需要多来源综合整理的问题。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>端到端地运行一个研究任务：框定一个具体问题、启用研究、核查结果中的引用，并把发现转化为一份计划或决策备忘录。</li>
+<li>用一个 Project 承载一个规划周期 —— 背景文件放在知识库中，格式与语气方面的常设指令，一条工作流用一个聊天。</li>
+<li>在一个流程的前后做记录：记录人工步骤与所花时间，用 Claude 在重复性步骤上重新设计流程，并在试用期后比较时间与质量。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://support.claude.com/en/articles/11088861-use-research-on-claude">Use research on Claude</a>, <a href="https://support.claude.com/en/articles/9517075-what-are-projects">What are projects?</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>4.3 Use Claude to support solution design, development, and iteration</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "The MQC has foundational, applied knowledge of Claude's capabilities, including prompt structuring, task orchestration, and familiarity with features such as Projects, Artifacts, and workflow-based interactions"
+— Claude Certified Associate – Foundations Exam Guide v1.0, Anthropic (official exam guide)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>For a non-technical Associate, "solution design" means designing the Claude setup for a task — the prompt structure, the Project configuration (instructions and knowledge sources), and the output format — not designing software systems.</li>
+<li><strong>Artifacts</strong> are the iteration surface for deliverables: an artifact opens beside the conversation, you edit it by talking to Claude or directly in the artifact, and it updates live as you work; when it's ready, you share it or export it. Artifacts can also store data between sessions and connect to your apps, turning a draft into a small working tool such as a tracker.</li>
+<li>Iteration is a defined exam skill across the blueprint: structure a first version, evaluate the output against the requirement, refine the prompt, instructions, or knowledge, and repeat — each loop should change one thing you can name.</li>
+<li>Version discipline matters: build on a published artifact to create your own separate version without affecting the original, and keep the working configuration (instructions, knowledge files) updated as the solution evolves.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Produce a first working version fast — a draft document, deck, or tracker as an artifact — then iterate in short cycles with specific feedback.</li>
+<li>Move a proven one-off chat into a durable solution: save the working prompt pattern as project instructions and the reference material into the Project knowledge base.</li>
+<li>Test the solution against the original requirements and edge cases (missing data, ambiguous requests) before rolling it out to colleagues.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them">What are artifacts and how do I use them?</a>, <a href="https://support.claude.com/en/articles/9517075-what-are-projects">What are projects?</a></p></div><div class="cell zh"><h2>4.3 用 Claude 支持解决方案设计、开发与迭代</h2>
+<p><em>EN: Use Claude to support solution design, development, and iteration</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "The MQC has foundational, applied knowledge of Claude's capabilities, including prompt structuring, task orchestration, and familiarity with features such as Projects, Artifacts, and workflow-based interactions"
+— Claude Certified Associate – Foundations Exam Guide v1.0, Anthropic (official exam guide)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>对于非技术性的助理级人员来说，「解决方案设计」指的是为一项任务设计 Claude 的设置 —— 提示结构、Project 配置（指令与知识来源）与输出格式 —— 而不是设计软件系统。</li>
+<li><strong>Artifacts</strong> 是交付物的迭代界面：一个 Artifact 会在对话旁边打开，你可以通过与 Claude 对话或直接在 Artifact 中编辑它，它会随着你的工作实时更新；准备好之后，你可以分享它或导出它。Artifacts 还可以在会话之间存储数据并连接到你的应用，把一份草稿变成一个小型可用工具，例如一个跟踪表。</li>
+<li>迭代是整个蓝图中一项明确的考试技能：组织出第一版、对照需求评估输出、完善提示、指令或知识，然后重复 —— 每一轮都应当改变一件你能点名的事。</li>
+<li>版本纪律很重要：以一个已发布的 Artifact 为基础创建你自己的独立版本而不影响原件，并随着解决方案的演进，保持工作配置（指令、知识文件）的更新。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>快速产出一个能用的第一版 —— 一份草稿文档、演示文稿或跟踪表，做成 Artifact —— 然后以具体的反馈进行短周期迭代。</li>
+<li>把一次被证明有效的一次性聊天变成一个持久的解决方案：把有效的提示模式保存为项目指令，把参考材料放进 Project 知识库。</li>
+<li>在向同事推广之前，对照原始需求与边界情形（数据缺失、请求含糊）测试该解决方案。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them">What are artifacts and how do I use them?</a>, <a href="https://support.claude.com/en/articles/9517075-what-are-projects">What are projects?</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>4.4 Integrate Claude into existing workflows to augment or redesign them</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "moves beyond basic question-and-answer usage to process reimagination, task automation, and project development"
+— Claude Certified Associate – Foundations Exam Guide v1.0, Anthropic (official exam guide)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Integration has two depths: <strong>augment</strong> an existing workflow (Claude drafts, summarizes, or sorts inside a step a human still owns) or <strong>redesign</strong> it (re-sequence or remove steps because Claude changes what is possible, such as research mode replacing manual multi-source gathering).</li>
+<li>Projects support team-level integration: on Team and Enterprise plans, projects can be shared with other members of your organization, and multiple members can contribute documents, create chats, and work together within the same project environment — one shared configuration instead of everyone's private prompts.</li>
+<li>Memory and chat search support continuity across an integrated workflow: Claude can search your previous conversations to reference earlier decisions in a new chat, and memory topics carry standing context (roles, projects, preferences) into new conversations without re-briefing.</li>
+<li>Integration must respect feature boundaries: incognito chats are excluded from history and search, memory can be turned off per chat or per account, and project memory stays scoped to its project — design the workflow so the right context flows and the wrong context does not.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Map a current workflow step by step, mark each step "augment," "redesign," or "keep human," and pilot the change on one team or one cycle before wider rollout.</li>
+<li>Standardize the shared parts: one Project with agreed instructions and knowledge sources, so everyone on the team gets consistent outputs.</li>
+<li>Build in the human checkpoints: name who reviews Claude's output at each integrated step and what they check before it moves on.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://support.claude.com/en/articles/9517075-what-are-projects">What are projects?</a>, <a href="https://support.claude.com/en/articles/11817273-use-claude-chat-search-and-memory-to-build-on-previous-context">Use Claude’s chat search and memory to build on previous context</a></p></div><div class="cell zh"><h2>4.4 把 Claude 集成进现有工作流，以增强或重新设计它们</h2>
+<p><em>EN: Integrate Claude into existing workflows to augment or redesign them</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "moves beyond basic question-and-answer usage to process reimagination, task automation, and project development"
+— Claude Certified Associate – Foundations Exam Guide v1.0, Anthropic (official exam guide)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>集成有两种深度：<strong>增强（augment）</strong>一个现有工作流（Claude 在一个仍由人负责的步骤内部起草、总结或整理），或<strong>重新设计（redesign）</strong>它（因为 Claude 改变了可能性而重新排序或去掉某些步骤，例如研究模式取代人工的多来源搜集）。</li>
+<li>Projects 支持团队层面的集成：在 Team 与 Enterprise 方案上，Projects 可以与你组织中的其他成员共享，多名成员可以贡献文档、创建聊天，并在同一个 Project 环境中共同工作 —— 用一套共享配置，而不是每个人的私人提示。</li>
+<li>Memory 与聊天搜索支持集成工作流中的连续性：Claude 可以搜索你以前的对话，在新聊天中引用早先的决定；记忆主题把常设上下文（角色、项目、偏好）带入新对话，无需重新简报。</li>
+<li>集成必须尊重功能边界：无痕（incognito）聊天被排除在历史与搜索之外，记忆可以按聊天或按账户关闭，Project 记忆保持在其 Project 的范围内 —— 设计工作流时，要让正确的上下文流动、不正确的上下文不流动。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>逐步梳理一个当前工作流，把每一步标记为「增强」「重新设计」或「保留人工」，并在更广泛推广之前，先在一个团队或一个周期上试点这一改变。</li>
+<li>把共享的部分标准化：一个带有约定好的指令与知识来源的 Project，使团队中的每个人都得到一致的输出。</li>
+<li>内置人工检查点：点明在每个集成步骤上由谁审核 Claude 的输出，以及他们在它进入下一步之前检查什么。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://support.claude.com/en/articles/9517075-what-are-projects">What are projects?</a>, <a href="https://support.claude.com/en/articles/11817273-use-claude-chat-search-and-memory-to-build-on-previous-context">Use Claude’s chat search and memory to build on previous context</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>4.5 Communicate Claude's value and limitations to stakeholders</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Recognize limitations and escalate more complex or technical implementations"
+— Claude Certified Associate – Foundations Exam Guide v1.0, Anthropic (official exam guide)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li><strong>Value, stated concretely:</strong> holders are expected to show how Claude streamlines workflows and improves processes, and to "Select appropriate approaches to balance quality, efficiency, and cost" — stakeholder communication should name the task, the time or quality change, and the model/feature choices behind it, not promise generic transformation.</li>
+<li><strong>Limitations, stated plainly:</strong> the exam guide's recommended candidate experience includes "A practical understanding of AI limitations, including hallucinations, context constraints, and data sensitivity." Stakeholders should hear all three: outputs can fabricate plausible-looking details and need verification, conversations have finite context windows, and sensitive data needs safeguards before use.</li>
+<li><strong>Confidence is not evidence:</strong> the guide's sample rationale warns that self-reported confidence is not a reliable accuracy signal — a key point when stakeholders ask why a confident-sounding output still needs human review.</li>
+<li><strong>Escalation is part of the value story:</strong> the credential explicitly positions Associates between casual users and technical practitioners; communicating that complex or technical implementations go to Claude Architects and Developers sets correct expectations and protects the rollout.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Write a one-page stakeholder summary for a proposed Claude workflow: the use case, expected benefit, cost/speed/quality choices, known limitations, and the human review step.</li>
+<li>Demonstrate, don't just claim: show a before/after example from a real task, including one output that needed correction, so stakeholders calibrate trust accurately.</li>
+<li>Set the escalation path in advance: what the team handles itself, what triggers involving an Architect or Developer, and who owns that decision.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://support.claude.com/en/articles/11088861-use-research-on-claude">Use research on Claude</a>, <a href="https://support.claude.com/en/articles/8606394-how-large-is-the-context-window-on-paid-claude-plans">How large is the context window on paid Claude plans?</a>, <a href="https://platform.claude.com/docs/en/models/overview">Models overview</a></p></div><div class="cell zh"><h2>4.5 向利益相关方传达 Claude 的价值与局限</h2>
+<p><em>EN: Communicate Claude's value and limitations to stakeholders</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Recognize limitations and escalate more complex or technical implementations"
+— Claude Certified Associate – Foundations Exam Guide v1.0, Anthropic (official exam guide)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li><strong>价值，要具体陈述：</strong>持证者被期望展示 Claude 如何精简工作流、改进流程，并「选择合适的方法以平衡质量、效率与成本」—— 面向利益相关方的沟通应当点明任务、时间或质量上的变化，以及其背后的模型/功能选择，而不是许诺泛泛的转型。</li>
+<li><strong>局限，要直白陈述：</strong>考试指南的推荐考生经验包括「对 AI 局限性的实际理解，包括幻觉、上下文约束与数据敏感性」。利益相关方应当听到全部三点：输出可能编造看似可信的细节、需要核实；对话有有限的上下文窗口；敏感数据在使用前需要保障措施。</li>
+<li><strong>自信不是证据：</strong>指南的样题解析警告说，自我报告的自信不是可靠的准确性信号 —— 当利益相关方问为什么一个听起来自信的输出仍然需要人工审核时，这是关键一点。</li>
+<li><strong>升级是价值叙事的一部分：</strong>本证书明确定位助理级人员处在 casual 用户与技术从业者之间；传达清楚复杂或技术性的实施要交给 Claude 架构师（Claude Architects）与开发者（Claude Developers），能设定正确的预期并保护推广过程。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>为一个拟议的 Claude 工作流写一份一页纸的利益相关方摘要：用例、预期收益、成本/速度/质量方面的选择、已知的局限，以及人工审核步骤。</li>
+<li>用演示而不是只用宣称：展示一个来自真实任务的前后对比示例，包括一个需要纠正的输出，使利益相关方能准确地校准信任。</li>
+<li>预先设定升级路径：团队自己处理什么、什么会触发架构师或开发者的介入，以及谁来做这个决定。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://support.claude.com/en/articles/11088861-use-research-on-claude">Use research on Claude</a>, <a href="https://support.claude.com/en/articles/8606394-how-large-is-the-context-window-on-paid-claude-plans">How large is the context window on paid Claude plans?</a>, <a href="https://platform.claude.com/docs/en/models/overview">Models overview</a></p></div></div>
+<div class="band" id="d5"><div class="band-en">Domain 5: Configuration and Knowledge Management (12%)</div><div class="band-zh">领域 5：配置与知识管理（Domain 5: Configuration and Knowledge Management）（12%）</div></div>
+<div class="row obj"><div class="cell en"><h2>5.1 Configure Claude Projects with instructions and knowledge sources</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Projects allow you to create self-contained workspaces with their own chat histories and knowledge bases. Within each project, you can upload documents, provide context, and have focused chats with Claude."
+— What are projects?, Anthropic (https://support.claude.com/en/articles/9517075-what-are-projects)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>A Project is a self-contained workspace: its chat history, project knowledge, and project instructions stay together and apply to chats inside that Project, not to chats elsewhere.</li>
+<li>Project knowledge is the uploaded context — documents, text, code, or other files added to the project's knowledge base — which Claude uses to understand the context and background for individual chats within that project.</li>
+<li>Project instructions tailor responses inside the Project; the Help Center's example is instructing Claude to use a more formal tone or to answer questions from the perspective of a specific role or industry.</li>
+<li>On paid plans, project knowledge automatically scales through Retrieval Augmented Generation (RAG): when knowledge approaches context limits, RAG mode expands capacity by up to 10x while maintaining response quality.</li>
+<li>On Team and Enterprise plans, Projects can be shared with other members of the organization, with permission levels controlling who can view or edit.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Create a Project for one recurring body of work (for example, a campaign, a course, or a monthly close) instead of re-pasting the same background into every new chat.</li>
+<li>Upload the reference material Claude should ground its answers in, and write project instructions that state role, tone, format, and how the knowledge sources should be used.</li>
+<li>Test the setup with a representative task and check that Claude follows the instructions and cites the uploaded sources rather than inventing details.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://support.claude.com/en/articles/9517075-what-are-projects">What are projects?</a>, <a href="https://support.claude.com/en/articles/10185728-understanding-claude-s-personalization-features">Understanding Claude's personalization features</a></p></div><div class="cell zh"><h2>5.1 用指令与知识来源配置 Claude Projects</h2>
+<p><em>EN: Configure Claude Projects with instructions and knowledge sources</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Projects allow you to create self-contained workspaces with their own chat histories and knowledge bases. Within each project, you can upload documents, provide context, and have focused chats with Claude."
+— What are projects?, Anthropic (https://support.claude.com/en/articles/9517075-what-are-projects)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>一个 Project 是一个自成一体的工作区：它的聊天历史、项目知识与项目指令保持在一起，适用于该 Project 内部的聊天，而不适用于其他地方的聊天。</li>
+<li>项目知识是上传的上下文 —— 添加到该 Project 知识库中的文档、文本、代码或其他文件 —— Claude 用它来理解该 Project 内各次聊天的上下文与背景。</li>
+<li>项目指令定制 Project 内部的回答；帮助中心（Help Center）的例子是，指示 Claude 使用更正式的语气，或从某个特定角色或行业的视角回答问题。</li>
+<li>在付费方案上，项目知识会通过检索增强生成（Retrieval Augmented Generation，RAG）自动扩展：当知识接近上下文限额时，RAG 模式在保持回答质量的同时把容量扩大至多 10 倍。</li>
+<li>在 Team 与 Enterprise 方案上，Projects 可以与组织中的其他成员共享，权限级别控制谁可以查看或编辑。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>为一类反复出现的工作（例如一次营销活动、一门课程，或一次月度结账）创建一个 Project，而不是把同样的背景重新粘贴到每次新聊天中。</li>
+<li>上传 Claude 应当据以立论的参考材料，并写好项目指令，说明角色、语气、格式，以及知识来源应当如何使用。</li>
+<li>用一个有代表性的任务测试这套设置，并检查 Claude 是否遵循指令、引用上传的来源，而不是编造细节。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://support.claude.com/en/articles/9517075-what-are-projects">What are projects?</a>, <a href="https://support.claude.com/en/articles/10185728-understanding-claude-s-personalization-features">Understanding Claude's personalization features</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>5.2 Manage uploaded knowledge and connectors (e.g., Google Drive, Gmail)</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Connectors let Claude access your apps and services, retrieve your data, and take actions within connected services. Claude inherits each person's permissions from the connected service."
+— Use connectors to extend Claude's capabilities, Anthropic (https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>The Google Workspace connectors connect Gmail, Google Calendar, and Google Drive so you can search and send emails, manage your calendar, work with documents, and save files without leaving the conversation.</li>
+<li>Permissions are inherited, not expanded: if someone can't access a specific file, channel, or record in the source system, the connector can't reach it from Claude either.</li>
+<li>By default, outside Auto mode, each action Claude takes on your behalf through a connector requires your explicit approval; on Team and Enterprise plans, owners decide whether members can allow certain actions to run without asking each time.</li>
+<li>Google Docs added to chats and Projects sync directly from Google Drive, so you are always working with the latest version; the Google Drive connector is only available when adding to Files in private projects, and is disabled for shared projects.</li>
+<li>On Team and Enterprise plans, an Owner or Primary Owner must enable a connector at the organization level before individual users can authenticate, and owners can restrict actions — for example, allowing a connector to read data while preventing it from writing changes back.</li>
+<li>Connector responses include citations indicating which emails, calendar events, or documents were used as sources, with links to the originals when available.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Connect only the services a workflow actually needs, review what access a connector requests during connection, and disconnect services you no longer need or use.</li>
+<li>Add Google Drive files to a chat or a private Project to give Claude comprehensive context, keeping the total within the conversation's context window.</li>
+<li>Check connector citations against the original email or document before acting on a summary, and reconnect or check admin approval when a connector stops working.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://support.claude.com/en/articles/10166901-use-google-workspace-connectors">Use Google Workspace connectors</a>, <a href="https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities">Use connectors to extend Claude's capabilities</a></p></div><div class="cell zh"><h2>5.2 管理上传的知识与 connectors（例如 Google Drive、Gmail）</h2>
+<p><em>EN: Manage uploaded knowledge and connectors (e.g., Google Drive, Gmail)</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Connectors let Claude access your apps and services, retrieve your data, and take actions within connected services. Claude inherits each person's permissions from the connected service."
+— Use connectors to extend Claude's capabilities, Anthropic (https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>Google Workspace connectors 连接 Gmail、Google Calendar 与 Google Drive，使你无需离开对话就能搜索和发送电子邮件、管理你的日历、处理文档并保存文件。</li>
+<li>权限是继承的，而不是扩大的：如果某人在源系统中无法访问某个特定的文件、频道或记录，那么通过 Claude 的 connector 也同样访问不到它。</li>
+<li>默认情况下，在自动（Auto）模式之外，Claude 通过 connector 代表你采取的每一个行动都需要你的明确批准；在 Team 与 Enterprise 方案上，所有者（owners）决定成员是否可以允许某些行动无需每次询问即可运行。</li>
+<li>添加到聊天与 Projects 中的 Google Docs 会直接从 Google Drive 同步，因此你始终在处理最新版本；Google Drive connector 仅在向私有 Projects 中的 Files 添加内容时可用，对共享 Projects 则被禁用。</li>
+<li>在 Team 与 Enterprise 方案上，所有者（Owner）或主要所有者（Primary Owner）必须先在组织层面启用一个 connector，个人用户才能进行身份验证；所有者还可以限制行动 —— 例如，允许一个 connector 读取数据，但阻止它把更改写回去。</li>
+<li>Connector 的回答包含引用，指出哪些电子邮件、日历事件或文档被用作来源，并在可用时附上原件链接。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>只连接一个工作流真正需要的服务，在连接过程中检查一个 connector 请求的访问权限，并断开你不再需要或使用的服务。</li>
+<li>把 Google Drive 文件添加到一次聊天或一个私有 Project 中，为 Claude 提供全面的上下文，同时把总量保持在该对话的上下文窗口之内。</li>
+<li>在根据一份摘要采取行动之前，对照原始电子邮件或文档核查 connector 的引用；当一个 connector 停止工作时，重新连接或检查管理员批准情况。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://support.claude.com/en/articles/10166901-use-google-workspace-connectors">Use Google Workspace connectors</a>, <a href="https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities">Use connectors to extend Claude's capabilities</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>5.3 Create effective system-level instructions</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Instructions are account-wide settings that help Claude understand your general instructions that Claude should consider in responses."
+— Understanding Claude's personalization features, Anthropic (https://support.claude.com/en/articles/10185728-understanding-claude-s-personalization-features)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Anthropic's personalization features operate at different scopes: Instructions for Claude are account-wide and apply to all of your conversations, while project instructions only apply to chats within that project.</li>
+<li>Use Instructions for Claude for what is true everywhere: your preferred methods, the terms and concepts you commonly use, typical scenarios you encounter, and general communication preferences.</li>
+<li>Use project instructions for the specific context and requirements of a particular project, especially when you need Claude to maintain consistent context across multiple conversations within the same project.</li>
+<li>Skills are a third layer: they add specific behaviors or capabilities, customize how Claude communicates, apply specialized expertise, or define repeatable behaviors you activate on demand.</li>
+<li>The layers can be used independently or in combination; putting a one-off task detail in account-wide instructions forces it onto unrelated chats, so scope each instruction to the narrowest layer that fits.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Write instructions that are specific and checkable — role and audience, desired format and length, tone, what to avoid, and what Claude should do when a fact is not in the provided sources.</li>
+<li>Decide, for each standing instruction, whether it belongs in Instructions for Claude (everywhere), project instructions (one Project), or a Skill (on demand), and place it there.</li>
+<li>Start a new chat after changing instructions and verify Claude actually follows them before relying on the setup for real work.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://support.claude.com/en/articles/10185728-understanding-claude-s-personalization-features">Understanding Claude's personalization features</a>, <a href="https://support.claude.com/en/articles/9517075-what-are-projects">What are projects?</a></p></div><div class="cell zh"><h2>5.3 创建有效的系统级指令</h2>
+<p><em>EN: Create effective system-level instructions</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Instructions are account-wide settings that help Claude understand your general instructions that Claude should consider in responses."
+— Understanding Claude's personalization features, Anthropic (https://support.claude.com/en/articles/10185728-understanding-claude-s-personalization-features)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>Anthropic 的个性化功能在不同的范围内运作：Instructions for Claude 是账户范围的，适用于你的所有对话；而项目指令只适用于该 Project 内的聊天。</li>
+<li>把 Instructions for Claude 用于在任何地方都成立的内容：你偏好的方法、你常用的术语与概念、你遇到的典型场景，以及一般的沟通偏好。</li>
+<li>把项目指令用于某个特定 Project 的具体上下文与要求，尤其是当你需要 Claude 在同一 Project 内的多次对话之间保持一致的上下文时。</li>
+<li>Skills 是第三个层面：它们添加特定的行为或能力，定制 Claude 的沟通方式，应用专业知识，或定义可按需激活的可重复行为。</li>
+<li>这些层面可以独立使用，也可以组合使用；把一个一次性的任务细节放进账户范围的指令中，会把它强加到不相关的聊天上，因此要把每条指令放在与之相符的最窄层面。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>把指令写得具体且可检查 —— 角色与受众、期望的格式与长度、语气、要避免什么，以及当某个事实不在所提供的来源中时 Claude 应当怎么做。</li>
+<li>对每条常设指令，判断它属于 Instructions for Claude（任何地方）、项目指令（一个 Project），还是一个 Skill（按需），并把它放在那里。</li>
+<li>在更改指令后开始一次新的聊天，并核实 Claude 确实遵循了它们，然后再依赖这套设置做真实工作。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://support.claude.com/en/articles/10185728-understanding-claude-s-personalization-features">Understanding Claude's personalization features</a>, <a href="https://support.claude.com/en/articles/9517075-what-are-projects">What are projects?</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>5.4 Inform, maintain, and update Claude configurations, knowledge sources, and instructions</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Build real workflows: configure a Project with instructions and knowledge sources, and evaluate outputs for accuracy and bias"
+— Claude Certified Associate – Foundations Exam Guide v1.0, Anthropic (official exam guide)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>A configuration is only as current as its knowledge sources: when a source document changes, the uploaded copy in a Project must be replaced, or Claude will keep answering from the outdated version. Google Docs connected through Google Drive are the exception — they sync directly, so you are always working with the latest version.</li>
+<li>Duplicate or conflicting versions of the same fact are a maintenance failure: if two files in project knowledge disagree, Claude has no reliable way to know which one governs.</li>
+<li>Instructions also drift: a role, audience, policy, or format that changed in your real work must be changed in Instructions for Claude and in project instructions, or outputs will keep following the old rule.</li>
+<li>Maintenance includes access hygiene for connectors: review what access a connected service has, and disconnect services you no longer need or use.</li>
+<li>Changes should be verified, not assumed: after updating knowledge or instructions, re-run a known task and evaluate the output for accuracy and bias, as the Exam Guide directs.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Keep an inventory of each Project's owner, knowledge sources, and review trigger (for example, a policy change or a new quarter), and update or remove stale files promptly.</li>
+<li>After any configuration change, test with representative prompts and compare outputs against the previous version before announcing the change to colleagues.</li>
+<li>Tell the people who use a shared Project or connector what changed, so they do not keep relying on superseded instructions or documents.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://support.claude.com/en/articles/9517075-what-are-projects">What are projects?</a>, <a href="https://support.claude.com/en/articles/10166901-use-google-workspace-connectors">Use Google Workspace connectors</a>, <a href="https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities">Use connectors to extend Claude's capabilities</a></p></div><div class="cell zh"><h2>5.4 告知、维护并更新 Claude 的配置、知识来源与指令</h2>
+<p><em>EN: Inform, maintain, and update Claude configurations, knowledge sources, and instructions</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Build real workflows: configure a Project with instructions and knowledge sources, and evaluate outputs for accuracy and bias"
+— Claude Certified Associate – Foundations Exam Guide v1.0, Anthropic (official exam guide)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>一个配置的时效性只与它的知识来源相当：当一份源文档发生变化时，Project 中上传的副本必须被替换，否则 Claude 会继续根据过时的版本回答。通过 Google Drive 连接的 Google Docs 是例外 —— 它们直接同步，因此你始终在处理最新版本。</li>
+<li>同一事实的重复或相互冲突的版本是一种维护失败：如果项目知识中的两份文件相互矛盾，Claude 没有可靠的办法知道哪一份说了算。</li>
+<li>指令也会漂移：如果你真实工作中的角色、受众、政策或格式发生了变化，就必须在 Instructions for Claude 与项目指令中作出相应更改，否则输出会继续遵循旧规则。</li>
+<li>维护包括 connectors 的访问卫生：检查一个已连接服务拥有什么访问权限，并断开你不再需要或使用的服务。</li>
+<li>更改应当被核实，而不是被假定：更新知识或指令之后，按照考试指南的指示，重新运行一个已知的任务，并评估输出的准确性与偏见。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>为每个 Project 保留一份清单，记录其所有者、知识来源与复查触发点（例如一次政策变更或一个新的季度），并及时更新或删除过时的文件。</li>
+<li>在任何配置更改之后，用有代表性的提示进行测试，并把输出与先前版本对比，然后再把更改告知同事。</li>
+<li>告诉使用某个共享 Project 或 connector 的人发生了什么变化，使他们不会继续依赖已被取代的指令或文档。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://support.claude.com/en/articles/9517075-what-are-projects">What are projects?</a>, <a href="https://support.claude.com/en/articles/10166901-use-google-workspace-connectors">Use Google Workspace connectors</a>, <a href="https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities">Use connectors to extend Claude's capabilities</a></p></div></div>
+<div class="band" id="d6"><div class="band-en">Domain 6: Governance, Risk, and Responsible Use (15%)</div><div class="band-zh">领域 6：治理、风险与负责任使用（Domain 6: Governance, Risk, and Responsible Use）（15%）</div></div>
+<div class="row obj"><div class="cell en"><h2>6.1 Identify appropriate and inappropriate use cases</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "The Usage Policy is intended to prevent our products and services from being used to create or contribute to real-world harm, and to promote the responsible use of our products and services."
+— Usage Policy, Anthropic (https://www.anthropic.com/legal/aup)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Anthropic's Usage Policy is divided into three categories: Universal Usage Standards (prohibitions that apply to all users and use cases), High-risk Use Case Requirements (for use cases that pose an elevated risk of harm to individuals), and Additional Use Case Guidelines (including consumer-facing chatbots and agents, products serving minors, and agentic use).</li>
+<li>The policy focuses on how the products and services are used; it does not categorically prohibit use by any particular industry or line of business, provided the use complies with the policy.</li>
+<li>Universal Usage Standards include not violating applicable laws, not compromising critical infrastructure, and not compromising children's safety.</li>
+<li>Appropriate productivity use — drafting, summarizing, analysis, planning, and content development with human review — sits well inside the policy; a use case that requires deception, illegality, or harm is inappropriate regardless of who asks.</li>
+<li>Enforcement is real: Anthropic's Safeguards Team implements detection and monitoring, and suspected violations may lead to a warning or to access being throttled, limited, suspended, or terminated.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Screen a proposed use case against the Universal Usage Standards before starting, and treat high-risk use cases as requiring the extra requirements, not just extra care.</li>
+<li>Recognize the escalation point: when a task's appropriateness is unclear, pause and check the Usage Policy and your organization's rules rather than testing the boundary in a live workflow.</li>
+<li>Report outputs you believe are potentially inaccurate, biased, or harmful through the in-product feedback features or to Anthropic, as the Usage Policy invites.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/legal/aup">Usage Policy</a>, <a href="https://www.anthropic.com/news/claude-new-constitution">Claude's new constitution</a></p></div><div class="cell zh"><h2>6.1 识别合适与不合适的用例</h2>
+<p><em>EN: Identify appropriate and inappropriate use cases</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "The Usage Policy is intended to prevent our products and services from being used to create or contribute to real-world harm, and to promote the responsible use of our products and services."
+— Usage Policy, Anthropic (https://www.anthropic.com/legal/aup)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>Anthropic 的使用政策（Usage Policy）分为三类：通用使用标准（Universal Usage Standards，适用于所有用户与用例的禁令）、高风险用例要求（High-risk Use Case Requirements，针对对个人造成伤害的风险较高的用例），以及附加用例指南（Additional Use Case Guidelines，包括面向消费者的聊天机器人与 agents、服务未成年人的产品，以及智能体（agentic）使用）。</li>
+<li>该政策聚焦于产品与服务被如何使用；只要使用符合政策，它并不按类别禁止任何特定行业或业务线的使用。</li>
+<li>通用使用标准（Universal Usage Standards）包括：不违反适用法律、不危害关键基础设施、不危害儿童安全。</li>
+<li>合适的生产力使用 —— 带人工审核的起草、总结、分析、规划与内容开发 —— 完全处在政策范围之内；而一个需要欺骗、违法或伤害的用例，无论谁提出，都是不合适的。</li>
+<li>执法是真实的：Anthropic 的保障团队（Safeguards Team）实施检测与监控，涉嫌违规可能导致警告，或导致访问被限流、限制、暂停或终止。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>在开始之前，对照通用使用标准（Universal Usage Standards）筛查一个拟议的用例，并把高风险用例当作需要满足额外要求来对待，而不只是需要额外小心。</li>
+<li>认识到升级的节点：当一个任务是否合适不明确时，暂停并查阅使用政策（Usage Policy）与你组织的规定，而不是在真实工作流中试探边界。</li>
+<li>通过产品内的反馈功能或向 Anthropic 报告你认为可能不准确、有偏见或有害的输出，正如使用政策所邀请的那样。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/legal/aup">Usage Policy</a>, <a href="https://www.anthropic.com/news/claude-new-constitution">Claude's new constitution</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>6.2 Apply data sensitivity, regulatory, and privacy considerations</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "This Privacy Policy explains how we collect, use, disclose, and process your personal data when you use our website, Claude.ai, or other Anthropic products and services (the “Services”)."
+— Privacy Policy, Anthropic (https://assets.claude.com/693a25036936f7e7bf4dd0c299a2e654f14fac01.pdf)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Inputs and Outputs are personal data when you include personal data in them: if you include personal data in your Inputs, Anthropic will collect that information and it may be reproduced in your Outputs.</li>
+<li>Be thoughtful about sharing highly sensitive personal details in chats — the Help Center names financial information (SSN, credit card numbers, bank account details), health records or medical information, passwords or private login credentials, and confidential business or personal documents.</li>
+<li>The Exam Guide's canonical safeguard is redaction: remove or anonymize personal identifiers before uploading, consistent with policy, so the analysis can proceed without exposing protected data. Instructing Claude not to retain data does not satisfy a policy control.</li>
+<li>Privacy settings are user controls: you maintain control over whether chats may be used to help improve Claude, and incognito chats are not used to improve Claude even if Model Improvement is enabled in your privacy settings.</li>
+<li>Connector data follows the source system's permissions, and connected services process data on their own infrastructure, under their own terms, which may be located outside the United States.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Classify data before pasting or uploading it: public, internal, confidential, and regulated personal data each get different handling, and regulated identifiers are removed or anonymized first.</li>
+<li>Choose the right surface and settings for sensitive work — check privacy settings, consider an incognito chat, and confirm whether your plan and organization permit the data type at all.</li>
+<li>Verify what a connector will expose before connecting it, since Claude inherits the connected account's access.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://assets.claude.com/693a25036936f7e7bf4dd0c299a2e654f14fac01.pdf">Privacy Policy</a>, <a href="https://support.claude.com/en/articles/8325621-i-would-like-to-input-sensitive-data-into-my-chats-with-claude-who-can-view-my-conversations">I would like to input sensitive data into my chats with Claude. Who can view my conversations?</a>, <a href="https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities">Use connectors to extend Claude's capabilities</a></p></div><div class="cell zh"><h2>6.2 运用数据敏感性、监管与隐私方面的考量</h2>
+<p><em>EN: Apply data sensitivity, regulatory, and privacy considerations</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "This Privacy Policy explains how we collect, use, disclose, and process your personal data when you use our website, Claude.ai, or other Anthropic products and services (the “Services”)."
+— Privacy Policy, Anthropic (https://assets.claude.com/693a25036936f7e7bf4dd0c299a2e654f14fac01.pdf)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>当你在输入（Inputs）中包含个人数据时，输入与输出（Outputs）就是个人数据：如果你在输入中包含个人数据，Anthropic 会收集该信息，且它可能在你的输出中被再现。</li>
+<li>对在聊天中分享高度敏感的个人细节要慎重 —— 帮助中心（Help Center）点名了财务信息（SSN、信用卡号、银行账户详情）、健康记录或医疗信息、密码或私人登录凭据，以及机密的业务或个人文档。</li>
+<li>考试指南的规范保障措施是脱敏（redaction）：在上传之前删除或匿名化个人标识符，符合政策要求，使分析可以在不暴露受保护数据的情况下进行。指示 Claude 不保留数据，并不能满足一项政策控制要求。</li>
+<li>隐私设置是用户控制项：你保持对聊天是否可被用于帮助改进 Claude 的控制权；即使你的隐私设置中启用了模型改进（Model Improvement），无痕（incognito）聊天也不会被用于改进 Claude。</li>
+<li>Connector 数据遵循源系统的权限，且已连接的服务在它们自己的基础设施上、按它们自己的条款处理数据，这些基础设施可能位于美国境外。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>在粘贴或上传数据之前先对其分类：公开、内部、机密与受监管的个人数据各自有不同的处理方式，受监管的标识符要先被删除或匿名化。</li>
+<li>为敏感工作选择正确的界面与设置 —— 检查隐私设置，考虑使用无痕（incognito）聊天，并确认你的方案与组织是否根本允许该数据类型。</li>
+<li>在连接一个 connector 之前，核实它将暴露什么，因为 Claude 会继承已连接账户的访问权限。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://assets.claude.com/693a25036936f7e7bf4dd0c299a2e654f14fac01.pdf">Privacy Policy</a>, <a href="https://support.claude.com/en/articles/8325621-i-would-like-to-input-sensitive-data-into-my-chats-with-claude-who-can-view-my-conversations">I would like to input sensitive data into my chats with Claude. Who can view my conversations?</a>, <a href="https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities">Use connectors to extend Claude's capabilities</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>6.3 Follow organizational AI policies and governance standards</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Practice responsible-use judgment: data sensitivity, appropriate use cases, and when to escalate or seek human review"
+— Claude Certified Associate – Foundations Exam Guide v1.0, Anthropic (official exam guide)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Organizational governance shows up in Claude as concrete controls, not just documents: on Team and Enterprise plans, an Owner or Primary Owner enables connectors at the organization level before members can use them, and enabling a connector does not grant anyone access — each person still authenticates individually.</li>
+<li>Owners can also restrict what a connected service may do across the organization — for example, read-only access — and that restriction applies org-wide; individual users can't override it.</li>
+<li>Anthropic's Usage Policy sits underneath organizational policy: following your employer's rules does not excuse a use the Usage Policy prohibits, and vice versa.</li>
+<li>The minimally qualified candidate is expected to recognize limitations and escalate more complex or technical work to Claude Architects and Developers, rather than improvising beyond their role.</li>
+<li>Human review is a governance control, not a courtesy: outputs bound for compliance, customers, or publication need verification against an authoritative source before they are shared.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Before adopting a new Claude workflow, check three layers: the Usage Policy, your organization's AI policy and plan-level admin settings, and any regulation that applies to the data involved.</li>
+<li>Work within admin-set controls instead of around them — request a connector through the owner if you can't add it yourself, and respect read-only or approval requirements.</li>
+<li>Escalate when a request conflicts with policy, exceeds your authority, or needs technical implementation, and document the decision for the next person.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities">Use connectors to extend Claude's capabilities</a>, <a href="https://www.anthropic.com/legal/aup">Usage Policy</a></p></div><div class="cell zh"><h2>6.3 遵循组织的 AI 政策与治理标准</h2>
+<p><em>EN: Follow organizational AI policies and governance standards</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Practice responsible-use judgment: data sensitivity, appropriate use cases, and when to escalate or seek human review"
+— Claude Certified Associate – Foundations Exam Guide v1.0, Anthropic (official exam guide)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>组织治理在 Claude 中表现为具体的控制，而不只是文档：在 Team 与 Enterprise 方案上，所有者（Owner）或主要所有者（Primary Owner）先在组织层面启用 connectors，成员才能使用它们；启用一个 connector 并不授予任何人访问权 —— 每个人仍然要单独进行身份验证。</li>
+<li>所有者还可以限制一个已连接服务在整个组织范围内可以做什么 —— 例如只读访问 —— 且该限制在全组织范围内适用；个人用户无法覆盖它。</li>
+<li>Anthropic 的使用政策（Usage Policy）位于组织政策之下：遵循你雇主的规定，并不能为一项使用政策所禁止的使用开脱，反之亦然。</li>
+<li>最低合格考生被期望认识到局限性，并将更复杂或更技术性的工作升级给 Claude 架构师（Claude Architects）与开发者（Claude Developers），而不是超越自己的角色即兴发挥。</li>
+<li>人工审核是一项治理控制，而不是一种礼节：面向合规、客户或发布的输出，在分享之前需要对照权威来源进行验证。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>在采用一个新的 Claude 工作流之前，检查三个层面：使用政策（Usage Policy）、你组织的 AI 政策与方案层面的管理员设置，以及适用于所涉数据的任何法规。</li>
+<li>在管理员设定的控制之内工作，而不是绕过它们 —— 如果你自己无法添加一个 connector，就通过所有者提出请求，并尊重只读或批准方面的要求。</li>
+<li>当一个请求与政策冲突、超出你的权限，或需要技术实施时，进行升级，并把决定记录下来供下一个人参考。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities">Use connectors to extend Claude's capabilities</a>, <a href="https://www.anthropic.com/legal/aup">Usage Policy</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>6.4 Understand the ethical implications of AI usage</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Claude’s constitution is the foundational document that both expresses and shapes who Claude is. It contains detailed explanations of the values we would like Claude to embody and the reasons why."
+— Claude's new constitution, Anthropic (https://www.anthropic.com/news/claude-new-constitution)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Anthropic wants all current Claude models to be, in priority order: broadly safe (not undermining appropriate human mechanisms to oversee AI), broadly ethical (being honest, acting according to good values, and avoiding actions that are inappropriate, dangerous, or harmful), compliant with Anthropic's guidelines, and genuinely helpful. In cases of apparent conflict, Claude should generally prioritize these properties in the order listed.</li>
+<li>The constitution is treated as the final authority on how Claude should behave: any other training or instruction given to Claude should be consistent with both its letter and its underlying spirit.</li>
+<li>Ethical use by professionals mirrors those priorities: honesty about AI involvement, care about who an output affects, and refusal to use a capable tool to deceive, discriminate, or shift accountability onto the model.</li>
+<li>Bias and confident error are ethical issues, not just quality issues: an unchecked hallucination or a biased summary can harm the people a decision is about, which is why the Exam Guide pairs output evaluation with responsible use.</li>
+<li>Transparency runs both ways: Anthropic publishes the constitution so people can understand which of Claude's behaviors are intended versus unintended, make informed choices, and provide useful feedback.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Ask, before using an output: who could be harmed if this is wrong or biased, and would I be comfortable disclosing that AI produced it?</li>
+<li>Keep a human accountable for consequential decisions — Claude can draft, summarize, and suggest, but a person owns the decision and its effects.</li>
+<li>Decline or reframe requests that would mislead an audience, impersonate a person, or launder a biased judgment through an apparently neutral AI output.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://www.anthropic.com/news/claude-new-constitution">Claude's new constitution</a>, <a href="https://www.anthropic.com/constitution">Claude's Constitution</a>, <a href="https://www.anthropic.com/legal/aup">Usage Policy</a></p></div><div class="cell zh"><h2>6.4 理解 AI 使用的伦理影响</h2>
+<p><em>EN: Understand the ethical implications of AI usage</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Claude’s constitution is the foundational document that both expresses and shapes who Claude is. It contains detailed explanations of the values we would like Claude to embody and the reasons why."
+— Claude's new constitution, Anthropic (https://www.anthropic.com/news/claude-new-constitution)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>Anthropic 希望所有当前的 Claude 模型按优先顺序做到：广泛安全（broadly safe，不破坏人类监督 AI 的适当机制）、广泛合乎伦理（broadly ethical，诚实、按良好的价值观行事，并避免不适当、危险或有害的行动）、符合 Anthropic 的指南，以及真正有帮助。在出现明显冲突的情况下，Claude 一般应按所列顺序优先考虑这些属性。</li>
+<li>宪法（constitution）被视为 Claude 应当如何行为的最终权威：给予 Claude 的任何其他训练或指令，都应当与其字面规定及其背后的精神保持一致。</li>
+<li>专业人士的合乎伦理的使用与这些优先顺序相呼应：对 AI 的参与保持诚实、关心一个输出会影响到谁，并拒绝用一个强大的工具去欺骗、歧视，或把问责推给模型。</li>
+<li>偏见与自信的错误是伦理问题，而不只是质量问题：一个未经核查的幻觉或一份有偏见的总结，可能伤害到一个决定所涉及的人，这正是考试指南把输出评估与负责任使用配在一起的原因。</li>
+<li>透明是双向的：Anthropic 公布这部宪法，使人们能够理解 Claude 的哪些行为是有意的、哪些是无意的，作出知情的选择，并提供有用的反馈。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>在使用一个输出之前先问：如果这是错的或有偏见的，谁可能受到伤害？如果披露这是 AI 产出的，我是否会心安理得？</li>
+<li>让一个人类为重大决定负责 —— Claude 可以起草、总结与建议，但决定及其影响由一个人承担。</li>
+<li>拒绝或重新框定那些会误导受众、冒充某个人，或通过一份看似中立的 AI 输出来洗白一项有偏见的判断的请求。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://www.anthropic.com/news/claude-new-constitution">Claude's new constitution</a>, <a href="https://www.anthropic.com/constitution">Claude's Constitution</a>, <a href="https://www.anthropic.com/legal/aup">Usage Policy</a></p></div></div>
+<div class="band" id="d7"><div class="band-en">Domain 7: Troubleshooting and Optimization (10%)</div><div class="band-zh">领域 7：故障排查与优化（Domain 7: Troubleshooting and Optimization）（10%）</div></div>
+<div class="row obj"><div class="cell en"><h2>7.1 Identify, diagnose, and resolve issues with underperforming prompts or poor outputs</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Language models can fabricate specific-looking details such as citation numbers, a hallucination. Validating factual claims, especially citations bound for a compliance audience, against an authoritative source is the diligence step required."
+— Claude Certified Associate – Foundations Exam Guide v1.0, Anthropic (official exam guide)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Diagnose before rewriting: a poor output usually traces to the prompt (missing context, an ambiguous instruction, a missing format or length constraint), to the setup (stale or conflicting project knowledge, instructions at the wrong scope), or to the task itself (too large or the wrong shape for one chat).</li>
+<li>Self-reported confidence is not a reliable accuracy signal: a confident, specific-looking answer can still be a hallucination, so the fix for factual risk is verification against an authoritative source, not asking Claude to rate itself.</li>
+<li>Configuration faults mimic prompt faults: if every chat in a Project is wrong in the same way, suspect the project instructions or knowledge sources before blaming individual prompts.</li>
+<li>Connector faults have their own signatures: lost access to a document removes its preview from conversations, and a Google Workspace connector blocked by an admin requires the admin to allow Claude as a trusted application.</li>
+<li>Reformatting a wrong answer does not fix it: changing tone or layout leaves correctness untouched.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Name the failure precisely — wrong fact, wrong audience, wrong format, ignored instruction, or missing source — then change the one input most likely to cause it and re-test.</li>
+<li>Compare the new output against the old one on the same task, rather than judging the new output in isolation.</li>
+<li>When the same failure repeats across prompts, move up a level: fix the instructions, replace the stale knowledge file, or split the task.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://support.claude.com/en/articles/9517075-what-are-projects">What are projects?</a>, <a href="https://support.claude.com/en/articles/10166901-use-google-workspace-connectors">Use Google Workspace connectors</a></p></div><div class="cell zh"><h2>7.1 识别、诊断并解决提示表现不佳或输出质量差的问题</h2>
+<p><em>EN: Identify, diagnose, and resolve issues with underperforming prompts or poor outputs</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Language models can fabricate specific-looking details such as citation numbers, a hallucination. Validating factual claims, especially citations bound for a compliance audience, against an authoritative source is the diligence step required."
+— Claude Certified Associate – Foundations Exam Guide v1.0, Anthropic (official exam guide)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>先诊断再重写：一个差的输出通常可追溯到提示（上下文缺失、指令含糊、缺少格式或长度约束）、设置（过时或相互冲突的项目知识、范围放错的指令），或任务本身（对一次聊天来说太大，或形状不对）。</li>
+<li>自我报告的自信不是可靠的准确性信号：一个自信的、看似具体的答案仍可能是一个幻觉，因此针对事实风险的修复办法是，对照权威来源进行验证，而不是让 Claude 给自己打分。</li>
+<li>配置故障会伪装成提示故障：如果一个 Project 中的每一次聊天都以同样的方式出错，先怀疑项目指令或知识来源，而不是责怪单个提示。</li>
+<li>Connector 故障有它们自己的特征：失去对一份文档的访问，会使它的预览从对话中消失；而一个被管理员阻止的 Google Workspace connector，需要管理员把 Claude 允许为受信任的应用。</li>
+<li>给一个错误的答案重新排版并不能修复它：改变语气或版式不会触及正确性。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>精确地点明失败之处 —— 事实错误、受众错误、格式错误、指令被忽视，还是来源缺失 —— 然后改变最可能导致它的那一个输入，并重新测试。</li>
+<li>在同一个任务上把新输出与旧输出对比，而不是孤立地评判新输出。</li>
+<li>当同一种失败在多个提示上反复出现时，上升一个层面：修复指令、替换过时的知识文件，或拆分任务。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://support.claude.com/en/articles/9517075-what-are-projects">What are projects?</a>, <a href="https://support.claude.com/en/articles/10166901-use-google-workspace-connectors">Use Google Workspace connectors</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>7.2 Adjust approach based on feedback and results</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Practice structuring prompts, decomposing tasks, and iterating to improve outputs"
+— Claude Certified Associate – Foundations Exam Guide v1.0, Anthropic (official exam guide)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Iteration is the expected workflow, not a sign of failure: the credential's candidates are distinguished in part by their ability to create structured prompts, critically evaluate AI-generated content, and adapt outputs for different audiences.</li>
+<li>Feedback is most useful when it is specific: telling Claude which section, claim, or format element missed — and what good looks like — gives it something to act on in the next turn.</li>
+<li>Sometimes the right adjustment is structural, not verbal: decompose a complex request into steps, start a fresh chat when a thread has drifted, summarize and carry forward what matters, or move recurring work into a Project with standing instructions and knowledge.</li>
+<li>Audience feedback should change the artifact, not just the wording: the same content may need a different format (artifact, inline text, structured data), length, or level of detail for a different reader.</li>
+<li>Results, not effort, decide whether to keep iterating: if two or three targeted revisions do not converge, escalate, seek human expertise, or change tools rather than prompting indefinitely.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Give revision feedback as an editor would: keep this, cut that, verify this claim, reformat for this audience.</li>
+<li>After each revision, re-check the output against the original success criteria before accepting it.</li>
+<li>Capture what worked — a revised prompt, a better decomposition, a new instruction — into the Project or your instructions so the improvement persists.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://support.claude.com/en/articles/10185728-understanding-claude-s-personalization-features">Understanding Claude's personalization features</a>, <a href="https://support.claude.com/en/articles/9517075-what-are-projects">What are projects?</a></p></div><div class="cell zh"><h2>7.2 根据反馈与结果调整方法</h2>
+<p><em>EN: Adjust approach based on feedback and results</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Practice structuring prompts, decomposing tasks, and iterating to improve outputs"
+— Claude Certified Associate – Foundations Exam Guide v1.0, Anthropic (official exam guide)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>迭代是预期的工作流，而不是失败的标志：本证书的考生之所以与众不同，部分在于他们能够创建结构化的提示、批判性地评估 AI 生成的内容，并为不同受众改编输出。</li>
+<li>反馈在具体时最有用：告诉 Claude 哪个章节、哪个论断或哪个格式元素没有达标 —— 以及好的样子是什么 —— 能让它在下一轮中有东西可据以行动。</li>
+<li>有时正确的调整是结构性的，而不是措辞上的：把一个复杂请求拆解为多个步骤、当一条线索已经跑偏时开始一次新的聊天、总结并带走重要的内容，或把反复出现的工作移进一个带常设指令与知识的 Project 中。</li>
+<li>受众反馈应当改变 Artifact 本身，而不只是措辞：同一份内容对不同的读者可能需要不同的格式（Artifact、内联文本、结构化数据）、长度或详细程度。</li>
+<li>由结果、而不是由投入的精力来决定是否继续迭代：如果两三次有针对性的修订仍不能收敛，就升级处理、寻求人类专业知识，或更换工具，而不是无限地提示下去。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>像编辑一样给出修订反馈：保留这个、删掉那个、核实这个论断、为这个受众重新排版。</li>
+<li>在每一次修订之后，在接受它之前，对照最初的成功标准重新检查输出。</li>
+<li>把有效的做法 —— 一个修订过的提示、一个更好的拆解、一条新指令 —— 固化进 Project 或你的指令中，使改进得以持续。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://support.claude.com/en/articles/10185728-understanding-claude-s-personalization-features">Understanding Claude's personalization features</a>, <a href="https://support.claude.com/en/articles/9517075-what-are-projects">What are projects?</a></p></div></div>
+<div class="row obj"><div class="cell en"><h2>7.3 Optimize workflows for efficiency and effectiveness</h2>
+<blockquote>
+<p><strong>Official wording:</strong> "Select appropriate approaches to balance quality, efficiency, and cost"
+— Claude Certified Associate – Foundations Exam Guide v1.0, Anthropic (official exam guide)</p>
+</blockquote>
+<h3>Key knowledge:</h3>
+<ul>
+<li>Optimization starts with fit: aligning an approach with task requirements means matching effort and capability to the work — the Exam Guide's example is using a faster, lower-cost model for straightforward, high-volume tasks and reserving the most capable model for complex reasoning, since always using the top model wastes the cost and latency budget.</li>
+<li>Setup is an efficiency lever: a Project with instructions and knowledge sources removes repeated pasting and re-briefing, and connectors remove manual fetching from Gmail, Calendar, and Drive.</li>
+<li>Connector loading is also a lever: when many connectors are active, switching Tool access from Auto to On demand gives conversations more room, which the Help Center recommends considering with 10 or more connectors active.</li>
+<li>Large Projects stay effective through RAG, which expands project knowledge capacity by up to 10x on paid plans while maintaining response quality — but curated, current knowledge still outperforms a larger, stale pile.</li>
+<li>Effectiveness is measured at the workflow level: total human time (prompting, verifying, revising), not just generation speed, is the cost to optimize.</li>
+</ul>
+<h3>Key skills:</h3>
+<ul>
+<li>Standardize recurring work: turn a proven prompt sequence into a Project with standing instructions, named knowledge sources, and a fixed output format.</li>
+<li>Batch and template high-volume, low-variation tasks, and reserve open-ended chat for genuinely exploratory work.</li>
+<li>Periodically audit a workflow: remove connectors and files that are no longer used, tighten instructions that cause repeated revisions, and re-check that the model and approach still match the task's quality, efficiency, and cost requirements.</li>
+</ul>
+<p><strong>Official sources:</strong> <a href="https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities">Use connectors to extend Claude's capabilities</a>, <a href="https://support.claude.com/en/articles/9517075-what-are-projects">What are projects?</a></p>
+<hr /></div><div class="cell zh"><h2>7.3 优化工作流的效率与效果</h2>
+<p><em>EN: Optimize workflows for efficiency and effectiveness</em></p>
+<blockquote>
+<p><strong>官方原文：</strong> "Select appropriate approaches to balance quality, efficiency, and cost"
+— Claude Certified Associate – Foundations Exam Guide v1.0, Anthropic (official exam guide)</p>
+</blockquote>
+<h3>关键知识：</h3>
+<ul>
+<li>优化从契合开始：让一种方法与任务要求相匹配，意味着让投入的精力与能力与工作相称 —— 考试指南的例子是，对简单、高量的任务使用更快的、低成本的模型，把最强大的模型留给复杂推理，因为始终使用顶级模型会浪费成本与延迟预算。</li>
+<li>设置是一个效率杠杆：一个带指令与知识来源的 Project 消除了反复的粘贴与重新简报，connectors 消除了从 Gmail、Calendar 与 Drive 中人工取数的工作。</li>
+<li>Connector 的加载也是一个杠杆：当许多 connectors 处于活动状态时，把工具访问（Tool access）从自动（Auto）切换到按需（On demand），能为对话腾出更多空间；帮助中心建议在有 10 个或更多 connectors 处于活动状态时考虑这样做。</li>
+<li>大型 Projects 通过 RAG 保持有效性，RAG 在付费方案上把项目知识容量扩大至多 10 倍，同时保持回答质量 —— 但经过整理、保持最新的知识仍然胜过一个更大、更陈旧的堆积。</li>
+<li>效果是在工作流层面衡量的：要优化的成本是人类的总时间（提示、核实、修订），而不只是生成的速度。</li>
+</ul>
+<h3>关键技能：</h3>
+<ul>
+<li>把反复出现的工作标准化：把一个被证明有效的提示序列变成一个带常设指令、具名知识来源与固定输出格式的 Project。</li>
+<li>对高量、低变化的任务进行批处理并使用模板，把开放式聊天留给真正探索性的工作。</li>
+<li>定期审计一个工作流：删除不再使用的 connectors 与文件，收紧导致反复修订的指令，并重新核查模型与方法是否仍然符合任务在质量、效率与成本方面的要求。</li>
+</ul>
+<p><strong>官方来源：</strong> <a href="https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities">Use connectors to extend Claude's capabilities</a>, <a href="https://support.claude.com/en/articles/9517075-what-are-projects">What are projects?</a></p>
+<h1>Official Sample Questions</h1>
+<p>From Section 8 of the official Exam Guide v1.0. These illustrative items show the style and cognitive level of the exam; they are not drawn from the live item bank.</p>
+<h2>Sample 1 · Domain 2 — Output Evaluation and Validation</h2>
+<p>An associate asks Claude to summarize a new regulation, and Claude produces a confident summary citing a specific subsection number. Before sending the summary to the compliance team, what is the most appropriate action?</p>
+<ul>
+<li>A. Send it as-is, since Claude expressed high confidence.</li>
+<li>B. Verify the cited subsection against the official regulation text before sharing.</li>
+<li>C. Ask Claude to rate its own confidence and send it if the rating is high.</li>
+<li>D. Reword the summary to sound more formal, then send it.</li>
+</ul>
+<p><strong>Answer: B.</strong> Language models can fabricate specific-looking details such as citation numbers — a hallucination. Validating factual claims, especially citations bound for a compliance audience, against an authoritative source is the diligence step required. Self-reported confidence (A, C) is not a reliable accuracy signal, and reformatting (D) does not address correctness.</p>
+<h2>Sample 2 · Domain 3 — Product and Model Selection</h2>
+<p>An associate needs to generate a high volume of short customer-reply drafts where speed and cost matter more than deep reasoning. Which choice best fits the task?</p>
+<ul>
+<li>A. Use the most capable, highest-cost model for every reply to maximize quality.</li>
+<li>B. Use a faster, lower-cost model suited to straightforward, high-volume tasks.</li>
+<li>C. Disable all product features to reduce cost.</li>
+<li>D. Switch to a different AI platform.</li>
+</ul>
+<p><strong>Answer: B.</strong> Aligning model selection with task requirements means matching a faster, lower-cost model to straightforward, high-volume work, reserving the most capable model for complex reasoning. Always using the top model (A) wastes the cost and latency budget; disabling features (C) or switching platforms (D) does not address the trade-off.</p>
+<h2>Sample 3 · Domain 6 — Governance, Risk, and Responsible Use</h2>
+<p>A project manager wants to upload a spreadsheet containing customer names and account numbers so Claude can analyze trends. Organizational policy restricts sharing regulated personal data. What is the most appropriate action?</p>
+<ul>
+<li>A. Upload the file as-is, since the analysis is internal.</li>
+<li>B. Remove or anonymize the personal identifiers before uploading, consistent with policy.</li>
+<li>C. Upload the file but instruct Claude not to retain it.</li>
+<li>D. Skip the analysis entirely.</li>
+</ul>
+<p><strong>Answer: B.</strong> Applying data-sensitivity and privacy safeguards means redacting or anonymizing regulated identifiers before use, so the analysis can proceed without exposing protected data. Uploading as-is (A) violates policy; instructing the model not to retain data (C) does not satisfy the policy control; abandoning the task (D) is unnecessary when anonymization enables it.</p></div></div>
+<div class="band" id="samples"><div class="band-en">Official Sample Questions</div><div class="band-zh">官方样题</div></div>
+<div class="row obj"><div class="cell en"><p>From Section 8 of the official Exam Guide v1.0. These illustrative items show the style and cognitive level of the exam; they are not drawn from the live item bank.</p>
+<h2>Sample 1 · Domain 2 — Output Evaluation and Validation</h2>
+<p>An associate asks Claude to summarize a new regulation, and Claude produces a confident summary citing a specific subsection number. Before sending the summary to the compliance team, what is the most appropriate action?</p>
+<ul>
+<li>A. Send it as-is, since Claude expressed high confidence.</li>
+<li>B. Verify the cited subsection against the official regulation text before sharing.</li>
+<li>C. Ask Claude to rate its own confidence and send it if the rating is high.</li>
+<li>D. Reword the summary to sound more formal, then send it.</li>
+</ul>
+<p><strong>Answer: B.</strong> Language models can fabricate specific-looking details such as citation numbers — a hallucination. Validating factual claims, especially citations bound for a compliance audience, against an authoritative source is the diligence step required. Self-reported confidence (A, C) is not a reliable accuracy signal, and reformatting (D) does not address correctness.</p>
+<h2>Sample 2 · Domain 3 — Product and Model Selection</h2>
+<p>An associate needs to generate a high volume of short customer-reply drafts where speed and cost matter more than deep reasoning. Which choice best fits the task?</p>
+<ul>
+<li>A. Use the most capable, highest-cost model for every reply to maximize quality.</li>
+<li>B. Use a faster, lower-cost model suited to straightforward, high-volume tasks.</li>
+<li>C. Disable all product features to reduce cost.</li>
+<li>D. Switch to a different AI platform.</li>
+</ul>
+<p><strong>Answer: B.</strong> Aligning model selection with task requirements means matching a faster, lower-cost model to straightforward, high-volume work, reserving the most capable model for complex reasoning. Always using the top model (A) wastes the cost and latency budget; disabling features (C) or switching platforms (D) does not address the trade-off.</p>
+<h2>Sample 3 · Domain 6 — Governance, Risk, and Responsible Use</h2>
+<p>A project manager wants to upload a spreadsheet containing customer names and account numbers so Claude can analyze trends. Organizational policy restricts sharing regulated personal data. What is the most appropriate action?</p>
+<ul>
+<li>A. Upload the file as-is, since the analysis is internal.</li>
+<li>B. Remove or anonymize the personal identifiers before uploading, consistent with policy.</li>
+<li>C. Upload the file but instruct Claude not to retain it.</li>
+<li>D. Skip the analysis entirely.</li>
+</ul>
+<p><strong>Answer: B.</strong> Applying data-sensitivity and privacy safeguards means redacting or anonymizing regulated identifiers before use, so the analysis can proceed without exposing protected data. Uploading as-is (A) violates policy; instructing the model not to retain data (C) does not satisfy the policy control; abandoning the task (D) is unnecessary when anonymization enables it.</p></div><div class="cell zh"><p>摘自官方考试指南 v1.0 第 8 节。这些示例题展示了考试的风格与认知层级；它们并非取自真实题库。</p>
+<h2>样题 1 · 领域 2 —— 输出评估与验证（Sample 1 · Domain 2 — Output Evaluation and Validation）</h2>
+<p>一位助理级人员让 Claude 总结一项新法规，Claude 产出了一份自信的摘要，并引用了一个具体的小节编号。在把这份摘要发送给合规团队之前，最合适的行动是什么？</p>
+<ul>
+<li>A. 直接按原样发送，因为 Claude 表达了高度自信。</li>
+<li>B. 在分享之前，对照官方的法规文本核实所引用的小节。</li>
+<li>C. 让 Claude 给自己的自信打分，如果分数高就发送。</li>
+<li>D. 把摘要改写得更正式，然后发送。</li>
+</ul>
+<p><strong>答案：B。</strong>语言模型可能编造看似具体的细节，例如引用编号 —— 这是一种幻觉。对照权威来源验证事实性论断，尤其是面向合规受众的引用，是所要求的审慎步骤。自我报告的自信（A、C）不是可靠的准确性信号，重新排版（D）并不解决正确性问题。</p>
+<h2>样题 2 · 领域 3 —— 产品与模型选择（Sample 2 · Domain 3 — Product and Model Selection）</h2>
+<p>一位助理级人员需要生成大量简短的客户回复草稿，其中速度与成本比深度推理更重要。哪个选择最适合这项任务？</p>
+<ul>
+<li>A. 对每一份回复都使用最强大、成本最高的模型，以最大化质量。</li>
+<li>B. 使用一个更快的、低成本的、适合简单高量任务的模型。</li>
+<li>C. 禁用所有产品功能以降低成本。</li>
+<li>D. 切换到另一个 AI 平台。</li>
+</ul>
+<p><strong>答案：B。</strong>让模型选择与任务要求相匹配，意味着把一个更快的、低成本的模型用于简单、高量的工作，把最强大的模型留给复杂推理。始终使用顶级模型（A）会浪费成本与延迟预算；禁用功能（C）或切换平台（D）并不解决这一权衡问题。</p>
+<h2>样题 3 · 领域 6 —— 治理、风险与负责任使用（Sample 3 · Domain 6 — Governance, Risk, and Responsible Use）</h2>
+<p>一位项目经理想上传一份包含客户姓名与账号的电子表格，让 Claude 分析趋势。组织政策限制分享受监管的个人数据。最合适的行动是什么？</p>
+<ul>
+<li>A. 按原样上传文件，因为这项分析是内部的。</li>
+<li>B. 在上传之前删除或匿名化个人标识符，符合政策要求。</li>
+<li>C. 上传文件，但指示 Claude 不要保留它。</li>
+<li>D. 完全跳过这项分析。</li>
+</ul>
+<p><strong>答案：B。</strong>运用数据敏感性与隐私保障措施，意味着在使用之前对受监管的标识符进行脱敏或匿名化，使分析可以在不暴露受保护数据的情况下进行。按原样上传（A）违反政策；指示模型不要保留数据（C）并不能满足政策控制要求；而当匿名化能使任务得以进行时，放弃任务（D）是没有必要的。</p></div></div>
+</body></html>
