@@ -30,9 +30,18 @@ table{border-collapse:collapse;margin:.6em 0;font-size:14px}
 th,td{border:1px solid var(--line);padding:5px 10px;text-align:left}
 a{color:#1d4ed8}
 hr{border:none;border-top:1px solid var(--line)}
+
+.toggle{display:flex;gap:6px;align-items:center}
+.toggle button{background:transparent;border:1px solid #ffd98a;color:#ffd98a;border-radius:6px;padding:3px 12px;font-size:13px;cursor:pointer;font-family:inherit}
+.toggle button.on{background:#ffd98a;color:#16283f;font-weight:700}
+body[data-mode="en"] .cell.zh,body[data-mode="en"] .band-zh,body[data-mode="en"] .colhead .zh{display:none}
+body[data-mode="en"] .row,body[data-mode="en"] .band,body[data-mode="en"] .colhead{grid-template-columns:1fr}
+body[data-mode="zh"] .cell.en,body[data-mode="zh"] .band-en,body[data-mode="zh"] .colhead div:first-child{display:none}
+body[data-mode="zh"] .row,body[data-mode="zh"] .band,body[data-mode="zh"] .colhead{grid-template-columns:1fr}
+body[data-mode="zh"] .cell.zh{border-left:none}
 @media (max-width:760px){.row,.band,.colhead{grid-template-columns:1fr}.cell.zh{border-left:none;border-top:1px dashed var(--line)}}
 </style></head><body>
-<header class="top"><b>CCAR-F Study Guide · 中英并列版</b><span class="sub">Official Exam Guide v1.0 · 左 EN / 右 中文 · 整页一起滚动</span><nav><a href="#d1">D1</a><a href="#d2">D2</a><a href="#d3">D3</a><a href="#d4">D4</a><a href="#d5">D5</a><a href="#samples">样题</a></nav></header>
+<header class="top"><b>CCAR-F Study Guide · 中英并列版</b><span class="sub">Official Exam Guide v1.0 · 左 EN / 右 中文 · 整页一起滚动</span><nav><a href="#d1">D1</a><a href="#d2">D2</a><a href="#d3">D3</a><a href="#d4">D4</a><a href="#d5">D5</a><a href="#samples">样题</a></nav><span class="toggle"><button data-m="both">中英对照</button><button data-m="en">只看英文</button><button data-m="zh">只看中文</button></span></header>
 <div class="colhead"><div>English</div><div class="zh">中文</div></div>
 <div class="row front"><div class="cell en"><h1>Claude Certified Architect — Foundations Certification</h1>
 <h2>Study Guide (Based on the Official Exam Guide)</h2>
@@ -1734,4 +1743,13 @@ hr{border:none;border-top:1px solid var(--line)}
 <li>D. 对整个 PR 运行三遍独立审查，只标记在至少两遍中都出现的问题。</li>
 </ul>
 <p><strong>答案：A。</strong> 把审查拆成聚焦的多遍直接解决根源：一次处理许多文件时的注意力稀释（attention dilution）。逐文件分析保证深度一致，单独的集成遍则捕获跨文件问题。选项 B 把负担转移给开发者，却不改善系统。选项 C 误解了问题：更大的上下文窗口并不能解决注意力质量问题。选项 D 反而会压制对真实 bug 的检出，因为它要求对可能只是间歇性被发现的问题达成共识。</p></div></div>
+
+<script>
+(function(){var m='both';try{m=localStorage.getItem('guide-mode')||'both'}catch(e){}
+function set(v){m=v;try{localStorage.setItem('guide-mode',v)}catch(e){}
+document.body.dataset.mode=v;
+document.querySelectorAll('.toggle button').forEach(function(b){b.classList.toggle('on',b.dataset.m===v)});}
+document.querySelectorAll('.toggle button').forEach(function(b){b.addEventListener('click',function(){set(b.dataset.m)});});
+set(m);})();
+</script>
 </body></html>
